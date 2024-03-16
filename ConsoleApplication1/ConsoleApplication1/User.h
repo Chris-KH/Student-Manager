@@ -8,7 +8,6 @@ struct UserInfo
 	string username;
 	string password;
 	bool is_staff;
-
 	string name;
 	Date dob;
 	bool gender;
@@ -20,7 +19,7 @@ struct UserNode
 	UserNode* pNext;
 };
 
-bool logIn(string password, string username);
-bool ImportUserData(ifstream& fi);
+void importUserData(UserNode* &users, ifstream& fin);
+bool login(string password, string username);
 
 	
