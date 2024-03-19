@@ -1,7 +1,3 @@
-#include <iostream>
-
-using namespace std;
-
 #include "Header.h"
 
 int main() {
@@ -22,16 +18,71 @@ int main() {
 	while (true) {
 		if (login(users, logged_in)) {
 			cout << "Logged in successfully.\n";
+			break;
 		}
 		else {
 			cout << "Login failed. Please check your username and password and try again.\n";
 		}
-		cout << "Press 0 if you want to login again, if not press 1: ";
-		int x; cin >> x;
-		if (x) break;
 	}
 
+	menu();
+	int n; 
+	cout << "Your choice: "; cin >> n;
 
+    switch (n)
+    {
+    case 1:
+    {
 
+    }
+    case 2:
+    {
+
+    }
+    case 3:
+    {
+
+    }
+    case 4:
+    {
+
+    }
+    case 5:
+    {
+
+    }
+    case 6:
+    {
+
+    }
+    case 7:
+    {
+
+    }
+    case 8:
+    {
+
+    }
+    case 9:
+    {
+
+    }
+    case 10:
+    {
+
+    }
+    case 11:
+    {
+
+    }
+    case 12:
+    {
+
+    }
+    case 13:
+    {
+
+    }
+}
 	return 0;
 }
