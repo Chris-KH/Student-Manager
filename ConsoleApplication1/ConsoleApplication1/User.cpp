@@ -16,7 +16,7 @@ void importUserData(UserNode*& users, ifstream& fin) {
 		}
 
 		getline(fin, cur->data.name);
-		fin >> cur->data.username >> cur->data.password >> cur->data.is_staff;
+		fin >> cur->data.username >> cur->data.password >> cur->data.is_staff >> cur->data.gender;
 
 		string line;
 
@@ -25,7 +25,6 @@ void importUserData(UserNode*& users, ifstream& fin) {
 		
 		ss >> cur->data.dob.day >> cur->data.dob.month >> cur->data.dob.year;
 
-		fin >> cur->data.gender;
 	}
 }
 
