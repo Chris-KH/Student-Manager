@@ -1,7 +1,3 @@
-#include <iostream>
-
-using namespace std;
-
 #include "Header.h"
 
 int main()
@@ -17,10 +13,8 @@ int main()
 		cin >> password;
 		if (logIn(username, password))
 		{
-
 			cout << "MENU:";
-			cout<<""
-
+			cout<<"";
 		}
 	}
 }
