@@ -2,4 +2,4 @@
 
 #include "Header.h"
 
-void menu();
+void menuForStaff();

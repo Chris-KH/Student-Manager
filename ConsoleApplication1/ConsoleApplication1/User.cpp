@@ -42,3 +42,23 @@ bool login(UserNode* users, UserNode* &temp) {
 	}
 	return false;
 }
+
+void changePassword(UserNode*& cur) {
+	string password, new_pass, new_pass2;
+	while (true) {
+		cout << "Please enter your current password: "; cin >> password;
+		cout << "Enter new password: "; cin >> new_pass;
+		cout << "Re-enter new password: "; cin >> new_pass2;
+		if (password != cur->data.password) {
+			cout << "Your current password is wrong. Please try again.\n";
+		}
+		else if (new_pass != new_pass2) {
+			cout << "Something wrong, make sure your passwords match. Please try again.\n";
+		}
+		else {
+			cur->data.password = new_pass;
+			cout << "Your password has been changed successfully.\n";
+			break;
+		}
+	}
+}

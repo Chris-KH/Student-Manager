@@ -26,4 +26,6 @@ void importUserData(UserNode* &users, ifstream& fin);
 
 bool login(UserNode* users, UserNode*& cur);
 
+void changePassword(UserNode* &cur);
+
 	

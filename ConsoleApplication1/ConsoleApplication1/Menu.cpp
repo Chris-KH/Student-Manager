@@ -1,6 +1,6 @@
 #include"Header.h"
 
-void menu() {
+void menuForStaff() {
     cout << "All the function: Press a number to choose";
     cout << "1. Create a school year" << endl;
     cout << "2. Create a semester" << endl;
