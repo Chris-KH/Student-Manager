@@ -10,7 +10,7 @@ struct YearInfo
 
 struct YearNode
 {
-	int CurrentYear;
+	int data;
 	SemesterInfo* semester = new SemesterInfo[3];
 	
 	YearNode() : semester{ new SemesterInfo[3] }
