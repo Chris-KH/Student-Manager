@@ -15,11 +15,11 @@ void importUserData(UserNode*& users, ifstream& fin) {
 			cur = temp;
 		}
 
+		getline(fin, cur->data.name);
 		fin >> cur->data.username >> cur->data.password >> cur->data.is_staff;
 
-		getline(fin, cur->data.name);
-
 		string line;
+
 		getline(fin, line);
 		stringstream ss(line);
 		
