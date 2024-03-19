@@ -5,21 +5,25 @@
 
 struct UserInfo
 {
-	string username;
-	string password;
-	bool is_staff;
-	string name;
+	string username = "";
+	string password = "";
+	bool is_staff = 0;
+	string name = "";
 	Date dob;
-	bool gender;
+	bool gender = 0;
 };
 
 struct UserNode
 {
 	UserInfo data;
 	UserNode* pNext;
+	UserNode() {
+		pNext = nullptr;
+	}
 };
 
 void importUserData(UserNode* &users, ifstream& fin);
-bool login(string password, string username);
+
+bool login(UserNode* users, UserNode*& cur);
 
 	

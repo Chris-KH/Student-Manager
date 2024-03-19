@@ -48,7 +48,7 @@ void createNewStudentAccount(StudentNode students, UserNode*& head);
 
 void viewStudentCourse(string student_id, CourseNode* head);
 
-void viewListOfClass(ClassNode* head); //all classes
+//void viewListOfClass(ClassNode* head); //all classes
 
 void viewListOfStudentInClass(StudentNode* head);//choose class 
 

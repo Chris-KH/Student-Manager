@@ -40,12 +40,12 @@ void importScoreboard(ifstream& fin, CourseNode*& courses);
 
 void viewTheScoreboardOfCourse(CourseNode* courses);
 
-void updateStudentResult(StudentNode *Student);
+//void updateStudentResult(StudentNode *Student);
 
-void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
+//void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
 
-StudentNode* findStudentABC(int id);
+//StudentNode* findStudentABC(int id);
 
-void ViewStudentScoreBoard(StudentNode* Student);
+//void ViewStudentScoreBoard(StudentNode* Student);
 
-void viewStudentScoreboard(string student_id, CourseNode* courses);
+//void viewStudentScoreboard(string student_id, CourseNode* courses);

@@ -4,7 +4,7 @@
 
 struct Date
 {
-	int day;
-	int month;
-	int year;
+	int day = 0;
+	int month = 0;
+	int year = 0;
 };

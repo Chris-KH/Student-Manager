@@ -12,7 +12,7 @@ struct SemesterInfo
 	Date end;
 	CourseNode* course;
 
-	SemesterInfo() : course{ nullptr } {}
+	SemesterInfo() : course(nullptr) {};
 };
 
 void ImportCourseToSemester(YearNode*& Head, int sem, ifstream& fin);

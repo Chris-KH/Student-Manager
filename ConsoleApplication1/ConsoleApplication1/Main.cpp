@@ -4,23 +4,34 @@ using namespace std;
 
 #include "Header.h"
 
-int main()
-{
-	string username, password;
-	ImportUserData("user.csv");
+int main() {
+	cout << "Welcome to course management system.\n";
 
-	while (true)
-	{
-		cout << "User name: " << endl;
-		cin >> username;
-		cout << "Password: " << endl;
-		cin >> password;
-		if (logIn(username, password))
-		{
-
-			cout << "MENU:";
-			cout<<""
-
-		}
+	UserNode* users = nullptr;
+	ifstream fin("DataFile/Users.txt");
+	if (fin.is_open()) {
+		importUserData(users, fin);
+		fin.close();
 	}
+	else {
+		cout << "Unable to load data user.\n";
+		return 0;
+	}
+
+	UserNode* logged_in = nullptr;
+	while (true) {
+		if (login(users, logged_in)) {
+			cout << "Logged in successfully.\n";
+		}
+		else {
+			cout << "Login failed. Please check your username and password and try again.\n";
+		}
+		cout << "Press 0 if you want to login again, if not press 1: ";
+		int x; cin >> x;
+		if (x) break;
+	}
+
+
+
+	return 0;
 }
