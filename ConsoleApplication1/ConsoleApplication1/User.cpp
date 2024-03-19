@@ -20,6 +20,7 @@ void importUserData(UserNode*& users, ifstream& fin) {
 
 		string line;
 
+		fin.ignore();
 		getline(fin, line);
 		stringstream ss(line);
 		
