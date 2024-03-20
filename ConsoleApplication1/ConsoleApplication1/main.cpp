@@ -25,7 +25,7 @@ int main() {
 		}
 	}
 
-	menu();
+	menuForStaff();
 	int n; 
 	cout << "Your choice: "; cin >> n;
 
