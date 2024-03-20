@@ -69,19 +69,6 @@ int main() {
     }
     case 10:
     {
-
-	while (true)
-	{
-		cout << "User name: " << endl;
-		cin >> username;
-		cout << "Password: " << endl;
-		cin >> password;
-		if (logIn(username, password))
-		{
-
-			cout << "MENU:";
-			cout<<""
-
-		}
-	}
+    }
+	return 0;
 }
