@@ -32,43 +32,18 @@ int main()
         }
     }
     // Output Menu
-    menuForStaff();
-    int n;
-    cout << "Your choice: ";
-    cin >> n;
-
-    switch (n)
+    int choice;
+    if (logged_in->data.is_staff)
     {
-    case 1:
-    {
+        menuForStaff();
+        cin >> choice;
+        staffChoice(choice);
     }
-    case 2:
+    else
     {
-    }
-    case 3:
-    {
-    }
-    case 4:
-    {
-    }
-    case 5:
-    {
-    }
-    case 6:
-    {
-    }
-    case 7:
-    {
-    }
-    case 8:
-    {
-    }
-    case 9:
-    {
-    }
-    case 10:
-    {
-    }
+        menuForStudent();
+        cin >> choice;
+        studentChoice(choice);
     }
     return 0;
 }
