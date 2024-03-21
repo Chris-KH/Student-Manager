@@ -1,5 +1,5 @@
-#include "Header.h"
-
+#include "Library.h"
+#include "Menu.h"
 bool continueProgram()
 {
     if (logOutProgram())
@@ -44,32 +44,5 @@ void menuForStaff()
     cout << "11. Update a student's result" << endl;
     cout << "12. View the scoreboard of a class" << endl;
     cout << "13. View the total scoreboard (Student)" << endl;
-}
-void staffChoice(int n)
-{
-    switch (n)
-    {
-        case 1:
-        {
-            createNewSchoolYear();
-        }
-        case 2:
-        {
-            ImportCourseToSemester();
-        }
-        case 3:
-        {
-
-        }
-    }
-}
-void studentChoice(int n)
-{
-    switch (n)
-    {
-        case 1:
-        {
-            
-        }
-    }
+    cout << "Staff choice: ";
 }

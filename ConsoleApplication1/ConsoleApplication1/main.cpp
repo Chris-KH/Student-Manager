@@ -5,7 +5,7 @@ int main()
     // Load data
     cout << "Welcome to course management system.\n";
 
-    UserNode* users = nullptr;
+    UserNode *users = nullptr;
     ifstream fin("DataFile/Users.txt");
     if (fin.is_open())
     {
@@ -18,7 +18,7 @@ int main()
         return 0;
     }
     // User log in
-    UserNode* logged_in = nullptr;
+    UserNode *logged_in = nullptr;
     while (continueProgram())
     {
         if (login(users, logged_in))
@@ -27,19 +27,16 @@ int main()
             while (continueProgram())
             {
                 // Output Menu
-                int choice;
-                if (logged_in->data.is_staff)
+                int n;
+                if(logged_in->data.is_staff)
                 {
                     menuForStaff();
-                    cin >> choice;
-                    staffChoice(choice);
                 }
                 else
                 {
                     menuForStudent();
-                    cin >> choice;
-                    studentChoice(choice);
                 }
+
             }
         }
         else
