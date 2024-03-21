@@ -19,31 +19,31 @@ int main()
     }
     // User log in
     UserNode *logged_in = nullptr;
-    while (true)
+    while (continueProgram())
     {
         if (login(users, logged_in))
         {
             cout << "Logged in successfully.\n";
-            break;
+            while (continueProgram())
+            {
+                // Output Menu
+                int choice;
+                if (logged_in->data.is_staff)
+                {
+                    menuForStaff();
+                    cin >> choice;
+                    staffChoice(choice);
+                }
+                else
+                {
+                    menuForStudent();
+                    cin >> choice;
+                    studentChoice(choice);
+                }
+            }
         }
         else
-        {
             cout << "Login failed. Please check your username and password and try again.\n";
-        }
-    }
-    // Output Menu
-    int choice;
-    if (logged_in->data.is_staff)
-    {
-        menuForStaff();
-        cin >> choice;
-        staffChoice(choice);
-    }
-    else
-    {
-        menuForStudent();
-        cin >> choice;
-        studentChoice(choice);
     }
     return 0;
 }
