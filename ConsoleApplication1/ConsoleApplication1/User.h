@@ -7,7 +7,7 @@ struct UserInfo
 {
 	string username = "";
 	string password = "";
-	bool is_staff = 0;
+	bool is_staff = false;
 	string name = "";
 	Date dob;
 	bool gender = 0;
