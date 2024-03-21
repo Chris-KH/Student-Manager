@@ -132,7 +132,7 @@
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="Data.cpp" />
     <ClCompile Include="Date.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Semester.cpp" />
     <ClCompile Include="Student.cpp" />

@@ -1,5 +1,33 @@
 #include "Header.h"
 
+bool continueProgram()
+{
+    if (logOutProgram())
+        return false;
+    int continueChoice;
+    cout << "If you want to continue, please input \'1\'. However, if you want to return, please input \'0\'." << endl;
+    cout << "Your input: ";
+    cin >> continueChoice;
+    if (continueChoice == 1)
+        return true;
+    if (continueChoice == 0)
+        return false;
+    cout << "Please read the instruction again!" << endl;
+    continueProgram();
+}
+bool logOutProgram()
+{
+    int logoutChoice;
+    cout << "If you want to log out, please input \'0\'. However, if you want to continue, please input \'1\'." << endl;
+    cout << "Your input: ";
+    cin >> logoutChoice;
+    if (logoutChoice == 0)
+        return true;
+    if (logoutChoice == 1)
+        return false;
+    cout << "Please read the instruction again!" << endl;
+    logOutProgram();
+}
 void menuForStaff()
 {
     cout << "All the functions: Press a number to choose";
@@ -19,7 +47,7 @@ void menuForStaff()
 }
 void staffChoice(int n)
 {
-    switch(n)
+    switch (n)
     {
         case 1:
         {
