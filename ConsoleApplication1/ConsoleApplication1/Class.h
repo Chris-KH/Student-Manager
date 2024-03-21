@@ -3,7 +3,7 @@
 #include "Library.h"
 #include "Student.h"
 
-struct ClassInfo 
+struct ClassInfo
 {
     string name;
 };

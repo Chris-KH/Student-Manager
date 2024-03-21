@@ -21,13 +21,27 @@ void staffChoice(int n)
 {
     switch(n)
     {
-        case: 1
-            createNewSchoolYear()
-        case: 2
-            ImportCourseToSemester()
-        case: 3
+        case 1:
+        {
+            createNewSchoolYear();
+        }
+        case 2:
+        {
+            ImportCourseToSemester();
+        }
+        case 3:
+        {
+
+        }
     }
 }
 void studentChoice(int n)
 {
+    switch (n)
+    {
+        case 1:
+        {
+            
+        }
+    }
 }

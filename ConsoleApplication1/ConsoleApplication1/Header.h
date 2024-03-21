@@ -12,9 +12,3 @@
 #include "Data.h"
 
 using namespace std;
-
-#include<iostream>
-#include<cstring>
-#include<sstream>
-#include<string>
-#include<fstream>

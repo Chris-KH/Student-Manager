@@ -163,7 +163,7 @@ void deAllocateDataSemester(YearNode *headYear)
 	for (int i = 0; i < 3; ++i)
 	{
 		deAllocateDataCourse(currentYear->semester[i].course);
-		delete currentYear->semester[i];
+		delete &currentYear->semester[i];
 	}
 }
 void deAllocateDataCourse(CourseNode *headCourse)

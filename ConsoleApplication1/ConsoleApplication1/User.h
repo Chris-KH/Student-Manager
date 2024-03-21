@@ -28,4 +28,3 @@ bool login(UserNode* users, UserNode*& cur);
 
 void changePassword(UserNode* &cur);
 
-	

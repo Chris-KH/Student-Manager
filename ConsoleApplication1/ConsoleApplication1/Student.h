@@ -75,5 +75,3 @@ void ExportScoreboard(ofstream& fout, CourseNode* head, string course_id, string
 void ViewTheScoreboardOfCourse(CourseNode* head, string course_id);
 
 void updateStudentResult(string student_id, string course_id, CourseNode* head);
-
-
