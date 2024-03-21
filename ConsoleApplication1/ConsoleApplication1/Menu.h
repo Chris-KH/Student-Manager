@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Header.h"
 // Into program manipulate
 bool continueProgram();
 bool logOutProgram();

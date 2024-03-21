@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Library.h"
 #include "Date.h"
 
 struct UserInfo

@@ -2,8 +2,6 @@
 
 #include "Library.h"
 #include "Date.h"
-#include "Student.h"
-#include "Semester.h"
 #include "Class.h"
 
 struct CourseInfo
@@ -34,7 +32,6 @@ struct CourseNode
     }
 };
 
-void addCourse(SemesterInfo*& CurSemester, CourseNode*& Head);
 
 void importScoreboard(ifstream& fin, CourseNode*& courses);
 
@@ -49,3 +46,39 @@ void viewTheScoreboardOfCourse(CourseNode* courses);
 //void ViewStudentScoreBoard(StudentNode* Student);
 
 //void viewStudentScoreboard(string student_id, CourseNode* courses);
+
+//------------
+
+void importStudentToCourse(CourseNode*& course, ifstream& fin);
+
+void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
+
+void viewListofCourse(CourseNode* course);
+
+void updateCourseIn4(CourseNode* head, string course_id);
+
+void addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student);
+
+void removeStudentFromCourse(CourseNode* head, string course_id, string student_id);
+
+void deleteACourse(CourseNode* head, string course_id);
+
+void viewListOfCourse(CourseNode* head); //choose year -> semester
+
+void exportStudentOfCourse(CourseInfo course, ofstream& fout); //choose year -> semester -> course
+
+void deleteAllCourse(CourseNode*& head);
+
+void viewListOfStudentInCourse(CourseNode* head, string course_id);
+
+void ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name);
+
+void ExportScoreboard(ofstream& fout, CourseNode* head, string course_id, string sy_name);
+
+void ViewTheScoreboardOfCourse(CourseNode* head, string course_id);
+
+void updateStudentResult(string student_id, string course_id, CourseNode* head);
+
+void viewStudentCourse(string student_id, CourseNode* head);
+
+void viewStudentScoreboard(string student_id, CourseNode* head);

@@ -27,12 +27,10 @@
 #include <locale.h>
 #include <search.h>
 #include <assert.h>
-#include <largeint.h>
 #include <time.h>
 #include <stdarg.h>
 #include <ctype.h>
 #include <string.h>
-#include <quadmath.h>
 #include <math.h>
 #include <complex.h>
 
