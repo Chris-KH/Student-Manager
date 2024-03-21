@@ -1,9 +1,8 @@
 #include "Header.h"
 
-
-void exportData(YearNode* headYear, ofstream& fo)
+void exportData(YearNode *headYear, ofstream &fo)
 {
-	YearNode* curYear = headYear;
+	YearNode *curYear = headYear;
 	while (curYear != NULL)
 	{
 		fo << "Year" << endl;
@@ -14,21 +13,21 @@ void exportData(YearNode* headYear, ofstream& fo)
 	}
 }
 
-void exportSemester(SemesterInfo curSem, int sem, ofstream& fo)
+void exportSemester(SemesterInfo curSem, int sem, ofstream &fo)
 {
-	fo << "Semester "<<endl;
+	fo << "Semester " << endl;
 	fo << sem << endl;
 	exportDate(curSem.start, fo);
 	exportDate(curSem.end, fo);
-	CourseNode* curCourse = curSem.course;
+	CourseNode *curCourse = curSem.course;
 	while (curCourse != NULL)
 	{
-		exportCourse(curCourse,fo);
+		exportCourse(curCourse, fo);
 		curCourse = curCourse->pNext;
 	}
 }
 
-void exportCourse(CourseNode* curCourse, ofstream &fo)
+void exportCourse(CourseNode *curCourse, ofstream &fo)
 {
 	fo << "Course" << endl;
 	CourseInfo info = curCourse->data;
@@ -40,16 +39,15 @@ void exportCourse(CourseNode* curCourse, ofstream &fo)
 	fo << info.max_student << endl;
 	fo << info.day_of_week << endl;
 	fo << info.session << endl;
-	StudentNode* curStu = curCourse->student;
+	StudentNode *curStu = curCourse->student;
 	while (curStu != NULL)
 	{
 		exportStudent(curStu, fo);
 		curStu = curStu->pNext;
-
 	}
 }
 
-void exportStudent(StudentNode* curStu, ofstream& fo)
+void exportStudent(StudentNode *curStu, ofstream &fo)
 {
 	fo << "Student" << endl;
 	StudentInfo info = curStu->data;
@@ -64,18 +62,19 @@ void exportStudent(StudentNode* curStu, ofstream& fo)
 	fo << score.total << " " << score.final << " " << score.midterm << " " << score.other << endl;
 }
 
-void importYear(YearNode* &headYear, ifstream& fi)
+void importYear(YearNode *&headYear, ifstream &fi)
 {
 	string type;
 	fi >> type;
-	YearNode* curYear = NULL;
+	YearNode *curYear = NULL;
 	while (type == "Year")
 	{
-		YearNode* newYear = new YearNode;
+		YearNode *newYear = new YearNode;
 		fi >> curYear->data;
 		if (curYear == NULL)
 			headYear = newYear;
-		else curYear->pNext = newYear;
+		else
+			curYear->pNext = newYear;
 		curYear = newYear;
 		fi >> type;
 		while (type == "Semester")
@@ -88,25 +87,26 @@ void importYear(YearNode* &headYear, ifstream& fi)
 	}
 }
 
-void importSemester(SemesterInfo& curSem, int sem, ifstream& fi, string &type)
+void importSemester(SemesterInfo &curSem, int sem, ifstream &fi, string &type)
 {
 	importDate(curSem.start, fi);
 	importDate(curSem.end, fi);
 	fi >> type;
 	curSem.course = NULL;
-	CourseNode* curCourse = NULL;
+	CourseNode *curCourse = NULL;
 	while (type == "Course")
 	{
-		CourseNode* newCourse = new CourseNode;
+		CourseNode *newCourse = new CourseNode;
 		if (curCourse == NULL)
 			curSem.course = newCourse;
-		else curCourse->pNext = newCourse;
+		else
+			curCourse->pNext = newCourse;
 		curCourse = newCourse;
 		importCourse(curCourse, fi, type);
 	}
 }
 
-void importCourse(CourseNode* &curCourse, ifstream& fi, string &type)
+void importCourse(CourseNode *&curCourse, ifstream &fi, string &type)
 {
 	CourseInfo info = curCourse->data;
 	fi >> info.course_id;
@@ -119,20 +119,21 @@ void importCourse(CourseNode* &curCourse, ifstream& fi, string &type)
 	fi >> info.session;
 	fi >> type;
 	curCourse->student = NULL;
-	StudentNode* curStu = NULL;
-	while (type=="Student")
+	StudentNode *curStu = NULL;
+	while (type == "Student")
 	{
-		StudentNode* newStu = new StudentNode;
+		StudentNode *newStu = new StudentNode;
 		if (curStu == NULL)
 			curCourse->student = newStu;
-		else curStu->pNext = newStu;
+		else
+			curStu->pNext = newStu;
 		curStu = newStu;
 		importStudent(curStu, fi);
 		fi >> type;
 	}
 }
 
-void importStudent(StudentNode* &curStu, ifstream& fi)
+void importStudent(StudentNode *&curStu, ifstream &fi)
 {
 	StudentInfo info = curStu->data;
 	fi >> info.No;
@@ -144,4 +145,45 @@ void importStudent(StudentNode* &curStu, ifstream& fi)
 	fi >> info.social_id;
 	ScoreInfo score = info.score;
 	fi >> score.total >> score.final >> score.midterm >> score.other;
+}
+void deAllocateDataYear(YearNode *headYear)
+{
+	YearNode *currentYear = headYear;
+	while (currentYear != nullptr)
+	{
+		deAllocateDataSemester(currentYear);
+		YearNode *temp = currentYear;
+		currentYear = currentYear->pNext;
+		delete temp;
+	}
+}
+void deAllocateDataSemester(YearNode *headYear)
+{
+	YearNode *currentYear = headYear;
+	for (int i = 0; i < 3; ++i)
+	{
+		deAllocateDataCourse(currentYear->semester[i].course);
+		delete currentYear->semester[i];
+	}
+}
+void deAllocateDataCourse(CourseNode *headCourse)
+{
+	CourseNode *currentCourse = headCourse;
+	while (currentCourse != nullptr)
+	{
+		deAllocateDataStudent(currentCourse->student);
+		CourseNode *temp = currentCourse;
+		currentCourse = currentCourse->pNext;
+		delete temp;
+	}
+}
+void deAllocateDataStudent(StudentNode *headStudent)
+{
+	StudentNode *currentStudent = headStudent;
+	while (currentStudent != nullptr)
+	{
+		StudentNode *temp = currentStudent;
+		currentStudent = currentStudent->pNext;
+		delete temp;
+	}
 }
