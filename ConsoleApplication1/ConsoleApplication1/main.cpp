@@ -28,15 +28,16 @@ int main()
             {
                 // Output Menu
                 int n;
-                if(logged_in->data.is_staff)
+                if (logged_in->data.is_staff)
                 {
                     menuForStaff();
+                    cout << endl;
                 }
                 else
                 {
                     menuForStudent();
+                    cout << endl;
                 }
-
             }
         }
         else
