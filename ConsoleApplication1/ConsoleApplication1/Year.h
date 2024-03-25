@@ -16,6 +16,7 @@ struct YearNode
 	}
 };
 
+void createNewSchoolYear(YearNode*& Head, int& NumOfSchoolYear);
 
 void createASchoolYear(YearNode*& head, YearNode* tail);
 

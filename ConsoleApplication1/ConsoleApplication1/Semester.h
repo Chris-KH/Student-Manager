@@ -15,6 +15,8 @@ struct SemesterInfo
 		course = nullptr;
 	}
 };
+/*void createSemester(YearNode* year)
+{
 
+}*/
 //void addCourse(SemesterInfo*& CurSemester, CourseNode*& Head);
-
