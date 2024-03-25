@@ -12,13 +12,11 @@ struct YearNode
 	YearNode() {
 		data = 0;
 		pNext = nullptr;
-		semester[0].order = 1;
-		semester[1].order = 2;
-		semester[2].order = 3;
+		semester = new SemesterInfo[3];
 	}
 };
 
-void createNewSchoolYear(YearNode *&Head, int &NumOfSchoolYear);
+void createASchoolYear(YearNode*& Head, int& NumOfSchoolYear);
 
 //void importSchoolYear(YearNode *&Head, ifstream &fin, int &numOfSchoolYear);
 //void exportSchoolYear(YearNode *Head, ofstream &fout, int numOfSchoolYear);

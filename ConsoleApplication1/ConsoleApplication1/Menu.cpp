@@ -14,6 +14,7 @@ bool continueProgram()
     cout << "Please read the instruction again!" << endl;
     continueProgram();
 }
+
 bool returnProgram()
 {
     int returnChoice;
@@ -26,6 +27,7 @@ bool returnProgram()
     cout << "Please read the instruction again!" << endl;
     returnProgram();
 }
+
 void menuForStaff()
 {
     cout << "All the functions: Press a number to choose";
