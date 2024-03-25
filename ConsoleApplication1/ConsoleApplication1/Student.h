@@ -13,11 +13,11 @@ struct ScoreInfo
 
 struct StudentInfo
 {
-    string No, ID;
-    string first_name, last_name;
+    string No = "", ID = "";
+    string first_name = "", last_name = "";
     Date dob;
     bool gender = 0;
-    string social_id;
+    string social_id = "";
     ScoreInfo score;
 };
 

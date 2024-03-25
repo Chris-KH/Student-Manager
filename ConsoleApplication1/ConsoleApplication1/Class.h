@@ -15,10 +15,6 @@ struct ClassNode
     ClassNode* pNext;
 
     ClassNode() : data(), pNext(nullptr), student(nullptr) {}
-    ~ClassNode()
-    {
-        delete pNext;
-    }
 };
 
 //void addNewClass(ClassNode*& head);

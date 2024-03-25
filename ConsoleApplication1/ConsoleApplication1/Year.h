@@ -3,11 +3,6 @@
 #include "Library.h"
 #include "Semester.h"
 
-struct YearInfo
-{
-	int year;
-};
-
 struct YearNode
 {
 	int data;
@@ -20,12 +15,6 @@ struct YearNode
 		semester[0].order = 1;
 		semester[1].order = 2;
 		semester[2].order = 3;
-	}
-
-
-	~YearNode()
-	{
-		delete[] semester;
 	}
 };
 
