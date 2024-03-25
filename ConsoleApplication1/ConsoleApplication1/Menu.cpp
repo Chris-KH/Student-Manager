@@ -94,6 +94,7 @@ void menuForStudent()
 
     cout << "Student choice: ";
 }
+/*
 void checkStaffChoice()
 {
     int staffChoice;
@@ -158,3 +159,4 @@ void checkStudentChoice()
         break;
     }
 }
+*/
