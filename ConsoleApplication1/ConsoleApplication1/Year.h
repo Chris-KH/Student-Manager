@@ -11,10 +11,10 @@ struct YearInfo
 struct YearNode
 {
 	int data;
-	SemesterInfo *semester = new SemesterInfo[3];
+	SemesterInfo* semester;
 
-	YearNode() : semester{new SemesterInfo[3]}
-	{
+	YearNode() {
+		semester = new SemesterInfo[3];
 		semester[0].order = 1;
 		semester[1].order = 2;
 		semester[2].order = 3;
@@ -28,9 +28,9 @@ struct YearNode
 	}
 };
 
-void createNewSchoolYear(YearNode *&Head, int &NumOfSchoolYear);
+//void createNewSchoolYear(YearNode *&Head, int &NumOfSchoolYear);
 
-void importSchoolYear(YearNode *&Head, ifstream &fin, int &numOfSchoolYear);
-void exportSchoolYear(YearNode *Head, ofstream &fout, int numOfSchoolYear);
+//void importSchoolYear(YearNode *&Head, ifstream &fin, int &numOfSchoolYear);
+//void exportSchoolYear(YearNode *Head, ofstream &fout, int numOfSchoolYear);
 
-YearNode findSchoolYear(YearNode *yearHead, int data);
+//YearNode findSchoolYear(YearNode *yearHead, int data);

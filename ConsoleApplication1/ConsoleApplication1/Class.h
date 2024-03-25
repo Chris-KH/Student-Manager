@@ -21,6 +21,6 @@ struct ClassNode
     }
 };
 
-void addNewClass(ClassNode*& head);
+//void addNewClass(ClassNode*& head);
 
-void importClass(ClassNode*& head, ifstream& fin);
+//void importClass(ClassNode*& head, ifstream& fin);

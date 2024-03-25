@@ -45,16 +45,4 @@ void menuForStaff()
     cout << "12. View the scoreboard of a class" << endl;
     cout << "13. View the total scoreboard (Student)" << endl;
 }
-void staffChoice(int n)
-{
-    switch (n)
-    {
-    case:
-    1 createNewSchoolYear() case:
-    2 ImportCourseToSemester() case:
-        3
-    }
-}
-void studentChoice(int n)
-{
-}
+

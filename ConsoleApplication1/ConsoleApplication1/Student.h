@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Library.h"
 #include "User.h"
 #include "Course.h"
 #include "Date.h"
@@ -29,7 +28,7 @@ struct StudentNode
     
     StudentNode() : pNext(nullptr) {}
 };
-
+/*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 
 void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
@@ -77,3 +76,4 @@ void ViewTheScoreboardOfCourse(CourseNode* head, string course_id);
 void updateStudentResult(string student_id, string course_id, CourseNode* head);
 
 
+*/

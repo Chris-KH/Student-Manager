@@ -27,7 +27,7 @@ struct CourseNode
     StudentNode* student;
     CourseNode* pNext;
 
-    CourseNode() : student(),pNext(nullptr) {}
+    CourseNode() : student(nullptr),pNext(nullptr) {}
     ~CourseNode()
     {
         delete pNext;
