@@ -29,6 +29,18 @@ void importUserData(UserNode*& users, ifstream& fin) {
 	}
 }
 
+void exportUserData(UserNode* users, ofstream& fout) {
+	int order = 1;
+	while (users) {
+		fout << order << "\n";
+		fout << users->data.name << "\n";
+		fout << users->data.username << users->data.password << users->data.is_staff << users->data.gender << "\n";
+		fout << users->data.dob.day << "/" << users->data.dob.month << "/" << users->data.dob.year << "\n";
+		order++;
+		users = users->pNext;
+	}
+}
+
 bool login(UserNode* users, UserNode* &temp) {
 	string username, password;
 	cout << "Username: "; cin >> username;
@@ -61,6 +73,13 @@ void changePassword(UserNode*& cur) {
 			break;
 		}
 	}
+}
+
+void viewProfileInfo(UserNode* user) {
+	cout << "Name: " << user->data.name << "\n";
+	cout << "Date of birth: " << user->data.dob.day << "/" << user->data.dob.month << "/" << user->data.dob.year << "\n";
+	cout << "Gender: " << (user->data.gender == 1) ? "Male" : "Female"; 
+	cout << "\n";
 }
 
 void deleteUserData(UserNode*& users) {

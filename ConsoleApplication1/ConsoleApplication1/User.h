@@ -23,8 +23,12 @@ struct UserNode
 
 void importUserData(UserNode* &users, ifstream& fin);
 
+void exportUserData(UserNode* users, ofstream& fout);
+
 bool login(UserNode* users, UserNode*& cur);
 
 void changePassword(UserNode* &cur);
+
+void viewProfileInfo(UserNode* user);
 
 void deleteUserData(UserNode*& users);
