@@ -25,7 +25,6 @@ void logoutProgram(bool &logout)
         logout = false;
     cout << "Please read the instruction again!" << endl;
     logoutProgram(logout);
-    return 0;
 }
 
 void menuForStaff()
