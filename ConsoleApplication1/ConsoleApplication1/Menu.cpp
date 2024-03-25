@@ -2,8 +2,7 @@
 #include "Menu.h"
 bool continueProgram()
 {
-    if (returnProgram())
-        return false;
+    if (returnProgram()) return false; // Cái này có thật sự cần không
     int continueChoice;
     cout << "If you want to continue, please input \'1\'. However, if you want to return, please input \'0\'." << endl;
     cout << "Your input: ";
