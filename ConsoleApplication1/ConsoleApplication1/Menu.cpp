@@ -2,9 +2,7 @@
 bool continueProgram(bool &logout)
 {
     int continueChoice;
-    cout << "If you want to continue, please input \'1\'. However, if you want to return, please input \'0\'." << endl;
-    cout << "Your input: ";
-    cin >> continueChoice;
+    cout << "Input '1' to continue program or '0' to return: "; cin >> continueChoice;
     if (continueChoice == 1)
         return true;
     if (continueChoice == 0)
@@ -14,23 +12,19 @@ bool continueProgram(bool &logout)
     }
     cout << "Please read the instruction again!" << endl;
     continueProgram(logout);
+    return 0;
 }
 
 void logoutProgram(bool &logout)
 {
     int logoutChoice;
-    cout << "If you want to logout, please input \'0\'. If not, please input \'1\'" << endl;
-    cout << "Your choice: ";
-    cin >> logoutChoice;
+    cout << "Input '0' to logout or '1' to continue: "; cin >> logoutChoice;
     if (logoutChoice == 0)
         logout = true;
     else if (logoutChoice == 1)
         logout = false;
-    else
-    {
-        cout << "Please read the instruction again!" << endl;
-        logoutProgram(logout);
-    }
+    cout << "Please read the instruction again!" << endl;
+    logoutProgram(logout);
 }
 
 void menuForStaff()
