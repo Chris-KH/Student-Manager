@@ -19,12 +19,13 @@ int main()
     }
     // User log in
     UserNode *logged_in = nullptr;
-    while (continueProgram())
+    bool logout = false;
+    while (continueProgram(logout))
     {
         if (login(users, logged_in))
         {
             cout << "Logged in successfully.\n";
-            bool logout = false;
+            logout = false;
             while (logout == false && continueProgram(logout))
             {
                 // Output Menu
