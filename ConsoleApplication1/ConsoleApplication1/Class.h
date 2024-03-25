@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Library.h"
-#include "Student.h"
+#include "Year.h"
 
 struct ClassInfo
 {

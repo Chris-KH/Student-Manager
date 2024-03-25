@@ -2,7 +2,7 @@
 
 #include "Library.h"
 #include "Date.h"
-#include "Class.h"
+#include "Student.h"
 
 struct CourseInfo
 {

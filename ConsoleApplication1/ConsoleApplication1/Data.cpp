@@ -59,7 +59,7 @@ void exportStudent(StudentNode *curStu, ofstream &fo)
 	fo << info.gender << endl;
 	fo << info.social_id << endl;
 	ScoreInfo score = info.score;
-	fo << score.total << " " << score.final << " " << score.midterm << " " << score.other << endl;
+	fo << score.total << " " << score.final << " " << score.midterm << " " << score.bonus << endl;
 }
 
 void importYear(YearNode *&headYear, ifstream &fi)
@@ -144,7 +144,7 @@ void importStudent(StudentNode *&curStu, ifstream &fi)
 	fi >> info.gender;
 	fi >> info.social_id;
 	ScoreInfo score = info.score;
-	fi >> score.total >> score.final >> score.midterm >> score.other;
+	fi >> score.total >> score.final >> score.midterm >> score.bonus;
 }
 void deAllocateDataYear(YearNode *headYear)
 {

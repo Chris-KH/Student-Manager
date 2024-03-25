@@ -28,7 +28,7 @@ int main()
     {
         if (login(users, logged_in))
         {
-            cout << "Logged in successfully.\n";
+            cout << ">>>Logged in successfully<<<\n";
             logout = false;
             while (logout == false && continueProgram(logout))
             {
