@@ -24,7 +24,8 @@ int main()
         if (login(users, logged_in))
         {
             cout << "Logged in successfully.\n";
-            while (continueProgram())
+            bool logout = false;
+            while (logout == false && continueProgram(logout))
             {
                 // Output Menu
                 if (logged_in->data.is_staff)

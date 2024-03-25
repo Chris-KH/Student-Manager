@@ -1,8 +1,7 @@
 #include "Library.h"
 #include "Menu.h"
-bool continueProgram()
+bool continueProgram(bool &logout)
 {
-    if (returnProgram()) return false; // Cái này có thật sự cần không
     int continueChoice;
     cout << "If you want to continue, please input \'1\'. However, if you want to return, please input \'0\'." << endl;
     cout << "Your input: ";
@@ -10,20 +9,25 @@ bool continueProgram()
     if (continueChoice == 1)
         return true;
     if (continueChoice == 0)
+    {
+        logoutProgram(logout);
         return false;
+    }
     cout << "Please read the instruction again!" << endl;
     continueProgram();
 }
-bool returnProgram()
+void logoutProgram(bool &logout)
 {
-    int returnChoice;
-    cout << "If you want to return, please input \'0\'. However, if you want to continue, please input \'1\'." << endl;
-    cout << "Your choice: "; cin >> returnChoice;
-    if (returnChoice == 0)
-        return true;
-    if (returnChoice == 1)
-        return false;
-    cout << "Please read the instruction again!" << endl;
+    int logoutChoice;
+    cout << "If you want to logout, please input \'0\'. If not, please input \'1\'" << endl;
+    cout << "Your choice: ";
+    cin >> logoutChoice;
+    if (logoutChoice == 0)
+        logout = true;
+    else if (logoutChoice == 1)
+        logout = false;
+    else
+        cout << "Please read the instruction again!" << endl;
     returnProgram();
 }
 void menuForStaff()
