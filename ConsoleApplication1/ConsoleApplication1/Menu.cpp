@@ -1,5 +1,4 @@
-#include "Library.h"
-#include "Menu.h"
+#include "Header.h"
 bool continueProgram(bool &logout)
 {
     int continueChoice;
@@ -14,7 +13,7 @@ bool continueProgram(bool &logout)
         return false;
     }
     cout << "Please read the instruction again!" << endl;
-    continueProgram();
+    continueProgram(logout);
 }
 
 void logoutProgram(bool &logout)
