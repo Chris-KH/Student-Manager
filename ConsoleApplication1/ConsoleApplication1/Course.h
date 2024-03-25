@@ -6,22 +6,20 @@
 
 struct CourseInfo
 {
-    string course_id;
-    string course_name;
-    string class_name;
+    string ID;
+    string name;
     string teacher_name;
-    int num_of_credit;
+    int credit;
     int max_student;
     string day_of_week;
     int session;
 
 
     CourseInfo() {
-        course_id = "";
-        course_name = "";
-        class_name = "";
+        ID = "";
+        name = "";
         teacher_name = "";
-        num_of_credit = 4;
+        credit = 4;
         max_student = 50;
         day_of_week = "";
         session = 0;
@@ -31,10 +29,10 @@ struct CourseInfo
 struct CourseNode
 {
     CourseInfo data;
-    StudentNode* student;
+    StudentNode* student;   
     CourseNode* pNext;
 
-    CourseNode() : student(nullptr),pNext(nullptr) {}
+    CourseNode() : student(nullptr), pNext(nullptr) {}
 };
 
 

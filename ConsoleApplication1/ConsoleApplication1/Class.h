@@ -5,7 +5,7 @@
 
 struct ClassInfo
 {
-    string name;
+    string name = "";
 };
 
 struct ClassNode
@@ -14,7 +14,10 @@ struct ClassNode
     StudentInfo* student;
     ClassNode* pNext;
 
-    ClassNode() : data(), pNext(nullptr), student(nullptr) {}
+    ClassNode() {
+        student = nullptr;
+        pNext = nullptr;
+    }
 };
 
 void addNewClass(ClassNode*& head, ClassNode*& curClass);
