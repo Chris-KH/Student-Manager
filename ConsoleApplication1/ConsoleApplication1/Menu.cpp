@@ -14,7 +14,7 @@ bool continueProgram(bool &logout)
         return false;
     }
     cout << "Please read the instruction again!" << endl;
-    continueProgram();
+    continueProgram(logout);
 }
 
 void logoutProgram(bool &logout)

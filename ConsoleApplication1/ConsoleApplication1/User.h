@@ -9,7 +9,7 @@ struct UserInfo
 	bool is_staff = false;
 	string name = "";
 	Date dob;
-	bool gender = 0;
+	bool gender = 0; // 0 là nữ, 1 là nam
 };
 
 struct UserNode
