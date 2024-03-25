@@ -27,8 +27,10 @@ void logoutProgram(bool &logout)
     else if (logoutChoice == 1)
         logout = false;
     else
+    {
         cout << "Please read the instruction again!" << endl;
-    returnProgram();
+        logoutProgram(logout);
+    }
 }
 void menuForStaff()
 {
