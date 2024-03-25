@@ -2,7 +2,7 @@
 #include "Menu.h"
 bool continueProgram()
 {
-    if (logOutProgram())
+    if (returnProgram())
         return false;
     int continueChoice;
     cout << "If you want to continue, please input \'1\'. However, if you want to return, please input \'0\'." << endl;
@@ -15,18 +15,18 @@ bool continueProgram()
     cout << "Please read the instruction again!" << endl;
     continueProgram();
 }
-bool logOutProgram()
+bool returnProgram()
 {
-    int logoutChoice;
-    cout << "If you want to log out, please input \'0\'. However, if you want to continue, please input \'1\'." << endl;
+    int returnChoice;
+    cout << "If you want to return, please input \'0\'. However, if you want to continue, please input \'1\'." << endl;
     cout << "Your input: ";
-    cin >> logoutChoice;
-    if (logoutChoice == 0)
+    cin >> returnChoice;
+    if (returnChoice == 0)
         return true;
-    if (logoutChoice == 1)
+    if (returnChoice == 1)
         return false;
     cout << "Please read the instruction again!" << endl;
-    logOutProgram();
+    returnProgram();
 }
 void menuForStaff()
 {

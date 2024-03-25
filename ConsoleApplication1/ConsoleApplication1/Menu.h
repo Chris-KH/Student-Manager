@@ -2,7 +2,7 @@
 
 // Into program manipulate
 bool continueProgram();
-bool logOutProgram();
+bool returnProgram();
 // Menu manipulate
 void menuForStaff();
 void menuForStudent();
