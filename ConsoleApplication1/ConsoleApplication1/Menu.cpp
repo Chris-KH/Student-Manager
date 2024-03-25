@@ -16,12 +16,8 @@ bool continueProgram(bool &logout)
     cout << "Please read the instruction again!" << endl;
     continueProgram();
 }
-<<<<<<< HEAD
 
-bool returnProgram()
-=======
 void logoutProgram(bool &logout)
->>>>>>> 0d474638cdb4258c507a9a485c122f9f8436d7a3
 {
     int logoutChoice;
     cout << "If you want to logout, please input \'0\'. If not, please input \'1\'" << endl;
