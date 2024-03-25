@@ -14,19 +14,31 @@ void createASchoolYear(YearNode*& head, YearNode* tail) {
 }
 
 void importSchoolYear(YearNode*& head, ifstream& fin) {
-	YearNode* cur = nullptr;
 	string s;
-
 	while (getline(fin, s)) {
 		YearNode* temp = new YearNode();
 		temp->data = s;
-		if (cur == nullptr) {
+		if (head == nullptr) {
 			head = temp;
-			cur = temp;
 		}
 		else {
-			cur->pNext = temp;
-			cur = temp;
+			temp->pNext = head;
+			head = temp;
 		}
+	}
+}
+
+void exportSchoolYear(YearNode* head, ofstream& fout) {
+	while (head) {
+		fout << head->data << "\n";
+		head = head->pNext;
+	}
+}
+
+void deleteSchoolYear(YearNode*& head) {
+	while (head) {
+		YearNode* temp = head;
+		head = head->pNext;
+		delete temp;
 	}
 }

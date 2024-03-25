@@ -83,7 +83,7 @@ int main()
                         // viewListOfStudentInCourse(CourseNode* head, string course_id); //in Course.h
                         break;
                     case 15:
-                        // viewProfileInfo(UserNode* user); //in User.h
+                        viewProfileInfo(logged_in);
                         break;
                     case 16:
                         // changePassword(UserNode* &cur); //in User.h
@@ -121,7 +121,7 @@ int main()
                         // viewStudentScoreboard(string student_id, CourseNode* head); //in Course.h
                         break;
                     case 3:
-                        // viewProfileInfo(UserNode* user); //in User.h
+                        viewProfileInfo(logged_in);
                         break;
                     case 4:
                         // changePassword(UserNode* &cur); //in User.h

@@ -17,14 +17,16 @@ void importUserData(UserNode*& users, ifstream& fin) {
 
 		getline(fin, cur->data.name);
 		fin >> cur->data.username >> cur->data.password >> cur->data.is_staff >> cur->data.gender;
+		fin.ignore();
+		fin.clear();
+
 
 		string line;
-
-		fin.ignore();
 		getline(fin, line);
 		stringstream ss(line);
-		
-		ss >> cur->data.dob.day >> cur->data.dob.month >> cur->data.dob.year;
+		getline(ss, cur->data.dob.day, '/');
+		getline(ss, cur->data.dob.month, '/');
+		getline(ss, cur->data.dob.year);
 
 	}
 }
