@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Library.h"
 #include "Date.h"
 
 struct UserInfo
@@ -28,4 +27,3 @@ bool login(UserNode* users, UserNode*& cur);
 
 void changePassword(UserNode* &cur);
 
-	

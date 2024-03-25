@@ -1,5 +1,5 @@
-#include "Header.h"
-
+#include "Library.h"
+#include "Menu.h"
 bool continueProgram()
 {
     if (logOutProgram())
@@ -44,5 +44,5 @@ void menuForStaff()
     cout << "11. Update a student's result" << endl;
     cout << "12. View the scoreboard of a class" << endl;
     cout << "13. View the total scoreboard (Student)" << endl;
+    cout << "Staff choice: ";
 }
-
