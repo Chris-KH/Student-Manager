@@ -7,7 +7,7 @@ int main()
     CourseNode *curCourse = nullptr;
 
     // Load data
-    cout << "Welcome to course management system.\n";
+    cout << ">>>>Welcome to course management system.\n";
 
     UserNode *users = nullptr;
     ifstream fin("DataFile/Users.txt");
