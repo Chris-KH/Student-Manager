@@ -30,19 +30,29 @@ bool returnProgram()
 }
 void menuForStaff()
 {
-    cout << "All the functions: Press a number to choose";
+    cout << "All the functions: Press a number to choose" << endl;
+    cout << endl;
+
+    cout << "At the beginning of the year:" << endl;
     cout << "1. Create a school year" << endl;
-    cout << "2. Create a semester" << endl;
-    cout << "3. View a list of the course studied in the semester (Student)" << endl;
-    cout << "4. View a list of classes" << endl;
-    cout << "5. View a list of students in a class (for example, 20APCS1�)" << endl;
-    cout << "6. View a list of courses" << endl;
-    cout << "7. View a list of students in a course" << endl;
-    cout << "8. Export a list of students in a course to a CSV file" << endl;
-    cout << "9. Import the scoreboard of a course" << endl;
-    cout << "10. View the scoreboard of a course" << endl;
-    cout << "11. Update a student's result" << endl;
-    cout << "12. View the scoreboard of a class" << endl;
-    cout << "13. View the total scoreboard (Student)" << endl;
+    cout << "2. Create classes" << endl;
+    cout << "3. Add new 1st year students" << endl;
+    cout << endl;
+
+    cout << "At the beginning of a semester: " << endl;
+    cout << "4. Create a semester" << endl;
+    cout << "5. Add a course" << endl;
+    cout << "6. View the list of courses" << endl;
+    cout << "7. Update course information" << endl;
+    cout << "8. Add a student to the course" << endl;
+    cout << "9. Remove a student from the course" << endl;
+    cout << "10. Delete a course" << endl;
+    cout << endl;
+
+    cout << "At anytime:" << endl;
+    cout << "11. View a list of classes" << endl;
+    cout << "12. View a list of students in a class" << endl;
+    cout << "13. View a list of courses" << endl;
+    cout << "14. View a list of students in a course" << endl;
     cout << "Staff choice: ";
 }
