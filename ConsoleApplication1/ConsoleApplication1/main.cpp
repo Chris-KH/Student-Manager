@@ -69,6 +69,7 @@ int main()
                     case 14:
                         break;
                     case 15:
+                        viewProfileInfo(logged_in);
                         break;
                     case 16:
                         break;
