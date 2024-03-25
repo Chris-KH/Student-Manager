@@ -27,7 +27,6 @@ int main()
             while (continueProgram())
             {
                 // Output Menu
-                int n;
                 if (logged_in->data.is_staff)
                 {
                     menuForStaff();

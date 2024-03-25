@@ -14,7 +14,7 @@ struct ClassNode
     StudentInfo* student;
     ClassNode* pNext;
 
-    ClassNode() : data(), pNext(nullptr) {}
+    ClassNode() : data(), pNext(nullptr), student(nullptr) {}
     ~ClassNode()
     {
         delete pNext;

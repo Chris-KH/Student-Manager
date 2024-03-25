@@ -19,8 +19,7 @@ bool returnProgram()
 {
     int returnChoice;
     cout << "If you want to return, please input \'0\'. However, if you want to continue, please input \'1\'." << endl;
-    cout << "Your input: ";
-    cin >> returnChoice;
+    cout << "Your choice: "; cin >> returnChoice;
     if (returnChoice == 0)
         return true;
     if (returnChoice == 1)

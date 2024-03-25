@@ -16,7 +16,16 @@ struct CourseInfo
     int session;
 
 
-    CourseInfo() : max_student{ 50 } {}
+    CourseInfo() {
+        course_id = "";
+        course_name = "";
+        class_name = "";
+        teacher_name = "";
+        num_of_credit = 4;
+        max_student = 50;
+        day_of_week = "";
+        session = 0;
+    }
 };
 
 struct CourseNode
@@ -47,8 +56,7 @@ void viewTheScoreboardOfCourse(CourseNode* courses);
 
 //void viewStudentScoreboard(string student_id, CourseNode* courses);
 
-//------------
-
+/*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 
 void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
@@ -82,3 +90,4 @@ void updateStudentResult(string student_id, string course_id, CourseNode* head);
 void viewStudentCourse(string student_id, CourseNode* head);
 
 void viewStudentScoreboard(string student_id, CourseNode* head);
+*/

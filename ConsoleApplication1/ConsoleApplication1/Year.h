@@ -14,8 +14,8 @@ struct YearNode
 	SemesterInfo* semester;
 
 	YearNode* pNext;
-	YearNode()
-	{
+	YearNode() {
+		data = 0;
 		pNext = nullptr;
 		semester[0].order = 1;
 		semester[1].order = 2;

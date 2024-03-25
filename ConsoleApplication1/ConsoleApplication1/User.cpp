@@ -6,7 +6,7 @@ void importUserData(UserNode*& users, ifstream& fin) {
 
 	while (getline(fin, s)) {
 		UserNode* temp = new UserNode();
-		if (users == nullptr) {
+		if (cur == nullptr) {
 			users = temp;
 			cur = temp;
 		}
