@@ -6,3 +6,5 @@ void logoutProgram(bool &logout);
 // Menu manipulate
 void menuForStaff();
 void menuForStudent();
+void checkStaffChoice();
+void checkStudentChoice();
