@@ -2,7 +2,8 @@
 bool continueProgram(bool &logout)
 {
     int continueChoice;
-    cout << "Input '1' to continue program or '0' to return: "; cin >> continueChoice;
+    cout << "Input '1' to continue program or '0' to return: ";
+    cin >> continueChoice;
     if (continueChoice == 1)
         return true;
     if (continueChoice == 0)
@@ -17,7 +18,8 @@ bool continueProgram(bool &logout)
 void logoutProgram(bool &logout)
 {
     int logoutChoice;
-    cout << "Input '0' to logout or '1' to continue: "; cin >> logoutChoice;
+    cout << "Input '0' to logout or '1' to continue: ";
+    cin >> logoutChoice;
     if (logoutChoice == 0)
         logout = true;
     else if (logoutChoice == 1)
@@ -57,11 +59,11 @@ void menuForStaff()
     cout << endl;
 
     cout << "At the end of a semester:" << endl;
-    cout << "15. Export a list of students in a course" << endl;
-    cout << "16. Import the scoreboard of a course" << endl;
-    cout << "17. View the scoreboard of a course" << endl;
-    cout << "18. Update a student's result" << endl;
-    cout << "19. View the scoreboard of a class" << endl;
+    cout << "17. Export a list of students in a course" << endl;
+    cout << "18. Import the scoreboard of a course" << endl;
+    cout << "19. View the scoreboard of a course" << endl;
+    cout << "20. Update a student's result" << endl;
+    cout << "21. View the scoreboard of a class" << endl;
     cout << endl;
 
     cout << "Staff choice: ";
