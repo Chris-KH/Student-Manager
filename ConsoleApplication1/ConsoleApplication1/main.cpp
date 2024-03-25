@@ -2,6 +2,10 @@
 
 int main()
 {
+    YearNode *curYear = nullptr;
+    ClassNode *curClass = nullptr;
+    CourseNode *curCourse = nullptr;
+
     // Load data
     cout << "Welcome to course management system.\n";
 
@@ -32,17 +36,77 @@ int main()
                 if (logged_in->data.is_staff)
                 {
                     menuForStaff();
-                    checkStaffChoice();
+                    int staffChoice;
+                    cin >> staffChoice;
+                    switch (staffChoice)
+                    {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
+                    case 11:
+                        break;
+                    case 12:
+                        break;
+                    case 13:
+                        break;
+                    case 14:
+                        break;
+                    case 15:
+                        break;
+                    case 16:
+                        break;
+                    case 17:
+                        break;
+                    case 18:
+                        break;
+                    case 19:
+                        break;
+                    default:
+                        cout << "You missed the instruction, please check the input and follow the instruction" << endl;
+                        break;
+                    }
                 }
                 else
                 {
                     menuForStudent();
-                    checkStudentChoice();
+                    int studentChoice;
+                    cin >> studentChoice;
+                    switch (studentChoice)
+                    {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        cout << "You missed the instruction, please check the input and follow the instruction" << endl;
+                        break;
+                    }
                 }
             }
         }
         else
             cout << "Login failed. Please check your username and password and try again.\n";
     }
+
+    delete curYear;
+    delete curCourse;
+    delete curClass;
     return 0;
 }

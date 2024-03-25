@@ -17,6 +17,7 @@ struct ClassNode
     ClassNode() : data(), pNext(nullptr), student(nullptr) {}
 };
 
-//void addNewClass(ClassNode*& head);
+void addNewClass(ClassNode*& head, ClassNode*& curClass);
+
 
 //void importClass(ClassNode*& head, ifstream& fin);
