@@ -62,36 +62,46 @@ int main()
                         // updateCourseIn4(CourseNode* head, string course_id); //in Course.h
                         break;
                     case 8:
-                        // addStudentToCourse();
+                        // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
                         break;
                     case 9:
-                        // removeStudentFromCourse();
+                        // removeStudentFromCourse(CourseNode* head, string course_id, string student_id); //in Course.h
                         break;
                     case 10:
-                        // deleteACourse();
+                        // deleteACourse(CourseNode* head, string course_id); in Course.h
                         break;
                     case 11:
-                        // viewAListOfClasses();
+                        // viewAListOfClasses(); //in Class.h
                         break;
                     case 12:
-                        // viewAListOfStudentsInClass();
+                        // viewAListOfStudentsInClass(); //in Class.h
                         break;
                     case 13:
-                        // viewListOfCourse();
+                        // void viewListofCourse(CourseNode* course); //in Course.h
                         break;
                     case 14:
+                        // viewListOfStudentInCourse(CourseNode* head, string course_id); //in Course.h
                         break;
                     case 15:
                         viewProfileInfo(logged_in);
                         break;
                     case 16:
+                        // changePassword(UserNode* &cur); //in User.h
                         break;
                     case 17:
+                        // ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name); //in Course.h
                         break;
                     case 18:
+                        // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
                     case 19:
+                        // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); //in Course.h
                         break;
+                    case 20:
+                        // updateAStudentResult(); //in Student.h
+                        break;
+                    case 21:
+                        // viewScoreboardOfClass(); //in Class.h
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
                         break;
@@ -105,8 +115,16 @@ int main()
                     switch (studentChoice)
                     {
                     case 1:
+                        // viewStudentCourse(string student_id, CourseNode* head); //in Course.h
                         break;
                     case 2:
+                        // viewStudentScoreboard(string student_id, CourseNode* head); //in Course.h
+                        break;
+                    case 3:
+                        viewProfileInfo(logged_in);
+                        break;
+                    case 4:
+                        // changePassword(UserNode* &cur); //in User.h
                         break;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
