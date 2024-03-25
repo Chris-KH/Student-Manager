@@ -56,5 +56,13 @@ void menuForStaff()
     cout << "12. View a list of students in a class" << endl;
     cout << "13. View a list of courses" << endl;
     cout << "14. View a list of students in a course" << endl;
+    cout << endl;
+
+    cout << "At the end of a semester:" << endl;
+    cout << "15. Export a list of students in a course" << endl;
+    cout << "16. Import the scoreboard of a course" << endl;
+    cout << "17. View the scoreboard of a course" << endl;
+    cout << "18. Update a student's result" << endl;
+    cout << "19. View the scoreboard of a class" << endl;
     cout << "Staff choice: ";
 }
