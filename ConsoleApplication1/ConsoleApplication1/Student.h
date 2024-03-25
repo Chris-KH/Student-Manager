@@ -4,11 +4,12 @@
 #include "Date.h"
 #include "User.h"
 
-struct ScoreInfo 
+struct Score
 {
-    double total, final, midterm, other;
-
-    ScoreInfo() : total(-1), final(-1), midterm(-1), other(-1) {}
+    double total = -1;
+    double final = -1;
+    double midterm = -1;
+    double bonus = -1;
 };
 
 struct StudentInfo
@@ -18,7 +19,7 @@ struct StudentInfo
     Date dob;
     bool gender = 0; // 0 là nữ, 1 là nam
     string social_id = "";
-    ScoreInfo score;
+    Score score;
 };
 
 struct StudentNode 
