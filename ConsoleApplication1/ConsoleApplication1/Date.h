@@ -4,9 +4,9 @@
 
 struct Date
 {
-	int day = 0;
-	int month = 0;
-	int year = 0;
+	string day = "";
+	string month = "";
+	string year = "";
 };
 
 void exportDate(Date date, ofstream& fo);
