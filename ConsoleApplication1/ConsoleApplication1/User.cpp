@@ -62,3 +62,11 @@ void changePassword(UserNode*& cur) {
 		}
 	}
 }
+
+void deleteUserData(UserNode*& users) {
+	while (users != nullptr) {
+		UserNode* temp = users;
+		users = users->pNext;
+		delete temp;
+	}
+}
