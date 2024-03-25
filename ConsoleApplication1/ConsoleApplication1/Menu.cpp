@@ -34,7 +34,7 @@ void logoutProgram(bool &logout)
 }
 void menuForStaff()
 {
-    cout << "All the functions: Press a number to choose" << endl;
+    cout << "All the functions for staff: Press a number to choose" << endl;
     cout << endl;
 
     cout << "At the beginning of the year:" << endl;
@@ -66,5 +66,22 @@ void menuForStaff()
     cout << "17. View the scoreboard of a course" << endl;
     cout << "18. Update a student's result" << endl;
     cout << "19. View the scoreboard of a class" << endl;
+    cout << endl;
+
     cout << "Staff choice: ";
+}
+void menuForStudent()
+{
+    cout << "All the functions for student: Press a number to choose" << endl;
+    cout << endl;
+
+    cout << "In a semester: " << endl;
+    cout << "1. View a list of my course" << endl;
+    cout << endl;
+
+    cout << "When the scoreboard has been published by academic staff member: " << endl;
+    cout << "2. View my scoreboard" << endl;
+    cout << endl;
+
+    cout << "Student choice: ";
 }
