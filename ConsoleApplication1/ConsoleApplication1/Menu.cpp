@@ -60,6 +60,8 @@ void menuForStaff()
     cout << "12. View a list of students in a class" << endl;
     cout << "13. View a list of courses" << endl;
     cout << "14. View a list of students in a course" << endl;
+    cout << "15. View staff info" << endl;
+    cout << "16. Change staff's password" << endl;
     cout << endl;
 
     cout << "At the end of a semester:" << endl;
@@ -83,6 +85,11 @@ void menuForStudent()
 
     cout << "When the scoreboard has been published by academic staff member: " << endl;
     cout << "2. View my scoreboard" << endl;
+    cout << endl;
+
+    cout << "At any time:" << endl;
+    cout << "3. View student info" << endl;
+    cout << "4. Change student's password" << endl;
     cout << endl;
 
     cout << "Student choice: ";
