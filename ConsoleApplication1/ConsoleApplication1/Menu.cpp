@@ -16,12 +16,8 @@ bool continueProgram(bool &logout)
     cout << "Please read the instruction again!" << endl;
     continueProgram();
 }
-<<<<<<< HEAD
 
-bool returnProgram()
-=======
 void logoutProgram(bool &logout)
->>>>>>> 0d474638cdb4258c507a9a485c122f9f8436d7a3
 {
     int logoutChoice;
     cout << "If you want to logout, please input \'0\'. If not, please input \'1\'" << endl;
@@ -64,6 +60,8 @@ void menuForStaff()
     cout << "12. View a list of students in a class" << endl;
     cout << "13. View a list of courses" << endl;
     cout << "14. View a list of students in a course" << endl;
+    cout << "15. View staff info" << endl;
+    cout << "16. Change staff's password" << endl;
     cout << endl;
 
     cout << "At the end of a semester:" << endl;
@@ -89,8 +87,14 @@ void menuForStudent()
     cout << "2. View my scoreboard" << endl;
     cout << endl;
 
+    cout << "At any time:" << endl;
+    cout << "3. View student info" << endl;
+    cout << "4. Change student's password" << endl;
+    cout << endl;
+
     cout << "Student choice: ";
 }
+/*
 void checkStaffChoice()
 {
     int staffChoice;
@@ -155,3 +159,4 @@ void checkStudentChoice()
         break;
     }
 }
+*/
