@@ -19,5 +19,6 @@ struct YearNode
 void createNewSchoolYear(YearNode*& Head, int& NumOfSchoolYear);
 
 //void importSchoolYear(YearNode *&Head, ifstream &fin, int &numOfSchoolYear);
+//void importSchoolYear(YearNode *&Head, ifstream &fin, int &numOfSchoolYear);
 //void exportSchoolYear(YearNode *Head, ofstream &fout, int numOfSchoolYear);
 //YearNode findSchoolYear(YearNode *yearHead, int data);
