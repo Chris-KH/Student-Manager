@@ -1,5 +1,5 @@
 #include "Header.h"
-/*
+
 void exportData(YearNode *headYear, ofstream &fo)
 {
 	YearNode *curYear = headYear;
@@ -185,4 +185,3 @@ void deAllocateDataStudent(StudentNode *headStudent)
 		delete temp;
 	}
 }
-*/

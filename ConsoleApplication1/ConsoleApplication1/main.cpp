@@ -2,6 +2,10 @@
 
 int main()
 {
+    YearNode* curYear=nullptr;
+    ClassNode* curClass = nullptr;
+    CourseNode* curCourse = nullptr;
+
     // Load data
     cout << "Welcome to course management system.\n";
 
@@ -44,5 +48,9 @@ int main()
         else
             cout << "Login failed. Please check your username and password and try again.\n";
     }
+
+    delete curYear;
+    delete curCourse;
+    delete curClass;
     return 0;
 }
