@@ -16,6 +16,7 @@ bool continueProgram(bool &logout)
     cout << "Please read the instruction again!" << endl;
     continueProgram();
 }
+
 void logoutProgram(bool &logout)
 {
     int logoutChoice;
@@ -32,6 +33,7 @@ void logoutProgram(bool &logout)
         logoutProgram(logout);
     }
 }
+
 void menuForStaff()
 {
     cout << "All the functions for staff: Press a number to choose" << endl;
@@ -58,6 +60,8 @@ void menuForStaff()
     cout << "12. View a list of students in a class" << endl;
     cout << "13. View a list of courses" << endl;
     cout << "14. View a list of students in a course" << endl;
+    cout << "15. View staff info" << endl;
+    cout << "16. Change staff's password" << endl;
     cout << endl;
 
     cout << "At the end of a semester:" << endl;
@@ -83,5 +87,76 @@ void menuForStudent()
     cout << "2. View my scoreboard" << endl;
     cout << endl;
 
+    cout << "At any time:" << endl;
+    cout << "3. View student info" << endl;
+    cout << "4. Change student's password" << endl;
+    cout << endl;
+
     cout << "Student choice: ";
 }
+/*
+void checkStaffChoice()
+{
+    int staffChoice;
+    cin >> staffChoice;
+    switch (staffChoice)
+    {
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        break;
+    case 5:
+        break;
+    case 6:
+        break;
+    case 7:
+        break;
+    case 8:
+        break;
+    case 9:
+        break;
+    case 10:
+        break;
+    case 11:
+        break;
+    case 12:
+        break;
+    case 13:
+        break;
+    case 14:
+        break;
+    case 15:
+        break;
+    case 16:
+        break;
+    case 17:
+        break;
+    case 18:
+        break;
+    case 19:
+        break;
+    default:
+        cout << "You missed the instruction, please check the input and follow the instruction" << endl;
+        break;
+    }
+}
+void checkStudentChoice()
+{
+    int studentChoice;
+    cin >> studentChoice;
+    switch (studentChoice)
+    {
+    case 1:
+        break;
+    case 2:
+        break;
+    default:
+        cout << "You missed the instruction, please check the input and follow the instruction" << endl;
+        break;
+    }
+}
+*/

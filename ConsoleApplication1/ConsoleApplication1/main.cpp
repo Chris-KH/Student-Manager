@@ -36,12 +36,12 @@ int main()
                 if (logged_in->data.is_staff)
                 {
                     menuForStaff();
-                    cout << endl;
+                    checkStaffChoice();
                 }
                 else
                 {
                     menuForStudent();
-                    cout << endl;
+                    checkStudentChoice();
                 }
             }
         }
