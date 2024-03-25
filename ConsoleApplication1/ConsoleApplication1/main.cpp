@@ -41,30 +41,43 @@ int main()
                     switch (staffChoice)
                     {
                     case 1:
+                        // createASchoolYear(YearNode*& Head, int& NumOfSchoolYear); //in Year.h
                         break;
                     case 2:
+                        // addNewClass(ClassNode*& head); //in Class.h
                         break;
                     case 3:
+                        // importClass(ClassNode*& head, ifstream& fin); //in Class.h
                         break;
                     case 4:
+                        // createSemester(YearNode* year); //in Semester.h
                         break;
                     case 5:
+                        // addCourse();
                         break;
                     case 6:
+                        // viewListOfCourse(CourseNode* head); //choose year -> semester //in Course.h
                         break;
                     case 7:
+                        // updateCourseIn4(CourseNode* head, string course_id); //in Course.h
                         break;
                     case 8:
+                        // addStudentToCourse();
                         break;
                     case 9:
+                        // removeStudentFromCourse();
                         break;
                     case 10:
+                        // deleteACourse();
                         break;
                     case 11:
+                        // viewAListOfClasses();
                         break;
                     case 12:
+                        // viewAListOfStudentsInClass();
                         break;
                     case 13:
+                        // viewListOfCourse();
                         break;
                     case 14:
                         break;
