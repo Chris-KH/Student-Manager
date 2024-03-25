@@ -10,8 +10,11 @@ struct SemesterInfo
 	Date end;
 	CourseNode* course;
 
-	SemesterInfo() : course(nullptr) {};
+	SemesterInfo() {
+		order = 0;
+		course = nullptr;
+	}
 };
 
-void addCourse(SemesterInfo*& CurSemester, CourseNode*& Head);
+//void addCourse(SemesterInfo*& CurSemester, CourseNode*& Head);
 

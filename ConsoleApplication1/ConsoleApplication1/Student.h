@@ -16,7 +16,7 @@ struct StudentInfo
     string No, ID;
     string first_name, last_name;
     Date dob;
-    bool gender;
+    bool gender = 0;
     string social_id;
     ScoreInfo score;
 };
@@ -29,6 +29,7 @@ struct StudentNode
     StudentNode() : pNext(nullptr) {}
 };
 
+/*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 
 void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
