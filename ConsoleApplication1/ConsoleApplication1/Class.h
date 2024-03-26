@@ -27,6 +27,7 @@ struct ClassNode
 
 
 void importClassData(ClassNode* &classes, ifstream &fin);
+void exportClassData(ClassNode* classes, ofstream& fout);
 void addNewClass(ClassNode*& head, ClassNode*& curClass);
 void addStudentToClass(ClassNode* classes, ifstream& fin);
 void deleteClass();

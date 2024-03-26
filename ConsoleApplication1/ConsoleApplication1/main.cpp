@@ -101,7 +101,7 @@ int main()
                     case 21:
                         // viewScoreboardOfClass(); //in Class.h
                     case 22: 
-                        cout << "Logout successful. You have been logged out.";
+                        cout << "Logout successful. You have been logged out.\n";
                         return 0;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;

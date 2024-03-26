@@ -14,6 +14,13 @@ void importClassData(ClassNode*& classes, ifstream& fin) {
 	}
 }
 
+void exportClassData(ClassNode* classes, ofstream& fout) {
+	while (classes) {
+		fout << classes->data.name << '\n';
+		classes = classes->pNext;
+	}
+}
+
 void addStudentToClass(ClassNode* classes, ifstream& fin) {
 	while (classes) {
 		fin.open(classes->data.name + ".csv");
