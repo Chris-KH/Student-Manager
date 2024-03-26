@@ -36,7 +36,8 @@ void menuForStaff()
     cout << "   19. View the scoreboard of a course.\n";
     cout << "   20. Update a student's result.\n";
     cout << "   21. View the scoreboard of a class.\n";
-    cout << "   22. Logout and end program.\n";
+    cout << "   22. Logout.\n";
+    cout << "   23. End program.\n";
     cout << ">>>>Staff choice: ";
 }
 void menuForStudent()
