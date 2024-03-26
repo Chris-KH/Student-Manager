@@ -25,7 +25,7 @@ struct ClassNode
 };
 
 
-void importClassData(ClassNode* &classes, ifstream &fin);
+void importClassData(ClassNode* &classes, ClassNode* &tail, ifstream &fin);
 
 void exportClassData(ClassNode* classes, ofstream& fout);
 
