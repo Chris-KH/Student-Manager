@@ -29,6 +29,9 @@ void addStudent2Class(ClassNode* classes, ifstream& fin) {
 			string data;
 			while (getline(fin, data)) {
 				tail = new StudentNode();
+				if (classes->student == nullptr) {
+					classes->student = tail;
+				}
 				stringstream ss(data);
 				getline(ss, tail->data.No, ',');
 				getline(ss, tail->data.ID, ',');
@@ -39,6 +42,7 @@ void addStudent2Class(ClassNode* classes, ifstream& fin) {
 				getline(ss, tail->data.dob.month, '/');
 				getline(ss, tail->data.dob.year, ',');
 				getline(ss, tail->data.social_id, ',');
+				tail = tail->pNext;
 			}
 			fin.close();
 		}

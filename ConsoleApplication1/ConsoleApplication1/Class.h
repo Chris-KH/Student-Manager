@@ -11,16 +11,14 @@ struct ClassInfo
 struct ClassNode
 {
     ClassInfo data;
-    StudentInfo* student;
+    StudentNode* student;
     ClassNode* pNext;
 
     ClassNode() {
-        student = nullptr;
         pNext = nullptr;
     }
     ClassNode(string s) {
         data.name = s;
-        student = nullptr;
         pNext = nullptr;
     }
 };
