@@ -1,9 +1,9 @@
 #pragma once
-#include"Library.h"
+#include "Library.h"
 
 // Into program manipulate
 bool continueProgram();
-//bool logoutProgram();
+
 // Menu manipulate
 void menuForStaff();
 void menuForStudent();
