@@ -1,4 +1,4 @@
-#include"Header.h"
+#include"User.h"
 
 void importUserData(UserNode*& users, ifstream& fin) {
 	UserNode* cur = nullptr;

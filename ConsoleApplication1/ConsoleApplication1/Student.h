@@ -3,7 +3,6 @@
 #include "Library.h"
 #include "Date.h"
 #include "User.h"
-#include "Class.h"
 
 struct ScoreInfo
 {
