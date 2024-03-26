@@ -28,7 +28,8 @@ int main()
         if (login(users, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";
-            while (continueProgram())
+            bool logout = false; // haven't logged out
+            while (continueProgram() && logout == false;)
             {
                 // Output Menu
                 if (logged_in->data.is_staff)
@@ -100,9 +101,11 @@ int main()
                         break;
                     case 21:
                         // viewScoreboardOfClass(); //in Class.h
-                    case 22: 
+                        break;
+                    case 22:
                         cout << "Logout successful. You have been logged out.\n";
-                        return 0;
+                        logout = true;
+                        break;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
                         break;
@@ -126,6 +129,10 @@ int main()
                         break;
                     case 4:
                         // changePassword(UserNode* &cur); //in User.h
+                        break;
+                    case 5:
+                        cout << "Logout successful. You have been logged out.\n";
+                        logout = true;
                         break;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;

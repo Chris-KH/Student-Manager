@@ -5,8 +5,10 @@ bool continueProgram()
     bool continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
     cin >> continueChoice;
-    if (continueChoice == 1) return true;
-    if (continueChoice == 0) return false;
+    if (continueChoice == 1)
+        return true;
+    if (continueChoice == 0)
+        return false;
     cout << "***Please read the instruction again!\n";
     return continueProgram();
 }
@@ -48,7 +50,7 @@ void menuForStaff()
     cout << "   19. View the scoreboard of a course.\n";
     cout << "   20. Update a student's result.\n";
     cout << "   21. View the scoreboard of a class.\n";
-    cout << "   22.Logout and end program.\n";
+    cout << "   22. Logout and end program.\n";
     cout << ">>>>Staff choice: ";
 }
 void menuForStudent()
@@ -58,6 +60,6 @@ void menuForStudent()
     cout << "   2. View my scoreboard.\n";
     cout << "   3. View student info.\n";
     cout << "   4. Change student's password.\n";
-    cout << "   5.Logout and end program.\n";
+    cout << "   5. Logout and end program.\n";
     cout << ">>>>Student choice: ";
 }
