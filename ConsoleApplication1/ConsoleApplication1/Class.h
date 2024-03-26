@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Year.h"
+#include "Semester.h"
 
 struct ClassInfo
 {
@@ -32,8 +32,6 @@ void exportClassData(ClassNode* classes, ofstream& fout);
 void addStudent2Class(ClassNode* classes, ifstream& fin);
 
 ClassNode* findClass(ClassNode* head);
-
-void addNewClass(ClassNode*& head, ClassNode*& tail);
 
 void deleteClasses(ClassNode*& head);
 

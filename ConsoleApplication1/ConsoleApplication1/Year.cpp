@@ -1,5 +1,19 @@
 #include"Year.h"
 
+void addNewClass(YearNode*& head) {
+	YearNode* cur = findSchoolYear(head);
+	string name;
+	cout << "Input name of class: "; cin >> name;
+	ClassNode* temp = new ClassNode(name);
+	if (cur->classes == nullptr) {
+		cur->classes = temp;
+	}
+	else {
+		temp->pNext = cur->classes;
+		cur->classes = temp;
+	}
+}
+
 void createASchoolYear(YearNode*& head, YearNode* tail) {
 	string s;
 	cout << "Input your school year (2020-2021, for example): "; cin >> s;
@@ -115,3 +129,4 @@ void deleteSchoolYear(YearNode*& head) {
 		delete temp;
 	}
 }
+

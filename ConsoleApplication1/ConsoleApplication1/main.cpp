@@ -36,6 +36,23 @@ int main()
         return 0;
     }
 
+    //Load Class
+    YearNode* yy = years;
+    while (yy) {
+        string direct = "DataFile/" + yy->data + "Classes.txt";
+        fin.open(direct);
+        if (fin.is_open())
+        {
+            importClassData(yy->classes, fin);
+            fin.close();
+        }
+        else
+        {
+            cout << "Unable to load data.\n";
+            return 0;
+        }
+        yy = yy->pNext;
+    }
     // User log in
     UserNode *logged_in = nullptr;
     while (continueProgram())
@@ -58,7 +75,7 @@ int main()
                         // createASchoolYear(YearNode*& Head, int& NumOfSchoolYear); //in Year.h
                         break;
                     case 2:
-                        // addNewClass(ClassNode*& head); //in Class.h
+                        addNewClass(years); //in Class.h
                         break;
                     case 3:
                         // importClass(ClassNode*& head, ifstream& fin); //in Class.h
@@ -85,7 +102,7 @@ int main()
                         // deleteACourse(CourseNode* head, string course_id); in Course.h
                         break;
                     case 11:
-                        // viewAListOfClasses(); //in Class.h
+                        //viewAListOfClasses(classes); //in Class.h
                         break;
                     case 12:
                         // viewAListOfStudentsInClass(); //in Class.h

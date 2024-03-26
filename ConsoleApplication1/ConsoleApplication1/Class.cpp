@@ -65,14 +65,6 @@ ClassNode* findClass(ClassNode* head) {
 	return nullptr;
 }
 
-void addNewClass(ClassNode*& head, ClassNode*& tail) {
-	string name;
-	cout << "Input class name: "; cin >> name;
-	ClassNode* newClass = new ClassNode(name);
-	if (head == nullptr) head = newClass;
-	else tail->pNext = newClass;
-	tail = newClass;
-}
 
 void deleteClasses(ClassNode*& head) {
 	while (head) {
