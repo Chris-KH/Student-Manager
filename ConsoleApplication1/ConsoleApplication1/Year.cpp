@@ -57,8 +57,31 @@ void createSemester(YearNode* head) {
 	int ses;
 	string d1, m1, y1, d2, m2, y2;
 	cout << "Input information about the semester as follows.\n";
-	cout << "What semester do you want to create? "; cin >> ses;
-	cout << ""
+	cout << "What semester do you want to create (1, 2 or 3)? "; cin >> ses;
+	cout << "Start date: "; 
+	cin.ignore();
+	cin.clear();
+	getline(cin, d1, '/');
+	getline(cin, m1, '/');
+	getline(cin, y1);
+	cout << "End date: ";
+	getline(cin, d2, '/');
+	getline(cin, m2, '/');
+	getline(cin, y2);
+	if (ses == 1 || ses == 2 || ses == 3) {
+		if (temp->semester[ses - 1].created == false) {
+			SemesterInfo a;
+			a.start.day = y1;
+			a.start.month = m1;
+			a.start.year = y1;
+			a.end.day = d2;
+			a.end.month = m2;
+			a.end.year = y2;
+			temp->semester[ses - 1] = a;
+		}
+		else cout << "This semester is created before.\n";
+	}
+	else cout << "This semester does not exist.\n";
 }
 
 void deleteSemester(YearNode* head) {
