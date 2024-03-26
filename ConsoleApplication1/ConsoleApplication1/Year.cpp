@@ -18,6 +18,23 @@ void importSchoolYearData(YearNode*& head, ifstream& fin) {
 	string s;
 	while (getline(fin, s)) {
 		YearNode* temp = new YearNode(s);
+		for (int i = 0; i < 3; i++) {
+			string a;
+			getline(fin, a);
+			stringstream ss(a);
+			string created, start, end;
+			getline(ss, created, ' ');
+			temp->semester[i].created = (created == "1");
+			if (created == "0") continue;
+			getline(ss, start, ' ');
+			getline(ss, end);
+			temp->semester[i].start.day = start.substr(0, 2);
+			temp->semester[i].start.month = start.substr(3, 2);
+			temp->semester[i].start.year = start.substr(6, 2);
+			temp->semester[i].end.day = end.substr(0, 2);
+			temp->semester[i].end.month = end.substr(0, 2);
+			temp->semester[i].end.year = end.substr(0, 2);
+		}
 		if (head == nullptr) {
 			head = temp;
 		}
