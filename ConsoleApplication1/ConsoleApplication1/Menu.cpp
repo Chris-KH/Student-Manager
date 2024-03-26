@@ -12,20 +12,6 @@ bool continueProgram()
     cout << "***Please read the instruction again!\n";
     return continueProgram();
 }
-
-/* Tui thấy cái này cũng không cần lắm mình sẽ thêm một case logout trong menu rồi nếu chọn logout thì logout thôi
-bool logoutProgram()
-{
-    bool logoutChoice;
-    cout << "***Input '1 to continue program or '0' to logout: ";
-    cin >> logoutChoice;
-    if (logoutChoice == 1) return true;
-    if (logoutChoice == 0) return false;
-    cout << "***Please read the instruction again!\n";
-    return logoutProgram();
-}
-*/
-
 void menuForStaff()
 {
     cout << "All the functions for staff: Press a number to choose.\n";
