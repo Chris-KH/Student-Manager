@@ -53,6 +53,7 @@ bool login(UserNode* users, UserNode* &temp) {
 			temp = cur;
 			return true;
 		}
+		cur = cur->pNext;
 	}
 	return false;
 }
