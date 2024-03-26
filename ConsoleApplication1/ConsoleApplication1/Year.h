@@ -12,11 +12,11 @@ struct YearNode
 	YearNode(string s) {
 		data = s;
 		pNext = nullptr;
-		semester = new SemesterInfo[3];
+		semester = new SemesterInfo[3]();
 	}
 	YearNode() {
 		pNext = nullptr;
-		semester = new SemesterInfo[3];
+		semester = new SemesterInfo[3]();
 	}
 };
 
@@ -26,6 +26,10 @@ void importSchoolYearData(YearNode*& head, ifstream& fin);
 
 void exportSchoolYearData(YearNode* head, ofstream &fout);
 
-YearNode findSchoolYear(YearNode *yearHead, int data);
+YearNode* findSchoolYear(YearNode *head);
+
+void createSemester(YearNode* head);
+
+void deleteSemester(YearNode* head);
 
 void deleteSchoolYear(YearNode*& head);

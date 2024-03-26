@@ -1,19 +1,16 @@
 #pragma once
 
-#include "Date.h"
 #include "Course.h"
 
-struct SemesterInfo
-{
-	int order;
+struct SemesterInfo {
+	bool created;
 	Date start;
 	Date end;
 	CourseNode* course;
-
 	SemesterInfo() {
-		order = 0;
+		created = false;
 		course = nullptr;
 	}
-};
-//void createSemester(YearNode* year);
-//void addCourse(SemesterInfo*& CurSemester, CourseNode*& Head);
+};  
+
+void addCourse(SemesterInfo*& CurSemester, CourseNode*& Head);

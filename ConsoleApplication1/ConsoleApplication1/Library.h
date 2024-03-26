@@ -33,5 +33,6 @@
 #include <string.h>
 #include <math.h>
 #include <complex.h>
+#include <cstring>
 
 using namespace std;

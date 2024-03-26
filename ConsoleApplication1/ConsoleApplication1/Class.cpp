@@ -81,3 +81,34 @@ void deleteClasses(ClassNode*& head) {
 		delete temp;
 	}
 }
+
+void viewAListOfClasses(ClassNode* head) {
+	cout << "List of classes: \n";
+	while (head) {
+		cout << "    " << head->data.name << "\n";
+		head = head->pNext;
+	}
+}
+
+void viewListOfStudentInClass(ClassNode* head) {
+	string s;
+	cout << "Enter class name: "; cin >> s;
+	while (head->data.name != s) head = head->pNext;
+	if (head) {
+		StudentNode* cur = head->student;
+		cout << "List of student in class " << s << ":\n";
+		while (cur) {
+			cout << cur->data.No << "\n";
+			cout << "Student ID: " << cur->data.ID << "\n";
+			cout << "First name: " << cur->data.first_name << "\n";
+			cout << "Last name: " << cur->data.last_name << "\n";
+			cout << "Gender: " << cur->data.gender << "\n";
+			cout << "Data of birth: " << cur->data.dob.day << "/" << cur->data.dob.month << "/" << cur->data.dob.year << "\n";
+			cout << "Social ID: " << cur->data.social_id << "\n";
+			cur = cur->pNext;
+		}
+	}
+	else {
+		cout << "This class does not exist.\n";
+	}
+}

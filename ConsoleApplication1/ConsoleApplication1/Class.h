@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Library.h"
 #include "Year.h"
 
 struct ClassInfo
@@ -27,9 +26,18 @@ struct ClassNode
 
 
 void importClassData(ClassNode* &classes, ifstream &fin);
+
 void exportClassData(ClassNode* classes, ofstream& fout);
+
 void addStudent2Class(ClassNode* classes, ifstream& fin);
+
 ClassNode* findClass(ClassNode* head);
+
 void addNewClass(ClassNode*& head, ClassNode*& curClass);
-void deleteClasses(ClassNode* &head);
+
+void deleteClasses(ClassNode*& head);
+
+void viewAListOfClasses(ClassNode* head);
+
+void viewListOfStudentInClass(ClassNode* head);
 
