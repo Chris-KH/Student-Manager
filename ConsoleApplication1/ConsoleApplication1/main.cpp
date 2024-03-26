@@ -29,7 +29,7 @@ int main()
         {
             cout << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
-            while (continueProgram() && logout == false;)
+            while (logout == false && continueProgram())
             {
                 // Output Menu
                 if (logged_in->data.is_staff)
@@ -106,6 +106,8 @@ int main()
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
                         break;
+                    case 23: 
+                        return 0;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
                         break;
