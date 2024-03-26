@@ -2,15 +2,31 @@
 
 int main()
 {
+    ifstream fin;
+    ofstream fout;
+    YearNode* headYear = nullptr;
+    ClassNode* headClass = nullptr;
+    CourseNode* headCourse = nullptr;
     YearNode *curYear = nullptr;
     ClassNode *curClass = nullptr;
     CourseNode *curCourse = nullptr;
+
+    // Load data
+    
+    // Class data
+    fin.open("ImportExportFile/ClassData.txt");
+    if (fin.is_open())
+        importClassData(headClass, curClass, fin);
+    else cout << "Unable to load class data.\n";
+    fin.close();
+
 
     cout << ">>>>Welcome to course management system.\n";
 
     //Load Users
     UserNode *users = nullptr;
-    ifstream fin("DataFile/Users.txt");
+    
+    fin.open("DataFile/Users.txt");
     if (fin.is_open())
     {
         importUserData(users, fin);
@@ -61,6 +77,7 @@ int main()
         {
             cout << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
+
             while (logout == false && continueProgram())
             {
                 // Output Menu
@@ -75,7 +92,7 @@ int main()
                         // createASchoolYear(YearNode*& Head, int& NumOfSchoolYear); //in Year.h
                         break;
                     case 2:
-                        addNewClass(years); //in Class.h
+                        addNewClass(headClass,curClass); //in Class.h
                         break;
                     case 3:
                         // importClass(ClassNode*& head, ifstream& fin); //in Class.h
@@ -102,7 +119,7 @@ int main()
                         // deleteACourse(CourseNode* head, string course_id); in Course.h
                         break;
                     case 11:
-                        //viewAListOfClasses(classes); //in Class.h
+                        // viewAListOfClasses(); //in Class.h
                         break;
                     case 12:
                         // viewAListOfStudentsInClass(); //in Class.h
@@ -178,7 +195,17 @@ int main()
         else
             cout << "Login failed. Please check your username and password and try again.\n";
     }
+    fin.close();
 
+    fout.open("ImportExportFile/ClassData.txt");
+    if (fout.is_open())
+        exportClassData(headClass, fout);
+    else cout << "Unable to export class data.\n";
+    fout.close();
+
+    delete headYear;
+    delete headCourse;
+    delete headClass;
     delete curYear;
     delete curCourse;
     delete curClass;
