@@ -1,6 +1,6 @@
 #include "Class.h"
 
-void importClassData(ClassNode*& classes, ifstream& fin) {
+void importClassesData(ClassNode*& classes, ifstream& fin) {
 	string s;
 	while (getline(fin, s)) {
 		ClassNode* temp = new ClassNode(s);
@@ -14,14 +14,14 @@ void importClassData(ClassNode*& classes, ifstream& fin) {
 	}
 }
 
-void exportClassData(ClassNode* classes, ofstream& fout) {
+void exportClassesData(ClassNode* classes, ofstream& fout) {
 	while (classes) {
 		fout << classes->data.name << '\n';
 		classes = classes->pNext;
 	}
 }
 
-void addStudentToClass(ClassNode* classes, ifstream& fin) {
+void addStudent2Class(ClassNode* classes, ifstream& fin) {
 	while (classes) {
 		fin.open(classes->data.name + ".csv");
 		if (fin.is_open()) {
@@ -40,11 +40,18 @@ void addStudentToClass(ClassNode* classes, ifstream& fin) {
 				getline(ss, tail->data.dob.year, ',');
 				getline(ss, tail->data.social_id, ',');
 			}
+			fin.close();
+		}
+		else {
+			cout << "File is not open. Check your program on class.cpp.\n";
+			break;
 		}
 	}
 }
 
-ClassNode* findClass(ClassNode*& head, string name) {
+ClassNode* findClass(ClassNode* head) {
+	string name;
+	cout << "Input class name: "; cin >> name;
 	ClassNode* cur = head;
 	while (cur != nullptr)
 	{
@@ -54,47 +61,19 @@ ClassNode* findClass(ClassNode*& head, string name) {
 	return nullptr;
 }
 
-void addNewClass(ClassNode*& head, ClassNode*& curClass) {
-	string name="";
-	cout << "Input class name: ";
-	cin >> name;
-	ClassNode* newClass = new ClassNode;
-	newClass->data.name = name;
-	if (head == nullptr)
-		head = newClass;
-	else curClass->pNext = newClass;
-	curClass = newClass;
+void addNewClass(ClassNode*& head, ClassNode*& tail) {
+	string name;
+	cout << "Input class name: "; cin >> name;
+	ClassNode* newClass = new ClassNode(name);
+	if (head == nullptr) head = newClass;
+	else tail->pNext = newClass;
+	tail = newClass;
 }
 
-void add1stYearStudents2Class(ClassNode *&head)
-{
-	string name = "";
-	cout << "Input class name: ";
-	cin >> name;
-	
-	ClassNode* curClass = findClass(head, name);
-
-	ifstream fin;
-	fin.open("name.csv");
-	while (!fin.eof())
-	{
-		int order;
-		fin >> order;
-
-		fin >> curClass->student->ID;
-		fin >> curClass->student->first_name;
-		fin >> curClass->student->last_name;
-		string gender;
-		fin >> gender;
-		curClass->student->gender = gender;
-
-		string dob = "";
-		fin >> dob;
-		curClass->student->dob.day = dob[0] + dob[1];
-		curClass->student->dob.month = dob[2]+dob[3];
-		curClass->student->dob.year = dob[4]+dob[5]+dob[6]+dob[7];
-
-		fin >> curClass->student->social_id;
+void deleteClasses(ClassNode*& head) {
+	while (head) {
+		ClassNode* temp = head;
+		head = head->pNext;
+		delete temp;
 	}
 }
-

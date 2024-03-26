@@ -26,11 +26,12 @@ struct ClassNode
 };
 
 
-void importClassData(ClassNode* &classes, ifstream &fin);
-void exportClassData(ClassNode* classes, ofstream& fout);
+void importClassesData(ClassNode* &classes, ifstream &fin);
+void exportClassesData(ClassNode* classes, ofstream& fout);
+void addStudent2Class(ClassNode* classes, ifstream& fin);
+ClassNode* findClass(ClassNode* head);
 void addNewClass(ClassNode*& head, ClassNode*& curClass);
-void addStudentToClass(ClassNode* classes, ifstream& fin);
-void deleteClass();
+void deleteClasses(ClassNode* &head);
 
 
 //void importClass(ClassNode*& head, ifstream& fin);
