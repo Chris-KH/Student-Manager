@@ -34,5 +34,6 @@
 #include <math.h>
 #include <complex.h>
 #include <cstring>
+#include <string>
 
 using namespace std;

@@ -6,9 +6,9 @@ int main()
     ClassNode *curClass = nullptr;
     CourseNode *curCourse = nullptr;
 
-    // Load data
     cout << ">>>>Welcome to course management system.\n";
 
+    //Load Users
     UserNode *users = nullptr;
     ifstream fin("DataFile/Users.txt");
     if (fin.is_open())
@@ -21,6 +21,21 @@ int main()
         cout << "Unable to load data user.\n";
         return 0;
     }
+    
+    //Load years
+    YearNode* years = nullptr;
+    fin.open("DataFile/SchoolYear.txt");
+    if (fin.is_open())
+    {
+        importSchoolYearData(years, fin);
+        fin.close();
+    }
+    else
+    {
+        cout << "Unable to load data.\n";
+        return 0;
+    }
+
     // User log in
     UserNode *logged_in = nullptr;
     while (continueProgram())

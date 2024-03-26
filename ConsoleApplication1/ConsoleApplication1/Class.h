@@ -33,7 +33,7 @@ void addStudent2Class(ClassNode* classes, ifstream& fin);
 
 ClassNode* findClass(ClassNode* head);
 
-void addNewClass(ClassNode*& head, ClassNode*& curClass);
+void addNewClass(ClassNode*& head, ClassNode*& tail);
 
 void deleteClasses(ClassNode*& head);
 
