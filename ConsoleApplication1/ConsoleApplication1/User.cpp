@@ -80,8 +80,7 @@ void changePassword(UserNode*& cur) {
 void viewProfileInfo(UserNode* user) {
 	cout << "Name: " << user->data.name << "\n";
 	cout << "Date of birth: " << user->data.dob.day << "/" << user->data.dob.month << "/" << user->data.dob.year << "\n";
-	cout << "Gender: " << (user->data.gender == 1) ? "Male" : "Female"; 
-	cout << "\n";
+	cout << "Gender: " << user->data.gender << "\n";
 }
 
 void deleteUserData(UserNode*& users) {

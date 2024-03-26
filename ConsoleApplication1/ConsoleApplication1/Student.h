@@ -18,7 +18,7 @@ struct StudentInfo
     string No = "", ID = "";
     string first_name = "", last_name = "";
     Date dob;
-    bool gender = 0; // 0 là nữ, 1 là nam
+    string gender = ""; // 0 là nữ, 1 là nam
     string social_id = "";
     ScoreInfo score;
 };

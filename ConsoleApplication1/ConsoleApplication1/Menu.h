@@ -1,8 +1,8 @@
 #pragma once
 
 // Into program manipulate
-bool continueProgram(bool &logout);
-void logoutProgram(bool &logout);
+bool continueProgram();
+//bool logoutProgram();
 // Menu manipulate
 void menuForStaff();
 void menuForStudent();

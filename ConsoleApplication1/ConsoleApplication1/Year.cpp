@@ -1,8 +1,9 @@
 #include"Header.h"
 
 void createASchoolYear(YearNode*& head, YearNode* tail) {
-	YearNode* temp = new YearNode();
-	cout << "Input your school year (2020-2021, for example): "; cin >> temp->data;
+	string s;
+	cout << "Input your school year (2020-2021, for example): "; cin >> s;
+	YearNode* temp = new YearNode(s);
 	if (tail == nullptr) {
 		head = temp;
 		tail = temp;
@@ -13,11 +14,10 @@ void createASchoolYear(YearNode*& head, YearNode* tail) {
 	}
 }
 
-void importSchoolYear(YearNode*& head, ifstream& fin) {
+void importSchoolYearData(YearNode*& head, ifstream& fin) {
 	string s;
 	while (getline(fin, s)) {
-		YearNode* temp = new YearNode();
-		temp->data = s;
+		YearNode* temp = new YearNode(s);
 		if (head == nullptr) {
 			head = temp;
 		}
@@ -28,7 +28,7 @@ void importSchoolYear(YearNode*& head, ifstream& fin) {
 	}
 }
 
-void exportSchoolYear(YearNode* head, ofstream& fout) {
+void exportSchoolYearData(YearNode* head, ofstream& fout) {
 	while (head) {
 		fout << head->data << "\n";
 		head = head->pNext;

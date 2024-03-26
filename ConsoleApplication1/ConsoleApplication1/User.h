@@ -4,12 +4,12 @@
 
 struct UserInfo
 {
-	string username = "";
-	string password = "";
-	bool is_staff = false;
-	string name = "";
+	string username;
+	string password;
+	bool is_staff = 0;
+	string name;
 	Date dob;
-	bool gender = 0; // 0 là nữ, 1 là nam
+	string gender = ""; // Chuyển thành string
 };
 
 struct UserNode

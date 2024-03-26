@@ -23,14 +23,12 @@ int main()
     }
     // User log in
     UserNode *logged_in = nullptr;
-    bool logout = false;
-    while (continueProgram(logout))
+    while (continueProgram())
     {
         if (login(users, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";
-            logout = false;
-            while (logout == false && continueProgram(logout))
+            while (continueProgram())
             {
                 // Output Menu
                 if (logged_in->data.is_staff)
@@ -102,6 +100,9 @@ int main()
                         break;
                     case 21:
                         // viewScoreboardOfClass(); //in Class.h
+                    case 22: 
+                        cout << "Logout successful. You have been logged out.";
+                        return 0;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
                         break;

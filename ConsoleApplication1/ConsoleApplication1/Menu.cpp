@@ -1,32 +1,27 @@
-#include "Header.h"
-bool continueProgram(bool &logout)
+﻿#include "Header.h"
+bool continueProgram()
 {
-    int continueChoice;
+    bool continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
     cin >> continueChoice;
-    if (continueChoice == 1)
-        return true;
-    if (continueChoice == 0)
-    {
-        logoutProgram(logout);
-        return false;
-    }
+    if (continueChoice == 1) return true;
+    if (continueChoice == 0) return false;
     cout << "***Please read the instruction again!\n";
-    return continueProgram(logout);
+    return continueProgram();
 }
 
-void logoutProgram(bool &logout)
+/* Tui thấy cái này cũng không cần lắm mình sẽ thêm một case logout trong menu rồi nếu chọn logout thì logout thôi
+bool logoutProgram()
 {
-    int logoutChoice;
-    cout << "***Input '0' to logout or '1' to continue: ";
+    bool logoutChoice;
+    cout << "***Input '1 to continue program or '0' to logout: ";
     cin >> logoutChoice;
-    if (logoutChoice == 0)
-        logout = true;
-    else if (logoutChoice == 1)
-        logout = false;
+    if (logoutChoice == 1) return true;
+    if (logoutChoice == 0) return false;
     cout << "***Please read the instruction again!\n";
-    logoutProgram(logout);
+    return logoutProgram();
 }
+*/
 
 void menuForStaff()
 {
@@ -52,6 +47,7 @@ void menuForStaff()
     cout << "   19. View the scoreboard of a course.\n";
     cout << "   20. Update a student's result.\n";
     cout << "   21. View the scoreboard of a class.\n";
+    cout << "   22.Logout and end program.\n";
     cout << ">>>>Staff choice: ";
 }
 void menuForStudent()
@@ -61,5 +57,6 @@ void menuForStudent()
     cout << "   2. View my scoreboard.\n";
     cout << "   3. View student info.\n";
     cout << "   4. Change student's password.\n";
+    cout << "   5.Logout and end program.\n";
     cout << ">>>>Student choice: ";
 }
