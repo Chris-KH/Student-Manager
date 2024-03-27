@@ -9,7 +9,7 @@ struct UserInfo
 	bool is_staff = 0;
 	string name;
 	Date dob;
-	string gender = ""; // Chuyển thành string
+	string gender; // Chuyển thành string
 };
 
 struct UserNode

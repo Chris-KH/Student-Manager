@@ -17,7 +17,20 @@ void addNewClass(YearNode*& head) {
 void createASchoolYear(YearNode*& head, YearNode* tail) {
 	string s;
 	cout << "Input your school year (2020-2021, for example): "; cin >> s;
+	YearNode* cur = head;
+	while (cur) {
+		if (cur->data == s) {
+			cout << "This year is created before.\n";
+			return;
+		}
+		cur = cur->pNext;
+	}
+
 	YearNode* temp = new YearNode(s);
+
+	for (int i = 0; i < 3; i++) {
+		temp->semester[i].created = 0;
+	}
 	if (tail == nullptr) {
 		head = temp;
 		tail = temp;

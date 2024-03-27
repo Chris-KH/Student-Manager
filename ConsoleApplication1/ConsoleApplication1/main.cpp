@@ -7,19 +7,19 @@ int main()
     YearNode* headYear = nullptr;
     ClassNode* headClass = nullptr;
     CourseNode* headCourse = nullptr;
-    YearNode *curYear = nullptr;
+    YearNode *tailYear = nullptr;
     ClassNode *curClass = nullptr;
     CourseNode *curCourse = nullptr;
 
     // Load data
     
-    // Class data
+    /*
     fin.open("ImportExportFile/ClassData.txt");
     if (fin.is_open())
         importClassData(headClass, curClass, fin);
     else cout << "Unable to load class data.\n";
     fin.close();
-
+    */
 
     cout << ">>>>Welcome to course management system.\n";
 
@@ -89,13 +89,13 @@ int main()
                     switch (staffChoice)
                     {
                     case 1:
-                        // createASchoolYear(YearNode*& Head, int& NumOfSchoolYear); //in Year.h
+                        createASchoolYear(years, tailYear); //in Year.h
                         break;
                     case 2:
-                        addNewClass(headClass,curClass); //in Class.h
+                        addNewClass(years); 
                         break;
                     case 3:
-                        // importClass(ClassNode*& head, ifstream& fin); //in Class.h
+                        // importClass(ClassNode*& head, ifstream& fin); //in Class.h //Import phía trên r?i
                         break;
                     case 4:
                         // createSemester(YearNode* year); //in Semester.h

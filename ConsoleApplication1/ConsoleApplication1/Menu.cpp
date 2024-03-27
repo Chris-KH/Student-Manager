@@ -2,7 +2,7 @@
 
 bool continueProgram()
 {
-    bool continueChoice;
+    int continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
     cin >> continueChoice;
     if (continueChoice == 1)
@@ -10,7 +10,8 @@ bool continueProgram()
     if (continueChoice == 0)
         return false;
     cout << "***Please read the instruction again!\n";
-    return continueProgram();
+    int ok = continueProgram();
+    return ok;
 }
 void menuForStaff()
 {

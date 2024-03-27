@@ -1,16 +1,16 @@
 #include "Class.h"
 
-void importClassData(ClassNode*& classes, ClassNode*& tail, ifstream& fin) {
+void importClassData(ClassNode*& classes, ifstream& fin) {
 	string s;
 	while (getline(fin, s)) {
 		ClassNode* temp = new ClassNode(s);
 		if (classes == nullptr) {
-			classes = temp; 
+			classes = temp;
 		}
 		else {
-			tail->pNext = temp;
+			temp->pNext = classes;
+			classes = temp;
 		}
-		tail = temp;
 	}
 }
 
