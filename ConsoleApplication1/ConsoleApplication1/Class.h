@@ -34,7 +34,5 @@ ClassNode* findClass(ClassNode* head);
 
 void deleteClasses(ClassNode*& head);
 
-void viewAListOfClasses(ClassNode* head);
-
 void viewListOfStudentInClass(ClassNode* head);
 

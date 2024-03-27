@@ -1,4 +1,4 @@
-#include "Header.h"
+﻿#include "Header.h"
 
 int main()
 {
@@ -26,31 +26,11 @@ int main()
     //Load Users
     UserNode *users = nullptr;
     
-    fin.open("DataFile/Users.txt");
-    if (fin.is_open())
-    {
-        importUserData(users, fin);
-        fin.close();
-    }
-    else
-    {
-        cout << "Unable to load data user.\n";
-        return 0;
-    }
+    importUserData(users, fin);
     
     //Load years
     YearNode* years = nullptr;
-    fin.open("DataFile/SchoolYear.txt");
-    if (fin.is_open())
-    {
-        importSchoolYearData(years, fin);
-        fin.close();
-    }
-    else
-    {
-        cout << "Unable to load data.\n";
-        return 0;
-    }
+    importSchoolYearData(years, fin);
 
     //Load Class
     YearNode* yy = years;
@@ -69,6 +49,7 @@ int main()
         }
         yy = yy->pNext;
     }
+
     // User log in
     UserNode *logged_in = nullptr;
     while (continueProgram())
@@ -95,7 +76,7 @@ int main()
                         addNewClass(years); 
                         break;
                     case 3:
-                        // importClass(ClassNode*& head, ifstream& fin); //in Class.h //Import ph�a tr�n r?i
+                        // importClass(ClassNode*& head, ifstream& fin); //in Class.h //Import phía trên rồi
                         break;
                     case 4:
                         // createSemester(YearNode* year); //in Semester.h
@@ -119,7 +100,7 @@ int main()
                         // deleteACourse(CourseNode* head, string course_id); in Course.h
                         break;
                     case 11:
-                        // viewAListOfClasses(); //in Class.h
+                        viewAListOfClasses(years);
                         break;
                     case 12:
                         // viewAListOfStudentsInClass(); //in Class.h
@@ -206,7 +187,6 @@ int main()
     delete headYear;
     delete headCourse;
     delete headClass;
-    delete curYear;
     delete curCourse;
     delete curClass;
     return 0;

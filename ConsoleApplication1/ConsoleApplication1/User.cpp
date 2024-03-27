@@ -1,6 +1,11 @@
 #include"User.h"
 
 void importUserData(UserNode*& users, ifstream& fin) {
+	fin.open("DataFile/Users.txt");
+	if (fin.is_open() == false) {
+		cout << "Unable to load data user.\n";
+		return;
+	}
 	UserNode* cur = nullptr;
 	string s;
 
@@ -27,8 +32,8 @@ void importUserData(UserNode*& users, ifstream& fin) {
 		getline(ss, cur->data.dob.day, '/');
 		getline(ss, cur->data.dob.month, '/');
 		getline(ss, cur->data.dob.year);
-
 	}
+	fin.close();
 }
 
 void exportUserData(UserNode* users, ofstream& fout) {

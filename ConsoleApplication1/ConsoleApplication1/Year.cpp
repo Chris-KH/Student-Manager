@@ -42,6 +42,11 @@ void createASchoolYear(YearNode*& head, YearNode* tail) {
 }
 
 void importSchoolYearData(YearNode*& head, ifstream& fin) {
+	fin.open("DataFile/SchoolYear.txt");
+	if (fin.is_open() == false) {
+		cout << "Unable to load data.\n";
+		return;
+	}
 	string s;
 	while (getline(fin, s)) {
 		YearNode* temp = new YearNode(s);
@@ -70,6 +75,7 @@ void importSchoolYearData(YearNode*& head, ifstream& fin) {
 			head = temp;
 		}
 	}
+	fin.close();
 }
 
 void exportSchoolYearData(YearNode* head, ofstream& fout) {
@@ -84,8 +90,23 @@ YearNode* findSchoolYear(YearNode* head) {
 	cout << "Enter year: "; cin >> year;
 	while (head) {
 		if (head->data == year) return head;
+		head = head->pNext;
 	}
 	return nullptr;
+}
+
+void viewAListOfClasses(YearNode* head) {
+	YearNode* temp = findSchoolYear(head);
+	if (temp == nullptr) {
+		cout << "This year does not exist.\n";
+		return;
+	}
+	cout << "List of class in " << temp->data << ":\n";
+	ClassNode* cur = temp->classes;
+	while (cur) {
+		cout << cur->data.name << "\n";
+		cur = cur->pNext;
+	}
 }
 
 void createSemester(YearNode* head) {

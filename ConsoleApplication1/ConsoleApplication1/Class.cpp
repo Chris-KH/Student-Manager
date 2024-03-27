@@ -75,13 +75,6 @@ void deleteClasses(ClassNode*& head) {
 	}
 }
 
-void viewAListOfClasses(ClassNode* head) {
-	cout << "List of classes: \n";
-	while (head) {
-		cout << "    " << head->data.name << "\n";
-		head = head->pNext;
-	}
-}
 
 void viewListOfStudentInClass(ClassNode* head) {
 	string s;

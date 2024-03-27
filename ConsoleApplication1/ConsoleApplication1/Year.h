@@ -31,6 +31,8 @@ void addNewClass(YearNode*& head);
 
 YearNode* findSchoolYear(YearNode *head);
 
+void viewAListOfClasses(YearNode* head);
+
 void createSemester(YearNode* head);
 
 void deleteSemester(YearNode* head);
