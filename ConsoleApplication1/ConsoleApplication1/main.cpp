@@ -69,13 +69,13 @@ int main()
                     menuForStaff();
                     int staffChoice;
                     cin >> staffChoice;
-                    while (!staffChoice)
+                    /*while (!stoi(staffChoice))
                     {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cout<<"Please enter A NUMBER representing your choice!\n";
-                        cin>>staffChoice;
-                    }
+                        getline(cin, staffChoice);
+                    }*/
                     switch (staffChoice)
                     {
                     case 1:
@@ -158,13 +158,13 @@ int main()
                     menuForStudent();
                     int studentChoice;
                     cin >> studentChoice;
-                    while (!studentChoice)
+                    /*while (studentChoice != "0" && studentChoice != "1")
                     {
                         cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cin.ignore();
                         cout<<"Please enter A NUMBER representing your choice!\n";
-                        cin>>studentChoice;
-                    }
+                        getline(cin, studentChoice);
+                    }*/
                     switch (studentChoice)
                     {
                     case 1:
