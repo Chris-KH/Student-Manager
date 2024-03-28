@@ -187,9 +187,7 @@ int main()
         cout << "Unable to export class data.\n";
     fout.close();
 
-    delete headYear;
-    delete headCourse;
-    delete headClass;
+    
     delete curCourse;
     delete curClass;
     return 0;
