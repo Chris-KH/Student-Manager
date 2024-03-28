@@ -2,19 +2,19 @@
 
 bool continueProgram()
 {
-    string continueChoice;
+    char continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
-    getline(cin, continueChoice);
-    while(continueChoice != "0" && continueChoice != "1")
+    cin>>continueChoice;
+    while(continueChoice != '0' && continueChoice != '1')
     {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout<<"Please read the instruction carefully";
+        cout<<"Please read the instruction carefully!\n";
         continueProgram();
     }
-    if (continueChoice == "1")
+    if (continueChoice == '1')
         return true;
-    if (continueChoice == "0")
+    if (continueChoice == '0')
         return false;
     cout << "***Please read the instruction again!\n";
     return continueProgram();

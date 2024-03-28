@@ -73,7 +73,7 @@ int main()
                     {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        cout<<"Please enter A NUMBER representing your choice";
+                        cout<<"Please enter A NUMBER representing your choice!\n";
                         cin>>staffChoice;
                     }
                     switch (staffChoice)
@@ -149,7 +149,7 @@ int main()
                         exit = true;
                         break;
                     default:
-                        cout << "You missed the instruction, please check the input and follow the instruction" << endl;
+                        cout << "You missed the instruction, please check the input and follow the instruction\n";
                         break;
                     }
                 }
@@ -162,7 +162,7 @@ int main()
                     {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        cout<<"Please enter A NUMBER representing your choice";
+                        cout<<"Please enter A NUMBER representing your choice!\n";
                         cin>>studentChoice;
                     }
                     switch (studentChoice)
@@ -185,7 +185,7 @@ int main()
                         exit = true;
                         break;
                     default:
-                        cout << "You missed the instruction, please check the input and follow the instruction" << endl;
+                        cout << "You missed the instruction, please check the input and follow the instruction\n";
                         break;
                     }
                 }
