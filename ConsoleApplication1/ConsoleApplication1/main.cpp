@@ -29,11 +29,10 @@ int main()
     importUserData(users, fin);
 
     // Load years
-    YearNode *years = nullptr;
-    importSchoolYearData(years, fin);
+    importSchoolYearData(headYear, fin);
 
     // Load Class
-    YearNode *yy = years;
+    YearNode *yy = headYear;
     while (yy)
     {
         string direct = "DataFile/" + yy->data + "Classes.txt";
@@ -54,6 +53,7 @@ int main()
     // User log in
     UserNode *logged_in = nullptr;
     bool exit = false;
+    
     while (exit == false && continueProgram())
     {
         if (login(users, logged_in))
@@ -72,16 +72,16 @@ int main()
                     switch (staffChoice)
                     {
                     case 1:
-                        createASchoolYear(years, tailYear); // in Year.h
+                        createASchoolYear(headYear, tailYear); // in Year.h
                         break;
                     case 2:
-                        addNewClass(years);
+                        addNewClass(headYear);
                         break;
                     case 3:
                         // importClass(ClassNode*& head, ifstream& fin); //in Class.h //Import phía trên rồi
                         break;
                     case 4:
-                        // createSemester(YearNode* year); //in Semester.h
+                        createSemester(headYear); //in Semester.h
                         break;
                     case 5:
                         // addCourse();
@@ -102,7 +102,7 @@ int main()
                         // deleteACourse(CourseNode* head, string course_id); in Course.h
                         break;
                     case 11:
-                        viewAListOfClasses(years);
+                        viewAListOfClasses(headYear);
                         break;
                     case 12:
                         // viewAListOfStudentsInClass(); //in Class.h
