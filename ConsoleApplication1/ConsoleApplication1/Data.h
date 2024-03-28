@@ -1,6 +1,6 @@
 #pragma once
 
-#include"Header.h"
+#include"Year.h"
 
 void exportData(YearNode *headYear, ofstream &fo);
 void exportSemester(SemesterInfo curSem, int sem, ofstream &fo);
