@@ -2,12 +2,13 @@
 
 bool continueProgram()
 {
-    int continueChoice;
+    string continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
-    cin >> continueChoice;
-    if (continueChoice == 1)
+    cin.get(continueChoice, 1000, '\n');
+    cin.ignore();
+    if (continueChoice == "1")
         return true;
-    if (continueChoice == 0)
+    if (continueChoice == "0")
         return false;
     cout << "***Please read the instruction again!\n";
     return continueProgram();

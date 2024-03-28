@@ -67,78 +67,79 @@ int main()
                 if (logged_in->data.is_staff)
                 {
                     menuForStaff();
-                    int staffChoice;
-                    cin >> staffChoice;
+                    string staffChoice;
+                    cin.get(staffChoice, 1000, '\n');
+                    cin.ignore();
                     switch (staffChoice)
                     {
-                    case 1:
+                    case "1":
                         createASchoolYear(years, tailYear); // in Year.h
                         break;
-                    case 2:
+                    case "2":
                         addNewClass(years);
                         break;
-                    case 3:
+                    case "3":
                         // importClass(ClassNode*& head, ifstream& fin); //in Class.h //Import phía trên rồi
                         break;
-                    case 4:
+                    case "4":
                         // createSemester(YearNode* year); //in Semester.h
                         break;
-                    case 5:
+                    case "5":
                         // addCourse();
                         break;
-                    case 6:
+                    case "6":
                         // viewListOfCourse(CourseNode* head); //choose year -> semester //in Course.h
                         break;
-                    case 7:
+                    case "7":
                         // updateCourseIn4(CourseNode* head, string course_id); //in Course.h
                         break;
-                    case 8:
+                    case "8":
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
                         break;
-                    case 9:
+                    case "9":
                         // removeStudentFromCourse(CourseNode* head, string course_id, string student_id); //in Course.h
                         break;
-                    case 10:
+                    case "10":
                         // deleteACourse(CourseNode* head, string course_id); in Course.h
                         break;
-                    case 11:
+                    case "11":
                         viewAListOfClasses(years);
                         break;
-                    case 12:
+                    case "12":
                         // viewAListOfStudentsInClass(); //in Class.h
                         break;
-                    case 13:
+                    case "13":
                         // void viewListofCourse(CourseNode* course); //in Course.h
                         break;
-                    case 14:
+                    case "14":
                         // viewListOfStudentInCourse(CourseNode* head, string course_id); //in Course.h
                         break;
-                    case 15:
+                    case "15":
                         viewProfileInfo(logged_in);
                         break;
-                    case 16:
+                    case "16":
                         // changePassword(UserNode* &cur); //in User.h
                         break;
-                    case 17:
+                    case "17":
                         // ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name); //in Course.h
                         break;
-                    case 18:
+                    case "18":
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
-                    case 19:
+                    case "19":
                         // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); //in Course.h
                         break;
-                    case 20:
+                    case "20":
                         // updateAStudentResult(); //in Student.h
                         break;
-                    case 21:
+                    case "21":
                         // viewScoreboardOfClass(); //in Class.h
                         break;
-                    case 22:
+                    case "22":
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
                         break;
-                    case 23:
+                    case "23":
                         exit = true;
                         break;
                     default:
@@ -149,23 +150,24 @@ int main()
                 else
                 {
                     menuForStudent();
-                    int studentChoice;
-                    cin >> studentChoice;
+                    string studentChoice;
+                    cin.get(studentChoice, 1000, '\n');
+                    cin.ignore();
                     switch (studentChoice)
                     {
-                    case 1:
+                    case "1":
                         // viewStudentCourse(string student_id, CourseNode* head); //in Course.h
                         break;
-                    case 2:
+                    case "2":
                         // viewStudentScoreboard(string student_id, CourseNode* head); //in Course.h
                         break;
-                    case 3:
+                    case "3":
                         viewProfileInfo(logged_in);
                         break;
-                    case 4:
+                    case "4":
                         // changePassword(UserNode* &cur); //in User.h
                         break;
-                    case 5:
+                    case "5":
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
                         exit = true;
