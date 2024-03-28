@@ -1,8 +1,6 @@
 #pragma once
 
 // MultiSet_Lib
-#include <windows.h>
-#include <conio.h>
 #include <limits>
 
 //PrcLib
@@ -22,11 +20,6 @@
 #include <unordered_map>
  
 // MainLib
-
-#include <locale.h>
-#include <search.h>
-#include <assert.h>
-#include <time.h>
 #include <stdarg.h>
 #include <ctype.h>
 #include <string.h>

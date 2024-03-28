@@ -68,14 +68,11 @@ int main()
                 {
                     menuForStaff();
                     int staffChoice;
-                    cin >> staffChoice;
-                    /*while (!stoi(staffChoice))
-                    {
+                    while (!(cin >> staffChoice)) {
+                        cout << ">>>>Wrong input. Staff choice: ";
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        cout<<"Please enter A NUMBER representing your choice!\n";
-                        getline(cin, staffChoice);
-                    }*/
+                    }
                     switch (staffChoice)
                     {
                     case 1:

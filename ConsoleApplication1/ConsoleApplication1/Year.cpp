@@ -1,4 +1,4 @@
-#include"Year.h"
+﻿#include"Year.h"
 
 void addNewClass(YearNode*& head) {
 	YearNode* cur = findSchoolYear(head);
@@ -163,4 +163,3 @@ void deleteSchoolYear(YearNode*& head) {
 		delete temp;
 	}
 }
-
