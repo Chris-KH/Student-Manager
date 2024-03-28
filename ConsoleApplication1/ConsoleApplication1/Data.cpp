@@ -1,6 +1,6 @@
 #include "Data.h"
 
-/*
+
 void exportData(YearNode *headYear, ofstream &fout)
 {
 	YearNode *curYear = headYear;
@@ -70,7 +70,7 @@ void importYear(YearNode *&headYear, ifstream &fin)
 	while (type == "Year")
 	{
 		YearNode *newYear = new YearNode;
-		fin >> curYear->data;
+		fin >> newYear->data;
 		if (curYear == NULL)
 			headYear = newYear;
 		else
@@ -144,7 +144,7 @@ void importStudent(StudentNode *&curStu, ifstream &fin)
 	fin >> info.social_id;
 	ScoreInfo score = info.score;
 	fin >> score.total >> score.final >> score.midterm >> score.bonus;
-}*/
+}
 
 void deAllocateDataYear(YearNode *headYear)
 {
