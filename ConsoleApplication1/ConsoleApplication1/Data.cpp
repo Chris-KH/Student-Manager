@@ -1,4 +1,5 @@
 #include "Data.h"
+
 /*
 void exportData(YearNode *headYear, ofstream &fout)
 {
@@ -143,7 +144,8 @@ void importStudent(StudentNode *&curStu, ifstream &fin)
 	fin >> info.social_id;
 	ScoreInfo score = info.score;
 	fin >> score.total >> score.final >> score.midterm >> score.bonus;
-}
+}*/
+
 void deAllocateDataYear(YearNode *headYear)
 {
 	YearNode *currentYear = headYear;
@@ -155,6 +157,19 @@ void deAllocateDataYear(YearNode *headYear)
 		delete temp;
 	}
 }
+
+void deAllocateDataClass(ClassNode* headClass)
+{
+	ClassNode* currentClass = headClass;
+	while (currentClass != nullptr)
+	{
+		deAllocateDataStudent(currentClass->student);
+		ClassNode* temp = currentClass;
+		currentClass = currentClass->pNext;
+		delete temp;
+	}
+}
+
 void deAllocateDataSemester(YearNode *headYear)
 {
 	YearNode *currentYear = headYear;
@@ -162,6 +177,7 @@ void deAllocateDataSemester(YearNode *headYear)
 		deAllocateDataCourse(currentYear->semester[i].course);
 	delete []currentYear->semester;
 }
+
 void deAllocateDataCourse(CourseNode *headCourse)
 {
 	CourseNode *currentCourse = headCourse;
@@ -183,4 +199,3 @@ void deAllocateDataStudent(StudentNode *headStudent)
 		delete temp;
 	}
 }
-*/
