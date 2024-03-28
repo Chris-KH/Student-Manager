@@ -139,7 +139,8 @@ int main()
                         logout = true;
                         break;
                     case 23:
-                        return 0;
+                        exit = true;
+                        break;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
                         break;
@@ -167,6 +168,7 @@ int main()
                     case 5:
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
+                        exit = true;
                         break;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
@@ -187,7 +189,6 @@ int main()
         cout << "Unable to export class data.\n";
     fout.close();
 
-    
     delete curCourse;
     delete curClass;
     return 0;
