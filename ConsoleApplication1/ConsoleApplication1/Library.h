@@ -15,7 +15,6 @@
 
 //VarLib
 #include <numeric>
-#include <array>
 #include <iterator>
 #include <vector>
 #include <set>
@@ -32,8 +31,6 @@
 #include <ctype.h>
 #include <string.h>
 #include <math.h>
-#include <complex.h>
-#include <cstring>
 #include <string>
 
 using namespace std;
