@@ -4,8 +4,14 @@ bool continueProgram()
 {
     string continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
-    cin.get(continueChoice, 1000, '\n');
-    cin.ignore();
+    getline(cin, continueChoice);
+    while(continueChoice != "0" && continueChoice != "1")
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout<<"Please read the instruction carefully";
+        continueProgram();
+    }
     if (continueChoice == "1")
         return true;
     if (continueChoice == "0")
