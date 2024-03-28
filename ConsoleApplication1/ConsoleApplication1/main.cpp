@@ -4,15 +4,15 @@ int main()
 {
     ifstream fin;
     ofstream fout;
-    YearNode* headYear = nullptr;
-    ClassNode* headClass = nullptr;
-    CourseNode* headCourse = nullptr;
+    YearNode *headYear = nullptr;
+    ClassNode *headClass = nullptr;
+    CourseNode *headCourse = nullptr;
     YearNode *tailYear = nullptr;
     ClassNode *curClass = nullptr;
     CourseNode *curCourse = nullptr;
 
     // Load data
-    
+
     /*
     fin.open("ImportExportFile/ClassData.txt");
     if (fin.is_open())
@@ -23,18 +23,19 @@ int main()
 
     cout << ">>>>Welcome to course management system.\n";
 
-    //Load Users
+    // Load Users
     UserNode *users = nullptr;
-    
+
     importUserData(users, fin);
-    
-    //Load years
-    YearNode* years = nullptr;
+
+    // Load years
+    YearNode *years = nullptr;
     importSchoolYearData(years, fin);
 
-    //Load Class
-    YearNode* yy = years;
-    while (yy) {
+    // Load Class
+    YearNode *yy = years;
+    while (yy)
+    {
         string direct = "DataFile/" + yy->data + "Classes.txt";
         fin.open(direct);
         if (fin.is_open())
@@ -52,14 +53,15 @@ int main()
 
     // User log in
     UserNode *logged_in = nullptr;
-    while (continueProgram())
+    bool exit = false;
+    while (exit == false && continueProgram())
     {
         if (login(users, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
 
-            while (logout == false && continueProgram())
+            while (exit == false && logout == false && continueProgram())
             {
                 // Output Menu
                 if (logged_in->data.is_staff)
@@ -70,10 +72,10 @@ int main()
                     switch (staffChoice)
                     {
                     case 1:
-                        createASchoolYear(years, tailYear); //in Year.h
+                        createASchoolYear(years, tailYear); // in Year.h
                         break;
                     case 2:
-                        addNewClass(years); 
+                        addNewClass(years);
                         break;
                     case 3:
                         // importClass(ClassNode*& head, ifstream& fin); //in Class.h //Import phía trên rồi
@@ -136,7 +138,7 @@ int main()
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
                         break;
-                    case 23: 
+                    case 23:
                         return 0;
                     default:
                         cout << "You missed the instruction, please check the input and follow the instruction" << endl;
@@ -181,7 +183,8 @@ int main()
     fout.open("ImportExportFile/ClassData.txt");
     if (fout.is_open())
         exportClassData(headClass, fout);
-    else cout << "Unable to export class data.\n";
+    else
+        cout << "Unable to export class data.\n";
     fout.close();
 
     delete headYear;

@@ -10,8 +10,7 @@ bool continueProgram()
     if (continueChoice == 0)
         return false;
     cout << "***Please read the instruction again!\n";
-    int ok = continueProgram();
-    return ok;
+    return continueProgram();
 }
 void menuForStaff()
 {
