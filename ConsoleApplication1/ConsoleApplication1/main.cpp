@@ -69,6 +69,13 @@ int main()
                     menuForStaff();
                     int staffChoice;
                     cin >> staffChoice;
+                    while (!staffChoice)
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout<<"Please enter A NUMBER representing your choice";
+                        cin>>staffChoice;
+                    }
                     switch (staffChoice)
                     {
                     case 1:
@@ -151,6 +158,13 @@ int main()
                     menuForStudent();
                     int studentChoice;
                     cin >> studentChoice;
+                    while (!studentChoice)
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout<<"Please enter A NUMBER representing your choice";
+                        cin>>studentChoice;
+                    }
                     switch (studentChoice)
                     {
                     case 1:
@@ -181,7 +195,6 @@ int main()
             cout << "Login failed. Please check your username and password and try again.\n";
     }
     fin.close();
-
     fout.open("ImportExportFile/ClassData.txt");
     if (fout.is_open())
         exportClassData(headClass, fout);
