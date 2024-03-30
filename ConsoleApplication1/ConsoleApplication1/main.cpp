@@ -111,7 +111,13 @@ int main()
                         addNewClass(headYear);
                         break;
                     case 3:
-                        createSemester(headYear); //in Semester.h
+                        fout.open("DataFile/SchoolYear.txt");
+                        if (fout.is_open()) {
+                            createSemester(headYear);
+                            exportSchoolYearData(headYear, fout);
+                            fout.close();
+                        }
+                        else cout << "Create semester failed.\n";
                         break;
                     case 4:
                        

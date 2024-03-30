@@ -158,15 +158,23 @@ void createSemester(YearNode* head) {
 		return;
 	}
 	YearNode* temp = findSchoolYear(head);
-	while (temp == nullptr) {
-		cout << "This year does not exist, try again.\n";
-		temp = findSchoolYear(head);
+	if (temp == nullptr) {
+		cout << "This year does not exist. Create school year before creating semester.\n";
+		return;
 	}
 	string s;
 	int ses;
 	string d1, m1, y1, d2, m2, y2;
 	cout << "Input information about the semester as follows.\n";
 	cout << "What semester do you want to create (1, 2 or 3)? "; cin >> ses;
+	if (ses != 1 && ses != 2 && ses != 3) {
+		cout << "This semester does not exit.\n";
+		return;
+	}
+	else if (temp->semester[ses - 1].created == true) {
+		cout << "This semester is created before.\n";
+		return;
+	}
 	cout << "Start date: "; cin >> s;
 	stringstream ss(s);
 	getline(ss, d1, '/');
@@ -177,20 +185,16 @@ void createSemester(YearNode* head) {
 	getline(aa, d2, '/');
 	getline(aa, m2, '/');
 	getline(aa, y2);
-	if (ses == 1 || ses == 2 || ses == 3) {
-		if (temp->semester[ses - 1].created == false) {
-			SemesterInfo a;
-			a.start.day = y1;
-			a.start.month = m1;
-			a.start.year = y1;
-			a.end.day = d2;
-			a.end.month = m2;
-			a.end.year = y2;
-			temp->semester[ses - 1] = a;
-		}
-		else cout << "This semester is created before.\n";
-	}
-	else cout << "This semester does not exist.\n";
+	SemesterInfo a;
+	a.created = 1;
+	a.start.day = d1;
+	a.start.month = m1;
+	a.start.year = y1;
+	a.end.day = d2;
+	a.end.month = m2;
+	a.end.year = y2;
+	temp->semester[ses - 1] = a;
+	cout << "Create semester successfully.\n";
 }
 
 void deleteSemester(YearNode* head) {
