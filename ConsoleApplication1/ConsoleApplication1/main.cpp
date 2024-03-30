@@ -136,7 +136,7 @@ int main()
                         addNewClass(headYear, fout);
                         break;
                     case 3:
-                        //Tạo một school year mới thì phải export ngay luôn dể nếu tạo thêm một năm khác nữa thì có thể check xem đã tạo năm đó chưa
+                        //Phải mở đc file và export đc thì mới tạo thành công do nếu để export ở cuối chương trình nếu có bug ở chỗ mở file thì coi như mấy cái mình add là vô nghĩa vì k export đc
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open()) {
                             createSemester(headYear);
