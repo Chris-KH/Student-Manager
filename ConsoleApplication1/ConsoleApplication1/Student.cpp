@@ -11,12 +11,9 @@ void importStudentToClass(StudentNode*& head, ifstream& fin) {
 		getline(ss, temp->data.last_name, ',');
 		getline(ss, temp->data.first_name, ',');
 		getline(ss, temp->data.gender, ',');
-		string a;
-		getline(ss, a, ',');
-		stringstream dob_str(a);
-		getline(dob_str, temp->data.dob.day, '/');
-		getline(dob_str, temp->data.dob.month, '/');
-		getline(dob_str, temp->data.dob.year);
+		getline(ss, temp->data.dob.day, '/');
+		getline(ss, temp->data.dob.month, '/');
+		getline(ss, temp->data.dob.year, ',');
 		getline(ss, temp->data.social_id);
 		if (tail == nullptr) {
 			head = temp;

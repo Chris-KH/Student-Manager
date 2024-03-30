@@ -31,6 +31,8 @@ void addNewClass(YearNode*& head, ofstream& fout);
 
 YearNode* findSchoolYear(YearNode *head);
 
+void addNewStudentToClass(YearNode* head, ifstream& fin);
+
 void viewListOfStudentInClass(YearNode* head);
 
 void viewAListOfClasses(YearNode* head);

@@ -10,6 +10,7 @@ int main()
     YearNode *tailYear = nullptr;
     ClassNode *curClass = nullptr;
     CourseNode *curCourse = nullptr;
+    bool exit = false;
 
     // Load data
 
@@ -23,15 +24,34 @@ int main()
 
     cout << ">>>>Welcome to course management system.\n";
 
-    cout << "Load users data...\n";
+    cout << "<>Load users data...";
     UserNode *users = nullptr;
 
-    importUserData(users, fin);
+    fin.open("DataFile/Users.txt");
+    if (fin.is_open()) {
+        importUserData(users, fin);
+        cout << "Successful.\n";
+        fin.close();
+    }
+    else {
+        cout << "Failed.\n";
+        exit = true;
+    }
+    
+    cout << "<>Load school years data...";
+    fin.open("DataFile/SchoolYear.txt");
+    if (fin.is_open()) {
+        importSchoolYearData(headYear, tailYear, fin);
+        cout << "Succesful.\n";
+        fin.close();
+    }
+    else {
+        cout << "Failed.\n";
+        exit = true;;
+    }
+    
 
-    cout << "Load school years data...\n";
-    importSchoolYearData(headYear, tailYear, fin);
-
-    cout << "Load classes data...\n";
+    cout << "<>Load classes data...";
     YearNode *yy = headYear;
     while (yy)
     {
@@ -45,13 +65,16 @@ int main()
         }
         else
         {
-            cout << "Unable to load data.\n";
-            exit(1);
+            exit = true;
         }
         yy = yy->pNext;
     }
+    if (exit) cout << "Failed.\n";
+    else cout << "Successful.\n";
 
-    cout << "Load students in class...\n";
+
+    bool ok = false;
+    cout << "<>Load students in class...";
     yy = headYear;
     while (yy) {
         ClassNode* temp = yy->classes;
@@ -64,17 +87,18 @@ int main()
                 fin.close();
             }
             else {
-                cout << "Unable to load data.\n";
-                exit(1);
+                ok = true;
             }
             temp = temp->pNext;
         }
         yy = yy->pNext;
     }
+    if (ok) cout << "Failed.\n";
+    else cout << "Successful.\n";
 
+    exit = !(ok == false && exit == false);
     // User log in
     UserNode *logged_in = nullptr;
-    bool exit = false;
     
     while (exit == false && continueProgram())
     {
@@ -122,7 +146,7 @@ int main()
                         else cout << "Create semester failed.\n";
                         break;
                     case 4:
-                       
+                        addNewStudentToClass(headYear, fin);
                         break;
                     case 5:
                         // addCourse();
@@ -262,14 +286,14 @@ int main()
         else
             cout << "Login failed. Please check your username and password and try again.\n";
     }
-    fin.close();
+    /*
     fout.open("ImportExportFile/ClassData.txt");
     if (fout.is_open())
         exportClassData(headClass, fout);
     else
         cout << "Unable to export class data.\n";
     fout.close();
-
+    */
     delete curCourse;
     delete curClass;
     return 0;

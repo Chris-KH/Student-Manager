@@ -28,8 +28,6 @@ void importClassData(ClassNode*& classes, ClassNode* tail, ifstream& fin);
 
 void exportClassData(ClassNode* classes, ofstream& fout);
 
-void addStudentToClass(ClassNode* classes, ifstream& fin);
-
 ClassNode* findClass(ClassNode* head);
 
 void deleteClasses(ClassNode*& head);
