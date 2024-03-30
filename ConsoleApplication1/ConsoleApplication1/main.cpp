@@ -155,13 +155,6 @@ int main()
                     menuForStudent();
                     int studentChoice;
                     cin >> studentChoice;
-                    /*while (studentChoice != "0" && studentChoice != "1")
-                    {
-                        cin.clear();
-                        cin.ignore();
-                        cout<<"Please enter A NUMBER representing your choice!\n";
-                        getline(cin, studentChoice);
-                    }*/
                     switch (studentChoice)
                     {
                     case 1:
