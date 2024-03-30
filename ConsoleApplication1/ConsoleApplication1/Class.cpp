@@ -1,6 +1,6 @@
 #include "Class.h"
 
-void importClassData(ClassNode*& classes, ifstream& fin) {
+void importClassData(ClassNode*& classes, ClassNode* tail, ifstream& fin) {
 	string s;
 	while (getline(fin, s)) {
 		ClassNode* temp = new ClassNode(s);
@@ -8,9 +8,9 @@ void importClassData(ClassNode*& classes, ifstream& fin) {
 			classes = temp;
 		}
 		else {
-			temp->pNext = classes;
-			classes = temp;
+			tail->pNext = temp;
 		}
+		tail = temp;
 	}
 }
 

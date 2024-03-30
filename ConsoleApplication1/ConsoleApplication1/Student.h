@@ -33,6 +33,8 @@ struct StudentNode
 
 void importStudentToClass(StudentNode*& head, ifstream& fin);
 
+void exportStudentInClass(StudentNode* head, ofstream& fout);
+
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 

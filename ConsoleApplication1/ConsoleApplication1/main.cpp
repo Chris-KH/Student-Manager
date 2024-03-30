@@ -23,23 +23,24 @@ int main()
 
     cout << ">>>>Welcome to course management system.\n";
 
-    // Load Users
+    cout << "Load users data...\n";
     UserNode *users = nullptr;
 
     importUserData(users, fin);
 
-    // Load years
-    importSchoolYearData(headYear, fin);
+    cout << "Load school years data...\n";
+    importSchoolYearData(headYear, tailYear, fin);
 
-    // Load Class
+    cout << "Load classes data...\n";
     YearNode *yy = headYear;
     while (yy)
     {
         string direct = "DataFile/" + yy->data + "Classes.txt";
         fin.open(direct);
+        ClassNode* tail = nullptr;
         if (fin.is_open())
         {
-            importClassData(yy->classes, fin);
+            importClassData(yy->classes, tail, fin);
             fin.close();
         }
         else
@@ -50,7 +51,7 @@ int main()
         yy = yy->pNext;
     }
 
-    //Load Student
+    cout << "Load students in class...\n";
     yy = headYear;
     while (yy) {
         ClassNode* temp = yy->classes;
@@ -97,16 +98,23 @@ int main()
                     switch (staffChoice)
                     {
                     case 1:
-                        createASchoolYear(headYear, tailYear); // in Year.h
+                        fout.open("DataFile/SchoolYear.txt");
+                        if (fout.is_open()) {
+                            createASchoolYear(headYear, tailYear);
+                            exportSchoolYearData(headYear, fout);
+                            fout.close();
+                        }
+                        else cout << "Create school year failed.\n";
                         break;
                     case 2:
+                        //Add class thì sau đó phải tạo một file csv tương ứng lớp đó
                         addNewClass(headYear);
                         break;
                     case 3:
-                        // importClass(ClassNode*& head, ifstream& fin); //in Class.h //Import phía trên rồi
+                        createSemester(headYear); //in Semester.h
                         break;
                     case 4:
-                        createSemester(headYear); //in Semester.h
+                       
                         break;
                     case 5:
                         // addCourse();
@@ -142,7 +150,15 @@ int main()
                         viewProfileInfo(logged_in);
                         break;
                     case 16:
-                        // changePassword(UserNode* &cur); //in User.h
+                        fout.open("DataFile/Users.txt");
+                        if (fout.is_open()) {
+                            changePassword(logged_in);
+                            exportUserData(users, fout);
+                            fout.close();
+                        }
+                        else {
+                            cout << "Change password failed.\n";
+                        }
                         break;
                     case 17:
                         // ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name); //in Course.h
@@ -160,10 +176,28 @@ int main()
                         // viewScoreboardOfClass(); //in Class.h
                         break;
                     case 22:
+                        //Export class
+                        yy = headYear;
+                        while (yy) {
+                            string direct = "DataFile/" + yy->data + "Classes.txt";
+                            fout.open(direct);
+                            if (fout.is_open()) {
+                                exportClassData(yy->classes, fout);
+                                fout.close();
+                            }
+                            else {
+                                cout << "File is not open. Export failed.\n";
+                                break;
+                            }
+                            yy = yy->pNext;
+                        }
+                        cout << "Export classes successfully.\n";
+                        break;
+                    case 23:
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
                         break;
-                    case 23:
+                    case 24:
                         exit = true;
                         break;
                     default:
@@ -193,11 +227,21 @@ int main()
                         viewProfileInfo(logged_in);
                         break;
                     case 4:
-                        // changePassword(UserNode* &cur); //in User.h
+                        fout.open("DataFile/Users.txt");
+                        if (fout.is_open()) {
+                            changePassword(logged_in);
+                            exportUserData(users, fout);
+                            fout.close();
+                        }
+                        else {
+                            cout << "Change password failed.\n";
+                        }
                         break;
                     case 5:
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
+                        break;
+                    case 6:
                         exit = true;
                         break;
                     default:

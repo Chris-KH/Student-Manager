@@ -19,8 +19,8 @@ void menuForStaff()
     cout << "All the functions for staff: Press a number to choose.\n";
     cout << "   1. Create a school year.\n";
     cout << "   2. Create classes.\n";
-    cout << "   3. Add new 1st year students.\n";
-    cout << "   4. Create a semester.\n";
+    cout << "   3. Create a semester.\n";
+    cout << "   4. Add new 1st year students to 1st-year classes.\n";
     cout << "   5. Add a course.\n";
     cout << "   6. View the list of courses.\n";
     cout << "   7. Update course information.\n";
@@ -38,8 +38,9 @@ void menuForStaff()
     cout << "   19. View the scoreboard of a course.\n";
     cout << "   20. Update a student's result.\n";
     cout << "   21. View the scoreboard of a class.\n";
-    cout << "   22. Logout.\n";
-    cout << "   23. End program.\n";
+    cout << "   22. Export classes data.\n";
+    cout << "   23. Logout.\n";
+    cout << "   24. End program.\n";
     cout << ">>>>Staff choice: ";
 }
 void menuForStudent()
@@ -50,6 +51,7 @@ void menuForStudent()
     cout << "   3. View student info.\n";
     cout << "   4. Change student's password.\n";
     cout << "   5. Logout and end program.\n";
+    cout << "   6. End program.\n";
     cout << ">>>>Student choice: ";
 }
 

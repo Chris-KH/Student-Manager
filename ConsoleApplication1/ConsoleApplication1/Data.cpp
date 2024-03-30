@@ -62,31 +62,6 @@ void exportStudent(StudentNode *curStu, ofstream &fo)
 	fo << score.total << " " << score.final << " " << score.midterm << " " << score.bonus << endl;
 }
 
-void importYear(YearNode *&headYear, ifstream &fin)
-{
-	string type;
-	fin >> type;
-	YearNode *curYear = NULL;
-	while (type == "Year")
-	{
-		YearNode *newYear = new YearNode;
-		fin >> newYear->data;
-		if (curYear == NULL)
-			headYear = newYear;
-		else
-			curYear->pNext = newYear;
-		curYear = newYear;
-		fin >> type;
-		while (type == "Semester")
-		{
-			int sem;
-			fin >> sem;
-			SemesterInfo curSe = curYear->semester[sem];
-			importSemester(curSe, sem, fin, type);
-		}
-	}
-}
-
 void importSemester(SemesterInfo &curSem, int sem, ifstream &fin, string &type)
 {
 	importDate(curSem.start, fin);

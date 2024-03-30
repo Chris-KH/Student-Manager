@@ -27,3 +27,16 @@ void importStudentToClass(StudentNode*& head, ifstream& fin) {
 		tail = temp;
 	}
 }
+
+void exportStudentInClass(StudentNode* head, ofstream& fout) {
+	while (head) {
+		fout << head->data.No << ",";
+		fout << head->data.ID << ",";
+		fout << head->data.last_name << ",";
+		fout << head->data.first_name << ",";
+		fout << head->data.gender << ",";
+		fout << head->data.dob.day << "/" << head->data.dob.month << "/" << head->data.dob.year << ",";
+		fout << head->data.social_id << "\n";
+		head = head->pNext;
+	}
+}

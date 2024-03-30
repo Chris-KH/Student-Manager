@@ -21,11 +21,12 @@ struct YearNode
 	}
 };
 
-void createASchoolYear(YearNode*& head, YearNode* tail);
 
-void importSchoolYearData(YearNode*& head, ifstream& fin);
+void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin);
 
 void exportSchoolYearData(YearNode* head, ofstream &fout);
+
+void createASchoolYear(YearNode*& head, YearNode*& tail);
 
 void addNewClass(YearNode*& head);
 

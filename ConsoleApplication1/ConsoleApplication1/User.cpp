@@ -4,7 +4,7 @@ void importUserData(UserNode*& users, ifstream& fin) {
 	fin.open("DataFile/Users.txt");
 	if (fin.is_open() == false) {
 		cout << "Unable to load data user.\n";
-		return;
+		exit(1);
 	}
 	UserNode* cur = nullptr;
 	string s;
@@ -37,14 +37,16 @@ void importUserData(UserNode*& users, ifstream& fin) {
 }
 
 void exportUserData(UserNode* users, ofstream& fout) {
+	UserNode* cur = users;
 	int order = 1;
-	while (users) {
+	while (cur) {
+		if (cur != users) fout << "\n";
 		fout << order << "\n";
-		fout << users->data.name << "\n";
-		fout << users->data.username << users->data.password << users->data.is_staff << users->data.gender << "\n";
-		fout << users->data.dob.day << "/" << users->data.dob.month << "/" << users->data.dob.year << "\n";
+		fout << cur->data.name << "\n";
+		fout << cur->data.username << " " << cur->data.password << " " << cur->data.is_staff << " " << cur->data.gender << "\n";
+		fout << cur->data.dob.day << "/" << cur->data.dob.month << "/" << cur->data.dob.year;
 		order++;
-		users = users->pNext;
+		cur = cur->pNext;
 	}
 }
 
