@@ -38,8 +38,12 @@ void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin) {
 	fin.close();
 }
 
-void addNewClass(YearNode*& head) {
+void addNewClass(YearNode*& head, ofstream& fout) {
 	YearNode* cur = findSchoolYear(head);
+	if (cur == nullptr) {
+		cout << "This year does not exist.\n";
+		return;
+	}
 	string name;
 	cout << "Input name of class: "; cin >> name;
 	ClassNode* headClass = cur->classes;
@@ -50,14 +54,21 @@ void addNewClass(YearNode*& head) {
 		}
 		headClass = headClass->pNext;
 	}
-	ClassNode* temp = new ClassNode(name);
-	if (cur->classes == nullptr) {
-		cur->classes = temp;
+	fout.open("DataFile/" + cur->data + "Classes.txt");
+	if (fout.is_open()) {
+		ClassNode* temp = new ClassNode(name);
+		if (cur->classes == nullptr) {
+			cur->classes = temp;
+		}
+		else {
+			temp->pNext = cur->classes;
+			cur->classes = temp;
+		}
+		exportClassData(cur->classes, fout);
+		cout << "Class is added.\n";
+		fout.close();
 	}
-	else {
-		temp->pNext = cur->classes;
-		cur->classes = temp;
-	}
+	else cout << "Add class failed";
 }
 
 void createASchoolYear(YearNode*& head, YearNode*& tail) {

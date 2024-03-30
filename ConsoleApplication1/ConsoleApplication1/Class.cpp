@@ -15,9 +15,11 @@ void importClassData(ClassNode*& classes, ClassNode* tail, ifstream& fin) {
 }
 
 void exportClassData(ClassNode* classes, ofstream& fout) {
-	while (classes) {
-		fout << classes->data.name << '\n';
-		classes = classes->pNext;
+	ClassNode* cur = classes;
+	while (cur) {
+		if (cur != classes) cout << "\n";
+		fout << cur->data.name;
+		cur = cur->pNext;
 	}
 }
 

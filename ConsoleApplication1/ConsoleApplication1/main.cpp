@@ -98,6 +98,7 @@ int main()
                     switch (staffChoice)
                     {
                     case 1:
+                        //Tương tự case 3
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open()) {
                             createASchoolYear(headYear, tailYear);
@@ -108,9 +109,10 @@ int main()
                         break;
                     case 2:
                         //Add class thì sau đó phải tạo một file csv tương ứng lớp đó
-                        addNewClass(headYear);
+                        addNewClass(headYear, fout);
                         break;
                     case 3:
+                        //Tạo một school year mới thì phải export ngay luôn dể nếu tạo thêm một năm khác nữa thì có thể check xem đã tạo năm đó chưa
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open()) {
                             createSemester(headYear);
