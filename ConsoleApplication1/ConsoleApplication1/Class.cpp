@@ -21,7 +21,7 @@ void exportClassData(ClassNode* classes, ofstream& fout) {
 	}
 }
 
-void addStudent2Class(ClassNode* classes, ifstream& fin) {
+void addStudentToClass(ClassNode* classes, ifstream& fin) {
 	while (classes) {
 		fin.open(classes->data.name + ".csv");
 		if (fin.is_open()) {
@@ -76,25 +76,3 @@ void deleteClasses(ClassNode*& head) {
 }
 
 
-void viewListOfStudentInClass(ClassNode* head) {
-	string s;
-	cout << "Enter class name: "; cin >> s;
-	while (head->data.name != s) head = head->pNext;
-	if (head) {
-		StudentNode* cur = head->student;
-		cout << "List of student in class " << s << ":\n";
-		while (cur) {
-			cout << cur->data.No << "\n";
-			cout << "Student ID: " << cur->data.ID << "\n";
-			cout << "First name: " << cur->data.first_name << "\n";
-			cout << "Last name: " << cur->data.last_name << "\n";
-			cout << "Gender: " << cur->data.gender << "\n";
-			cout << "Data of birth: " << cur->data.dob.day << "/" << cur->data.dob.month << "/" << cur->data.dob.year << "\n";
-			cout << "Social ID: " << cur->data.social_id << "\n";
-			cur = cur->pNext;
-		}
-	}
-	else {
-		cout << "This class does not exist.\n";
-	}
-}

@@ -127,23 +127,9 @@ void importCourse(CourseNode *&curCourse, ifstream &fin, string &type)
 		else
 			curStu->pNext = newStu;
 		curStu = newStu;
-		importStudent(curStu, fin);
+		importStudentToClass(curStu, fin);
 		fin >> type;
 	}
-}
-
-void importStudent(StudentNode *&curStu, ifstream &fin)
-{
-	StudentInfo info = curStu->data;
-	fin >> info.No;
-	fin >> info.ID;
-	fin >> info.first_name;
-	fin >> info.last_name;
-	importDate(info.dob, fin);
-	fin >> info.gender;
-	fin >> info.social_id;
-	ScoreInfo score = info.score;
-	fin >> score.total >> score.final >> score.midterm >> score.bonus;
 }
 
 void deAllocateDataYear(YearNode *headYear)

@@ -25,8 +25,13 @@ struct StudentNode
     StudentInfo data;
     StudentNode* pNext;
     
-    StudentNode() : pNext(nullptr) {}
+    StudentNode() {
+        pNext = nullptr;
+    }
 };
+
+
+void importStudentToClass(StudentNode*& head, ifstream& fin);
 
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);

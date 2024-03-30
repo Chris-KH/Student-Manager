@@ -45,7 +45,7 @@ void importSchoolYearData(YearNode*& head, ifstream& fin) {
 	fin.open("DataFile/SchoolYear.txt");
 	if (fin.is_open() == false) {
 		cout << "Unable to load data.\n";
-		return;
+		exit(1);
 	}
 	string s;
 	while (getline(fin, s)) {
@@ -62,10 +62,10 @@ void importSchoolYearData(YearNode*& head, ifstream& fin) {
 			getline(ss, end);
 			temp->semester[i].start.day = start.substr(0, 2);
 			temp->semester[i].start.month = start.substr(3, 2);
-			temp->semester[i].start.year = start.substr(6, 2);
-			temp->semester[i].end.day = end.substr(0, 2);
-			temp->semester[i].end.month = end.substr(0, 2);
-			temp->semester[i].end.year = end.substr(0, 2);
+			temp->semester[i].start.year = start.substr(6, 4);
+			temp->semester[i].end.day = end.substr(0, 4);
+			temp->semester[i].end.month = end.substr(0, 4);
+			temp->semester[i].end.year = end.substr(0, 4);
 		}
 		if (head == nullptr) {
 			head = temp;
@@ -93,6 +93,32 @@ YearNode* findSchoolYear(YearNode* head) {
 		head = head->pNext;
 	}
 	return nullptr;
+}
+
+void viewListOfStudentInClass(YearNode* head) {
+	YearNode* curYear = findSchoolYear(head);
+	while (curYear == nullptr) {
+		cout << "This year does not exist. Try again.\n";
+		curYear = findSchoolYear(head);
+	}
+	ClassNode* temp = curYear->classes;
+	ClassNode* curClass = findClass(temp);
+	while (curClass == nullptr) {
+		cout << "This class does not exist.\n";
+		curClass = findClass(temp);
+	}
+	StudentNode* cur = curClass->student;
+	cout << "List of student in class " << curClass->data.name << ":\n";
+	while (cur) {
+		cout << cur->data.No << "\n";
+		cout << "Student ID: " << cur->data.ID << "\n";
+		cout << "First name: " << cur->data.last_name << "\n";
+		cout << "Last name: " << cur->data.first_name << "\n";
+		cout << "Gender: " << cur->data.gender << "\n";
+		cout << "Data of birth: " << cur->data.dob.day << "/" << cur->data.dob.month << "/" << cur->data.dob.year << "\n";
+		cout << "Social ID: " << cur->data.social_id << "\n";
+		cur = cur->pNext;
+	}
 }
 
 void viewAListOfClasses(YearNode* head) {

@@ -4,10 +4,10 @@
 
 struct Date
 {
-	string day = "";
-	string month = "";
-	string year = "";
+	string day;
+	string month;
+	string year;
 };
 
-void exportDate(Date date, ofstream& fo);
-void importDate(Date date, ifstream& fi);
+void exportDate(Date &date, ofstream& foout);
+void importDate(Date &date, ifstream& fin);

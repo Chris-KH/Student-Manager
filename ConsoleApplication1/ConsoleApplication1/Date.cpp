@@ -1,12 +1,12 @@
 #include"Date.h"
 
 
-void exportDate(Date date, ofstream &fo)
+void exportDate(Date &date, ofstream &fout)
 {
-	fo << date.day << " " << date.month << " " << date.year << endl;
+	fout << date.day << " " << date.month << " " << date.year << endl;
 }
 
-void importDate(Date date, ifstream& fi)
+void importDate(Date &date, ifstream& fin)
 {
-	fi >> date.day >> date.month >> date.year;
+	fin >> date.day >> date.month >> date.year;
 }

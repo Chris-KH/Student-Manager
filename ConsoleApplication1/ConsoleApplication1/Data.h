@@ -8,7 +8,6 @@ void exportCourse(CourseNode *curCourse, ofstream &fo);
 void exportStudent(StudentNode *curStu, ofstream &fo);
 void importSemester(SemesterInfo& curSem, int sem, ifstream& fi, string& type);
 void importCourse(CourseNode*& curCourse, ifstream& fi, string& type);
-void importStudent(StudentNode*& curStu, ifstream& fi);
 void deAllocateDataYear(YearNode *headYear);
 void deAllocateDataSemester(YearNode *headYear);
 void deAllocateDataCourse(CourseNode *headCourse);

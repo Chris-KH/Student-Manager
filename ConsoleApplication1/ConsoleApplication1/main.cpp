@@ -45,7 +45,28 @@ int main()
         else
         {
             cout << "Unable to load data.\n";
-            return 0;
+            exit(1);
+        }
+        yy = yy->pNext;
+    }
+
+    //Load Student
+    yy = headYear;
+    while (yy) {
+        ClassNode* temp = yy->classes;
+        while (temp) 
+        {
+            string direct = "DataFile/" + temp->data.name + ".csv";
+            fin.open(direct);
+            if (fin.good()) {
+                importStudentToClass(temp->student, fin);
+                fin.close();
+            }
+            else {
+                cout << "Unable to load data.\n";
+                exit(1);
+            }
+            temp = temp->pNext;
         }
         yy = yy->pNext;
     }
@@ -109,7 +130,7 @@ int main()
                         viewAListOfClasses(headYear);
                         break;
                     case 12:
-                        // viewAListOfStudentsInClass(); //in Class.h
+                        viewListOfStudentInClass(headYear); //in Class.h
                         break;
                     case 13:
                         // void viewListofCourse(CourseNode* course); //in Course.h
@@ -155,13 +176,11 @@ int main()
                     menuForStudent();
                     int studentChoice;
                     cin >> studentChoice;
-                    /*while (studentChoice != "0" && studentChoice != "1")
-                    {
+                    while (!(cin >> studentChoice)) {
+                        cout << ">>>>Wrong input. Student choice: ";
                         cin.clear();
-                        cin.ignore();
-                        cout<<"Please enter A NUMBER representing your choice!\n";
-                        getline(cin, studentChoice);
-                    }*/
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
                     switch (studentChoice)
                     {
                     case 1:
