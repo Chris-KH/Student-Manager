@@ -12,8 +12,8 @@ struct CourseInfo
     string day_of_week;
     int session;
 
-
-    CourseInfo() {
+    CourseInfo()
+    {
         ID = "";
         name = "";
         teacher_name = "";
@@ -27,26 +27,27 @@ struct CourseInfo
 struct CourseNode
 {
     CourseInfo data;
-    StudentNode* student;   
-    CourseNode* pNext;
+    StudentNode *student;
+    CourseNode *pNext;
 
     CourseNode() : student(nullptr), pNext(nullptr) {}
 };
 
+void importScoreboard(ifstream &fin, CourseNode *&courses);
 
-void importScoreboard(ifstream& fin, CourseNode*& courses);
+void viewTheScoreboardOfCourse(CourseNode *courses);
 
-void viewTheScoreboardOfCourse(CourseNode* courses);
+// void updateStudentResult(StudentNode *Student);
 
-//void updateStudentResult(StudentNode *Student);
+// void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
 
-//void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
+// StudentNode* findStudentABC(int id);
 
-//StudentNode* findStudentABC(int id);
+// void ViewStudentScoreBoard(StudentNode* Student);
 
-//void ViewStudentScoreBoard(StudentNode* Student);
+// void viewStudentScoreboard(string student_id, CourseNode* courses);
 
-//void viewStudentScoreboard(string student_id, CourseNode* courses);
+// void removeStudentFromCourse(CourseNode* head, string course_id, string student_id);
 
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
@@ -58,8 +59,6 @@ void viewListofCourse(CourseNode* course);
 void updateCourseIn4(CourseNode* head, string course_id);
 
 void addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student);
-
-void removeStudentFromCourse(CourseNode* head, string course_id, string student_id);
 
 void deleteACourse(CourseNode* head, string course_id);
 
