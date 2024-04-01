@@ -35,7 +35,6 @@ void importStudentToClass(StudentNode *&head, ifstream &fin);
 
 void exportStudentInClass(StudentNode *head, ofstream &fout);
 
-void removeStudentFromCourse(CourseNode *head, string course_id, string student_id);
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 

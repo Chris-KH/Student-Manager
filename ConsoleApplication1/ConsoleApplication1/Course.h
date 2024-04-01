@@ -37,6 +37,8 @@ void importScoreboard(ifstream &fin, CourseNode *&courses);
 
 void viewTheScoreboardOfCourse(CourseNode *courses);
 
+void removeStudentFromCourse(CourseNode *head, string course_id, string student_id);
+
 // void updateStudentResult(StudentNode *Student);
 
 // void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
