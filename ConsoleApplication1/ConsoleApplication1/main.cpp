@@ -9,6 +9,7 @@ int main()
     CourseNode *headCourse = nullptr;
     YearNode *tailYear = nullptr;
     ClassNode *curClass = nullptr;
+    SemesterInfo* curSes = nullptr;
     CourseNode *curCourse = nullptr;
     bool exit = false;
 
@@ -139,7 +140,7 @@ int main()
                         //Phải mở đc file và export đc thì mới tạo thành công do nếu để export ở cuối chương trình nếu có bug ở chỗ mở file thì coi như mấy cái mình add là vô nghĩa vì k export đc
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open()) {
-                            createSemester(headYear);
+                            createSemester(headYear, curSes);
                             exportSchoolYearData(headYear, fout);
                             fout.close();
                         }
@@ -149,7 +150,7 @@ int main()
                         addNewStudentToClass(headYear, fin);
                         break;
                     case 5:
-                        // addCourse();
+                        addCourse(curSes,curCourse);
                         break;
                     case 6:
                         // viewListOfCourse(CourseNode* head); //choose year -> semester //in Course.h

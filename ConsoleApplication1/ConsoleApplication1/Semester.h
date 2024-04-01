@@ -13,4 +13,4 @@ struct SemesterInfo {
 	}
 };  
 
-void addCourse(SemesterInfo*& CurSemester, CourseNode*& head);
+void addCourse(SemesterInfo* curSes, CourseNode*& curCourse);
