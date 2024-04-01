@@ -1,8 +1,7 @@
 #include"Semester.h"
 
-void addCourse(SemesterInfo* curSes, CourseNode*& curCourse)
+void addCourse(SemesterInfo* &curSes, CourseNode*& curCourse)
 {
-    
     CourseNode* newcourse = new CourseNode;
     if (curSes->course == nullptr)
     {

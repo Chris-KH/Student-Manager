@@ -227,7 +227,7 @@ void createSemester(YearNode* head, SemesterInfo *&curSes) {
 	a.end.year = y2;
 	temp->semester[ses - 1] = a;
 	cout << "Create semester successfully.\n";
-	curSes = &a;
+	curSes = &temp->semester[ses-1];
 }
 
 void deleteSemester(YearNode* head) {
