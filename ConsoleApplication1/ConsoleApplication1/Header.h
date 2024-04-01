@@ -2,4 +2,4 @@
 
 #include "Data.h"
 
-using namespace std;
+#define endl '\n'
