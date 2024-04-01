@@ -1,12 +1,20 @@
 #include"Semester.h"
 
-void addCourse(SemesterInfo*& CurSemester, CourseNode*& curCourse)
+void addCourse(SemesterInfo* curSes, CourseNode*& curCourse)
 {
     
     CourseNode* newcourse = new CourseNode;
-    curCourse->pNext = newcourse;
-    curCourse = curCourse->pNext;
-    
+    if (curSes->course == nullptr)
+    {
+        curSes->course = newcourse;
+        curCourse = newcourse;
+    }
+    else
+    {
+        curCourse->pNext = newcourse;
+        curCourse = curCourse->pNext;
+    }
+
 	cout << "Course id: " << endl;
     cin >> curCourse->data.ID;
     

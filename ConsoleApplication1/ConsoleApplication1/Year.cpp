@@ -184,7 +184,7 @@ void viewAListOfClasses(YearNode* head) {
 	}
 }
 
-void createSemester(YearNode* head) {
+void createSemester(YearNode* head, SemesterInfo *&curSes) {
 	if (head == nullptr) {
 		cout << "Year data is empty.\n";
 		return;
@@ -227,6 +227,7 @@ void createSemester(YearNode* head) {
 	a.end.year = y2;
 	temp->semester[ses - 1] = a;
 	cout << "Create semester successfully.\n";
+	curSes = &a;
 }
 
 void deleteSemester(YearNode* head) {

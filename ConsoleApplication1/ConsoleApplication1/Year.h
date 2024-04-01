@@ -37,7 +37,7 @@ void viewListOfStudentInClass(YearNode* head);
 
 void viewAListOfClasses(YearNode* head);
 
-void createSemester(YearNode* head);
+void createSemester(YearNode* head, SemesterInfo*& curSes);
 
 void deleteSemester(YearNode* head);
 
