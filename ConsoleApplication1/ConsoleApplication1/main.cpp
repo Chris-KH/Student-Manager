@@ -153,7 +153,7 @@ int main()
                         addCourse(curSes,curCourse);
                         break;
                     case 6:
-                        // viewListOfCourse(CourseNode* head); //choose year -> semester //in Course.h
+                        viewListOfCourse(headCourse); //choose year -> semester //in Course.h
                         break;
                     case 7:
                         // updateCourseIn4(CourseNode* head, string course_id); //in Course.h
