@@ -33,7 +33,8 @@ void exportCourse(CourseNode *curCourse, ofstream &fout)
 	fout << "Course" << endl;
 	CourseInfo info = curCourse->data;
 	fout << info.ID << endl;
-	fout << info.name << endl;
+	fout << info.course_name << endl;
+	fout << info.class_name << endl;
 	fout << info.teacher_name << endl;
 	fout << info.credit << endl;
 	fout << info.max_student << endl;
@@ -85,7 +86,8 @@ void importCourse(CourseNode *&curCourse, ifstream &fin, string &type)
 {
 	CourseInfo info = curCourse->data;
 	fin >> info.ID;
-	fin >> info.name;
+	fin >> info.course_name;
+	fin >> info.class_name;
 	fin >> info.teacher_name;
 	fin >> info.credit;
 	fin >> info.max_student;

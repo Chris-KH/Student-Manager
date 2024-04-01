@@ -5,7 +5,8 @@
 struct CourseInfo
 {
     string ID;
-    string name;
+    string course_name;
+    string class_name;
     string teacher_name;
     int credit;
     int max_student;
@@ -15,7 +16,8 @@ struct CourseInfo
     CourseInfo()
     {
         ID = "";
-        name = "";
+        course_name = "";
+        class_name = "";
         teacher_name = "";
         credit = 4;
         max_student = 50;
@@ -38,6 +40,9 @@ void importScoreboard(ifstream &fin, CourseNode *&courses);
 void viewTheScoreboardOfCourse(CourseNode *courses);
 
 void removeStudentFromCourse(CourseNode *head, string course_id, string student_id);
+void viewListOfCourse(CourseNode* head);
+
+//choose year -> semester
 
 // void updateStudentResult(StudentNode *Student);
 
@@ -63,8 +68,6 @@ void updateCourseIn4(CourseNode* head, string course_id);
 void addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student);
 
 void deleteACourse(CourseNode* head, string course_id);
-
-void viewListOfCourse(CourseNode* head); //choose year -> semester
 
 void exportStudentOfCourse(CourseInfo course, ofstream& fout); //choose year -> semester -> course
 
