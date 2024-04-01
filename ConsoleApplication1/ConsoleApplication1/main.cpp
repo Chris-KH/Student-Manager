@@ -286,10 +286,10 @@ int main()
                     switch (studentChoice)
                     {
                     case 1:
-                        // viewStudentCourse(string student_id, CourseNode* head); //in Course.h
+                        // viewStudentCourse(string student_id, CourseNode* head); //đang code ở course.cpp
                         break;
                     case 2:
-                        // viewStudentScoreboard(string student_id, CourseNode* head); //in Course.h
+                        // viewStudentScoreboard(string student_id, CourseNode* head); //đang code ở course.cpp
                         break;
                     case 3:
                         viewProfileInfo(logged_in);
