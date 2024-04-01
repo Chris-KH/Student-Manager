@@ -182,6 +182,7 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
+                        else cout << "Please choose semester first.\n";
                         break;
                     case 9:
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
@@ -196,7 +197,10 @@ int main()
                         }
                         break;
                     case 11:
-                        // deleteACourse(CourseNode* head, string course_id); in Course.h
+                        if (curYear && curSes) {
+                            deleteACourse(curSes);
+                        }
+                        else cout << "Please choose semester first.\n";
                         break;
                     case 12:
                         int choice;
