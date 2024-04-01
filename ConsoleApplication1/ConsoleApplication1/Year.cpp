@@ -176,11 +176,24 @@ void viewAListOfClasses(YearNode* head) {
 		cout << "This year does not exist.\n";
 		return;
 	}
-	cout << "List of class in " << temp->data << ":\n";
+	cout << "List of classes in " << temp->data << ":\n";
 	ClassNode* cur = temp->classes;
 	while (cur) {
 		cout << cur->data.name << "\n";
 		cur = cur->pNext;
+	}
+}
+
+void viewAllClasses(YearNode* head) {
+	YearNode* curYear = head;
+	while (curYear) {
+		cout << "List of classes in " << curYear->data << ":\n";
+		ClassNode* curClass = curYear->classes;
+		while (curClass) {
+			cout << curClass->data.name << "\n";
+			curClass = curClass->pNext;
+		} 
+		curYear = curYear->pNext;
 	}
 }
 
@@ -227,7 +240,7 @@ void createSemester(YearNode* head, SemesterInfo *&curSes) {
 	a.end.year = y2;
 	temp->semester[ses - 1] = a;
 	cout << "Create semester successfully.\n";
-	curSes = &a;
+	curSes = &temp->semester[ses-1];
 }
 
 void deleteSemester(YearNode* head) {

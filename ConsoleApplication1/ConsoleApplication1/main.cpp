@@ -168,10 +168,10 @@ int main()
                         addCourse(curSes, curCourse);
                         break;
                     case 6:
-                        // viewListOfCourse(curSes->course); choose year->semester //in Course.h
+                        viewListOfCourse(headCourse); //choose year -> semester //in Course.h
                         break;
                     case 7:
-                        // updateCourseIn4(CourseNode* head, string course_id); //in Course.h
+                        // updateCourseInfo(CourseNode* head, string course_id); //in Course.h
                         break;
                     case 8:
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
@@ -183,7 +183,17 @@ int main()
                         // deleteACourse(CourseNode* head, string course_id); in Course.h
                         break;
                     case 11:
-                        viewAListOfClasses(headYear);
+                        int choice;
+                        cout << "   1.View all classes.\n";
+                        cout << "   2.View classes in a school year.\n";
+                        cout << ">>>Your choice: "; cin >> choice;
+                        if (choice == 1) {
+                            viewAllClasses(headYear);
+                        }
+                        else if (choice == 2) {
+                            viewAListOfClasses(headYear);
+                        }
+                        else cout << "Wrong option!!!\n";
                         break;
                     case 12:
                         viewListOfStudentInClass(headYear); // in Class.h

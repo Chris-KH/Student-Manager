@@ -32,7 +32,10 @@ struct CourseNode
     StudentNode *student;
     CourseNode *pNext;
 
-    CourseNode() : student(nullptr), pNext(nullptr) {}
+    CourseNode() {
+        student = nullptr;
+        pNext = nullptr;
+    }
 };
 
 void importScoreboard(ifstream &fin, CourseNode *&courses);
