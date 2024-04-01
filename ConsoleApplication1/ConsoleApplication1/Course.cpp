@@ -78,6 +78,18 @@ void removeStudentFromCourse(CourseNode *head, string course_id, string student_
     }
 }
 
+StudentNode* findStudentInACourse(string student_id, CourseNode* curCourse)
+{
+    StudentNode* curStu = curCourse->student;
+    while (curStu != nullptr)
+    {
+        if (curStu->data.ID == student_id)
+            return curStu;
+        curStu = curStu->pNext;
+    }
+    return nullptr;
+}
+
 void  viewStudentCourse(string student_id, CourseNode* head) 
 //giả sử đã biết được semester -> biết headCourse. Cách để chọn semester như thế nào sẽ code sau 
 {
@@ -85,16 +97,9 @@ void  viewStudentCourse(string student_id, CourseNode* head)
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
-        StudentNode* curStu = curCourse->student;
-        while (curStu != nullptr)
-        {
-            if (curStu->data.ID == student_id)
-            {
-                cout << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
-                break;
-            }
-            curStu = curStu->pNext;
-        }
+        StudentNode* curStu = findStudentInACourse(student_id, curCourse);
+        if (curStu != nullptr)
+            cout << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
         curCourse = curCourse->pNext;
     }
 
@@ -107,22 +112,16 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
-        StudentNode* curStu = curCourse->student;
-        while (curStu != nullptr)
+        StudentNode *curStu = findStudentInACourse(student_id, curCourse);
+        if (curStu!=nullptr)
         {
-            if (curStu->data.ID == student_id)
-            {
-                cout << "Course "<<curCourse->data.course_name << " - " << curCourse->data.ID << endl;
-                cout << "Total: " << curStu->data.score.total << endl;
-                cout << "Final: " << curStu->data.score.final << endl;
-                cout << "Midterm: " << curStu->data.score.midterm << endl;
-                cout << "Bonus: " << curStu->data.score.bonus << endl;
-                
-                break;
-            }
-            curStu = curStu->pNext;
+            StudentNode* curStu = curCourse->student;
+            cout << "Course " << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
+            cout << "Total: " << curStu->data.score.total << endl;
+            cout << "Final: " << curStu->data.score.final << endl;
+            cout << "Midterm: " << curStu->data.score.midterm << endl;
+            cout << "Bonus: " << curStu->data.score.bonus << endl;
         }
         curCourse = curCourse->pNext;
     }
-
 }

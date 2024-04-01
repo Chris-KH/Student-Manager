@@ -48,6 +48,7 @@ void viewListOfCourse(CourseNode* head);
 
 void viewListOfStudentInCourse(CourseNode* head, string course_id);
 
+StudentNode* findStudentInACourse(string student_id, CourseNode* curCourse);
 //choose year -> semester
 
 // void updateStudentResult(StudentNode *Student);
