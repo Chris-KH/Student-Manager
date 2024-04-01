@@ -30,5 +30,5 @@ void exportClassData(ClassNode* classes, ofstream& fout);
 
 ClassNode* findClass(ClassNode* head);
 
-void deleteClasses(ClassNode*& head);
+void deAlocatedClassesData(ClassNode*& head);
 

@@ -43,3 +43,11 @@ void exportStudentInClass(StudentNode *head, ofstream &fout)
 		head = head->pNext;
 	}
 }
+
+void deAllocateDataStudent(StudentNode* &head) {
+	while (head) {
+		StudentNode* temp = head;
+		head = head->pNext;
+		delete temp;
+	}
+}

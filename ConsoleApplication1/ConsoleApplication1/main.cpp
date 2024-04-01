@@ -241,31 +241,10 @@ int main()
                         // viewScoreboardOfClass(); //in Class.h
                         break;
                     case 23:
-                        // Export class
-                        yy = headYear;
-                        while (yy)
-                        {
-                            string direct = "DataFile/" + yy->data + "Classes.txt";
-                            fout.open(direct);
-                            if (fout.is_open())
-                            {
-                                exportClassData(yy->classes, fout);
-                                fout.close();
-                            }
-                            else
-                            {
-                                cout << "File is not open. Export failed.\n";
-                                break;
-                            }
-                            yy = yy->pNext;
-                        }
-                        cout << "Export classes successfully.\n";
-                        break;
-                    case 24:
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
                         break;
-                    case 25:
+                    case 24:
                         exit = true;
                         break;
                     default:
@@ -325,15 +304,31 @@ int main()
         else
             cout << "Login failed. Please check your username and password and try again.\n";
     }
-    /*
-    fout.open("ImportExportFile/ClassData.txt");
-    if (fout.is_open())
-        exportClassData(headClass, fout);
-    else
-        cout << "Unable to export class data.\n";
-    fout.close();
-    */
 
-    deAllocateDataYear(headYear);
+    //Delete users
+    deleteUserData(users);
+
+    //Delete students in class
+    yy = headYear;
+    while (yy) {
+        ClassNode* cc = yy->classes;
+        while (cc) {
+            deAllocateDataStudent(cc->student);
+            cc = cc->pNext;
+        }
+        yy = yy->pNext;
+    }
+
+    //Delete classes
+    yy = headYear;
+    while (yy) {
+        deAlocatedClassesData(yy->classes);
+        yy = yy->pNext;
+    }
+    yy = headYear;
+    //Delete student in course
+    //Delete courses in semester
+    //Delete semester in year
+    //Delete year
     return 0;
 }

@@ -11,5 +11,5 @@ void importCourse(CourseNode*& curCourse, ifstream& fi, string& type);
 void deAllocateDataYear(YearNode *headYear);
 void deAllocateDataSemester(YearNode *headYear);
 void deAllocateDataCourse(CourseNode *headCourse);
-void deAllocateDataStudent(StudentNode *headStudent);
+
 // void deAllocateViewingManagement()

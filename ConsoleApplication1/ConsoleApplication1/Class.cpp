@@ -37,7 +37,7 @@ ClassNode* findClass(ClassNode* head) {
 }
 
 
-void deleteClasses(ClassNode*& head) {
+void deAlocatedClassesData(ClassNode*& head) {
 	while (head) {
 		ClassNode* temp = head;
 		head = head->pNext;

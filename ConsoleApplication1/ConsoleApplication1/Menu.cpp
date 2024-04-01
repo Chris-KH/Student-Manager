@@ -40,9 +40,8 @@ void menuForStaff()
     cout << "   20. View the scoreboard of a course.\n";
     cout << "   21. Update a student's result.\n";
     cout << "   22. View the scoreboard of a class.\n";
-    cout << "   23. Export classes data.\n";
-    cout << "   24. Logout.\n";
-    cout << "   25. End program.\n";
+    cout << "   23. Logout.\n";
+    cout << "   24. End program.\n";
     cout << ">>>>Staff choice: ";
 }
 void menuForStudent()

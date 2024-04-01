@@ -121,18 +121,6 @@ void deAllocateDataYear(YearNode *headYear)
 	}
 }
 
-void deAllocateDataClass(ClassNode* headClass)
-{
-	ClassNode* currentClass = headClass;
-	while (currentClass != nullptr)
-	{
-		deAllocateDataStudent(currentClass->student);
-		ClassNode* temp = currentClass;
-		currentClass = currentClass->pNext;
-		delete temp;
-	}
-}
-
 void deAllocateDataSemester(YearNode *headYear)
 {
 	YearNode *currentYear = headYear;
@@ -149,16 +137,6 @@ void deAllocateDataCourse(CourseNode *headCourse)
 		deAllocateDataStudent(currentCourse->student);
 		CourseNode *temp = currentCourse;
 		currentCourse = currentCourse->pNext;
-		delete temp;
-	}
-}
-void deAllocateDataStudent(StudentNode *headStudent)
-{
-	StudentNode *currentStudent = headStudent;
-	while (currentStudent != nullptr)
-	{
-		StudentNode *temp = currentStudent;
-		currentStudent = currentStudent->pNext;
 		delete temp;
 	}
 }
