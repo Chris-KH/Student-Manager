@@ -125,3 +125,7 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
         curCourse = curCourse->pNext;
     }
 }
+void updateCourseIn4(CourseNode* head, string course_id)
+{
+    
+}

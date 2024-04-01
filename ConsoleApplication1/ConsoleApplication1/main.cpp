@@ -175,7 +175,8 @@ int main()
                         viewListOfCourse(headCourse); //choose year -> semester //in Course.h
                         break;
                     case 8:
-                        // updateCourseInfo(CourseNode* head, string course_id); //in Course.h
+                        CourseInfo* curCourse;
+                        updateCourseIn4(headCourse, curCourse->ID); //in Course.h
                         break;
                     case 9:
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h

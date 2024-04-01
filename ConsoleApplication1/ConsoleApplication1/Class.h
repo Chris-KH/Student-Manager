@@ -32,5 +32,3 @@ ClassNode* findClass(ClassNode* head);
 
 void deleteClasses(ClassNode*& head);
 
-
-

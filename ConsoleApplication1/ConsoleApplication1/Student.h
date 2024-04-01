@@ -35,7 +35,6 @@ void importStudentToClass(StudentNode *&head, ifstream &fin);
 
 void exportStudentInClass(StudentNode *head, ofstream &fout);
 
-
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 
@@ -43,7 +42,7 @@ void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
 
 void viewListofCourse(CourseNode* course);
 
-void updateCourseIn4(CourseNode* head, string course_id);
+
 
 void addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student);
 
