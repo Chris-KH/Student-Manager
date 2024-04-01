@@ -20,6 +20,7 @@ void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin) {
 			temp->semester[i].end.day = end.substr(0, 2);
 			temp->semester[i].end.month = end.substr(3, 2);
 			temp->semester[i].end.year = end.substr(6, 4);
+			temp->semester[i].order = i + 1;
 		}
 		if (tail == nullptr) {
 			head = temp;
@@ -247,15 +248,13 @@ SemesterInfo* chooseASemester(YearNode* head, YearNode* temp) {
 	if (curYear == nullptr) {
 		cout << "This school year does not exist.\n";
 		cout << "Please choose an existed year to enter the semester.\n";
-		chooseASemester(head, temp);
+		return nullptr;
 	}
+	temp = curYear;
 	int ses;
 	cout << "Choose semester: "; cin >> ses;
 	while (ses != 1 && ses != 2 && ses != 3) {
 		cout << "Invalid semester.\n";
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << "Please choose the right semester.\n";
 		cout << "Choose semester: "; cin >> ses;
 	}
 	if (curYear->semester[ses - 1].created == false) {

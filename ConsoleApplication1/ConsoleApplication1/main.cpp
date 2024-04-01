@@ -175,8 +175,13 @@ int main()
                         viewListOfCourse(headCourse); //choose year -> semester //in Course.h
                         break;
                     case 8:
-                        CourseInfo* curCourse;
-                        updateCourseIn4(headCourse, curCourse->ID); //in Course.h
+                        if (curYear && curSes) {
+                            curCourse = findCourse(curSes);
+                            if (curCourse) {
+                                updateCourseIn4(headCourse);
+                            }
+                            else cout << "This course does not exist.\n";
+                        }
                         break;
                     case 9:
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
@@ -201,13 +206,20 @@ int main()
                         else cout << "Wrong option!!!\n";
                         break;
                     case 13:
-                        viewListOfStudentInClass(headYear); // in Class.h
+                        viewListOfStudentInClass(headYear); 
                         break;
                     case 14:
-                        viewListOfCourse(curSes->course);
+                        curSes = chooseASemester(headYear, curYear);
+                        if (curSes && curYear) {
+                            cout << "List of courses in semester " << curSes->order << "of school year " << curYear->data << ":\n";
+                            viewListOfCourse(curSes->course);
+                        }
                         break;
                     case 15:
-                        viewListOfStudentInCourse(curSes->course, "");
+                        curSes = chooseASemester(headYear, curYear);
+                        if (curSes && curYear) {
+                            viewListOfStudentInCourse(curSes->course, "");
+                        }
                         break;
                     case 16:
                         viewProfileInfo(logged_in);
