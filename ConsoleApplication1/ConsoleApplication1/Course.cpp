@@ -114,7 +114,7 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
     }
 }
 
-void updateCourseIn4(CourseNode* curCourse) {
+void updateCourseIn4(CourseNode*& curCourse) {
     cout << "Course ID: \n";
     cin >> curCourse->data.ID;
 
