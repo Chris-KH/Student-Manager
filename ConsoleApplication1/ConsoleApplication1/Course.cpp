@@ -36,56 +36,42 @@ void viewListOfStudentInCourse(CourseNode *head, string course_id)
             currrentCourse = currrentCourse->pNext;
     }
 }
-/*
-void removeStudentFromCourse(CourseNode *head, string course_id, string student_id)
-{
-    CourseNode *currrentCourse = head;
-    if (course_id == "")
-    {
-        viewListOfCourse(head);
-        cout << "Please choose a course!, example: CS162 (type in CS162)\n"
-             << "Your choice: ";
-        getline(cin, course_id);
-        cin.ignore();
+
+void removeStudentFromCourse(CourseNode*& head) {
+    StudentNode* curStudent = findStudentInACourse(head);
+    if (curStudent == nullptr) {
+        cout << "This student is not in the course.\n";
+        return;
     }
-    while (currrentCourse != nullptr)
-    {
-        if (currrentCourse->data.ID == course_id)
-        {
-            viewListOfStudentInCourse(head, course_id);
-            cout << "Please choose a student to remove that student from this course, example: 20125001 (type in 23125001)\n"
-                 << "Your choice: ";
-            getline(cin, student_id);
-            cin.ignore();
-            StudentNode *currentStudent = currrentCourse->student, *previousCurrentStudent = nullptr;
-            while (currentStudent != nullptr)
-            {
-                if (currentStudent->data.ID == student_id)
-                {
-                    previousCurrentStudent->pNext = currentStudent->pNext;
-                    StudentNode *tempStudent = currentStudent;
-                    currentStudent = currentStudent->pNext;
-                    delete tempStudent;
-                }
-                else
-                {
-                    previousCurrentStudent = currentStudent;
-                    currentStudent = currentStudent->pNext;
-                }
-            }
+    StudentNode* headStudent = head->student;
+    if (curStudent == head->student) {
+        StudentNode* temp = curStudent;
+        head->student = head->student->pNext;
+        delete temp;
+        cout << "Delete student successfully.\n";
+        return;
+    }
+    StudentNode* prev = headStudent;
+    StudentNode* cur = headStudent->pNext;
+    while (cur) {
+        if (cur == curStudent) {
+            StudentNode* temp = cur;
+            prev->pNext = cur->pNext;
+            delete temp;
+            cout << "Delete student successfully.\n";
+            return;
         }
-        else
-            currrentCourse = currrentCourse->pNext;
+        cur = cur->pNext;
     }
 }
-*/
 
-StudentNode* findStudentInACourse(string student_id, CourseNode* curCourse)
-{
+StudentNode* findStudentInACourse(CourseNode* curCourse) {
+    string s;
+    cout << "Input student ID: "; cin >> s;
     StudentNode* curStu = curCourse->student;
     while (curStu != nullptr)
     {
-        if (curStu->data.ID == student_id)
+        if (curStu->data.ID == s)
             return curStu;
         curStu = curStu->pNext;
     }
@@ -99,7 +85,7 @@ void  viewStudentCourse(string student_id, CourseNode* head)
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
-        StudentNode* curStu = findStudentInACourse(student_id, curCourse);
+        StudentNode* curStu = findStudentInACourse(curCourse);
         if (curStu != nullptr)
             cout << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
         curCourse = curCourse->pNext;
@@ -114,7 +100,7 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
-        StudentNode *curStu = findStudentInACourse(student_id, curCourse);
+        StudentNode *curStu = findStudentInACourse(curCourse);
         if (curStu!=nullptr)
         {
             StudentNode* curStu = curCourse->student;

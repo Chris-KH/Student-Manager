@@ -187,7 +187,13 @@ int main()
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
                         break;
                     case 10:
-                        //removeStudentFromCourse(curSes->course, "", "");
+                        if (curYear && curSes) {
+                            curCourse = findCourse(curSes);
+                            if (curCourse) {
+                                removeStudentFromCourse(curCourse);
+                            }
+                            else cout << "This course does not exist.\n";
+                        }
                         break;
                     case 11:
                         // deleteACourse(CourseNode* head, string course_id); in Course.h

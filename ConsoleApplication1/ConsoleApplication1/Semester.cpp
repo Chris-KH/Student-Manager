@@ -55,3 +55,30 @@ CourseNode* findCourse(SemesterInfo* head) {
     }
     return nullptr;
 }
+
+void deleteACourse(SemesterInfo*& head) {
+    CourseNode* curCourse = findCourse(head);
+    if (curCourse == nullptr) {
+        cout << "This course does not exist in this semester.\n";
+        return;
+    }
+    CourseNode* headCourse = head->course;
+    if (curCourse == headCourse) {
+        CourseNode* temp = headCourse;
+        head->course = head->course->pNext;
+        cout << "Delete course successfully.\n";
+        delete temp;
+    }
+    CourseNode* prev = headCourse;
+    CourseNode* cur = headCourse->pNext;
+    while (cur) {
+        if (cur == curCourse) {
+            CourseNode* temp = cur;
+            prev->pNext = cur->pNext;
+            delete temp;
+            cout << "Delete course successfully.\n";
+            return;
+        }
+        cur = cur->pNext;
+    }
+}

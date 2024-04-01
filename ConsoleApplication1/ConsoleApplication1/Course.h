@@ -38,17 +38,18 @@ struct CourseNode
     }
 };
 
+
 void importScoreboard(ifstream &fin, CourseNode *&courses);
 
 void viewTheScoreboardOfCourse(CourseNode *courses);
 
-void removeStudentFromCourse(CourseNode *head, string course_id, string student_id);
+void removeStudentFromCourse(CourseNode*& head);
 
 void viewListOfCourse(CourseNode* head);
 
 void viewListOfStudentInCourse(CourseNode* head, string course_id);
 
-StudentNode* findStudentInACourse(string student_id, CourseNode* curCourse);
+StudentNode* findStudentInACourse(CourseNode* curCourse);
 //choose year -> semester
 
 void updateCourseIn4(CourseNode* curCourse);

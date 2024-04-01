@@ -15,6 +15,8 @@ struct SemesterInfo {
 	}
 };  
 
+void deleteACourse(SemesterInfo*& head);
+
 void addCourse(SemesterInfo* &curSes, CourseNode*& curCourse);
 
 CourseNode* findCourse(SemesterInfo* head);
