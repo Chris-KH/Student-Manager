@@ -40,7 +40,10 @@ void importScoreboard(ifstream &fin, CourseNode *&courses);
 void viewTheScoreboardOfCourse(CourseNode *courses);
 
 void removeStudentFromCourse(CourseNode *head, string course_id, string student_id);
+
 void viewListOfCourse(CourseNode* head);
+
+void viewListOfStudentInCourse(CourseNode* head, string course_id);
 
 //choose year -> semester
 
@@ -72,8 +75,6 @@ void deleteACourse(CourseNode* head, string course_id);
 void exportStudentOfCourse(CourseInfo course, ofstream& fout); //choose year -> semester -> course
 
 void deleteAllCourse(CourseNode*& head);
-
-void viewListOfStudentInCourse(CourseNode* head, string course_id);
 
 void ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name);
 

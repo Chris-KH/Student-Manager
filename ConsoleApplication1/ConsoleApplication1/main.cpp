@@ -9,7 +9,7 @@ int main()
     CourseNode *headCourse = nullptr;
     YearNode *tailYear = nullptr;
     ClassNode *curClass = nullptr;
-    SemesterInfo* curSes = nullptr;
+    SemesterInfo *curSes = nullptr;
     CourseNode *curCourse = nullptr;
     bool exit = false;
 
@@ -29,28 +29,32 @@ int main()
     UserNode *users = nullptr;
 
     fin.open("DataFile/Users.txt");
-    if (fin.is_open()) {
+    if (fin.is_open())
+    {
         importUserData(users, fin);
         cout << "Successful.\n";
         fin.close();
     }
-    else {
+    else
+    {
         cout << "Failed.\n";
         exit = true;
     }
-    
+
     cout << "<>Load school years data...";
     fin.open("DataFile/SchoolYear.txt");
-    if (fin.is_open()) {
+    if (fin.is_open())
+    {
         importSchoolYearData(headYear, tailYear, fin);
         cout << "Succesful.\n";
         fin.close();
     }
-    else {
+    else
+    {
         cout << "Failed.\n";
-        exit = true;;
+        exit = true;
+        ;
     }
-    
 
     cout << "<>Load classes data...";
     YearNode *yy = headYear;
@@ -58,7 +62,7 @@ int main()
     {
         string direct = "DataFile/" + yy->data + "Classes.txt";
         fin.open(direct);
-        ClassNode* tail = nullptr;
+        ClassNode *tail = nullptr;
         if (fin.is_open())
         {
             importClassData(yy->classes, tail, fin);
@@ -70,37 +74,43 @@ int main()
         }
         yy = yy->pNext;
     }
-    if (exit) cout << "Failed.\n";
-    else cout << "Successful.\n";
-
+    if (exit)
+        cout << "Failed.\n";
+    else
+        cout << "Successful.\n";
 
     bool ok = false;
     cout << "<>Load students in class...";
     yy = headYear;
-    while (yy) {
-        ClassNode* temp = yy->classes;
-        while (temp) 
+    while (yy)
+    {
+        ClassNode *temp = yy->classes;
+        while (temp)
         {
             string direct = "DataFile/" + temp->data.name + ".csv";
             fin.open(direct);
-            if (fin.good()) {
+            if (fin.good())
+            {
                 importStudentToClass(temp->student, fin);
                 fin.close();
             }
-            else {
+            else
+            {
                 ok = true;
             }
             temp = temp->pNext;
         }
         yy = yy->pNext;
     }
-    if (ok) cout << "Failed.\n";
-    else cout << "Successful.\n";
+    if (ok)
+        cout << "Failed.\n";
+    else
+        cout << "Successful.\n";
 
     exit = !(ok == false && exit == false);
     // User log in
     UserNode *logged_in = nullptr;
-    
+
     while (exit == false && continueProgram())
     {
         if (login(users, logged_in))
@@ -115,7 +125,8 @@ int main()
                 {
                     menuForStaff();
                     int staffChoice;
-                    while (!(cin >> staffChoice)) {
+                    while (!(cin >> staffChoice))
+                    {
                         cout << ">>>>Wrong input. Staff choice: ";
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -123,37 +134,41 @@ int main()
                     switch (staffChoice)
                     {
                     case 1:
-                        //Tương tự case 3
+                        // Tương tự case 3
                         fout.open("DataFile/SchoolYear.txt");
-                        if (fout.is_open()) {
+                        if (fout.is_open())
+                        {
                             createASchoolYear(headYear, tailYear);
                             exportSchoolYearData(headYear, fout);
                             fout.close();
                         }
-                        else cout << "Create school year failed.\n";
+                        else
+                            cout << "Create school year failed.\n";
                         break;
                     case 2:
-                        //Add class thì sau đó phải tạo một file csv tương ứng lớp đó
+                        // Add class thì sau đó phải tạo một file csv tương ứng lớp đó
                         addNewClass(headYear, fout);
                         break;
                     case 3:
-                        //Phải mở đc file và export đc thì mới tạo thành công do nếu để export ở cuối chương trình nếu có bug ở chỗ mở file thì coi như mấy cái mình add là vô nghĩa vì k export đc
+                        // Phải mở đc file và export đc thì mới tạo thành công do nếu để export ở cuối chương trình nếu có bug ở chỗ mở file thì coi như mấy cái mình add là vô nghĩa vì k export đc
                         fout.open("DataFile/SchoolYear.txt");
-                        if (fout.is_open()) {
+                        if (fout.is_open())
+                        {
                             createSemester(headYear, curSes);
                             exportSchoolYearData(headYear, fout);
                             fout.close();
                         }
-                        else cout << "Create semester failed.\n";
+                        else
+                            cout << "Create semester failed.\n";
                         break;
                     case 4:
                         addNewStudentToClass(headYear, fin);
                         break;
                     case 5:
-                        addCourse(curSes,curCourse);
+                        addCourse(curSes, curCourse);
                         break;
                     case 6:
-                        // viewListOfCourse(CourseNode* head); //choose year -> semester //in Course.h
+                        // viewListOfCourse(curSes->course); choose year->semester //in Course.h
                         break;
                     case 7:
                         // updateCourseIn4(CourseNode* head, string course_id); //in Course.h
@@ -162,7 +177,7 @@ int main()
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
                         break;
                     case 9:
-                        // removeStudentFromCourse(CourseNode* head, string course_id, string student_id); //in Course.h
+                        removeStudentFromCourse(curSes->course, "", "");
                         break;
                     case 10:
                         // deleteACourse(CourseNode* head, string course_id); in Course.h
@@ -171,25 +186,27 @@ int main()
                         viewAListOfClasses(headYear);
                         break;
                     case 12:
-                        viewListOfStudentInClass(headYear); //in Class.h
+                        viewListOfStudentInClass(headYear); // in Class.h
                         break;
                     case 13:
-                        // void viewListofCourse(CourseNode* course); //in Course.h
+                        viewListOfCourse(curSes->course);
                         break;
                     case 14:
-                        // viewListOfStudentInCourse(CourseNode* head, string course_id); //in Course.h
+                        viewListOfStudentInCourse(curSes->course, "");
                         break;
                     case 15:
                         viewProfileInfo(logged_in);
                         break;
                     case 16:
                         fout.open("DataFile/Users.txt");
-                        if (fout.is_open()) {
+                        if (fout.is_open())
+                        {
                             changePassword(logged_in);
                             exportUserData(users, fout);
                             fout.close();
                         }
-                        else {
+                        else
+                        {
                             cout << "Change password failed.\n";
                         }
                         break;
@@ -209,16 +226,19 @@ int main()
                         // viewScoreboardOfClass(); //in Class.h
                         break;
                     case 22:
-                        //Export class
+                        // Export class
                         yy = headYear;
-                        while (yy) {
+                        while (yy)
+                        {
                             string direct = "DataFile/" + yy->data + "Classes.txt";
                             fout.open(direct);
-                            if (fout.is_open()) {
+                            if (fout.is_open())
+                            {
                                 exportClassData(yy->classes, fout);
                                 fout.close();
                             }
-                            else {
+                            else
+                            {
                                 cout << "File is not open. Export failed.\n";
                                 break;
                             }
@@ -243,7 +263,8 @@ int main()
                     menuForStudent();
                     int studentChoice;
                     cin >> studentChoice;
-                    while (!(cin >> studentChoice)) {
+                    while (!(cin >> studentChoice))
+                    {
                         cout << ">>>>Wrong input. Student choice: ";
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -261,12 +282,14 @@ int main()
                         break;
                     case 4:
                         fout.open("DataFile/Users.txt");
-                        if (fout.is_open()) {
+                        if (fout.is_open())
+                        {
                             changePassword(logged_in);
                             exportUserData(users, fout);
                             fout.close();
                         }
-                        else {
+                        else
+                        {
                             cout << "Change password failed.\n";
                         }
                         break;
