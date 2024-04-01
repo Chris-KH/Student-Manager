@@ -197,7 +197,7 @@ void viewAllClasses(YearNode* head) {
 	}
 }
 
-void createSemester(YearNode* head, SemesterInfo *&curSes) {
+void createSemester(YearNode* head) {
 	if (head == nullptr) {
 		cout << "Year data is empty.\n";
 		return;
@@ -240,7 +240,25 @@ void createSemester(YearNode* head, SemesterInfo *&curSes) {
 	a.end.year = y2;
 	temp->semester[ses - 1] = a;
 	cout << "Create semester successfully.\n";
-	curSes = &temp->semester[ses-1];
+}
+
+SemesterInfo* chooseASemester(YearNode* head, YearNode* temp) {
+	YearNode* curYear = findSchoolYear(head);
+	if (curYear == nullptr) {
+		cout << "This school year does not exist.\n";
+		return;
+	}
+	int ses;
+	cout << "Choose semester: "; cin >> ses;
+	if (ses != 1 && ses != 2 && ses != 3) {
+		cout << "Invalid semester.\n";
+		return;
+	}
+	if (curYear->semester[ses - 1].created == false) {
+		cout << "This semester has not been created yet.\n";
+		return;
+	}
+	return &curYear->semester[ses - 1];
 }
 
 void deleteSemester(YearNode* head) {

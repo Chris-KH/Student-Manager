@@ -5,6 +5,7 @@ int main()
     ifstream fin;
     ofstream fout;
     YearNode *headYear = nullptr;
+    YearNode* curYear = nullptr;
     ClassNode *headClass = nullptr;
     CourseNode *headCourse = nullptr;
     YearNode *tailYear = nullptr;
@@ -154,7 +155,7 @@ int main()
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open())
                         {
-                            createSemester(headYear, curSes);
+                            createSemester(headYear);
                             exportSchoolYearData(headYear, fout);
                             fout.close();
                         }
@@ -162,27 +163,30 @@ int main()
                             cout << "Create semester failed.\n";
                         break;
                     case 4:
-                        addNewStudentToClass(headYear, fin);
+                        curSes = chooseASemester(headYear, curYear);
                         break;
                     case 5:
-                        addCourse(curSes, curCourse);
+                        addNewStudentToClass(headYear, fin);
                         break;
                     case 6:
-                        viewListOfCourse(headCourse); //choose year -> semester //in Course.h
+                        addCourse(curSes, curCourse);
                         break;
                     case 7:
-                        // updateCourseInfo(CourseNode* head, string course_id); //in Course.h
+                        viewListOfCourse(headCourse); //choose year -> semester //in Course.h
                         break;
                     case 8:
-                        // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
+                        // updateCourseInfo(CourseNode* head, string course_id); //in Course.h
                         break;
                     case 9:
-                        removeStudentFromCourse(curSes->course, "", "");
+                        // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
                         break;
                     case 10:
-                        // deleteACourse(CourseNode* head, string course_id); in Course.h
+                        //removeStudentFromCourse(curSes->course, "", "");
                         break;
                     case 11:
+                        // deleteACourse(CourseNode* head, string course_id); in Course.h
+                        break;
+                    case 12:
                         int choice;
                         cout << "   1.View all classes.\n";
                         cout << "   2.View classes in a school year.\n";
@@ -195,19 +199,19 @@ int main()
                         }
                         else cout << "Wrong option!!!\n";
                         break;
-                    case 12:
+                    case 13:
                         viewListOfStudentInClass(headYear); // in Class.h
                         break;
-                    case 13:
+                    case 14:
                         viewListOfCourse(curSes->course);
                         break;
-                    case 14:
+                    case 15:
                         viewListOfStudentInCourse(curSes->course, "");
                         break;
-                    case 15:
+                    case 16:
                         viewProfileInfo(logged_in);
                         break;
-                    case 16:
+                    case 17:
                         fout.open("DataFile/Users.txt");
                         if (fout.is_open())
                         {
@@ -220,22 +224,22 @@ int main()
                             cout << "Change password failed.\n";
                         }
                         break;
-                    case 17:
+                    case 18:
                         // ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name); //in Course.h
                         break;
-                    case 18:
+                    case 19:
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
-                    case 19:
+                    case 20:
                         // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); //in Course.h
                         break;
-                    case 20:
+                    case 21:
                         // updateAStudentResult(); //in Student.h
                         break;
-                    case 21:
+                    case 22:
                         // viewScoreboardOfClass(); //in Class.h
                         break;
-                    case 22:
+                    case 23:
                         // Export class
                         yy = headYear;
                         while (yy)
@@ -256,11 +260,11 @@ int main()
                         }
                         cout << "Export classes successfully.\n";
                         break;
-                    case 23:
+                    case 24:
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;
                         break;
-                    case 24:
+                    case 25:
                         exit = true;
                         break;
                     default:
