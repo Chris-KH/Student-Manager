@@ -43,6 +43,7 @@ void importScoreboard(ifstream &fin, CourseNode *&courses);
 void viewTheScoreboardOfCourse(CourseNode *courses);
 
 void removeStudentFromCourse(CourseNode *head, string course_id, string student_id);
+
 void viewListOfCourse(CourseNode* head);
 
 //choose year -> semester
