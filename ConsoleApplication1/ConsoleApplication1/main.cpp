@@ -111,9 +111,9 @@ int main()
     exit = !(ok == false && exit == false);
     // User log in
     UserNode *logged_in = nullptr;
-
     while (exit == false && continueProgram())
     {
+        system("cls");
         if (login(users, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";

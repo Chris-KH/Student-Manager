@@ -16,6 +16,7 @@ bool continueProgram()
 
 void menuForStaff()
 {
+    system("cls");
     cout << "All the functions for staff: Press a number to choose.\n";
     cout << "   1. Create a school year.\n";
     cout << "   2. Create classes.\n";
