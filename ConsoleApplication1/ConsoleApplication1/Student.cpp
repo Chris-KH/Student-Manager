@@ -1,10 +1,12 @@
-#include"Student.h"
+#include "Student.h"
 
-void importStudentToClass(StudentNode*& head, ifstream& fin) {
+void importStudentToClass(StudentNode *&head, ifstream &fin)
+{
 	string s;
-	StudentNode* tail = nullptr;
-	while (getline(fin, s)) {
-		StudentNode* temp = new StudentNode();
+	StudentNode *tail = nullptr;
+	while (getline(fin, s))
+	{
+		StudentNode *temp = new StudentNode();
 		stringstream ss(s);
 		getline(ss, temp->data.No, ',');
 		getline(ss, temp->data.ID, ',');
@@ -15,18 +17,22 @@ void importStudentToClass(StudentNode*& head, ifstream& fin) {
 		getline(ss, temp->data.dob.month, '/');
 		getline(ss, temp->data.dob.year, ',');
 		getline(ss, temp->data.social_id);
-		if (tail == nullptr) {
+		if (tail == nullptr)
+		{
 			head = temp;
 		}
-		else {
+		else
+		{
 			tail->pNext = temp;
 		}
 		tail = temp;
 	}
 }
 
-void exportStudentInClass(StudentNode* head, ofstream& fout) {
-	while (head) {
+void exportStudentInClass(StudentNode *head, ofstream &fout)
+{
+	while (head)
+	{
 		fout << head->data.No << ",";
 		fout << head->data.ID << ",";
 		fout << head->data.last_name << ",";

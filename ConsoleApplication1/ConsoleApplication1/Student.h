@@ -20,20 +20,21 @@ struct StudentInfo
     ScoreInfo score;
 };
 
-struct StudentNode 
+struct StudentNode
 {
     StudentInfo data;
-    StudentNode* pNext;
-    
-    StudentNode() {
+    StudentNode *pNext;
+
+    StudentNode()
+    {
         pNext = nullptr;
     }
 };
 
+void importStudentToClass(StudentNode *&head, ifstream &fin);
 
-void importStudentToClass(StudentNode*& head, ifstream& fin);
+void exportStudentInClass(StudentNode *head, ofstream &fout);
 
-void exportStudentInClass(StudentNode* head, ofstream& fout);
 
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
@@ -46,13 +47,11 @@ void updateCourseIn4(CourseNode* head, string course_id);
 
 void addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student);
 
-void removeStudentFromCourse(CourseNode* head, string course_id, string student_id);
-
 void deleteACourse(CourseNode* head, string course_id);
 
 void createNewStudentAccount(StudentNode students, UserNode*& head);
 
-void viewListOfStudentInClass(StudentNode* head);//choose class 
+void viewListOfStudentInClass(StudentNode* head);//choose class
 
 void viewListOfStudentInCourse(StudentNode* head); //choose year -> semester -> course
 
