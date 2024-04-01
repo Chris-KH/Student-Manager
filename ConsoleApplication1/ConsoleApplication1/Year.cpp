@@ -246,17 +246,21 @@ SemesterInfo* chooseASemester(YearNode* head, YearNode* temp) {
 	YearNode* curYear = findSchoolYear(head);
 	if (curYear == nullptr) {
 		cout << "This school year does not exist.\n";
-		return;
+		cout << "Please choose an existed year to enter the semester.\n";
+		chooseASemester(head, temp);
 	}
 	int ses;
 	cout << "Choose semester: "; cin >> ses;
-	if (ses != 1 && ses != 2 && ses != 3) {
+	while (ses != 1 && ses != 2 && ses != 3) {
 		cout << "Invalid semester.\n";
-		return;
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Please choose the right semester.\n";
+		cout << "Choose semester: "; cin >> ses;
 	}
 	if (curYear->semester[ses - 1].created == false) {
 		cout << "This semester has not been created yet.\n";
-		return;
+		createSemester(head);
 	}
 	return &curYear->semester[ses - 1];
 }
