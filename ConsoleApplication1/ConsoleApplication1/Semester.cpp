@@ -39,7 +39,7 @@ void addCourse(SemesterInfo* curSes, CourseNode*& curCourse)
     cin >> curCourse->data.day_of_week;
     
     cout << "Session: " << endl;
-    cout << "1. S1 (07:30)" << endl;
+    cout << "1. S1(07:30)" << endl;
     cout << "2. S2(09:30)" << endl;
     cout << "3. S3(13:30)" << endl;
     cout << "4. S4(15:30)" << endl;
