@@ -92,7 +92,7 @@ int main()
             fin.open(direct);
             if (fin.good())
             {
-                importStudentToClass(temp->student, fin);
+                importStudentToClass(nullptr, temp->student, fin);
                 fin.close();
             }
             else
@@ -166,7 +166,7 @@ int main()
                         curSes = chooseASemester(headYear, curYear);
                         break;
                     case 5:
-                        addNewStudentToClass(headYear, fin);
+                        addNewStudentToClass(users, headYear, fin);
                         break;
                     case 6:
                         addCourse(curSes, curCourse);
@@ -348,6 +348,7 @@ int main()
         yy = yy->pNext;
     }
     yy = headYear;
+
     //Delete student in course
     //Delete courses in semester
     //Delete semester in year

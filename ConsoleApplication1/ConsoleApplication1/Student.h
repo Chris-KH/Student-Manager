@@ -31,7 +31,7 @@ struct StudentNode
     }
 };
 
-void importStudentToClass(StudentNode *&head, ifstream &fin);
+void importStudentToClass(UserNode* users, StudentNode *&head, ifstream &fin);
 
 void exportStudentInClass(StudentNode *head, ofstream &fout);
 

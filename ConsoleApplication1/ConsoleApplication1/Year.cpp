@@ -116,10 +116,10 @@ YearNode* findSchoolYear(YearNode* head) {
 	return nullptr;
 }
 
-void addNewStudentToClass(YearNode* head, ifstream& fin) {
+void addNewStudentToClass(UserNode* users, YearNode* head, ifstream& fin) {
 	YearNode* curYear = findSchoolYear(head);
 	if (curYear == nullptr) {
-		cout << "This class does not exist.\n";
+		cout << "This year does not exist.\n";
 		return;
 	}
 	ClassNode* curClass = findClass(curYear->classes);
@@ -134,7 +134,7 @@ void addNewStudentToClass(YearNode* head, ifstream& fin) {
 	}
 	fin.open("DataFile/" + curClass->data.name + ".csv");
 	if (fin.is_open()) {
-		importStudentToClass(curClass->student, fin);
+		importStudentToClass(users, curClass->student, fin);
 		cout << "Student is added successfully.\n";
 		fin.close();
 	}
