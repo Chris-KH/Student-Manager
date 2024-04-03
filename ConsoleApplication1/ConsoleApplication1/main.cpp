@@ -349,9 +349,9 @@ int main()
     }
     yy = headYear;
 
-    //Delete student in course
-    //Delete courses in semester
-    //Delete semester in year
-    //Delete year
+    // Delete student in course
+    // Delete courses in semester
+    // Delete semester in year
+    // Delete year
     return 0;
 }
