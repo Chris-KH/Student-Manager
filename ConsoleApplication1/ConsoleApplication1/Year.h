@@ -21,6 +21,7 @@ struct YearNode
 	}
 };
 
+
 void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin);
 
 void exportSchoolYearData(YearNode* head, ofstream &fout);
