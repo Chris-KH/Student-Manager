@@ -1,14 +1,7 @@
 #include "Student.h"
 
-void importStudentToClass(UserNode* users, StudentNode *&head, ifstream &fin)
+void importStudentToClass(UserNode* &tailUser, StudentNode *&head, ifstream &fin)
 {
-	UserNode* curUser = nullptr;
-	if (users != nullptr)
-	{
-		curUser = users;
-		while (curUser->pNext != nullptr)
-			curUser = curUser->pNext;
-	}
 	string s;
 	StudentNode *tail = nullptr;
 	while (getline(fin, s))
@@ -24,7 +17,7 @@ void importStudentToClass(UserNode* users, StudentNode *&head, ifstream &fin)
 		getline(ss, temp->data.dob.month, '/');
 		getline(ss, temp->data.dob.year, ',');
 		getline(ss, temp->data.social_id);
-		if (curUser != nullptr)
+		if (tailUser != nullptr)
 		{
 			UserNode* newuser = new UserNode;
 			newuser->data.dob = temp->data.dob;
@@ -33,7 +26,7 @@ void importStudentToClass(UserNode* users, StudentNode *&head, ifstream &fin)
 			newuser->data.name = temp->data.last_name + " " + temp->data.first_name;
 			newuser->data.username = temp->data.ID;
 			newuser->data.password = temp->data.dob.day + temp->data.dob.month + temp->data.dob.year;
-			curUser->pNext = newuser;
+			tailUser->pNext = newuser;
 			curUser = curUser->pNext;
 		}
 		if (tail == nullptr)

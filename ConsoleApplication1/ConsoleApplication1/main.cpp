@@ -19,12 +19,13 @@ int main()
     cout << ">>>>Welcome to course management system.\n";
 
     cout << "<>Load users data...";
-    UserNode *users = nullptr;
-
+    UserNode *headUser = nullptr;
+    UserNode *tailUser = nullptr;
+    
     fin.open("DataFile/Users.txt");
     if (fin.is_open())
     {
-        importUserData(users, fin);
+        //importUserData(headUser, tailUser, fin);
         cout << "Successful.\n";
         fin.close();
     }
@@ -114,7 +115,7 @@ int main()
     while (exit == false && continueProgram())
     {
         system("cls");
-        if (login(users, logged_in))
+        if (login(headUser, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
@@ -166,7 +167,7 @@ int main()
                         curSes = chooseASemester(headYear, curYear);
                         break;
                     case 5:
-                        addNewStudentToClass(users, headYear, fin);
+                        //addNewStudentToClass(headUser, tailUser, headYear, fin);
                         break;
                     case 6:
                         addCourse(curSes, curCourse);
@@ -239,7 +240,7 @@ int main()
                         if (fout.is_open())
                         {
                             changePassword(logged_in);
-                            exportUserData(users, fout);
+                            exportUserData(headUser, fout);
                             fout.close();
                         }
                         else
@@ -301,7 +302,7 @@ int main()
                         if (fout.is_open())
                         {
                             changePassword(logged_in);
-                            exportUserData(users, fout);
+                            exportUserData(headUser, fout);
                             fout.close();
                         }
                         else
@@ -328,7 +329,7 @@ int main()
     }
 
     //Delete users
-    deleteUserData(users);
+    deleteUserData(headUser);
 
     //Delete students in class
     yy = headYear;

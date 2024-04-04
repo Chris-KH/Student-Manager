@@ -33,7 +33,7 @@ void addNewClass(YearNode*& head, ofstream& fout);
 
 YearNode* findSchoolYear(YearNode *head);
 
-void addNewStudentToClass(UserNode* users, YearNode* head, ifstream& fin);
+void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin);
 
 void viewListOfStudentInClass(YearNode* head);
 
