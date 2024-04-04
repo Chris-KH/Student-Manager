@@ -174,7 +174,8 @@ int main()
                         addCourse(curSes, curCourse);
                         break;
                     case 7:
-                        viewListOfCourse(headCourse);
+                        if (checkCurSes(curYear, curSes))
+                            viewListOfCourse(curSes->course);
                         break;
                     case 8:
                         if (curYear && curSes) {

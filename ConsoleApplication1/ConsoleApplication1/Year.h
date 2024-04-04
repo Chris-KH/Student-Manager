@@ -45,6 +45,8 @@ SemesterInfo* createSemester(YearNode* head);
 
 SemesterInfo* chooseASemester(YearNode* head, YearNode* temp);
 
+bool checkCurSes(YearNode* curYear, SemesterInfo* curSes);
+
 void deleteSemester(YearNode* head);
 
 void deleteSchoolYear(YearNode*& head);
