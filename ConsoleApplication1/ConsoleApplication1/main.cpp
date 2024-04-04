@@ -175,17 +175,21 @@ int main()
                         break;
                     case 7:
                         if (checkCurSes(curYear, curSes))
-                            viewListOfCourse(curSes->course);
+                        {
+                            if (curSes->course)
+                                viewListOfCourse(curSes->course);
+                            else cout << "There is no course in this semester" << endl;
+                        }
                         break;
                     case 8:
-                        if (curYear && curSes) {
+                        if (checkCurSes(curYear, curSes))
+                        {
                             curCourse = findCourse(curSes);
                             if (curCourse) {
                                 updateCourseIn4(headCourse);
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "Please choose semester first.\n";
                         break;
                     case 9:
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
@@ -257,7 +261,17 @@ int main()
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
                     case 20:
-                        // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); //in Course.h
+                        YearNode* year = nullptr;
+                        if (findSchoolYear(year))
+                        {
+                            SemesterInfo* ses = chooseASemester(headYear, year);
+                            if (ses)
+                            {
+                                CourseNode* course = findCourse(ses);
+                                // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); 
+                            //đang viết trong course.cpp
+                            }
+                        }
                         break;
                     case 21:
                         // updateAStudentResult(); //in Student.h
