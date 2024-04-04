@@ -31,11 +31,13 @@ struct StudentNode
     }
 };
 
-void importStudentToClass(UserNode* users, StudentNode *&head, ifstream &fin);
+void importStudentToClass(StudentNode*& head, ifstream& fin);
 
 void exportStudentInClass(StudentNode *head, ofstream &fout);
 
 void deAllocateDataStudent(StudentNode* &head);
+
+void createNewUsers(UserNode*& tailUser, StudentNode* head);
 
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);

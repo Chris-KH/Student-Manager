@@ -104,7 +104,7 @@ void importCourse(CourseNode *&curCourse, ifstream &fin, string &type)
 		else
 			curStu->pNext = newStu;
 		curStu = newStu;
-		importStudentToClass(nullptr, curStu, fin);
+		importStudentToClass(curStu, fin);
 		fin >> type;
 	}
 }

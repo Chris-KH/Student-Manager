@@ -25,7 +25,7 @@ int main()
     fin.open("DataFile/Users.txt");
     if (fin.is_open())
     {
-        importUserData(taillUser, fin);
+        importUserData(headUser, taillUser, fin);
         cout << "Successful.\n";
         fin.close();
     }
@@ -85,7 +85,8 @@ int main()
             fin.open(direct);
             if (fin.good())
             {
-                importStudentToClass(nullptr, temp->student, fin);
+                importStudentToClass(temp->student, fin);
+                
                 fin.close();
             }
             else
