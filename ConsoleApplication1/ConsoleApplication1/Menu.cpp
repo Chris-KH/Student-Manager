@@ -1,32 +1,39 @@
 ﻿#include "Menu.h"
 
-bool continueProgram()
+bool continueProgram(int status)
 {
+    if (status == 1)
+        cout << ">>>You are logging in.\n";
+    else if (status == 2)
+        cout << ">>>You are choosing from a Menu.\n";
     int continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
-    if (cin >> continueChoice) {
-        if (continueChoice == 1) return true;
-        if (continueChoice == 0) return false;
+    if (cin >> continueChoice)
+    {
+        if (continueChoice == 1)
+            return true;
+        if (continueChoice == 0)
+            return false;
     }
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "***Please read the instruction again!\n";
-    return continueProgram();
+    return continueProgram(status);
 }
 
 void menuForStaff()
 {
     system("cls");
     cout << "All the functions for staff: Press a number to choose.\n";
-    cout << "   1. Create a school year.\n";
-    cout << "   2. Create classes.\n";
-    cout << "   3. Create a semester.\n";
-    cout << "   4. Choose a sesmester.\n";
-    cout << "   5. Add new student to class.\n";
-    cout << "   6. Add a course.\n";
-    cout << "   7. View the list of courses.\n";
-    cout << "   8. Update course information.\n";
-    cout << "   9. Add a student to the course.\n";
+    cout << "   01. Create a school year.\n";
+    cout << "   02. Create classes.\n";
+    cout << "   03. Create a semester.\n";
+    cout << "   04. Choose a sesmester.\n";
+    cout << "   05. Add new student to class.\n";
+    cout << "   06. Add a course.\n";
+    cout << "   07. View the list of courses.\n";
+    cout << "   08. Update course information.\n";
+    cout << "   09. Add a student to the course.\n";
     cout << "   10. Remove a student from the course.\n";
     cout << "   11. Delete a course.\n";
     cout << "   12. View a list of classes.\n";
@@ -55,4 +62,3 @@ void menuForStudent()
     cout << "   6. End program.\n";
     cout << ">>>>Student choice: ";
 }
-

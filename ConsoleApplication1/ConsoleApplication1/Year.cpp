@@ -166,7 +166,7 @@ YearNode* findSchoolYear(YearNode* head) {
 	return nullptr;
 }
 
-void addNewStudentToClass(UserNode* users, YearNode* head, ifstream& fin) {
+void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
 	YearNode* curYear = findSchoolYear(head);
 	if (curYear == nullptr) {
 		cout << "This year does not exist.\n";
@@ -184,12 +184,15 @@ void addNewStudentToClass(UserNode* users, YearNode* head, ifstream& fin) {
 	}
 	fin.open("DataFile/" + curClass->data.name + ".csv");
 	if (fin.is_open()) {
-		importStudentToClass(users, curClass->student, fin);
+		importStudentToClass(curClass->student, fin);
+		
+		createNewUsers(tailUser, curClass->student);
 		cout << "Student is added successfully.\n";
 		fin.close();
 	}
 	else cout << "Add student failed.\n";
 }
+
 
 void viewListOfStudentInClass(YearNode* head) {
 	YearNode* curYear = findSchoolYear(head);
@@ -248,15 +251,15 @@ void viewAllClasses(YearNode* head) {
 	}
 }
 
-void createSemester(YearNode* head) {
+SemesterInfo* createSemester(YearNode* head) {
 	if (head == nullptr) {
 		cout << "Year data is empty.\n";
-		return;
+		return nullptr;
 	}
 	YearNode* temp = findSchoolYear(head);
 	if (temp == nullptr) {
 		cout << "This year does not exist. Create school year before creating semester.\n";
-		return;
+		return nullptr; 
 	}
 	string s;
 	int ses;
@@ -265,11 +268,11 @@ void createSemester(YearNode* head) {
 	cout << "What semester do you want to create (1, 2 or 3)? "; cin >> ses;
 	if (ses != 1 && ses != 2 && ses != 3) {
 		cout << "This semester does not exit.\n";
-		return;
+		return nullptr;
 	}
 	else if (temp->semester[ses - 1].created == true) {
 		cout << "This semester is created before.\n";
-		return;
+		return nullptr;
 	}
 	cout << "Start date: "; cin >> s;
 	stringstream ss(s);
@@ -291,6 +294,7 @@ void createSemester(YearNode* head) {
 	a.end.year = y2;
 	temp->semester[ses - 1] = a;
 	cout << "Create semester successfully.\n";
+	return &temp->semester[ses - 1];
 }
 
 SemesterInfo* chooseASemester(YearNode* head, YearNode* temp) {
@@ -327,4 +331,14 @@ void deleteSchoolYear(YearNode*& head) {
 		head = head->pNext;
 		delete temp;
 	}
+}
+
+bool checkCurSes(YearNode* curYear, SemesterInfo* curSes)
+{
+	if (curYear && curSes)
+		return true;
+	if (curYear && curSes == nullptr)
+		cout << "Please choose current semester first" << endl;
+	else cout << "No data" << endl;
+	return false;
 }

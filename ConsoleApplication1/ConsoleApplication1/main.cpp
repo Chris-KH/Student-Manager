@@ -16,23 +16,16 @@ int main()
 
     // Load data
 
-    /*
-    fin.open("ImportExportFile/ClassData.txt");
-    if (fin.is_open())
-        importClassData(headClass, curClass, fin);
-    else cout << "Unable to load class data.\n";
-    fin.close();
-    */
-
     cout << ">>>>Welcome to course management system.\n";
 
     cout << "<>Load users data...";
-    UserNode *users = nullptr;
-
+    UserNode *headUser = nullptr;
+    UserNode *taillUser = nullptr;
+    
     fin.open("DataFile/Users.txt");
     if (fin.is_open())
     {
-        importUserData(users, fin);
+        importUserData(headUser, taillUser, fin);
         cout << "Successful.\n";
         fin.close();
     }
@@ -92,7 +85,8 @@ int main()
             fin.open(direct);
             if (fin.good())
             {
-                importStudentToClass(nullptr, temp->student, fin);
+                importStudentToClass(temp->student, fin);
+                
                 fin.close();
             }
             else
@@ -119,15 +113,15 @@ int main()
     exit = !(ok1 == false && exit == false && ok2 == false);
     // User log in
     UserNode *logged_in = nullptr;
-    while (exit == false && continueProgram())
+    while (exit == false && continueProgram(1))
     {
         system("cls");
-        if (login(users, logged_in))
+        if (login(headUser, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
 
-            while (exit == false && logout == false && continueProgram())
+            while (exit == false && logout == false && continueProgram(2))
             {
                 // Output Menu
                 if (logged_in->data.is_staff)
@@ -174,23 +168,28 @@ int main()
                         curSes = chooseASemester(headYear, curYear);
                         break;
                     case 5:
-                        addNewStudentToClass(users, headYear, fin);
+                        addNewStudentToClass(taillUser, headYear, fin);
                         break;
                     case 6:
                         addCourse(curSes, curCourse);
                         break;
                     case 7:
-                        viewListOfCourse(headCourse); //choose year -> semester //in Course.h
+                        if (checkCurSes(curYear, curSes))
+                        {
+                            if (curSes->course)
+                                viewListOfCourse(curSes->course);
+                            else cout << "There is no course in this semester" << endl;
+                        }
                         break;
                     case 8:
-                        if (curYear && curSes) {
+                        if (checkCurSes(curYear, curSes))
+                        {
                             curCourse = findCourse(curSes);
                             if (curCourse) {
                                 updateCourseIn4(headCourse);
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "Please choose semester first.\n";
                         break;
                     case 9:
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
@@ -247,7 +246,7 @@ int main()
                         if (fout.is_open())
                         {
                             changePassword(logged_in);
-                            exportUserData(users, fout);
+                            exportUserData(headUser, fout);
                             fout.close();
                         }
                         else
@@ -262,7 +261,17 @@ int main()
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
                     case 20:
-                        // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); //in Course.h
+                        YearNode* year = nullptr;
+                        if (findSchoolYear(year))
+                        {
+                            SemesterInfo* ses = chooseASemester(headYear, year);
+                            if (ses)
+                            {
+                                CourseNode* course = findCourse(ses);
+                                // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); 
+                            //đang viết trong course.cpp
+                            }
+                        }
                         break;
                     case 21:
                         // updateAStudentResult(); //in Student.h
@@ -309,7 +318,7 @@ int main()
                         if (fout.is_open())
                         {
                             changePassword(logged_in);
-                            exportUserData(users, fout);
+                            exportUserData(headUser, fout);
                             fout.close();
                         }
                         else
@@ -336,7 +345,7 @@ int main()
     }
 
     //Delete users
-    deleteUserData(users);
+    deleteUserData(headUser);
 
     //Delete students in class
     yy = headYear;

@@ -1,14 +1,7 @@
 #include "Student.h"
 
-void importStudentToClass(UserNode* users, StudentNode *&head, ifstream &fin)
+void importStudentToClass(StudentNode *&head, ifstream &fin)
 {
-	UserNode* curUser = nullptr;
-	if (users != nullptr)
-	{
-		curUser = users;
-		while (curUser->pNext != nullptr)
-			curUser = curUser->pNext;
-	}
 	string s;
 	StudentNode *tail = nullptr;
 	while (getline(fin, s))
@@ -24,26 +17,11 @@ void importStudentToClass(UserNode* users, StudentNode *&head, ifstream &fin)
 		getline(ss, temp->data.dob.month, '/');
 		getline(ss, temp->data.dob.year, ',');
 		getline(ss, temp->data.social_id);
-		if (curUser != nullptr)
-		{
-			UserNode* newuser = new UserNode;
-			newuser->data.dob = temp->data.dob;
-			newuser->data.gender = temp->data.gender;
-			newuser->data.is_staff = 0;
-			newuser->data.name = temp->data.last_name + " " + temp->data.first_name;
-			newuser->data.username = temp->data.ID;
-			newuser->data.password = temp->data.dob.day + temp->data.dob.month + temp->data.dob.year;
-			curUser->pNext = newuser;
-			curUser = curUser->pNext;
-		}
+		
 		if (tail == nullptr)
-		{
 			head = temp;
-		}
 		else
-		{
 			tail->pNext = temp;
-		}
 		tail = temp;
 	}
 }
@@ -68,5 +46,26 @@ void deAllocateDataStudent(StudentNode* &head) {
 		StudentNode* temp = head;
 		head = head->pNext;
 		delete temp;
+	}
+}
+
+void createNewUsers(UserNode*& tailUser, StudentNode* head)
+{
+	StudentNode* temp = head;
+	while (temp != nullptr)
+	{
+		if (tailUser != nullptr)
+		{
+			UserNode* newuser = new UserNode;
+			newuser->data.dob = temp->data.dob;
+			newuser->data.gender = temp->data.gender;
+			newuser->data.is_staff = 0;
+			newuser->data.name = temp->data.last_name + " " + temp->data.first_name;
+			newuser->data.username = temp->data.ID;
+			newuser->data.password = temp->data.dob.day + temp->data.dob.month + temp->data.dob.year;
+			tailUser->pNext = newuser;
+			tailUser = tailUser->pNext;
+		}
+		temp = temp->pNext;
 	}
 }

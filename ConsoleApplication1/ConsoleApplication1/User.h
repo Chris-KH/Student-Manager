@@ -21,7 +21,7 @@ struct UserNode
 	}
 };
 
-void importUserData(UserNode* &users, ifstream& fin);
+void importUserData(UserNode* &headlUser, UserNode *&tailUser, ifstream& fin);
 
 void exportUserData(UserNode* users, ofstream& fout);
 

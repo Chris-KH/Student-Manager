@@ -1,13 +1,13 @@
 #include"User.h"
 
-void importUserData(UserNode*& users, ifstream& fin) {
+void importUserData(UserNode*& headUser, UserNode*& tailUser, ifstream& fin) {
 	UserNode* cur = nullptr;
 	string s;
 
 	while (getline(fin, s)) {
 		UserNode* temp = new UserNode();
 		if (cur == nullptr) {
-			users = temp;
+			headUser = temp;
 			cur = temp;
 		}
 		else {
@@ -28,6 +28,7 @@ void importUserData(UserNode*& users, ifstream& fin) {
 		getline(ss, cur->data.dob.month, '/');
 		getline(ss, cur->data.dob.year);
 	}
+	tailUser = cur;
 }
 
 void exportUserData(UserNode* users, ofstream& fout) {
