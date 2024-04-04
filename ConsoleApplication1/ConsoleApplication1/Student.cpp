@@ -27,16 +27,12 @@ void importStudentToClass(UserNode* &tailUser, StudentNode *&head, ifstream &fin
 			newuser->data.username = temp->data.ID;
 			newuser->data.password = temp->data.dob.day + temp->data.dob.month + temp->data.dob.year;
 			tailUser->pNext = newuser;
-			curUser = curUser->pNext;
+			tailUser = tailUser->pNext;
 		}
 		if (tail == nullptr)
-		{
 			head = temp;
-		}
 		else
-		{
 			tail->pNext = temp;
-		}
 		tail = temp;
 	}
 }
