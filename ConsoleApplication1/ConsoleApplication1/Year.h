@@ -21,6 +21,7 @@ struct YearNode
 	}
 };
 
+void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2);
 
 void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin);
 

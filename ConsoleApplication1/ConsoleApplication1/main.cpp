@@ -80,7 +80,7 @@ int main()
     else
         cout << "Successful.\n";
 
-    bool ok = false;
+    bool ok1 = false;
     cout << "<>Load students in class...";
     yy = headYear;
     while (yy)
@@ -97,18 +97,26 @@ int main()
             }
             else
             {
-                ok = true;
+                ok1 = true;
             }
             temp = temp->pNext;
         }
         yy = yy->pNext;
     }
-    if (ok)
-        cout << "Failed.\n";
-    else
-        cout << "Successful.\n";
+    if (ok1) cout << "Failed.\n";
+    else cout << "Successful.\n";
 
-    exit = !(ok == false && exit == false);
+    cout << "<>Load students in course...";
+    yy = headYear;
+    bool ok2 = false;
+    while (yy) {
+        importCourseToSemester(yy, fin, ok2);
+        yy = yy->pNext;
+    }
+    if (ok2) cout << "Failed.\n";
+    else cout << "Successful.\n";
+
+    exit = !(ok1 == false && exit == false && ok2 == false);
     // User log in
     UserNode *logged_in = nullptr;
     while (exit == false && continueProgram())

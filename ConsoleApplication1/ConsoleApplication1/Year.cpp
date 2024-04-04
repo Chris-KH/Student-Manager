@@ -1,5 +1,55 @@
 ﻿#include"Year.h"
 
+void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2) {
+	for (int i = 0; i < 3; i++) {
+		if (head->semester[i].created == false) continue;
+		fin.open("DataFile/" + head->data + "-Semester" + char('1' + i) + ".csv");
+		if (fin.is_open()) {
+			SemesterInfo* cur = (head->semester + i);
+			string line;
+			CourseNode* tail = nullptr;
+			while (getline(fin, line)) {
+				CourseNode* temp = new CourseNode();
+				stringstream ss(line);
+				getline(ss, temp->data.course_name, ',');
+				getline(ss, temp->data.class_name, ',');
+				getline(ss, temp->data.ID, ',');
+				getline(ss, temp->data.teacher_name, ',');
+				getline(ss, temp->data.day_of_week, ',');
+				string s;
+
+				getline(ss, s, ',');
+				temp->data.session = s[0] - '0';
+
+				getline(ss, s, ',');
+				temp->data.credit = 0;
+				for (int j = 0; j < (int)s.length(); j++) {
+					temp->data.credit *= 10;
+					temp->data.credit += s[j] - '0';
+				}
+
+				getline(ss, s, ',');
+				temp->data.max_student = 0;
+				for (int j = 0; j < (int)s.length(); j++) {
+					temp->data.max_student *= 10;
+					temp->data.max_student += s[j] - '0';
+				}
+				if (tail == nullptr) {
+					cur->course = temp;
+				}
+				else {
+					tail->pNext = temp;
+				}
+				tail = temp;
+			}
+			fin.close();
+		}
+		else {
+			ok2 = true;
+		}
+	}
+}
+
 void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin) {
 	string s;
 	while (getline(fin, s)) {
