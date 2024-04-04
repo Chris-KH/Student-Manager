@@ -251,7 +251,7 @@ void viewAllClasses(YearNode* head) {
 	}
 }
 
-void createSemester(YearNode* head) {
+SemesterInfo* createSemester(YearNode* head) {
 	if (head == nullptr) {
 		cout << "Year data is empty.\n";
 		return;
@@ -294,6 +294,7 @@ void createSemester(YearNode* head) {
 	a.end.year = y2;
 	temp->semester[ses - 1] = a;
 	cout << "Create semester successfully.\n";
+	return temp->semester[ses - 1];
 }
 
 SemesterInfo* chooseASemester(YearNode* head, YearNode* temp) {

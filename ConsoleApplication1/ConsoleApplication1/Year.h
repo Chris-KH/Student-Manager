@@ -41,7 +41,7 @@ void viewAListOfClasses(YearNode* head);
 
 void viewAllClasses(YearNode* head);
 
-void createSemester(YearNode* head);
+SemesterInfo* createSemester(YearNode* head);
 
 SemesterInfo* chooseASemester(YearNode* head, YearNode* temp);
 
