@@ -16,14 +16,6 @@ int main()
 
     // Load data
 
-    /*
-    fin.open("ImportExportFile/ClassData.txt");
-    if (fin.is_open())
-        importClassData(headClass, curClass, fin);
-    else cout << "Unable to load class data.\n";
-    fin.close();
-    */
-
     cout << ">>>>Welcome to course management system.\n";
 
     cout << "<>Load users data...";
@@ -180,7 +172,7 @@ int main()
                         addCourse(curSes, curCourse);
                         break;
                     case 7:
-                        viewListOfCourse(headCourse); //choose year -> semester //in Course.h
+                        viewListOfCourse(headCourse);
                         break;
                     case 8:
                         if (curYear && curSes) {
