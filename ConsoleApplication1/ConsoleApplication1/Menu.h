@@ -2,7 +2,7 @@
 #include "Library.h"
 
 // Into program manipulate
-bool continueProgram();
+bool continueProgram(int status);
 
 // Menu manipulate
 void menuForStaff();

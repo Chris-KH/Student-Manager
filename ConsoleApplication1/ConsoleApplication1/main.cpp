@@ -113,16 +113,15 @@ int main()
     exit = !(ok1 == false && exit == false && ok2 == false);
     // User log in
     UserNode *logged_in = nullptr;
-    while (exit == false && continueProgram())
+    while (exit == false && continueProgram(1))
     {
         system("cls");
-        cout << ">>>Your are logging in.\n";
         if (login(headUser, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
 
-            while (exit == false && logout == false && continueProgram())
+            while (exit == false && logout == false && continueProgram(2))
             {
                 // Output Menu
                 if (logged_in->data.is_staff)
