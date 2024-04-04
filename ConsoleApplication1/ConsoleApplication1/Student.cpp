@@ -69,3 +69,15 @@ void createNewUsers(UserNode*& tailUser, StudentNode* head)
 		temp = temp->pNext;
 	}
 }
+/*void updateAStudentResult(StudentNode* &head)
+{
+	while (head != nullptr)
+	{
+		ifstream fin;
+		StudentNode *cur = head;
+		StudentInfo *curStu = cur->data;
+		StudentNode *old = cur->data;
+		updateAStudentResult
+	}
+	return;
+}*/

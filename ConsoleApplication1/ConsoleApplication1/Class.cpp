@@ -25,7 +25,7 @@ void exportClassData(ClassNode* classes, ofstream& fout) {
 
 ClassNode* findClass(ClassNode* head) {
 	string name;
-	cout << "Input class name: "; cin >> name;
+	cout << "Input class name: "; getline(cin, name);
 	ClassNode* cur = head;
 	while (cur != nullptr)
 	{
@@ -45,4 +45,17 @@ void deAlocatedClassesData(ClassNode*& head) {
 	}
 }
 
-
+void viewScoreboardofClass(ClassNode*& head) {
+	ClassNode *cur = head;
+	findClass(cur);
+	if(cur != nullptr)
+	{
+		ofstream fout;
+		StudentNode *temp = temp->data;
+		exportStudentInClass(temp, fout);
+	}
+	else {
+		cout << "No appropriate class. Please find the right class \n";
+		viewScoreboardofClass(head);
+	}
+}

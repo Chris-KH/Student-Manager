@@ -39,6 +39,7 @@ void deAllocateDataStudent(StudentNode* &head);
 
 void createNewUsers(UserNode*& tailUser, StudentNode* head);
 
+void updateAStudentResult(StudentNode* &head);
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 

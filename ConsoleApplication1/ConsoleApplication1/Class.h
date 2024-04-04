@@ -32,3 +32,4 @@ ClassNode* findClass(ClassNode* head);
 
 void deAlocatedClassesData(ClassNode*& head);
 
+void viewScoreboardofClass(ClassNode*& head);
