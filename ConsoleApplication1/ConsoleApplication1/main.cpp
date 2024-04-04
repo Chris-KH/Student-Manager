@@ -261,7 +261,17 @@ int main()
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
                     case 20:
-                        // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); //in Course.h
+                        YearNode* year = nullptr;
+                        if (findSchoolYear(year))
+                        {
+                            SemesterInfo* ses = chooseASemester(headYear, year);
+                            if (ses)
+                            {
+                                CourseNode* course = findCourse(ses);
+                                // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); 
+                            //đang viết trong course.cpp
+                            }
+                        }
                         break;
                     case 21:
                         // updateAStudentResult(); //in Student.h
