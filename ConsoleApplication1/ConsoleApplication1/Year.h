@@ -43,7 +43,7 @@ void viewAllClasses(YearNode* head);
 
 SemesterInfo* createSemester(YearNode* head);
 
-SemesterInfo* chooseASemester(YearNode* head, YearNode* temp);
+SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp);
 
 bool checkCurSes(YearNode* curYear, SemesterInfo* curSes);
 

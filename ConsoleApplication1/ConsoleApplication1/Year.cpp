@@ -297,7 +297,7 @@ SemesterInfo* createSemester(YearNode* head) {
 	return &temp->semester[ses - 1];
 }
 
-SemesterInfo* chooseASemester(YearNode* head, YearNode* temp) {
+SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp) {
 	YearNode* curYear = findSchoolYear(head);
 	if (curYear == nullptr) {
 		cout << "This school year does not exist.\n";

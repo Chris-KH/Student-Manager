@@ -231,6 +231,7 @@ int main()
                             cout << "List of courses in semester " << curSes->order << "of school year " << curYear->data << ":\n";
                             viewListOfCourse(curSes->course);
                         }
+                        else cout << "Wrong.\n";
                         break;
                     case 15:
                         curSes = chooseASemester(headYear, curYear);
@@ -261,17 +262,7 @@ int main()
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
                     case 20:
-                        YearNode* year = nullptr;
-                        if (findSchoolYear(year))
-                        {
-                            SemesterInfo* ses = chooseASemester(headYear, year);
-                            if (ses)
-                            {
-                                CourseNode* course = findCourse(ses);
-                                // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); 
-                            //đang viết trong course.cpp
-                            }
-                        }
+                        
                         break;
                     case 21:
                         // updateAStudentResult(); //in Student.h
