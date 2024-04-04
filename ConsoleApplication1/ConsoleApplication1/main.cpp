@@ -171,22 +171,20 @@ int main()
                         addNewStudentToClass(taillUser, headYear, fin);
                         break;
                     case 6:
-                        if (headYear == nullptr)
-                            cout << "No data" << endl;
-                        else if (checkCurSes(curYear, curSes))
-                            addCourse(curSes, curCourse);
+                        if (curYear && curSes) {
+                            //Addcourse
+                        } else cout << "Please choose semester first.\n";
                         break;
                     case 7:
-                        if (checkCurSes(curYear, curSes))
-                        {
+                        if (curYear && curSes) {
                             if (curSes->course)
                                 viewListOfCourse(curSes->course);
-                            else cout << "There is no course in this semester" << endl;
+                            else cout << "There is no course in this semester.\n";
                         }
+                        else cout << "Please choose semester first.\n";
                         break;
                     case 8:
-                        if (checkCurSes(curYear, curSes))
-                        {
+                        if (curYear && curSes) {
                             curCourse = findCourse(curSes);
                             if (curCourse) {
                                 updateCourseIn4(headCourse);
@@ -205,6 +203,7 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
+                        else cout << "Please choose semester first.\n";
                         break;
                     case 11:
                         if (curYear && curSes) {

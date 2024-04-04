@@ -44,7 +44,7 @@ void deAlocatedClassesData(ClassNode*& head) {
 		delete temp;
 	}
 }
-
+/*
 void viewScoreboardofClass(ClassNode*& head) {
 	ClassNode *cur = head;
 	findClass(cur);
@@ -59,3 +59,4 @@ void viewScoreboardofClass(ClassNode*& head) {
 		viewScoreboardofClass(head);
 	}
 }
+*/
