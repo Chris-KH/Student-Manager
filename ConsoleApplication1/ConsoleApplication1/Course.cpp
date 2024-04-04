@@ -145,3 +145,23 @@ void updateCourseIn4(CourseNode*& curCourse) {
     cout << "Press a number (1-4) to choose: \n";
     cin >> curCourse->data.session;
 }
+
+void viewTheScoreboardOfCourse(CourseNode* course)
+//mặc định đã biết course nào
+{
+    StudentNode* curStu = course->student;
+    while (curStu != nullptr)
+    {
+        cout << curStu->data.No;
+        cout << "Student name: " << curStu->data.first_name << " " << curStu->data.last_name << endl;
+        cout << "Student ID: " << curStu->data.ID << endl;
+        cout << "Score" << endl;
+        cout << "    Total: " << curStu->data.score.total << endl;
+        cout << "    Final: " << curStu->data.score.final << endl;
+        cout << "    Midterm: " << curStu->data.score.midterm << endl;
+        cout << "    Bonus: " << curStu->data.score.bonus << endl;
+        
+        curStu = curStu->pNext;
+    }
+
+}

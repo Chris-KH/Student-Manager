@@ -41,9 +41,11 @@ void viewAListOfClasses(YearNode* head);
 
 void viewAllClasses(YearNode* head);
 
-void createSemester(YearNode* head);
+SemesterInfo* createSemester(YearNode* head);
 
-SemesterInfo* chooseASemester(YearNode* head, YearNode* temp);
+SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp);
+
+bool checkCurSes(YearNode* curYear, SemesterInfo* curSes);
 
 void deleteSemester(YearNode* head);
 
