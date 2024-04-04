@@ -171,7 +171,10 @@ int main()
                         addNewStudentToClass(taillUser, headYear, fin);
                         break;
                     case 6:
-                        addCourse(curSes, curCourse);
+                        if (headYear == nullptr)
+                            cout << "No data" << endl;
+                        else if (checkCurSes(curYear, curSes))
+                            addCourse(curSes, curCourse);
                         break;
                     case 7:
                         if (checkCurSes(curYear, curSes))
@@ -261,7 +264,7 @@ int main()
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
                     case 20:
-                        YearNode* year = nullptr;
+                        /*YearNode * year = nullptr;
                         if (findSchoolYear(year))
                         {
                             SemesterInfo* ses = chooseASemester(headYear, year);
@@ -269,9 +272,9 @@ int main()
                             {
                                 CourseNode* course = findCourse(ses);
                                 // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); 
-                            //đang viết trong course.cpp
+                                //đang viết trong course.cpp
                             }
-                        }
+                        }*/
                         break;
                     case 21:
                         // updateAStudentResult(); //in Student.h

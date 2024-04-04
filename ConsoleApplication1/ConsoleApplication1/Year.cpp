@@ -337,8 +337,6 @@ bool checkCurSes(YearNode* curYear, SemesterInfo* curSes)
 {
 	if (curYear && curSes)
 		return true;
-	if (curYear && curSes == nullptr)
-		cout << "Please choose current semester first" << endl;
-	else cout << "No data" << endl;
+	cout << "Please choose current semester first" << endl;
 	return false;
 }
