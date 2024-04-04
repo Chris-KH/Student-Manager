@@ -116,6 +116,7 @@ int main()
     while (exit == false && continueProgram())
     {
         system("cls");
+        cout << ">>>Your are logging in.\n";
         if (login(headUser, logged_in))
         {
             cout << ">>>Logged in successfully<<<\n";
