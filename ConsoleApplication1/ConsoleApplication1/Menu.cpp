@@ -1,17 +1,24 @@
 ﻿#include "Menu.h"
 
-bool continueProgram()
+bool continueProgram(int status)
 {
+    if (status == 1)
+        cout << ">>>You are logging in.\n";
+    else if (status == 2)
+        cout << ">>>You are choosing from a Menu.\n";
     int continueChoice;
     cout << "***Input '1' to continue program or '0' to return: ";
-    if (cin >> continueChoice) {
-        if (continueChoice == 1) return true;
-        if (continueChoice == 0) return false;
+    if (cin >> continueChoice)
+    {
+        if (continueChoice == 1)
+            return true;
+        if (continueChoice == 0)
+            return false;
     }
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "***Please read the instruction again!\n";
-    return continueProgram();
+    return continueProgram(status);
 }
 
 void menuForStaff()
@@ -55,4 +62,3 @@ void menuForStudent()
     cout << "   6. End program.\n";
     cout << ">>>>Student choice: ";
 }
-
