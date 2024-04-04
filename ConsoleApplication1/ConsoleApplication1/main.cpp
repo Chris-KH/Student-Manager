@@ -175,17 +175,21 @@ int main()
                         break;
                     case 7:
                         if (checkCurSes(curYear, curSes))
-                            viewListOfCourse(curSes->course);
+                        {
+                            if (curSes->course)
+                                viewListOfCourse(curSes->course);
+                            else cout << "There is no course in this semester" << endl;
+                        }
                         break;
                     case 8:
-                        if (curYear && curSes) {
+                        if (checkCurSes(curYear, curSes))
+                        {
                             curCourse = findCourse(curSes);
                             if (curCourse) {
                                 updateCourseIn4(headCourse);
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "Please choose semester first.\n";
                         break;
                     case 9:
                         // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
