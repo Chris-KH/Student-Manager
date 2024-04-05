@@ -6,7 +6,7 @@ void viewListOfCourse(CourseNode *head)
     int cnt = 0;
     while (cur != nullptr)
     {
-        cout << ++cnt << ". " << cur->data.course_name << " - " << cur->data.ID << endl;
+        cout << ++cnt << ". " << cur->data.course_name << " - " << cur->data.ID << " - " << cur->data.class_name << "\n";
         cur = cur->pNext;
     }
 }

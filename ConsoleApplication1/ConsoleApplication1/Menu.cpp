@@ -31,7 +31,7 @@ void menuForStaff()
     cout << "   04. Choose a sesmester.\n";
     cout << "   05. Add new student to class.\n";
     cout << "   06. Add a course.\n";
-    cout << "   07. View the list of courses.\n";
+    cout << "   07. View the list of courses in current semester.\n";
     cout << "   08. Update course information.\n";
     cout << "   09. Add a student to the course.\n";
     cout << "   10. Remove a student from the course.\n";
