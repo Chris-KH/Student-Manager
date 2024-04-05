@@ -44,19 +44,12 @@ void deAlocatedClassesData(ClassNode*& head) {
 		delete temp;
 	}
 }
-/*
-void viewScoreboardofClass(ClassNode*& head) {
-	ClassNode *cur = head;
+void viewScoreboardofClass(ClassNode*& headClass, StudentNode* &headStudent, ofstream &fout) {
+	ClassNode *cur = headClass;
 	findClass(cur);
-	if(cur != nullptr)
-	{
-		ofstream fout;
-		StudentNode *temp = temp->data;
-		exportStudentInClass(temp, fout);
-	}
+	if(cur != nullptr) exportStudentInClass(headStudent, fout);
 	else {
 		cout << "No appropriate class. Please find the right class \n";
-		viewScoreboardofClass(head);
+		viewScoreboardofClass(headClass);
 	}
 }
-*/

@@ -280,7 +280,9 @@ int main()
                         // updateAStudentResult(); //in Student.h
                         break;
                     case 22:
-                        // viewScoreboardOfClass(); //in Class.h
+                        fout.open("DataFile/Class.txt");
+                        if (fout.is_open()) viewScoreboardofClass(headClass);
+                        else cout << "Wrong\n";
                         break;
                     case 23:
                         cout << "Logout successful. You have been logged out.\n";
