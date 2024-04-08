@@ -335,6 +335,7 @@ int main()
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
+                    system("cls");
                     switch (studentChoice)
                     {
                     case 1:
@@ -376,7 +377,8 @@ int main()
         else
             cout << "Login failed. Please check your username and password and try again.\n";
     }
-
+    
+    system("cls");
     //Delete users
     deleteUserData(headUser);
 
