@@ -16,6 +16,7 @@ void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2) {
 				getline(ss, temp->data.ID, ',');
 				getline(ss, temp->data.teacher_name, ',');
 				getline(ss, temp->data.day_of_week, ',');
+
 				string s;
 
 				getline(ss, s, ',');
@@ -159,6 +160,64 @@ void exportSchoolYearData(YearNode* head, ofstream& fout) {
 		
 		cur = cur->pNext;
 	}
+}
+
+void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
+{
+	fout.open("DataFile/" + curYear->data + "-Semester" + char('0' + curSes->order) + ".csv");
+	CourseNode* curCourse = curSes->course;
+	CourseNode* newcourse = new CourseNode;
+	if (curCourse == nullptr)
+		curCourse = newcourse;
+	else
+	{
+		while (curCourse->pNext != nullptr)
+			curCourse = curCourse->pNext;
+		curCourse->pNext = newcourse;
+		curCourse = curCourse->pNext;
+	}
+
+	cout << "Course name: \n";
+	cin.ignore();
+	getline(cin, curCourse->data.course_name);
+
+	cout << "Class name: \n";
+	cin.ignore();
+	getline(cin, curCourse->data.class_name);
+
+	cout << "Course ID: \n";
+	cin >> curCourse->data.ID;
+
+	cout << "Teacher name: \n";
+	getline(cin, curCourse->data.teacher_name);
+
+	cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): \n";
+	cin >> curCourse->data.day_of_week;
+
+	cout << "Session: \n";
+	cout << "1. S1(07:30)\n";
+	cout << "2. S2(09:30)\n";
+	cout << "3. S3(13:30)\n";
+	cout << "4. S4(15:30)\n";
+	cout << "Press a number (1-4) to choose: \n";
+	cin >> curCourse->data.session;
+
+	cout << "Number of credits: \n";
+	cin >> curCourse->data.credit;
+
+	cout << "The maximum number of students in the course: \n";
+	cin >> curCourse->data.max_student;
+
+	fout << curCourse->data.course_name << ",";
+	fout << curCourse->data.class_name << ",";
+	fout << curCourse->data.ID << ",";
+	fout << curCourse->data.teacher_name << ",";
+	fout << curCourse->data.day_of_week << ",";
+	fout << curCourse->data.session << ",";
+	fout << curCourse->data.credit << ",";
+	fout << curCourse->data.max_student << ",";
+	fout << endl;
+	fout.close();
 }
 
 YearNode* findSchoolYear(YearNode* head) {
