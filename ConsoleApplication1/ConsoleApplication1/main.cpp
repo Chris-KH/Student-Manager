@@ -86,7 +86,6 @@ int main()
             if (fin.good())
             {
                 importStudentToClass(temp->student, fin);
-                
                 fin.close();
             }
             else

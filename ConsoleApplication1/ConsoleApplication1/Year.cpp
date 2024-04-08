@@ -299,6 +299,9 @@ SemesterInfo* createSemester(YearNode* head) {
 	a.end.month = m2;
 	a.end.year = y2;
 	temp->semester[ses - 1] = a;
+	ofstream fout;
+	fout.open("DataFile/" + temp->data + "-Semester" + to_string(ses) + ".csv");
+	fout.close();
 	cout << "Create semester successfully.\n";
 	return &temp->semester[ses - 1];
 }
