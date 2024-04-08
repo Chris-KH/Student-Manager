@@ -9,5 +9,5 @@ struct Date
 	string year;
 };
 
-void exportDate(Date &date, ofstream& foout);
+void exportDate(Date &date, ofstream& fout);
 void importDate(Date &date, ifstream& fin);

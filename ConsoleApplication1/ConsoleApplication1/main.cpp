@@ -185,14 +185,26 @@ int main()
                     case 8:
                         if (curYear && curSes) {
                             curCourse = findCourse(curSes);
-                            if (curCourse) {
-                                updateCourseIn4(headCourse);
+                            if (curCourse)
+                            {
+                                updateCourseIn4(curCourse);
+                                exportCourseToSemester(curYear, curSes, fout);
                             }
                             else cout << "This course does not exist.\n";
                         }
+                        else cout << "No data" << endl;
                         break;
                     case 9:
-                        // addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student); //in Course.h
+                        if (curYear && curSes) {
+                            curCourse = findCourse(curSes);
+                            if (curCourse)
+                            {
+                                addStudentToCourse(curCourse);
+                                exportStudentToCourse(curYear, curCourse, fout);
+                            }
+                            else cout << "This course does not exist.\n";
+                        }
+                        else cout << "No data" << endl;
                         break;
                     case 10:
                         if (curYear && curSes) {

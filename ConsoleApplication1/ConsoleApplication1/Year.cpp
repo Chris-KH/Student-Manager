@@ -51,6 +51,44 @@ void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2) {
 	}
 }
 
+void exportCourseToSemester(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
+{
+	fout.open("DataFile/" + head->data + "-Semester" + char('0' + curSes->order) + ".csv");
+	CourseNode* curCourse = curSes->course;
+	while (curCourse != nullptr)
+	{
+		if (curCourse != curSes->course)
+			fout << endl;
+		fout << curCourse->data.course_name << ",";
+		fout << curCourse->data.class_name << ",";
+		fout << curCourse->data.ID << ",";
+		fout << curCourse->data.teacher_name << ",";
+		fout << curCourse->data.day_of_week << ",";
+		fout << curCourse->data.session << ",";
+		fout << curCourse->data.credit << ",";
+		fout << curCourse->data.max_student << ",";
+		curCourse = curCourse->pNext;
+	}
+}
+
+void exportStudentToCourse(YearNode* head, CourseNode*& curCourse, ofstream& fout)
+{
+	fout.open("DataFile/" + head->data + curCourse->data.class_name + "_" + curCourse->data.ID + ".csv");
+	StudentNode* curStu = curCourse->student;
+	while (curStu != nullptr)
+	{
+		if (curStu != curCourse->student)
+			fout << endl;
+		fout << curStu->data.No << ",";
+		fout << curStu->data.ID << ",";
+		fout << curStu->data.first_name << ",";
+		fout << curStu->data.last_name << ",";
+		fout << curStu->data.gender << ",";
+		fout << curStu->data.dob.day << "/" << curStu->data.dob.month << "/" << curStu->data.dob.year;
+		curStu = curStu->pNext;
+	}
+}
+
 void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin) {
 	string s;
 	while (getline(fin, s)) {

@@ -146,6 +146,49 @@ void updateCourseIn4(CourseNode*& curCourse) {
     cin >> curCourse->data.session;
 }
 
+void addStudentToCourse(CourseNode* &curCourse)
+{
+    StudentNode* newStu = new StudentNode;
+    
+    cout << "Please input student information" << endl;
+    cout << "Student ID: ";
+    getline(cin, newStu->data.ID);
+    
+    cout << "Last name: ";
+    getline(cin, newStu->data.last_name);
+
+    cout << "First name: ";
+    getline(cin, newStu->data.first_name);
+    
+    cout << "Gender: ";
+    getline(cin, newStu->data.gender);
+    
+    cout << "DOB: ";
+    string dob;
+    getline(cin, dob);
+    stringstream ss(dob);
+    getline(ss, newStu->data.dob.day, '/');
+    getline(ss, newStu->data.dob.month, '/');
+    getline(ss, newStu->data.dob.year, ',');
+
+    cout << "Social ID: ";
+    getline(cin, newStu->data.social_id);
+
+    StudentNode* curStu = curCourse->student;
+    if (curStu == nullptr)
+    {
+        curStu = newStu;
+        newStu->data.No = 1;
+    }
+    else {
+        
+        while (curStu->pNext != nullptr)
+            curStu = curStu->pNext;
+        newStu->data.No = curStu->data.No + 1;
+        curStu->pNext = newStu;
+    }
+}
+
 void viewTheScoreboardOfCourse(CourseNode* course)
 //mặc định đã biết course nào
 {
@@ -163,9 +206,4 @@ void viewTheScoreboardOfCourse(CourseNode* course)
         
         curStu = curStu->pNext;
     }
-}
-
-void addStudent2Course()
-{
-    
 }
