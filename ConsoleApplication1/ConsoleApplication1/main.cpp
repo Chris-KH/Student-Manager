@@ -200,7 +200,7 @@ int main()
                             if (curCourse)
                             {
                                 addStudentToCourse(curCourse);
-                                exportStudentToCourse(curYear, curCouse, fout);
+                                exportStudentToCourse(curYear, curCourse, fout);
                             }
                             else cout << "This course does not exist.\n";
                         }

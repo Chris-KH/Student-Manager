@@ -23,7 +23,9 @@ struct YearNode
 
 void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2);
 
-void exportCourseToSemester(YearNode* head, CourseInfo*& curCourse, ofstream& fout);
+void exportCourseToSemester(YearNode* head, SemesterInfo*& curSes, ofstream& fout);
+
+void exportStudentToCourse(YearNode* head, CourseNode*& curCourse, ofstream& fout);
 
 void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin);
 
