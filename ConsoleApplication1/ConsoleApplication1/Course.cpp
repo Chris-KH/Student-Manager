@@ -163,5 +163,9 @@ void viewTheScoreboardOfCourse(CourseNode* course)
         
         curStu = curStu->pNext;
     }
+}
 
+void addStudent2Course()
+{
+    
 }
