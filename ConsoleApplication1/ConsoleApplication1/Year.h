@@ -23,6 +23,8 @@ struct YearNode
 
 void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2);
 
+void exportCourseToSemester(YearNode* head, CourseInfo*& curCourse, ofstream& fout);
+
 void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin);
 
 void exportSchoolYearData(YearNode* head, ofstream &fout);

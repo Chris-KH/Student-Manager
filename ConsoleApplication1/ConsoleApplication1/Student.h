@@ -12,7 +12,8 @@ struct ScoreInfo
 
 struct StudentInfo
 {
-    string No = "", ID = "";
+    int No = 0;
+    string ID = "";
     string first_name = "", last_name = "";
     Date dob;
     string gender = ""; // 0 là nữ, 1 là nam

@@ -53,6 +53,8 @@ StudentNode* findStudentInACourse(CourseNode* curCourse);
 
 void updateCourseIn4(CourseNode* &curCourse);
 
+void addStudentToCourse(CourseNode*& curCourse);
+
 // void updateStudentResult(StudentNode *Student);
 
 // void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
