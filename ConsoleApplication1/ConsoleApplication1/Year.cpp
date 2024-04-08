@@ -215,7 +215,7 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	fout << curCourse->data.day_of_week << ",";
 	fout << curCourse->data.session << ",";
 	fout << curCourse->data.credit << ",";
-	fout << curCourse->data.max_student << ",";
+	fout << curCourse->data.max_student;
 	fout.close();
 }
 
