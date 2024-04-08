@@ -173,7 +173,7 @@ int main()
                     case 6:
                         if (curYear && curSes) {
                             //Addcourse
-                        } else cout << "Please choose semester first.\n";
+                        } else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 7:
                         if (curYear && curSes) {
