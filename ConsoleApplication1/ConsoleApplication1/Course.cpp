@@ -207,3 +207,13 @@ void viewTheScoreboardOfCourse(CourseNode* course)
         curStu = curStu->pNext;
     }
 }
+
+void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name)
+{
+    CourseNode *curCourse = head;
+    while (fout)
+    {
+        if(curCourse->data.ID == course_id && curCourse->data.course_name == sy_name) cout << curCourse->student;
+        curCourse = curCourse->pNext;
+    }
+}

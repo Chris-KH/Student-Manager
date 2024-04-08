@@ -269,8 +269,21 @@ int main()
                         }
                         break;
                     case 18:
-                        // ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name); //in Course.h
-                        break;
+                        if(fout.is_open())
+                        {
+                            curSes = chooseASemester(headYear, curYear);
+                            if (curSes && curYear)
+                            {
+                                curCourse = findCourse(curSes);
+                                exportListofStudentinCourse(fout, curCourse, curCourse->data.ID, curCourse->data.course_name);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            cout << "Open failed. Please make sure you choose the right file\n";
+                            break;
+                        }
                     case 19:
                         // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;

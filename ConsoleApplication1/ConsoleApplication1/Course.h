@@ -55,6 +55,8 @@ void updateCourseIn4(CourseNode* &curCourse);
 
 void addStudentToCourse(CourseNode*& curCourse);
 
+void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name);
+
 // void updateStudentResult(StudentNode *Student);
 
 // void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
@@ -81,8 +83,6 @@ void deleteACourse(CourseNode* head, string course_id);
 void exportStudentOfCourse(CourseInfo course, ofstream& fout); //choose year -> semester -> course
 
 void deleteAllCourse(CourseNode*& head);
-
-void ExportListOfStudentInCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name);
 
 void ExportScoreboard(ofstream& fout, CourseNode* head, string course_id, string sy_name);
 
