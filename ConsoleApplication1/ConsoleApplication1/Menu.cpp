@@ -58,7 +58,7 @@ void menuForStudent()
     cout << "   2. View my scoreboard.\n";
     cout << "   3. View student info.\n";
     cout << "   4. Change student's password.\n";
-    cout << "   5. Logout and end program.\n";
+    cout << "   5. Logout.\n";
     cout << "   6. End program.\n";
     cout << ">>>>Student choice: ";
 }

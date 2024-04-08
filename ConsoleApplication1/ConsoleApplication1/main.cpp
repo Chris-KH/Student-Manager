@@ -300,7 +300,6 @@ int main()
                 {
                     menuForStudent();
                     int studentChoice;
-                    cin >> studentChoice;
                     while (!(cin >> studentChoice))
                     {
                         cout << ">>>>Wrong input. Student choice: ";
