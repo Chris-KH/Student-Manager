@@ -202,7 +202,7 @@ void exportSchoolYearData(YearNode* head, ofstream& fout) {
 
 void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 {
-	fout.open("DataFile/" + curYear->data + "-Semester" + char('0' + curSes->order) + ".csv");
+	fout.open("DataFile/" + curYear->data + "-Semester" + char('0' + curSes->order) + ".csv", ios::app);
 	CourseNode* curCourse = curSes->course;
 	CourseNode* newcourse = new CourseNode;
 	if (curCourse == nullptr)
@@ -218,13 +218,13 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	cout << "Course name: \n";
 	cin.ignore();
 	getline(cin, curCourse->data.course_name);
-
+	
 	cout << "Class name: \n";
-	cin.ignore();
 	getline(cin, curCourse->data.class_name);
 
 	cout << "Course ID: \n";
 	cin >> curCourse->data.ID;
+	cin.ignore();
 
 	cout << "Teacher name: \n";
 	getline(cin, curCourse->data.teacher_name);
@@ -245,7 +245,7 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 
 	cout << "The maximum number of students in the course: \n";
 	cin >> curCourse->data.max_student;
-
+	fout << endl;
 	fout << curCourse->data.course_name << ",";
 	fout << curCourse->data.class_name << ",";
 	fout << curCourse->data.ID << ",";
@@ -253,8 +253,7 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	fout << curCourse->data.day_of_week << ",";
 	fout << curCourse->data.session << ",";
 	fout << curCourse->data.credit << ",";
-	fout << curCourse->data.max_student << ",";
-	fout << endl;
+	fout << curCourse->data.max_student;
 	fout.close();
 }
 

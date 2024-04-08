@@ -99,7 +99,7 @@ int main()
     if (ok1) cout << "Failed.\n";
     else cout << "Successful.\n";
 
-    cout << "<>Load students in course...";
+    cout << "<>Load course to semester...";
     yy = headYear;
     bool ok2 = false;
     while (yy) {
