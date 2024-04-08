@@ -277,15 +277,20 @@ int main()
                                 curCourse = findCourse(curSes);
                                 exportListofStudentinCourse(fout, curCourse, curCourse->data.ID, curCourse->data.course_name);
                             }
-                            break;
                         }
-                        else
-                        {
-                            cout << "Open failed. Please make sure you choose the right file\n";
-                            break;
-                        }
+                        else cout << "Open failed. Please make sure you choose the right file\n";
+                        break;
                     case 19:
-                        //importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
+                        if(fin.is_open())
+                        {
+                            curSes = chooseASemester(headYear, curYear);
+                            if(curSes && curYear)
+                            {
+                                curCourse = findCourse(curSes);
+                                importScoreboard(fin, curCourse, curSes, curYear);
+                            }
+                        }
+                        else cout << "Open failed. Please make sure you open the correct file\n";
                         break;
                     case 20:
                         /*YearNode * year = nullptr;

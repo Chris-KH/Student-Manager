@@ -211,14 +211,38 @@ void viewTheScoreboardOfCourse(CourseNode* course)
 void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name)
 {
     CourseNode *curCourse = head;
-    while (fout)
+    while (curCourse)
     {
-        if(curCourse->data.ID == course_id && curCourse->data.course_name == sy_name) cout << curCourse->student;
+        if(curCourse->data.ID == course_id && curCourse->data.course_name == sy_name)
+        {
+            fout << curCourse->student->data.dob << ",";
+            fout << curCourse->student->data.first_name<< ",";
+            fout << curCourse->student->data.gender << ",";
+            fout << curCourse->student->data.ID << ",";
+            fout << curCourse->student->data.last_name << ",";
+            fout << curCourse->student->data.score << ",";
+            fout << curCourse->student->data.social_id << "\n";
+        }
         curCourse = curCourse->pNext;
     }
 }
 
 void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year)
 {
-    
+    CourseNode *curCourse = head;
+    while (curCourse != nullptr)
+    {
+        if(!semester || !year)
+        {
+            cout << "Error! Please make sure to choose the right data\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            importScoreboard(fin, head, semester, year);
+        }
+        else
+        {
+            fin >> curCourse->student->data.score;
+            curCourse = curCourse->pNext;
+        }
+    }
 }
