@@ -385,21 +385,6 @@ SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp) {
 	return &curYear->semester[ses - 1];
 }
 
-void deleteSemester(YearNode* head) {
-	while (head) {
-		delete[] head->semester;
-		head = head->pNext;
-	}
-}
-
-void deleteSchoolYear(YearNode*& head) {
-	while (head) {
-		YearNode* temp = head;
-		head = head->pNext;
-		delete temp;
-	}
-}
-
 bool checkCurSes(YearNode* curYear, SemesterInfo* curSes)
 {
 	if (curYear && curSes)

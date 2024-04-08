@@ -41,14 +41,6 @@ void exportStudentInClass(StudentNode *head, ofstream &fout)
 	}
 }
 
-void deAllocateDataStudent(StudentNode* &head) {
-	while (head) {
-		StudentNode* temp = head;
-		head = head->pNext;
-		delete temp;
-	}
-}
-
 void createNewUsers(UserNode*& tailUser, StudentNode* head)
 {
 	StudentNode* temp = head;

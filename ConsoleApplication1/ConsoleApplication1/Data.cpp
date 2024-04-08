@@ -109,34 +109,44 @@ void importCourse(CourseNode *&curCourse, ifstream &fin, string &type)
 	}
 }
 
-void deAllocateDataYear(YearNode *headYear)
-{
-	YearNode *currentYear = headYear;
-	while (currentYear != nullptr)
-	{
-		deAllocateDataSemester(currentYear);
-		YearNode *temp = currentYear;
-		currentYear = currentYear->pNext;
+void deAllocateDataYear(YearNode*& headYear) {
+	while (headYear != nullptr) {
+		deAllocateDataSemester(headYear);
+		YearNode *temp = headYear;
+		headYear = headYear->pNext;
 		delete temp;
 	}
 }
 
-void deAllocateDataSemester(YearNode *headYear)
-{
+void deAllocateDataSemester(YearNode*& headYear) {
 	YearNode *currentYear = headYear;
 	for (int i = 0; i < 3; ++i)
 		deAllocateDataCourse(currentYear->semester[i].course);
 	delete []currentYear->semester;
 }
 
-void deAllocateDataCourse(CourseNode *headCourse)
-{
-	CourseNode *currentCourse = headCourse;
-	while (currentCourse != nullptr)
-	{
-		deAllocateDataStudent(currentCourse->student);
-		CourseNode *temp = currentCourse;
-		currentCourse = currentCourse->pNext;
+void deAllocateDataCourse(CourseNode*& headCourse) {
+	while (headCourse != nullptr) {
+		deAllocateDataStudent(headCourse->student);
+		CourseNode* temp = headCourse;
+		headCourse = headCourse->pNext;
+		delete temp;
+	}
+}
+
+void deAllocateDataStudent(StudentNode*& head) {
+	while (head) {
+		StudentNode* temp = head;
+		head = head->pNext;
+		delete temp;
+	}
+}
+
+void deAlocatedClassesData(ClassNode*& head) {
+	while (head) {
+		deAllocateDataStudent(head->student);
+		ClassNode* temp = head;
+		head = head->pNext;
 		delete temp;
 	}
 }

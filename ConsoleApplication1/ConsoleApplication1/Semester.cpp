@@ -37,3 +37,4 @@ void deleteACourse(SemesterInfo*& head) {
         cur = cur->pNext;
     }
 }
+

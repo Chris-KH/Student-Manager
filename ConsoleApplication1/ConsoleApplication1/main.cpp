@@ -350,17 +350,7 @@ int main()
     //Delete users
     deleteUserData(headUser);
 
-    //Delete students in class
-    yy = headYear;
-    while (yy) {
-        ClassNode* cc = yy->classes;
-        while (cc) {
-            deAllocateDataStudent(cc->student);
-            cc = cc->pNext;
-        }
-        yy = yy->pNext;
-    }
-
+    //Delete student in class
     //Delete classes
     yy = headYear;
     while (yy) {
@@ -373,5 +363,6 @@ int main()
     // Delete courses in semester
     // Delete semester in year
     // Delete year
+    deAllocateDataYear(headYear);
     return 0;
 }

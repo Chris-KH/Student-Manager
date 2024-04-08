@@ -35,8 +35,6 @@ void importStudentToClass(StudentNode*& head, ifstream& fin);
 
 void exportStudentInClass(StudentNode *head, ofstream &fout);
 
-void deAllocateDataStudent(StudentNode* &head);
-
 void createNewUsers(UserNode*& tailUser, StudentNode* head);
 
 void updateAStudentResult(StudentNode* &head);

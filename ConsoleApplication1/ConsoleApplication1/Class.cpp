@@ -2,8 +2,6 @@
 
 void importClassData(ClassNode*& classes, ClassNode* tail, ifstream& fin) {
 	string s;
-	if (!getline(fin, s))
-		classes = nullptr;
 	while (getline(fin, s)) {
 		ClassNode* temp = new ClassNode(s);
 		if (classes == nullptr) {
@@ -38,14 +36,6 @@ ClassNode* findClass(ClassNode* head) {
 	return nullptr;
 }
 
-
-void deAlocatedClassesData(ClassNode*& head) {
-	while (head) {
-		ClassNode* temp = head;
-		head = head->pNext;
-		delete temp;
-	}
-}
 void viewScoreboardofClass(ClassNode*& headClass) {
 	ofstream fout;
 	ClassNode *cur = headClass;
