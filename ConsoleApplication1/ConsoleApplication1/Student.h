@@ -46,8 +46,6 @@ void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
 
 void viewListofCourse(CourseNode* course);
 
-
-
 void addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student);
 
 void deleteACourse(CourseNode* head, string course_id);
