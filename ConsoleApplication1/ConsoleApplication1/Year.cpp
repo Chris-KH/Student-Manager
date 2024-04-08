@@ -180,13 +180,13 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	cout << "Course name: \n";
 	cin.ignore();
 	getline(cin, curCourse->data.course_name);
-
+	
 	cout << "Class name: \n";
-	cin.ignore();
 	getline(cin, curCourse->data.class_name);
 
 	cout << "Course ID: \n";
 	cin >> curCourse->data.ID;
+	cin.ignore();
 
 	cout << "Teacher name: \n";
 	getline(cin, curCourse->data.teacher_name);
