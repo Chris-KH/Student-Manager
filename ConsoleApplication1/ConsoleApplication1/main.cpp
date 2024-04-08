@@ -74,7 +74,7 @@ int main()
         cout << "Successful.\n";
 
     bool ok1 = false;
-    cout << "<>Load students in class...";
+    cout << "<>Load students to class...";
     yy = headYear;
     while (yy)
     {

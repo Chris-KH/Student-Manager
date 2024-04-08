@@ -7,8 +7,10 @@ void importStudentToClass(StudentNode *&head, ifstream &fin)
 	while (getline(fin, s))
 	{
 		StudentNode *temp = new StudentNode();
-		cin >> temp->data.No;
 		stringstream ss(s);
+		string No;
+		getline(ss, No, ',');
+		temp->data.No = stoi(No);
 		getline(ss, temp->data.ID, ',');
 		getline(ss, temp->data.last_name, ',');
 		getline(ss, temp->data.first_name, ',');
