@@ -285,7 +285,7 @@ int main()
                             break;
                         }
                     case 19:
-                        // importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
+                        //importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year); //in Course.h
                         break;
                     case 20:
                         /*YearNode * year = nullptr;

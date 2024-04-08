@@ -217,3 +217,8 @@ void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course
         curCourse = curCourse->pNext;
     }
 }
+
+void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year)
+{
+    
+}

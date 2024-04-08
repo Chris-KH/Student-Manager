@@ -57,6 +57,8 @@ void addStudentToCourse(CourseNode*& curCourse);
 
 void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name);
 
+void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
+
 // void updateStudentResult(StudentNode *Student);
 
 // void viewTheScoreboardOfClass(ClassNode* headClass, CourseNode* headCourse);
@@ -72,7 +74,7 @@ void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course
 /*
 void importStudentToCourse(CourseNode*& course, ifstream& fin);
 
-void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
+
 
 void viewListofCourse(CourseNode* course);
 

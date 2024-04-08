@@ -14,4 +14,4 @@ void deAllocateDataCourse(CourseNode*& headCourse);
 void deAllocateDataStudent(StudentNode*& head);
 void deAlocatedClassesData(ClassNode*& head);
 
-// void deAllocateViewingManagement()
+// void deAllocateViewingManagement(): hàm này ai viết đây?
