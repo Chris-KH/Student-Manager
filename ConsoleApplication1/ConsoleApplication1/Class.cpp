@@ -2,6 +2,8 @@
 
 void importClassData(ClassNode*& classes, ClassNode* tail, ifstream& fin) {
 	string s;
+	if (!getline(fin, s))
+		classes = nullptr;
 	while (getline(fin, s)) {
 		ClassNode* temp = new ClassNode(s);
 		if (classes == nullptr) {

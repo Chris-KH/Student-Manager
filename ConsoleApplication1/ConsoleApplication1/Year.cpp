@@ -136,11 +136,15 @@ void createASchoolYear(YearNode*& head, YearNode*& tail) {
 	}
 	else tail->pNext = temp;
 	tail = temp;
+	ofstream fout2;
+	fout2.open("DataFile/" + temp->data + "Classes.txt");
+	fout2.close();
 	cout << "Create school year successfully.\n";
 }
 
 void exportSchoolYearData(YearNode* head, ofstream& fout) {
 	YearNode* cur = head;
+	ofstream fout2;
 	while (cur) {
 		if (cur != head) fout << "\n";
 		fout << cur->data << "\n";
@@ -152,6 +156,7 @@ void exportSchoolYearData(YearNode* head, ofstream& fout) {
 			}
 			if (i != 2) fout << "\n";
 		}
+		
 		cur = cur->pNext;
 	}
 }
