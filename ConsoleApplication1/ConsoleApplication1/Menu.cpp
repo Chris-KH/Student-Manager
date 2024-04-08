@@ -29,7 +29,7 @@ void menuForStaff()
     cout << "   02. Create classes.\n";
     cout << "   03. Create a semester.\n";
     cout << "   04. Choose a sesmester.\n";
-    cout << "   05. Add new student to class.\n";
+    cout << "   05. Add new 1st year student to 1st year class.\n";
     cout << "   06. Add a course.\n";
     cout << "   07. View the list of courses in current semester.\n";
     cout << "   08. Update course information.\n";
@@ -53,6 +53,7 @@ void menuForStaff()
 }
 void menuForStudent()
 {
+    system("cls");
     cout << "All the functions for student: Press a number to choose.\n";
     cout << "   1. View a list of my course.\n";
     cout << "   2. View my scoreboard.\n";

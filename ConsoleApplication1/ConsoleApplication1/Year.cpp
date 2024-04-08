@@ -163,7 +163,8 @@ void exportSchoolYearData(YearNode* head, ofstream& fout) {
 
 YearNode* findSchoolYear(YearNode* head) {
 	string year;
-	cout << "Enter year: "; cin >> year;
+	cout << "Enter year (yyyy-yyyy): "; cin >> year;
+	cin.ignore();
 	while (head) {
 		if (head->data == year) return head;
 		head = head->pNext;
