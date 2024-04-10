@@ -291,6 +291,7 @@ int main()
                             }
                         }
                         else cout << "Open failed. Please make sure you open the correct file\n";
+                        fin.close();
                         break;
                     case 20:
                         /*YearNode * year = nullptr;
