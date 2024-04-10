@@ -418,6 +418,7 @@ SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp) {
 	}
 	if (curYear->semester[ses - 1].created == false) {
 		cout << "This semester has not been created yet.\n";
+		//hỏi user có muốn tạo semester mới không?
 		createSemester(head);
 	}
 	return &curYear->semester[ses - 1];

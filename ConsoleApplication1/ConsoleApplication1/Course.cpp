@@ -1,9 +1,10 @@
 ﻿#include "Course.h"
 
-void viewListOfCourse(CourseNode *head)
+void viewListOfCourse(CourseNode* head)
 {
-    CourseNode *cur = head;
+    CourseNode* cur = head;
     int cnt = 0;
+    cout << "List of courses: " << endl;
     while (cur != nullptr)
     {
         cout << ++cnt << ". " << cur->data.course_name << " - " << cur->data.ID << " - " << cur->data.class_name << "\n";
@@ -11,20 +12,29 @@ void viewListOfCourse(CourseNode *head)
     }
 }
 
-void viewListOfStudentInCourse(CourseNode *head) {
+void viewListOfStudentInCourse(CourseNode* head) {
     string course_id;
-    CourseNode *curCourse = head;
+    CourseNode* curCourse = head;
     viewListOfCourse(head);
-    cout << "Please choose a course!, example: CS162 (type in CS162): "; cin >> course_id;
-    while (curCourse) {
-        if (curCourse->data.ID == course_id) {
-            StudentNode *curStudent = curCourse->student;
-            if (!curStudent) {
+    int order;
+    cout << "Please choose a order corresponding to the course: ";
+    cin >> order;
+
+    int cnt = 0;
+    while (curCourse)
+    {
+        ++cnt;
+        if (cnt == order)
+        {
+            StudentNode* curStudent = curCourse->student;
+            if (!curStudent)
+            {
                 cout << "This course has no student.\n";
                 return;
             }
-            cout << "Students in course " << course_id << ":\n";
-            while (curStudent) {
+            cout << "Students in course: " << curCourse->data.course_name << " - " << curCourse->data.ID << " - " << curCourse->data.class_name << ":\n";
+            while (curStudent)
+            {
                 cout << curStudent->data.ID << " " << curStudent->data.first_name << " " << curStudent->data.last_name << "\n";
                 curStudent = curStudent->pNext;
             }
@@ -32,7 +42,8 @@ void viewListOfStudentInCourse(CourseNode *head) {
         }
         curCourse = curCourse->pNext;
     }
-    cout << "This semester does not have this course.\n";
+    if (order > cnt)
+        cout << "This semester does not have this course.\n";
 }
 
 void removeStudentFromCourse(CourseNode*& head) {
@@ -76,7 +87,7 @@ StudentNode* findStudentInACourse(CourseNode* curCourse) {
     return nullptr;
 }
 
-void  viewStudentCourse(string student_id, CourseNode* head) 
+void  viewStudentCourse(string student_id, CourseNode* head)
 //giả sử đã biết được semester -> biết headCourse. Cách để chọn semester như thế nào sẽ code sau 
 {
     cout << "List of courses " << endl;
@@ -98,8 +109,8 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
-        StudentNode *curStu = findStudentInACourse(curCourse);
-        if (curStu!=nullptr)
+        StudentNode* curStu = findStudentInACourse(curCourse);
+        if (curStu != nullptr)
         {
             StudentNode* curStu = curCourse->student;
             cout << "Course " << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
@@ -144,23 +155,23 @@ void updateCourseIn4(CourseNode*& curCourse) {
     cin >> curCourse->data.session;
 }
 
-void addStudentToCourse(CourseNode* &curCourse)
+void addStudentToCourse(CourseNode*& curCourse)
 {
     StudentNode* newStu = new StudentNode;
-    
+
     cout << "Please input student information" << endl;
     cout << "Student ID: ";
     getline(cin, newStu->data.ID);
-    
+
     cout << "Last name: ";
     getline(cin, newStu->data.last_name);
 
     cout << "First name: ";
     getline(cin, newStu->data.first_name);
-    
+
     cout << "Gender: ";
     getline(cin, newStu->data.gender);
-    
+
     cout << "DOB: ";
     string dob;
     getline(cin, dob);
@@ -179,7 +190,7 @@ void addStudentToCourse(CourseNode* &curCourse)
         newStu->data.No = 1;
     }
     else {
-        
+
         while (curStu->pNext != nullptr)
             curStu = curStu->pNext;
         newStu->data.No = curStu->data.No + 1;
@@ -201,7 +212,7 @@ void viewTheScoreboardOfCourse(CourseNode* course)
         cout << "    Final: " << curStu->data.score.final << endl;
         cout << "    Midterm: " << curStu->data.score.midterm << endl;
         cout << "    Bonus: " << curStu->data.score.bonus << endl;
-        
+
         curStu = curStu->pNext;
     }
 }
