@@ -28,6 +28,8 @@ void importClassData(ClassNode*& classes, ClassNode* tail, ifstream& fin);
 
 void exportClassData(ClassNode* classes, ofstream& fout);
 
-ClassNode* findClass(ClassNode* head);
+string askClassName();
+
+ClassNode* findClass(ClassNode* head, string name);
 
 void viewScoreboardofClass(ClassNode*& head);

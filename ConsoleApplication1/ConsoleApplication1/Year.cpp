@@ -215,12 +215,22 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 		curCourse = curCourse->pNext;
 	}
 
+	//NOTE: check thêm course này đã được tạo hay chưa
+
 	cout << "Course name: \n";
 	cin.ignore();
 	getline(cin, curCourse->data.course_name);
 	
+	
 	cout << "Class name: \n";
 	getline(cin, curCourse->data.class_name);
+	//check class name
+	ClassNode* curClass = findClass(curYear->classes,curCourse->data.class_name);
+	while (curClass == nullptr) {
+		cout << "This class does not exist.\n";
+		curClass = findClass(curYear->classes, askClassName());
+	}
+	//NOTE: phải import student của class tương ứng vào -> export ra file
 
 	cout << "Course ID: \n";
 	cin >> curCourse->data.ID;
@@ -274,7 +284,8 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
 		cout << "This year does not exist.\n";
 		return;
 	}
-	ClassNode* curClass = findClass(curYear->classes);
+
+	ClassNode* curClass = findClass(curYear->classes,askClassName());
 	if (curClass == nullptr) {
 		cout << "This class does not exist.\n";
 		return;
@@ -295,6 +306,13 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
 	else cout << "Add student failed.\n";
 }
 
+string askClassName()
+{
+	string name;
+	cout << "Input class name: ";
+	getline(cin, name);
+	return name;
+}
 
 void viewListOfStudentInClass(YearNode* head) {
 	YearNode* curYear = findSchoolYear(head);
@@ -303,10 +321,10 @@ void viewListOfStudentInClass(YearNode* head) {
 		curYear = findSchoolYear(head);
 	}
 	ClassNode* temp = curYear->classes;
-	ClassNode* curClass = findClass(temp);
+	ClassNode* curClass = findClass(temp,askClassName());
 	while (curClass == nullptr) {
 		cout << "This class does not exist.\n";
-		curClass = findClass(temp);
+		curClass = findClass(temp,askClassName());
 	}
 	StudentNode* cur = curClass->student;
 	if (cur == nullptr) {
