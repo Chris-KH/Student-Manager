@@ -394,8 +394,8 @@ int main()
     //Delete users
     deleteUserData(headUser);
 
-    //Delete student in class
-    //Delete classes
+    // Delete student in class
+    // Delete classes
     yy = headYear;
     while (yy) {
         deAlocatedClassesData(yy->classes);
