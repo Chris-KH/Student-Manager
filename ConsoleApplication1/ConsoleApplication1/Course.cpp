@@ -10,31 +10,29 @@ void viewListOfCourse(CourseNode *head)
         cur = cur->pNext;
     }
 }
-void viewListOfStudentInCourse(CourseNode *head, string course_id)
-{
-    CourseNode *currrentCourse = head;
-    if (course_id == "")
-    {
-        viewListOfCourse(head);
-        cout << "Please choose a course!, example: CS162 (type in CS162)\n"
-             << "Your choice: ";
-        getline(cin, course_id);
-        cin.ignore();
-    }
-    while (currrentCourse != nullptr)
-    {
-        if (currrentCourse->data.ID == course_id)
-        {
-            StudentNode *currentStudent = currrentCourse->student;
-            while (currentStudent != nullptr)
-            {
-                cout << currentStudent->data.ID << " " << currentStudent->data.first_name << " " << currentStudent->data.last_name << "\n";
-                currentStudent = currentStudent->pNext;
+
+void viewListOfStudentInCourse(CourseNode *head) {
+    string course_id;
+    CourseNode *curCourse = head;
+    viewListOfCourse(head);
+    cout << "Please choose a course!, example: CS162 (type in CS162): "; cin >> course_id;
+    while (curCourse) {
+        if (curCourse->data.ID == course_id) {
+            StudentNode *curStudent = curCourse->student;
+            if (!curStudent) {
+                cout << "This course has no student.\n";
+                return;
             }
+            cout << "Students in course " << course_id << ":\n";
+            while (curStudent) {
+                cout << curStudent->data.ID << " " << curStudent->data.first_name << " " << curStudent->data.last_name << "\n";
+                curStudent = curStudent->pNext;
+            }
+            return;
         }
-        else
-            currrentCourse = currrentCourse->pNext;
+        curCourse = curCourse->pNext;
     }
+    cout << "This semester does not have this course.\n";
 }
 
 void removeStudentFromCourse(CourseNode*& head) {

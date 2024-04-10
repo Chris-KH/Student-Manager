@@ -47,7 +47,7 @@ void removeStudentFromCourse(CourseNode*& head);
 
 void viewListOfCourse(CourseNode* head);
 
-void viewListOfStudentInCourse(CourseNode* head, string course_id);
+void viewListOfStudentInCourse(CourseNode* head);
 
 StudentNode* findStudentInACourse(CourseNode* curCourse);
 
