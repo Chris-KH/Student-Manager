@@ -208,6 +208,7 @@ void viewTheScoreboardOfCourse(CourseNode* course)
     }
 }
 
+/*
 void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name)
 {
     CourseNode *curCourse = head;
@@ -226,6 +227,7 @@ void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course
         curCourse = curCourse->pNext;
     }
 }
+
 
 void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year)
 {
@@ -246,3 +248,5 @@ void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year)
         }
     }
 }
+
+*/

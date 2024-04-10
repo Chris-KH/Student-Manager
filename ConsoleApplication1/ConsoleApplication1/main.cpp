@@ -269,6 +269,7 @@ int main()
                         }
                         break;
                     case 18:
+                        /*
                         if(fout.is_open())
                         {
                             curSes = chooseASemester(headYear, curYear);
@@ -279,8 +280,10 @@ int main()
                             }
                         }
                         else cout << "Open failed. Please make sure you choose the right file\n";
-                        break;
+                        break;4
+                        */
                     case 19:
+                        /*
                         if(fin.is_open())
                         {
                             curSes = chooseASemester(headYear, curYear);
@@ -293,6 +296,7 @@ int main()
                         else cout << "Open failed. Please make sure you open the correct file\n";
                         fin.close();
                         break;
+                        */
                     case 20:
                         /*YearNode * year = nullptr;
                         if (findSchoolYear(year))
