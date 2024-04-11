@@ -287,7 +287,7 @@ int main()
                             if(curSes && curYear)
                             {
                                 curCourse = findCourse(curSes);
-                                importScoreboard(fin, curCourse, curSes, curYear);
+                                //importScoreboard(fin, curCourse, curSes, curYear);
                             }
                         }
                         else cout << "Open failed. Please make sure you open the correct file\n";
