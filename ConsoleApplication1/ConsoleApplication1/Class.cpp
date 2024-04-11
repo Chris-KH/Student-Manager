@@ -23,9 +23,7 @@ void exportClassData(ClassNode* classes, ofstream& fout) {
 	}
 }
 
-ClassNode* findClass(ClassNode* head) {
-	string name;
-	cout << "Input class name: "; getline(cin, name);
+ClassNode* findClass(ClassNode* head, string name) {
 	ClassNode* cur = head;
 	while (cur != nullptr)
 	{
@@ -36,10 +34,18 @@ ClassNode* findClass(ClassNode* head) {
 	return nullptr;
 }
 
+string askClassName()
+{
+	string name;
+	cout << "Input class name: ";
+	getline(cin, name);
+	return name;
+}
+
 void viewScoreboardofClass(ClassNode*& headClass) {
 	ofstream fout;
 	ClassNode *cur = headClass;
-	findClass(cur);
+	findClass(cur,askClassName());
 	if(cur != nullptr) exportStudentInClass(cur->student, fout);
 	else {
 		cout << "No appropriate class. Please find the right class \n";

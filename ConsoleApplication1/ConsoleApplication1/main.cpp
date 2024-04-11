@@ -18,6 +18,7 @@ int main()
 
     cout << ">>>>Welcome to course management system.\n";
 
+    //Load users data
     cout << "<>Load users data...";
     UserNode *headUser = nullptr;
     UserNode *taillUser = nullptr;
@@ -35,6 +36,7 @@ int main()
         exit = true;
     }
 
+    //Load school year data
     cout << "<>Load school years data...";
     fin.open("DataFile/SchoolYear.txt");
     if (fin.is_open())
@@ -50,6 +52,7 @@ int main()
         ;
     }
 
+    //Load class data
     cout << "<>Load classes data...";
     YearNode *yy = headYear;
     while (yy)
@@ -73,6 +76,8 @@ int main()
     else
         cout << "Successful.\n";
 
+
+    //Load students to class
     bool ok1 = false;
     cout << "<>Load students to class...";
     yy = headYear;
@@ -99,6 +104,7 @@ int main()
     if (ok1) cout << "Failed.\n";
     else cout << "Successful.\n";
 
+    //Load course data to semester
     cout << "<>Load course to semester...";
     yy = headYear;
     bool ok2 = false;
@@ -109,8 +115,10 @@ int main()
     if (ok2) cout << "Failed.\n";
     else cout << "Successful.\n";
 
-    exit = !(ok1 == false && exit == false && ok2 == false);
-    // User log in
+    //Load student to course
+    exit = !(ok1 == false && ok2 == false && exit == false);
+
+    //Starting program....
     UserNode *logged_in = nullptr;
     while (exit == false && continueProgram(1))
     {
@@ -249,7 +257,7 @@ int main()
                     case 15:
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear) {
-                            viewListOfStudentInCourse(curSes->course, "");
+                            viewListOfStudentInCourse(curSes->course); //course.cpp 14
                         }
                         break;
                     case 16:
@@ -257,18 +265,18 @@ int main()
                         break;
                     case 17:
                         fout.open("DataFile/Users.txt");
-                        if (fout.is_open())
+                        if (fout.good())
                         {
                             changePassword(logged_in);
                             exportUserData(headUser, fout);
                             fout.close();
                         }
-                        else
-                        {
+                        else {
                             cout << "Change password failed.\n";
                         }
                         break;
                     case 18:
+                        /*
                         if(fout.is_open())
                         {
                             curSes = chooseASemester(headYear, curYear);
@@ -279,8 +287,10 @@ int main()
                             }
                         }
                         else cout << "Open failed. Please make sure you choose the right file\n";
-                        break;
+                        break;4
+                        */
                     case 19:
+                        /*
                         if(fin.is_open())
                         {
                             curSes = chooseASemester(headYear, curYear);
@@ -293,6 +303,7 @@ int main()
                         else cout << "Open failed. Please make sure you open the correct file\n";
                         fin.close();
                         break;
+                        */
                     case 20:
                         /*YearNode * year = nullptr;
                         if (findSchoolYear(year))
@@ -383,8 +394,8 @@ int main()
     //Delete users
     deleteUserData(headUser);
 
-    //Delete student in class
-    //Delete classes
+    // Delete student in class
+    // Delete classes
     yy = headYear;
     while (yy) {
         deAlocatedClassesData(yy->classes);
