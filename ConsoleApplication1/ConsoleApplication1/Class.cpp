@@ -34,6 +34,14 @@ ClassNode* findClass(ClassNode* head, string name) {
 	return nullptr;
 }
 
+string askClassName()
+{
+	string name;
+	cout << "Input class name: ";
+	getline(cin, name);
+	return name;
+}
+
 void viewScoreboardofClass(ClassNode*& headClass) {
 	ofstream fout;
 	ClassNode *cur = headClass;

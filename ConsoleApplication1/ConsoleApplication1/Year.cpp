@@ -306,14 +306,6 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
 	else cout << "Add student failed.\n";
 }
 
-string askClassName()
-{
-	string name;
-	cout << "Input class name: ";
-	getline(cin, name);
-	return name;
-}
-
 void viewListOfStudentInClass(YearNode* head) {
 	YearNode* curYear = findSchoolYear(head);
 	while (curYear == nullptr) {
