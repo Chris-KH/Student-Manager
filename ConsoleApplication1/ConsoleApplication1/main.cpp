@@ -21,12 +21,12 @@ int main()
     //Load users data
     cout << "<>Load users data...";
     UserNode *headUser = nullptr;
-    UserNode *taillUser = nullptr;
+    UserNode *tailUser = nullptr;
     
     fin.open("DataFile/Users.txt");
     if (fin.is_open())
     {
-        importUserData(headUser, taillUser, fin);
+        importUserData(headUser, tailUser, fin);
         cout << "Successful.\n";
         fin.close();
     }
@@ -49,7 +49,6 @@ int main()
     {
         cout << "Failed.\n";
         exit = true;
-        ;
     }
 
     //Load class data
@@ -175,7 +174,7 @@ int main()
                         curSes = chooseASemester(headYear, curYear);
                         break;
                     case 5:
-                        addNewStudentToClass(taillUser, headYear, fin);
+                        addNewStudentToClass(tailUser, headYear, fin);
                         break;
                     case 6:
                         if (curYear && curSes) {
