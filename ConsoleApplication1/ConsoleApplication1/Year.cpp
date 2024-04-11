@@ -17,6 +17,18 @@ void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2) {
 				getline(ss, temp->data.teacher_name, ',');
 				getline(ss, temp->data.day_of_week, ',');
 
+				ifstream fin;
+				fin.open("DataFile/" + temp->data.class_name+".csv");
+				if (fin.is_open())
+					importStudentToClass(temp->student, fin);
+				else cout << "Unable to import student to the course" << " "<<temp->data.course_name<<" "<<head->data<<" "<<temp->data.class_name<<endl;
+				fin.close();
+	
+				ofstream fout2;
+				fout2.open("DataFile/Courses/" + head->data + "-" + temp->data.ID + "-" + temp->data.class_name + ".csv");
+				exportStudentInClass(temp->student, fout2);
+				fout2.close();
+
 				string s;
 
 				getline(ss, s, ',');
@@ -224,13 +236,20 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	
 	cout << "Class name: \n";
 	getline(cin, curCourse->data.class_name);
-	//check class name
+	
 	ClassNode* curClass = findClass(curYear->classes,curCourse->data.class_name);
 	while (curClass == nullptr) {
 		cout << "This class does not exist.\n";
 		curClass = findClass(curYear->classes, askClassName());
 	}
-	//NOTE: phải import student của class tương ứng vào -> export ra file
+	
+	/*ifstream fin;
+	fin.open("DataFile/" + curCourse->data.class_name);
+	if (fin.is_open())
+		importStudentToClass(curCourse->student, fin);
+	else cout << "Unable to import student to the course" << endl;
+	fin.close();
+	*/
 
 	cout << "Course ID: \n";
 	cin >> curCourse->data.ID;
@@ -264,6 +283,12 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	fout << curCourse->data.session << ",";
 	fout << curCourse->data.credit << ",";
 	fout << curCourse->data.max_student;
+
+	/*ofstream fout2;
+	fout2.open("DataFile/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
+	exportStudentInClass(curCourse->student, fout2);
+	fout2.close();
+	*/
 	fout.close();
 }
 
@@ -305,6 +330,8 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
 	}
 	else cout << "Add student failed.\n";
 }
+
+
 
 void viewListOfStudentInClass(YearNode* head) {
 	YearNode* curYear = findSchoolYear(head);
