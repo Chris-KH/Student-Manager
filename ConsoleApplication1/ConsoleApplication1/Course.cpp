@@ -17,7 +17,7 @@ void viewListOfStudentInCourse(CourseNode* head) {
     CourseNode* curCourse = head;
     viewListOfCourse(head);
     int order;
-    cout << "Please choose a order corresponding to the course: ";
+    cout << "Please choose a number corresponding to the course: ";
     cin >> order;
 
     int cnt = 0;
@@ -33,9 +33,10 @@ void viewListOfStudentInCourse(CourseNode* head) {
                 return;
             }
             cout << "Students in course: " << curCourse->data.course_name << " - " << curCourse->data.ID << " - " << curCourse->data.class_name << ":\n";
+            int cnt = 0;
             while (curStudent)
             {
-                cout << curStudent->data.ID << " " << curStudent->data.first_name << " " << curStudent->data.last_name << "\n";
+                cout << ++cnt << " " << curStudent->data.ID << " " << curStudent->data.first_name << " " << curStudent->data.last_name << "\n";
                 curStudent = curStudent->pNext;
             }
             return;
