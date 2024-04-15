@@ -12,6 +12,27 @@ void viewListOfCourse(CourseNode* head)
     }
 }
 
+CourseNode* findCourse(CourseNode *head)
+{
+    string course_id;
+    CourseNode* curCourse = head;
+    viewListOfCourse(head);
+    int order;
+    cout << "Please choose a number corresponding to the course: ";
+    cin >> order;
+    int cnt = 0;
+    while (curCourse)
+    {
+        ++cnt;
+        if (cnt == order)
+            return curCourse;
+        curCourse = curCourse->pNext;
+    }
+    if (order > cnt)
+        cout << "This semester does not have this course.\n";
+    return nullptr;
+}
+
 void viewListOfStudentInCourse(CourseNode* head) {
     string course_id;
     CourseNode* curCourse = head;
@@ -201,45 +222,32 @@ void addStudentToCourse(CourseNode*& curCourse)
 }
 
 void viewTheScoreboardOfCourse(CourseNode* course)
-//mặc định đã biết course nào
 {
+    
+    cout << "Scoreboard of course " << course->data.course_name << " " << course->data.ID << endl;
     StudentNode* curStu = course->student;
     while (curStu != nullptr)
     {
-        cout << curStu->data.No;
+        cout << curStu->data.No << endl;
         cout << "Student name: " << curStu->data.first_name << " " << curStu->data.last_name << endl;
         cout << "Student ID: " << curStu->data.ID << endl;
-        cout << "Score" << endl;
-        cout << "    Total: " << curStu->data.score.total << endl;
-        cout << "    Final: " << curStu->data.score.final << endl;
-        cout << "    Midterm: " << curStu->data.score.midterm << endl;
-        cout << "    Bonus: " << curStu->data.score.bonus << endl;
-
+        if (curStu->data.score.total == -1)
+        {
+            cout << "Still not imported" << endl;
+        }
+        else
+        {
+            cout << "Score" << endl;
+            cout << "    Total: " << curStu->data.score.total << endl;
+            cout << "    Final: " << curStu->data.score.final << endl;
+            cout << "    Midterm: " << curStu->data.score.midterm << endl;
+            cout << "    Bonus: " << curStu->data.score.bonus << endl;
+        }
         curStu = curStu->pNext;
     }
 }
 
 /*
-void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name)
-{
-    CourseNode *curCourse = head;
-    while (curCourse)
-    {
-        if(curCourse->data.ID == course_id && curCourse->data.course_name == sy_name)
-        {
-            fout << curCourse->student->data.dob << ",";
-            fout << curCourse->student->data.first_name<< ",";
-            fout << curCourse->student->data.gender << ",";
-            fout << curCourse->student->data.ID << ",";
-            fout << curCourse->student->data.last_name << ",";
-            fout << curCourse->student->data.score << ",";
-            fout << curCourse->student->data.social_id << "\n";
-        }
-        curCourse = curCourse->pNext;
-    }
-}
-
-
 void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year)
 {
     CourseNode *curCourse = head;

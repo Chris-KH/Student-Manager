@@ -1,6 +1,6 @@
 #include"Semester.h"
 
-CourseNode* findCourse(SemesterInfo* head) {
+/*CourseNode* findCourse(SemesterInfo* head) {
     string s;
     cout << "Input course ID: "; cin >> s;
     CourseNode* curCourse = head->course;
@@ -9,10 +9,11 @@ CourseNode* findCourse(SemesterInfo* head) {
         curCourse = curCourse->pNext;
     }
     return nullptr;
-}
+}*/
+
 
 void deleteACourse(SemesterInfo*& head) {
-    CourseNode* curCourse = findCourse(head);
+    CourseNode* curCourse = findCourse(head->course);
     if (curCourse == nullptr) {
         cout << "This course does not exist in this semester.\n";
         return;

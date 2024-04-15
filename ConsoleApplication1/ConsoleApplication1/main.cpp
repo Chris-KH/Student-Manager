@@ -115,7 +115,35 @@ int main()
     if (ok2) cout << "Failed.\n";
     else cout << "Successful.\n";
 
+    
     //Load student to course
+    cout << "<>Load student to course...";
+    yy = headYear;
+    ok2 = false;
+    while (yy) 
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (yy->semester[i].created == false) continue;
+            curCourse = yy->semester[i].course;
+            while (curCourse)
+            {
+                fin.open("DataFile/Courses/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
+                if (fin.is_open())
+                    importStudentToClass(curCourse->student, fin);
+                else
+                {
+                    ok2 = true;
+                    cout << "Failed.\n" << endl;
+                }
+                fin.close();
+                curCourse = curCourse->pNext;
+            }
+        }
+        yy = yy->pNext;
+    }
+    if (!ok2) cout << "Successful.\n";
+    
     exit = !(ok1 == false && ok2 == false && exit == false);
 
     //Starting program....
@@ -192,7 +220,7 @@ int main()
                         break;
                     case 8:
                         if (curYear && curSes) {
-                            curCourse = findCourse(curSes);
+                            curCourse = findCourse(curSes->course);
                             if (curCourse)
                             {
                                 updateCourseIn4(curCourse);
@@ -204,11 +232,17 @@ int main()
                         break;
                     case 9:
                         if (curYear && curSes) {
-                            curCourse = findCourse(curSes);
+                            curCourse = findCourse(curSes->course);
                             if (curCourse)
                             {
                                 addStudentToCourse(curCourse);
-                                exportStudentToCourse(curYear, curCourse, fout);
+                                fout.open("DataFile/Courses/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
+                                if (fout.is_open())
+                                {
+                                    exportStudent(curCourse->student, fout);
+                                    fout.close();
+                                }
+                                else cout << "Export student in a course failed" << endl;
                             }
                             else cout << "This course does not exist.\n";
                         }
@@ -216,7 +250,7 @@ int main()
                         break;
                     case 10:
                         if (curYear && curSes) {
-                            curCourse = findCourse(curSes);
+                            curCourse = findCourse(curSes->course);
                             if (curCourse) {
                                 removeStudentFromCourse(curCourse);
                             }
@@ -257,7 +291,7 @@ int main()
                     case 15:
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear) {
-                            viewListOfStudentInCourse(curSes->course); //course.cpp 14
+                            viewListOfStudentInCourse(curSes->course);
                         }
                         break;
                     case 16:
@@ -276,27 +310,32 @@ int main()
                         }
                         break;
                     case 18:
-                        
-                        /*if (fout.is_open())
+                        curSes = chooseASemester(headYear, curYear);
+                        if (curSes && curYear)
                         {
-                            curSes = chooseASemester(headYear, curYear);
-                            if (curSes && curYear)
+                            curCourse = findCourse(curSes->course);
+                            if (curCourse)
                             {
-                                curCourse = findCourse(curSes);
-                                exportListofStudentinCourse(fout, curCourse, curCourse->data.ID, curCourse->data.course_name);
+                                fout.open("DataFile/Export Files/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
+                                if (fin.is_open())
+                                {
+                                    exportStudent(curCourse->student, fout);
+                                    //NOTE: ghi note như nào để dẫn người dùng đến file đó??
+                                }
+                                else
+                                    cout << "Export student in a course failed.\n" << endl;
                             }
+                            else cout << "This course does not exist.\n";
                         }
-                        else cout << "Open failed. Please make sure you choose the right file\n";
+                        else cout << "Wrong.\n";
                         break;
-                        */
                     case 19:
-                        /*
-                        if(fin.is_open())
+                        /*if (fin.is_open())
                         {
                             curSes = chooseASemester(headYear, curYear);
                             if(curSes && curYear)
                             {
-                                curCourse = findCourse(curSes);
+                                curCourse = findCourse(curSes->course);
                                 //importScoreboard(fin, curCourse, curSes, curYear);
                             }
                         }
@@ -305,23 +344,21 @@ int main()
                         break;
                         */
                     case 20:
-                        /*YearNode * year = nullptr;
-                        if (findSchoolYear(year))
+                        curSes = chooseASemester(headYear, curYear);
+                        if (curSes && curYear)
                         {
-                            SemesterInfo* ses = chooseASemester(headYear, year);
-                            if (ses)
-                            {
-                                CourseNode* course = findCourse(ses);
-                                // ViewTheScoreboardOfCourse(CourseNode* head, string course_id); 
-                                //đang viết trong course.cpp
-                            }
-                        }*/
+                            curCourse = findCourse(curSes->course);
+                            if (curCourse)
+                                viewTheScoreboardOfCourse(curCourse);
+                            else cout << "This course does not exist.\n";
+                        }
+                        else cout << "Wrong.\n";
                         break;
                     case 21:
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear) 
                         {
-                            curCourse = findCourse(curSes);
+                            curCourse = findCourse(curSes->course);
                             if (curCourse) 
                             {
                                 string s;

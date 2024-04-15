@@ -62,3 +62,5 @@ void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
 void  viewStudentCourse(string student_id, CourseNode* head);
 
 void  viewStudentScoreboard(string student_id, CourseNode* head);
+
+CourseNode* findCourse(CourseNode* head);

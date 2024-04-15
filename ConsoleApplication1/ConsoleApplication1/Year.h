@@ -25,8 +25,6 @@ void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2);
 
 void exportCourseToSemester(YearNode* head, SemesterInfo*& curSes, ofstream& fout);
 
-void exportStudentToCourse(YearNode* head, CourseNode*& curCourse, ofstream& fout);
-
 void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin);
 
 void exportSchoolYearData(YearNode* head, ofstream &fout);

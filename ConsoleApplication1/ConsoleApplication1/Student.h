@@ -34,7 +34,7 @@ struct StudentNode
 
 void importStudentToClass(StudentNode*& head, ifstream& fin);
 
-void exportStudentInClass(StudentNode *head, ofstream &fout);
+void exportStudent(StudentNode *head, ofstream &fout);
 
 void createNewUsers(UserNode*& tailUser, StudentNode* head);
 

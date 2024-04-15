@@ -17,12 +17,12 @@ void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2) {
 				getline(ss, temp->data.teacher_name, ',');
 				getline(ss, temp->data.day_of_week, ',');
 
-				ifstream fin;
+				/*ifstream fin;
 				fin.open("DataFile/" + temp->data.class_name+".csv");
 				if (fin.is_open())
 					importStudentToClass(temp->student, fin);
 				else cout << "Unable to import student to the course in file" << "DataFile / " + temp->data.class_name+".csv" << endl;
-				fin.close();
+				fin.close();*/
 	
 				string s;
 				getline(ss, s, ',');
@@ -74,24 +74,6 @@ void exportCourseToSemester(YearNode* head, SemesterInfo*& curSes, ofstream& fou
 		fout << curCourse->data.credit << ",";
 		fout << curCourse->data.max_student << ",";
 		curCourse = curCourse->pNext;
-	}
-}
-
-void exportStudentToCourse(YearNode* head, CourseNode*& curCourse, ofstream& fout)
-{
-	fout.open("DataFile/" + head->data + curCourse->data.class_name + "_" + curCourse->data.ID + ".csv");
-	StudentNode* curStu = curCourse->student;
-	while (curStu != nullptr)
-	{
-		if (curStu != curCourse->student)
-			fout << endl;
-		fout << curStu->data.No << ",";
-		fout << curStu->data.ID << ",";
-		fout << curStu->data.first_name << ",";
-		fout << curStu->data.last_name << ",";
-		fout << curStu->data.gender << ",";
-		fout << curStu->data.dob.day << "/" << curStu->data.dob.month << "/" << curStu->data.dob.year;
-		curStu = curStu->pNext;
 	}
 }
 
@@ -280,7 +262,7 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 
 	ofstream fout2;
 	fout2.open("DataFile/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
-	exportStudentInClass(curCourse->student, fout2);
+	exportStudent(curCourse->student, fout2);
 	fout2.close();
 	
 	fout.close();

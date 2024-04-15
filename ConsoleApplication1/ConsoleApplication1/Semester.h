@@ -16,5 +16,3 @@ struct SemesterInfo {
 };  
 
 void deleteACourse(SemesterInfo*& head);
-
-CourseNode* findCourse(SemesterInfo* head);
