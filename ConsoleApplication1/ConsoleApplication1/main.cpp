@@ -91,7 +91,6 @@ int main()
             if (fin.good())
             {
                 importStudentToClass(temp->student, fin);
-                createNewUsers(tailUser, temp->student);
                 fin.close();
             }
             else
@@ -277,8 +276,8 @@ int main()
                         }
                         break;
                     case 18:
-                        /*
-                        if(fout.is_open())
+                        
+                        /*if (fout.is_open())
                         {
                             curSes = chooseASemester(headYear, curYear);
                             if (curSes && curYear)
@@ -288,7 +287,7 @@ int main()
                             }
                         }
                         else cout << "Open failed. Please make sure you choose the right file\n";
-                        break;4
+                        break;
                         */
                     case 19:
                         /*
