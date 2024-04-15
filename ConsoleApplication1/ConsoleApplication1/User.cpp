@@ -7,12 +7,15 @@ void importUserData(UserNode*& headUser, UserNode*& tailUser, ifstream& fin) {
 	while (getline(fin, s)) {
 		UserNode* temp = new UserNode();
 		if (cur == nullptr) {
+			temp->data.order = 1;
 			headUser = temp;
 			cur = temp;
 		}
 		else {
+			temp->data.order = cur->data.order + 1;
 			cur->pNext = temp;
 			cur = temp;
+
 		}
 
 		getline(fin, cur->data.name);
@@ -33,14 +36,12 @@ void importUserData(UserNode*& headUser, UserNode*& tailUser, ifstream& fin) {
 
 void exportUserData(UserNode* users, ofstream& fout) {
 	UserNode* cur = users;
-	int order = 1;
 	while (cur) {
 		if (cur != users) fout << "\n";
-		fout << order << "\n";
+		fout << cur->data.order << "\n";
 		fout << cur->data.name << "\n";
 		fout << cur->data.username << " " << cur->data.password << " " << cur->data.is_staff << " " << cur->data.gender << "\n";
 		fout << cur->data.dob.day << "/" << cur->data.dob.month << "/" << cur->data.dob.year;
-		order++;
 		cur = cur->pNext;
 	}
 }

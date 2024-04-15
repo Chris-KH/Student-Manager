@@ -4,6 +4,7 @@
 
 struct UserInfo
 {
+	int order = 0;
 	string username;
 	string password;
 	bool is_staff = 0;

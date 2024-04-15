@@ -317,7 +317,6 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
 	fin.open("DataFile/" + curClass->data.name + ".csv");
 	if (fin.is_open()) {
 		importStudentToClass(curClass->student, fin);
-		
 		createNewUsers(tailUser, curClass->student);
 		cout << "Student is added successfully.\n";
 		fin.close();

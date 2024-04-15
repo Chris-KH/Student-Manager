@@ -48,7 +48,10 @@ void viewListOfStudentInCourse(CourseNode* head) {
 }
 
 void removeStudentFromCourse(CourseNode*& head) {
-    StudentNode* curStudent = findStudentInACourse(head);
+    string s;
+    cout << "Input student ID: " << endl;
+    cin >> s;
+    StudentNode* curStudent = findStudentInACourse(s, head);
     if (curStudent == nullptr) {
         cout << "This student is not in the course.\n";
         return;
@@ -75,9 +78,21 @@ void removeStudentFromCourse(CourseNode*& head) {
     }
 }
 
-StudentNode* findStudentInACourse(CourseNode* curCourse) {
+/*StudentNode* findStudentInACourse(CourseNode* curCourse) {
     string s;
     cout << "Input student ID: "; cin >> s;
+    StudentNode* curStu = curCourse->student;
+    while (curStu != nullptr)
+    {
+        if (curStu->data.ID == s)
+            return curStu;
+        curStu = curStu->pNext;
+    }
+    return nullptr;
+}*/
+
+StudentNode* findStudentInACourse(string s, CourseNode* curCourse) 
+{
     StudentNode* curStu = curCourse->student;
     while (curStu != nullptr)
     {
@@ -89,13 +104,12 @@ StudentNode* findStudentInACourse(CourseNode* curCourse) {
 }
 
 void  viewStudentCourse(string student_id, CourseNode* head)
-//giả sử đã biết được semester -> biết headCourse. Cách để chọn semester như thế nào sẽ code sau 
 {
-    cout << "List of courses " << endl;
+    cout << "List of courses in this semester: " << endl;
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
-        StudentNode* curStu = findStudentInACourse(curCourse);
+        StudentNode* curStu = findStudentInACourse(student_id, curCourse);
         if (curStu != nullptr)
             cout << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
         curCourse = curCourse->pNext;
@@ -104,13 +118,12 @@ void  viewStudentCourse(string student_id, CourseNode* head)
 }
 
 void  viewStudentScoreboard(string student_id, CourseNode* head)
-//giả sử đã biết được semester -> biết headCourse. Cách để chọn semester như thế nào sẽ code sau 
 {
-    cout << "The scoreboard of student ID " << student_id << endl;
+    cout << "The scoreboard of student ID " << student_id <<": "<< endl;
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
-        StudentNode* curStu = findStudentInACourse(curCourse);
+        StudentNode* curStu = findStudentInACourse(student_id, curCourse);
         if (curStu != nullptr)
         {
             StudentNode* curStu = curCourse->student;

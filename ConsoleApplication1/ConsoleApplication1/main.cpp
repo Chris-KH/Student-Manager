@@ -90,6 +90,7 @@ int main()
             if (fin.good())
             {
                 importStudentToClass(temp->student, fin);
+                createNewUsers(tailUser, temp->student);
                 fin.close();
             }
             else
@@ -350,10 +351,20 @@ int main()
                     switch (studentChoice)
                     {
                     case 1:
-                        // viewStudentCourse(string student_id, CourseNode* head); //đang code ở course.cpp
+                        curSes = chooseASemester(headYear, curYear);
+                        if (curSes && curYear) 
+                        {
+                            viewStudentCourse(logged_in->data.username, curSes->course);
+                        }
+                        else cout << "Wrong.\n";
                         break;
                     case 2:
-                        // viewStudentScoreboard(string student_id, CourseNode* head); //đang code ở course.cpp
+                        curSes = chooseASemester(headYear, curYear);
+                        if (curSes && curYear)
+                        {
+                            viewStudentScoreboard(logged_in->data.username, curSes->course);
+                        }
+                        else cout << "Wrong.\n";
                         break;
                     case 3:
                         viewProfileInfo(logged_in);

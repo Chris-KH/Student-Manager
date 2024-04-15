@@ -46,11 +46,13 @@ void exportStudentInClass(StudentNode *head, ofstream &fout)
 void createNewUsers(UserNode*& tailUser, StudentNode* head)
 {
 	StudentNode* temp = head;
+	UserNode* headtemp=tailUser;
 	while (temp != nullptr)
 	{
 		if (tailUser != nullptr)
 		{
 			UserNode* newuser = new UserNode;
+			newuser->data.order = tailUser->data.order + 1;
 			newuser->data.dob = temp->data.dob;
 			newuser->data.gender = temp->data.gender;
 			newuser->data.is_staff = 0;
@@ -60,7 +62,28 @@ void createNewUsers(UserNode*& tailUser, StudentNode* head)
 			tailUser->pNext = newuser;
 			tailUser = tailUser->pNext;
 		}
+		else
+		{
+			cout << "Create new users failed." << endl;
+			return;
+		}
 		temp = temp->pNext;
+	}
+	ofstream fout;
+	fout.open("DataFile/Users.txt", ios::app);
+	if (fout.is_open())
+	{
+		if (headtemp->pNext != nullptr)
+		{
+			fout << endl;
+			exportUserData(headtemp->pNext, fout);
+		}
+		fout.close();
+	}
+	else
+	{
+		cout << "Create accounts for new students failed.\n";
+		return;
 	}
 }
 /*void updateAStudentResult(StudentNode* &head)
