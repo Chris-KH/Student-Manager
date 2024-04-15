@@ -39,22 +39,3 @@ void exportStudentInClass(StudentNode *head, ofstream &fout);
 void createNewUsers(UserNode*& tailUser, StudentNode* head);
 
 void updateAStudentResult(StudentNode* &head);
-/*
-void importStudentToCourse(CourseNode*& course, ifstream& fin);
-
-void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
-
-void viewListofCourse(CourseNode* course);
-
-void addStudentToCourse(CourseNode* head, string course_id, StudentNode* new_student);
-
-void deleteACourse(CourseNode* head, string course_id);
-
-void createNewStudentAccount(StudentNode students, UserNode*& head);
-
-void viewListOfStudentInClass(StudentNode* head);//choose class
-
-void viewListOfStudentInCourse(StudentNode* head); //choose year -> semester -> course
-
-
-*/

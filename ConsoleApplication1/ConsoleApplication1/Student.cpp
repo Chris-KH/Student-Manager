@@ -86,15 +86,26 @@ void createNewUsers(UserNode*& tailUser, StudentNode* head)
 		return;
 	}
 }
-/*void updateAStudentResult(StudentNode* &head)
+
+void updateAStudentResult(StudentNode* &curStu)
 {
-	while (head != nullptr)
-	{
-		ifstream fin;
-		StudentNode *cur = head;
-		StudentInfo *curStu = cur->data;
-		StudentNode *old = cur->data;
-		updateAStudentResult
-	}
-	return;
-}*/
+	cout << "Current Result" << endl;
+	cout << "   Midterm: " << curStu->data.score.midterm << endl;
+	cout << "   Final: " << curStu->data.score.final << endl;
+	cout << "   Bonus: " << curStu->data.score.bonus << endl;
+	cout << "   Total: " << curStu->data.score.total << endl;
+
+	cout << "Update midterm mark: ";
+	cin >> curStu->data.score.midterm;
+	cout << "Update final mark: ";
+	cin >> curStu->data.score.final;
+	cout << "Update bonus: ";
+	cin >> curStu->data.score.bonus;
+
+	curStu->data.score.total = 0.3*curStu->data.score.midterm + 0.5*curStu->data.score.final + 0.2*curStu->data.score.bonus;
+	cout << "Updated result" << endl;
+	cout << "   Midterm: " << curStu->data.score.midterm << endl;
+	cout << "   Final: " << curStu->data.score.final << endl;
+	cout << "   Bonus: " << curStu->data.score.bonus << endl;
+	cout << "   Total: " << curStu->data.score.total << endl;
+}

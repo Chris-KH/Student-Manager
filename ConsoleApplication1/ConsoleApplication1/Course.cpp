@@ -78,18 +78,6 @@ void removeStudentFromCourse(CourseNode*& head) {
     }
 }
 
-/*StudentNode* findStudentInACourse(CourseNode* curCourse) {
-    string s;
-    cout << "Input student ID: "; cin >> s;
-    StudentNode* curStu = curCourse->student;
-    while (curStu != nullptr)
-    {
-        if (curStu->data.ID == s)
-            return curStu;
-        curStu = curStu->pNext;
-    }
-    return nullptr;
-}*/
 
 StudentNode* findStudentInACourse(string s, CourseNode* curCourse) 
 {

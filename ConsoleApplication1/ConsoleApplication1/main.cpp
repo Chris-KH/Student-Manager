@@ -6,12 +6,13 @@ int main()
     ofstream fout;
     YearNode *headYear = nullptr;
     YearNode* curYear = nullptr;
-    ClassNode *headClass = nullptr;
-    CourseNode *headCourse = nullptr;
     YearNode *tailYear = nullptr;
-    ClassNode *curClass = nullptr;
     SemesterInfo *curSes = nullptr;
+    CourseNode *headCourse = nullptr;
     CourseNode *curCourse = nullptr;
+    ClassNode *curClass = nullptr;
+    ClassNode *headClass = nullptr;
+    StudentNode* curStu = nullptr;
     bool exit = false;
 
     // Load data
@@ -318,7 +319,25 @@ int main()
                         }*/
                         break;
                     case 21:
-                        // updateAStudentResult(); //in Student.h
+                        curSes = chooseASemester(headYear, curYear);
+                        if (curSes && curYear) 
+                        {
+                            curCourse = findCourse(curSes);
+                            if (curCourse) 
+                            {
+                                string s;
+                                cout << "Input student ID: " << endl;
+                                cin >> s;
+                                curStu = findStudentInACourse(s, curCourse);
+                                if (curStu)
+                                {
+                                    updateAStudentResult(curStu);
+                                }
+                                else cout << "This student does not exist.\n";
+                            }
+                            else cout << "This course does not exist.\n";
+                        }
+                        else cout << "Wrong.\n";
                         break;
                     case 22:
                         fout.open("DataFile/Class.txt");
