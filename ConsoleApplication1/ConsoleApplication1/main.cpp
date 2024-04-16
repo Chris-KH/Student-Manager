@@ -456,11 +456,10 @@ int main()
     }
     
     system("cls");
-    //Delete users
+    // Delete users
     deleteUserData(headUser);
 
-    // Delete student in class
-    // Delete classes
+    // Delete classes (and all students in class)
     yy = headYear;
     while (yy) {
         deAlocatedClassesData(yy->classes);
@@ -468,10 +467,7 @@ int main()
     }
     yy = headYear;
 
-    // Delete student in course
-    // Delete courses in semester
-    // Delete semester in year
-    // Delete year
+    // Delete year (and all data included in year)
     deAllocateDataYear(headYear);
     return 0;
 }
