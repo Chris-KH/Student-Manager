@@ -27,7 +27,7 @@ int main()
     fin.open("DataFile/Users.txt");
     if (fin.is_open())
     {
-        importUserData(headUser, tailUser, fin);
+        importUserData(headUser, tailUser, fin); // in User.h, User.cpp
         cout << "Successful.\n";
         fin.close();
     }
@@ -42,7 +42,7 @@ int main()
     fin.open("DataFile/SchoolYear.txt");
     if (fin.is_open())
     {
-        importSchoolYearData(headYear, tailYear, fin);
+        importSchoolYearData(headYear, tailYear, fin); // in Year.h, Year.cpp
         cout << "Succesful.\n";
         fin.close();
     }
@@ -62,7 +62,7 @@ int main()
         ClassNode *tail = nullptr;
         if (fin.is_open())
         {
-            importClassData(yy->classes, tail, fin);
+            importClassData(yy->classes, tail, fin); // in Class.h, Class.cpp
             fin.close();
         }
         else
@@ -90,7 +90,7 @@ int main()
             fin.open(direct);
             if (fin.good())
             {
-                importStudentToClass(temp->student, fin);
+                importStudentToClass(temp->student, fin); // in Student.h, Student.cpp
                 fin.close();
             }
             else
@@ -109,7 +109,7 @@ int main()
     yy = headYear;
     bool ok2 = false;
     while (yy) {
-        importCourseToSemester(yy, fin, ok2);
+        importCourseToSemester(yy, fin, ok2); // in Year.h, Year.cpp
         yy = yy->pNext;
     }
     if (ok2) cout << "Failed.\n";
@@ -130,7 +130,7 @@ int main()
             {
                 fin.open("DataFile/Courses/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
                 if (fin.is_open())
-                    importStudentToClass(curCourse->student, fin);
+                    importStudentToClass(curCourse->student, fin); // in Student.h, Student.cpp
                 else
                 {
                     ok2 = true;
@@ -148,20 +148,20 @@ int main()
 
     //Starting program....
     UserNode *logged_in = nullptr;
-    while (exit == false && continueProgram(1))
+    while (exit == false && continueProgram(1)) // in Menu.h, Menu.cpp
     {
         system("cls");
-        if (login(headUser, logged_in))
+        if (login(headUser, logged_in)) // in User.h, User.cpp
         {
             cout << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
 
-            while (exit == false && logout == false && continueProgram(2))
+            while (exit == false && logout == false && continueProgram(2)) // in Menu.h, Menu.cpp
             {
                 // Output Menu
                 if (logged_in->data.is_staff)
                 {
-                    menuForStaff();
+                    menuForStaff(); // in Menu.h, Menu.cpp
                     int staffChoice;
                     while (!(cin >> staffChoice))
                     {
@@ -176,8 +176,8 @@ int main()
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open())
                         {
-                            createASchoolYear(headYear, tailYear);
-                            exportSchoolYearData(headYear, fout);
+                            createASchoolYear(headYear, tailYear); // in Year.h, Year.cpp
+                            exportSchoolYearData(headYear, fout); // in Year.h, Year.cpp
                             fout.close();
                         }
                         else
@@ -185,7 +185,7 @@ int main()
                         break;
                     case 2:
                         // Add class thì sau đó phải tạo một file csv tương ứng lớp đó
-                        addNewClass(headYear, fout);
+                        addNewClass(headYear, fout); // in Year.h, Year.cpp
                         break;
                     case 3:
                         // Phải mở đc file và export đc thì mới tạo thành công do nếu để export ở cuối chương trình nếu có bug ở chỗ mở file thì coi như mấy cái mình add là vô nghĩa vì k export đc
