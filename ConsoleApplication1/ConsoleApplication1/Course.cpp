@@ -238,34 +238,11 @@ void viewTheScoreboardOfCourse(CourseNode* course)
         else
         {
             cout << "Score" << endl;
-            cout << "    Total: " << curStu->data.score.total << endl;
-            cout << "    Final: " << curStu->data.score.final << endl;
-            cout << "    Midterm: " << curStu->data.score.midterm << endl;
-            cout << "    Bonus: " << curStu->data.score.bonus << endl;
+            cout << "    Total: " << fixed << setprecision(1) << curStu->data.score.total << endl;
+            cout << "    Final: " << fixed << setprecision(1) << curStu->data.score.final << endl;
+            cout << "    Midterm: " << fixed << setprecision(1) << curStu->data.score.midterm << endl;
+            cout << "    Bonus: " << fixed << setprecision(1) << curStu->data.score.bonus << endl;
         }
         curStu = curStu->pNext;
     }
 }
-
-/*
-void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year)
-{
-    CourseNode *curCourse = head;
-    while (curCourse != nullptr)
-    {
-        if(!semester || !year)
-        {
-            cout << "Error! Please make sure to choose the right data\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            importScoreboard(fin, head, semester, year);
-        }
-        else
-        {
-            fin >> curCourse->student->data.score;
-            curCourse = curCourse->pNext;
-        }
-    }
-}
-
-*/

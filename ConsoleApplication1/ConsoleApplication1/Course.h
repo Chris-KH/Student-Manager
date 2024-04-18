@@ -38,9 +38,6 @@ struct CourseNode
     }
 };
 
-
-void importScoreboard(ifstream &fin, CourseNode *&courses);
-
 void viewTheScoreboardOfCourse(CourseNode *courses);
 
 void removeStudentFromCourse(CourseNode*& head);

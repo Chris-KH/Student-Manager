@@ -138,6 +138,17 @@ int main()
                 }
                 fin.close();
                 
+                fin.open("DataFile/Courses/SB/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
+                if (fin.is_open())
+                {
+                    importScoreboard(curCourse->student, fin);
+                    fin.close();
+                }
+                else
+                {
+                    ok2 = false;
+                    cout << "Failed.\n" << endl;
+                }
                 //creating scoreboard files of courses
                 /*fout.open("DataFile/Courses/SB/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
                 if (fout.is_open())
@@ -358,19 +369,36 @@ int main()
                         else cout << "Wrong.\n";
                         break;
                     case 19:
-                        /*if (fin.is_open())
+                        curSes = chooseASemester(headYear, curYear);
+                        
+                        if (curSes && curYear)
                         {
-                            curSes = chooseASemester(headYear, curYear);
-                            if(curSes && curYear)
+                            curCourse = findCourse(curSes->course);
+                            if (curCourse)
                             {
-                                curCourse = findCourse(curSes->course);
-                                //importScoreboard(fin, curCourse, curSes, curYear);
+                                fin.open("DataFile/Courses/SB/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
+
+                                if (fin.is_open())
+                                {
+                                    importScoreboard(curCourse->student, fin);
+                                    fin.close();
+                                    fout.open("DataFile/Courses/SB/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
+                                    if (fout.is_open())
+                                    {
+                                        exportScoreboard(curCourse->student, fout);
+                                        fout.close();
+                                    }
+                                    else cout << "Can't export scoreboard file.\n";
+                                }
+                                else cout << "Can't open scoreboard file.\n";
                             }
-                        }
-                        else cout << "Open failed. Please make sure you open the correct file\n";
+                            else cout << "This course does not exist.\n";
+                            cout << "Import scoreboard successfully.\n";
+                        }   
+                        else cout << "Please check semester and year again\n";
                         fin.close();
                         break;
-                        */
+                        
                     case 20:
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear)

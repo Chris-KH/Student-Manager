@@ -39,3 +39,7 @@ void exportStudent(StudentNode *head, ofstream &fout);
 void createNewUsers(UserNode*& tailUser, StudentNode* head);
 
 void updateAStudentResult(StudentNode* &head);
+
+void importScoreboard(StudentNode*& head, ifstream& fin);
+
+void exportScoreboard(StudentNode* head, ostream& fout);
