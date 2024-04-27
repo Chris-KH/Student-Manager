@@ -293,7 +293,7 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
 	}
 	StudentNode* curStudent = curClass->student;
 	if (curStudent != nullptr) {
-		cout << "Student is already added to this class.\n";
+		cout << "Students is already added to this class.\n";
 		return;
 	}
 	fin.open("DataFile/" + curClass->data.name + ".csv");
@@ -336,13 +336,14 @@ void viewListOfStudentInClass(YearNode* head) {
 	}
 	cout << "List of student in class " << curClass->data.name << ":\n";
 	while (cur) {
-		cout << cur->data.No << "\n";
+		cout << "NO " << cur->data.No << "\n";
 		cout << "Student ID: " << cur->data.ID << "\n";
 		cout << "Last name: " << cur->data.last_name << "\n";
 		cout << "First name: " << cur->data.first_name << "\n";
 		cout << "Gender: " << cur->data.gender << "\n";
 		cout << "Data of birth: " << cur->data.dob.day << "/" << cur->data.dob.month << "/" << cur->data.dob.year << "\n";
 		cout << "Social ID: " << cur->data.social_id << "\n";
+		cout << "-------------------------------------------------------\n";
 		cur = cur->pNext;
 	}
 }
