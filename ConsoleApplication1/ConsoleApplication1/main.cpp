@@ -325,7 +325,7 @@ int main()
                             cout << "List of courses in semester " << curSes->order << "of school year " << curYear->data << ":\n";
                             viewListOfCourse(curSes->course);
                         }
-                        else cout << "Wrong.\n";
+                        else cout << "Please choose semester first.\n";
                         break;
                     case 15:
                         curSes = chooseASemester(headYear, curYear);

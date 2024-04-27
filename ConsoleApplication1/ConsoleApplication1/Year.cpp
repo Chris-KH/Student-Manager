@@ -270,12 +270,23 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 
 YearNode* findSchoolYear(YearNode* head) {
 	string year;
-	cout << "Enter year (yyyy-yyyy): "; cin >> year;
-	cin.ignore();
+	YearNode* cur = head;
+	int cnt = 1;
+	while (cur) {
+		cout << cnt++ << ". " << cur->data << "\n";
+		cur = cur->pNext;
+	}
+	int n;
+	cout << "Press a number to choose a year: "; cin >> n;
+	cnt = 1;
 	while (head) {
-		if (head->data == year) return head;
+		if (n == cnt) {
+			return head;
+		}
+		cnt++;
 		head = head->pNext;
 	}
+	if (cnt > n) cout << "Wrong option.\n";
 	return nullptr;
 }
 
@@ -440,16 +451,6 @@ SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp) {
 	}
 	if (curYear->semester[ses - 1].created == false) {
 		cout << "This semester has not been created yet.\n";
-		//hỏi user có muốn tạo semester mới không?
-		createSemester(head);
 	}
 	return &curYear->semester[ses - 1];
-}
-
-bool checkCurSes(YearNode* curYear, SemesterInfo* curSes)
-{
-	if (curYear && curSes)
-		return true;
-	cout << "Please choose current semester first" << endl;
-	return false;
 }

@@ -47,6 +47,4 @@ SemesterInfo* createSemester(YearNode* head);
 
 SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp);
 
-void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout);
-
-bool checkCurSes(YearNode* curYear, SemesterInfo* curSes);
+void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout);	

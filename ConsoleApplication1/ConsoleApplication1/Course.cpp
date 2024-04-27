@@ -4,7 +4,6 @@ void viewListOfCourse(CourseNode* head)
 {
     CourseNode* cur = head;
     int cnt = 0;
-    cout << "List of courses: " << endl;
     while (cur != nullptr)
     {
         cout << ++cnt << ". " << cur->data.course_name << " - " << cur->data.ID << " - " << cur->data.class_name << "\n";
@@ -42,22 +41,21 @@ void viewListOfStudentInCourse(CourseNode* head) {
     cin >> order;
 
     int cnt = 0;
-    while (curCourse)
-    {
+    while (curCourse) {
         ++cnt;
-        if (cnt == order)
-        {
+        if (cnt == order) {
             StudentNode* curStudent = curCourse->student;
-            if (!curStudent)
-            {
+            if (!curStudent) {
                 cout << "This course has no student.\n";
                 return;
             }
-            cout << "Students in course: " << curCourse->data.course_name << " - " << curCourse->data.ID << " - " << curCourse->data.class_name << ":\n";
-            int cnt = 0;
-            while (curStudent)
-            {
-                cout << ++cnt << " " << curStudent->data.ID << " " << curStudent->data.first_name << " " << curStudent->data.last_name << "\n";
+            cout << "Students in course " << curCourse->data.course_name << " - " << curCourse->data.ID << " - " << curCourse->data.class_name << ":\n";
+            int temp = 0;
+            while (curStudent) {
+                cout << "NO " << ++temp << "\n";
+                cout << "Student ID: " << curStudent->data.ID << "\n";
+                cout << "Student name: " << curStudent->data.last_name << " " << curStudent->data.first_name << "\n";
+                cout << "----------------------------------------\n";
                 curStudent = curStudent->pNext;
             }
             return;
