@@ -63,8 +63,7 @@ void exportCourseToSemester(YearNode* head, SemesterInfo*& curSes, ofstream& fou
 	CourseNode* curCourse = curSes->course;
 	while (curCourse != nullptr)
 	{
-		if (curCourse != curSes->course)
-			fout << endl;
+		if (curCourse != curSes->course) fout << "\n";
 		fout << curCourse->data.course_name << ",";
 		fout << curCourse->data.class_name << ",";
 		fout << curCourse->data.ID << ",";

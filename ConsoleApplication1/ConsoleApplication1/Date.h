@@ -8,6 +8,3 @@ struct Date
 	string month;
 	string year;
 };
-
-void exportDate(Date &date, ofstream& fout);
-void importDate(Date &date, ifstream& fin);

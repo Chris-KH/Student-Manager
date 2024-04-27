@@ -11,9 +11,7 @@ void viewListOfCourse(CourseNode* head)
     }
 }
 
-CourseNode* findCourse(CourseNode *head)
-{
-    string course_id;
+CourseNode* findCourse(CourseNode *head) {
     CourseNode* curCourse = head;
     viewListOfCourse(head);
     int order;
@@ -27,8 +25,7 @@ CourseNode* findCourse(CourseNode *head)
             return curCourse;
         curCourse = curCourse->pNext;
     }
-    if (order > cnt)
-        cout << "This semester does not have this course.\n";
+    cout << "Wrong input.\n";
     return nullptr;
 }
 
@@ -149,26 +146,25 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
 }
 
 void updateCourseIn4(CourseNode*& curCourse) {
-    cout << "Course ID: \n";
+    cout << "Course ID: ";
     cin >> curCourse->data.ID;
 
-    cout << "Course name: \n";
+    cout << "Course name: ";
     cin.ignore();
     getline(cin, curCourse->data.course_name);
 
-    cout << "Class name: \n";
-    cin.ignore();
+    cout << "Class name: ";
     getline(cin, curCourse->data.class_name);
 
-    cout << "Teacher name: \n";
+    cout << "Teacher name: ";
     getline(cin, curCourse->data.teacher_name);
 
-    cout << "Number of credits: \n";
+    cout << "Number of credits: ";
     cin >> curCourse->data.credit;
 
-    cout << "The maximum number of students in the course: \n";
+    cout << "The maximum number of students in the course: ";
 
-    cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): \n";
+    cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): ";
     cin >> curCourse->data.day_of_week;
 
     cout << "Session: \n";
@@ -176,7 +172,7 @@ void updateCourseIn4(CourseNode*& curCourse) {
     cout << "2. S2(09:30)\n";
     cout << "3. S3(13:30)\n";
     cout << "4. S4(15:30)\n";
-    cout << "Press a number (1-4) to choose: \n";
+    cout << "Press a number (1-4) to choose: ";
     cin >> curCourse->data.session;
 }
 
