@@ -162,15 +162,15 @@ void createASchoolYear(YearNode*& head, YearNode*& tail) {
 	}
 	else tail->pNext = temp;
 	tail = temp;
-	ofstream fout2;
-	fout2.open("DataFile/" + temp->data + "Classes.txt");
-	fout2.close();
+	ofstream fout;
+	fout.open("DataFile/" + temp->data + "Classes.txt", ios::trunc);
+	fout.close();
 	cout << "Create school year successfully.\n";
 }
 
 void exportSchoolYearData(YearNode* head, ofstream& fout) {
+	fout.open("DataFile/SchoolYear.txt", ios::trunc);
 	YearNode* cur = head;
-	ofstream fout2;
 	while (cur) {
 		if (cur != head) fout << "\n";
 		fout << cur->data << "\n";
@@ -194,20 +194,14 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	CourseNode* newcourse = new CourseNode;
 	if (curCourse == nullptr)
 		curCourse = newcourse;
-	else
-	{
-		while (curCourse->pNext != nullptr)
-			curCourse = curCourse->pNext;
+	else {
+		while (curCourse->pNext) curCourse = curCourse->pNext;
 		curCourse->pNext = newcourse;
 		curCourse = curCourse->pNext;
 	}
-
-	//NOTE: check thêm course này đã được tạo hay chưa??
-
 	cout << "Course name: \n";
 	cin.ignore();
 	getline(cin, curCourse->data.course_name);
-	
 	
 	cout << "Class name: \n";
 	getline(cin, curCourse->data.class_name);
@@ -220,12 +214,12 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	
 	ifstream fin;
 	fin.open("DataFile/" + curCourse->data.class_name);
-	if (fin.is_open())
+	if (fin.is_open()) {
 		importStudentToClass(curCourse->student, fin);
+		fin.close();
+	}
 	else cout << "Unable to import student to the course" << endl;
-	fin.close();
 	
-
 	cout << "Course ID: \n";
 	cin >> curCourse->data.ID;
 	cin.ignore();

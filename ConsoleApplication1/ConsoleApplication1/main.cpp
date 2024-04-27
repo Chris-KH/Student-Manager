@@ -213,15 +213,14 @@ int main()
                     {
                     case 1: //Checked
                         // Tương tự case 3
-                        fout.open("DataFile/SchoolYear.txt");
-                        if (fout.is_open())
-                        {
-                            createASchoolYear(headYear, tailYear); // in Year.h, Year.cpp
-                            exportSchoolYearData(headYear, fout); // in Year.h, Year.cpp
+                        fout.open("DataFile/SchoolYear.txt", ios::app);
+                        if (fout.is_open()) {
                             fout.close();
+                            createASchoolYear(headYear, tailYear); // in Year.h, Year.cpp
+                            
+                            exportSchoolYearData(headYear, fout); // in Year.h, Year.cpp
                         }
-                        else
-                            cout << "Create school year failed.\n";
+                        else cout << "Create school year failed.\n";
                         break;
                     case 2:
                         // Add class thì sau đó phải tạo một file csv tương ứng lớp đó

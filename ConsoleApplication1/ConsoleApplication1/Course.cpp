@@ -178,9 +178,9 @@ void updateCourseIn4(CourseNode*& curCourse) {
 
 void addStudentToCourse(CourseNode*& curCourse)
 {
-    StudentNode* newStu = new StudentNode;
+    StudentNode* newStu = new StudentNode();
 
-    cout << "Please input student information" << endl;
+    cout << "Please input student information.\n";
     cout << "Student ID: ";
     getline(cin, newStu->data.ID);
 
@@ -193,13 +193,13 @@ void addStudentToCourse(CourseNode*& curCourse)
     cout << "Gender: ";
     getline(cin, newStu->data.gender);
 
-    cout << "DOB: ";
+    cout << "Date of birth: ";
     string dob;
     getline(cin, dob);
     stringstream ss(dob);
     getline(ss, newStu->data.dob.day, '/');
     getline(ss, newStu->data.dob.month, '/');
-    getline(ss, newStu->data.dob.year, ',');
+    getline(ss, newStu->data.dob.year);
 
     cout << "Social ID: ";
     getline(cin, newStu->data.social_id);
@@ -211,9 +211,7 @@ void addStudentToCourse(CourseNode*& curCourse)
         newStu->data.No = 1;
     }
     else {
-
-        while (curStu->pNext != nullptr)
-            curStu = curStu->pNext;
+        while (curStu->pNext) curStu = curStu->pNext;
         newStu->data.No = curStu->data.No + 1;
         curStu->pNext = newStu;
     }
