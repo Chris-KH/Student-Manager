@@ -110,19 +110,22 @@ StudentNode* findStudentInACourse(string s, CourseNode* curCourse)
     return nullptr;
 }
 
-void  viewStudentCourse(string student_id, CourseNode* head)
-{
-    cout << "List of courses in this semester: " << endl;
+void  viewStudentCourse(string student_id, CourseNode* head) {
     CourseNode* curCourse = head;
+    bool ok = true;
     while (curCourse != nullptr)
     {
         StudentNode* curStu = findStudentInACourse(student_id, curCourse);
         if (curStu != nullptr) {
+            if (ok) {
+                cout << "List of courses in this semester: \n";
+                ok = false;
+            }
             cout << curCourse->data.course_name << " - " << curCourse->data.ID << "\n";
         }
         curCourse = curCourse->pNext;
     }
-
+    if (ok) cout << "No course in this semester.\n";
 }
 
 void  viewStudentScoreboard(string student_id, CourseNode* head)
