@@ -117,8 +117,9 @@ void  viewStudentCourse(string student_id, CourseNode* head)
     while (curCourse != nullptr)
     {
         StudentNode* curStu = findStudentInACourse(student_id, curCourse);
-        if (curStu != nullptr)
-            cout << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
+        if (curStu != nullptr) {
+            cout << curCourse->data.course_name << " - " << curCourse->data.ID << "\n";
+        }
         curCourse = curCourse->pNext;
     }
 

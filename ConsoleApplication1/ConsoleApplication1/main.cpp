@@ -119,7 +119,7 @@ int main()
     //Load student to course
     cout << "<>Load student to course...";
     yy = headYear;
-    ok2 = false;
+    bool ok3 = false;
     while (yy) 
     {
         for (int i = 0; i < 3; i++)
@@ -133,7 +133,7 @@ int main()
                     importStudentToClass(curCourse->student, fin); // in Student.h, Student.cpp
                 else
                 {
-                    ok2 = true;
+                    ok3 = true;
                     cout << "Failed.\n" << endl;
                 }
                 fin.close();
@@ -146,7 +146,7 @@ int main()
                 }
                 else
                 {
-                    ok2 = false;
+                    ok3 = false;
                     cout << "Failed.\n" << endl;
                 }
                 //creating scoreboard files of courses
@@ -181,9 +181,10 @@ int main()
         }
         yy = yy->pNext;
     }
-    if (!ok2) cout << "Successful.\n";
+    if (!ok3) cout << "Successful.\n";
+    else cout << "Failed.\n";
     
-    exit = !(ok1 == false && ok2 == false && exit == false);
+    exit = !(ok1 == false && ok2 == false && ok3 == false && exit == false);
 
     //Starting program....
     UserNode *logged_in = nullptr;
@@ -210,7 +211,7 @@ int main()
                     }
                     switch (staffChoice)
                     {
-                    case 1:
+                    case 1: //Checked
                         // Tương tự case 3
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open())
@@ -226,8 +227,7 @@ int main()
                         // Add class thì sau đó phải tạo một file csv tương ứng lớp đó
                         addNewClass(headYear, fout); // in Year.h, Year.cpp
                         break;
-                    case 3:
-                        // Phải mở đc file và export đc thì mới tạo thành công do nếu để export ở cuối chương trình nếu có bug ở chỗ mở file thì coi như mấy cái mình add là vô nghĩa vì k export đc
+                    case 3: //checked
                         fout.open("DataFile/SchoolYear.txt");
                         if (fout.is_open())
                         {
@@ -238,7 +238,7 @@ int main()
                         else
                             cout << "Create semester failed.\n";
                         break;
-                    case 4:
+                    case 4: //checked
                         curSes = chooseASemester(headYear, curYear);
                         break;
                     case 5:
@@ -303,7 +303,7 @@ int main()
                         }
                         else cout << "Please choose semester first.\n";
                         break;
-                    case 12:
+                    case 12: //checked
                         int choice;
                         cout << "   1.View all classes.\n";
                         cout << "   2.View classes in a school year.\n";
@@ -316,10 +316,10 @@ int main()
                         }
                         else cout << "Wrong option!!!\n";
                         break;
-                    case 13:
+                    case 13: // checked
                         viewListOfStudentInClass(headYear); 
                         break;
-                    case 14:
+                    case 14:// checked
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear) {
                             cout << "List of courses in semester " << curSes->order << "of school year " << curYear->data << ":\n";
@@ -327,16 +327,16 @@ int main()
                         }
                         else cout << "Please choose semester first.\n";
                         break;
-                    case 15:
+                    case 15: // checked
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear) {
                             viewListOfStudentInCourse(curSes->course);
                         }
                         break;
-                    case 16:
+                    case 16: // checked
                         viewProfileInfo(logged_in);
                         break;
-                    case 17:
+                    case 17: // checked
                         fout.open("DataFile/Users.txt");
                         if (fout.good())
                         {
@@ -477,10 +477,10 @@ int main()
                         }
                         else cout << "Wrong.\n";
                         break;
-                    case 3:
+                    case 3: // checked
                         viewProfileInfo(logged_in);
                         break;
-                    case 4:
+                    case 4: //checked
                         fout.open("DataFile/Users.txt");
                         if (fout.is_open())
                         {
