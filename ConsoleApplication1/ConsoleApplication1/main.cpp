@@ -254,7 +254,7 @@ int main()
                                 viewListOfCourse(curSes->course);
                             else cout << "There is no course in this semester.\n";
                         }
-                        else cout << "Please choose semester first.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 8:
                         if (curYear && curSes) {
@@ -266,7 +266,7 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "Please choose semester first.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 9:
                         if (curYear && curSes) {
@@ -284,7 +284,7 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "No data" << endl;
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 10:
                         if (curYear && curSes) {
