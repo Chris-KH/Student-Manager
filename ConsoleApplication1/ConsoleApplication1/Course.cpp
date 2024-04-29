@@ -183,6 +183,7 @@ void addStudentToCourse(CourseNode*& curCourse)
 
     cout << "Please input student information.\n";
     cout << "Student ID: ";
+    cin.ignore();
     getline(cin, newStu->data.ID);
 
     cout << "Last name: ";
@@ -194,7 +195,7 @@ void addStudentToCourse(CourseNode*& curCourse)
     cout << "Gender: ";
     getline(cin, newStu->data.gender);
 
-    cout << "Date of birth: ";
+    cout << "Date of birth (ex: 01/01/2000): ";
     string dob;
     getline(cin, dob);
     stringstream ss(dob);

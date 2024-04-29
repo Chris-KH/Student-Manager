@@ -286,7 +286,7 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "No data" << endl;
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 10:
                         if (curYear && curSes) {
