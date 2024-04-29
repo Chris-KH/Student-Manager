@@ -28,6 +28,7 @@
 #include <math.h>
 #include <string>
 #include <cstring>
+#include <cstdio>
 
 using namespace std;
 namespace fs = std::filesystem;

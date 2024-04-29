@@ -629,7 +629,16 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 		cout << "This course does not exist in this semester.\n";
 		return;
 	}
-	//string file_path = "DataFile/Courses/" + head->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv";
+	
+	//delete files
+	string path = "DataFile/Courses/" + head->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv";
+	char* filename = new char[path.size() + 1];
+	copy(path.begin(), path.end(), filename);
+	filename[path.size()] = '\0';
+	int result = remove(filename);
+	delete[] filename;
+
+	//delete pointer
 	if (curCourse == curSes->course)
 	{
 		CourseNode* temp = curSes->course;
@@ -655,5 +664,10 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 			cur = cur->pNext;
 		}
 	}
+	if (result == 0)
+		cout << "Delete related files successfully" << endl;
+	else cout << "Fail to delete related files" << endl;
+	
 	exportCourseToSemester(head, curSes, fout);
+
 }
