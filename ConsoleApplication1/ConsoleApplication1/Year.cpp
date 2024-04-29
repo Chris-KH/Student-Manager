@@ -159,7 +159,7 @@ void addNewClass(YearNode *&head, ofstream &fout)
 			tailClass->pNext = temp;
 
 		exportClassData(curYear->classes, fout);
-		cout << "Class is added.\n";
+		cout << "Class is added successfully.\n";
 
 		fout.close();
 	}
@@ -204,7 +204,7 @@ void createASchoolYear(YearNode *&head, YearNode *&tail)
 
 void exportSchoolYearData(YearNode *head, ofstream &fout)
 {
-	fout.open("DataFile/SchoolYear.txt", ios::trunc);
+	
 	YearNode *cur = head;
 	while (cur)
 	{
@@ -225,6 +225,7 @@ void exportSchoolYearData(YearNode *head, ofstream &fout)
 
 		cur = cur->pNext;
 	}
+	fout.close();
 }
 
 void addCourse(YearNode *curYear, SemesterInfo *&curSes, ofstream &fout)
@@ -364,13 +365,17 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 		cout << "Students is already added to this class.\n";
 		return;
 	}
-	fin.open("DataFile/" + curClass->data.name + ".csv");
+	fin.open("InputFile/" + curClass->data.name + ".csv");
 	if (fin.is_open())
 	{
 		importStudentToClass(curClass->student, fin);
+		ofstream fout;
+		fout.open("DataFile/" + curClass->data.name + ".csv");
+		exportStudent(curClass->student, fout);
 		createNewUsers(tailUser, curClass->student);
 		cout << "Student is added successfully.\n";
 		fin.close();
+		fout.close();
 	}
 	else
 		cout << "Add student failed.\n";
@@ -483,6 +488,7 @@ SemesterInfo *createSemester(YearNode *head)
 		cout << "This semester is created before.\n";
 		return nullptr;
 	}
+	cout << "Date (format dd/mm/yy, for example: 01/01/2021)" << endl;
 	cout << "Start date: ";
 	cin >> s;
 	stringstream ss(s);

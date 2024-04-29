@@ -95,16 +95,12 @@ int main()
                 importStudentToClass(temp->student, fin); // in Student.h, Student.cpp
                 fin.close();
             }
-            else
-            {
-                ok1 = true;
-            }
             temp = temp->pNext;
         }
         yy = yy->pNext;
     }
-    if (ok1) cout << "Failed.\n";
-    else cout << "Successful.\n";
+    if (ok1) cerr << "Failed.\n";
+    else cerr << "Successful.\n";
 
     //Load course data to semester
     cout << "<>Load course to semester...";
@@ -215,11 +211,10 @@ int main()
                     {
                     case 1: //Checked
                         // Tương tự case 3
-                        fout.open("DataFile/SchoolYear.txt", ios::app);
+                        fout.open("DataFile/SchoolYear.txt", ios::trunc);
                         if (fout.is_open()) {
                             fout.close();
                             createASchoolYear(headYear, tailYear); // in Year.h, Year.cpp
-                            
                             exportSchoolYearData(headYear, fout); // in Year.h, Year.cpp
                         }
                         else cout << "Create school year failed.\n";
@@ -229,12 +224,11 @@ int main()
                         addNewClass(headYear, fout); // in Year.h, Year.cpp
                         break;
                     case 3: //checked
-                        fout.open("DataFile/SchoolYear.txt");
+                        fout.open("DataFile/SchoolYear.txt", ios::trunc);
                         if (fout.is_open())
                         {
                             createSemester(headYear);
                             exportSchoolYearData(headYear, fout);
-                            fout.close();
                         }
                         else
                             cout << "Create semester failed.\n";
