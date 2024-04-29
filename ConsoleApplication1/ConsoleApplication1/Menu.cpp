@@ -28,7 +28,7 @@ void menuForStaff()
     cout << "   01. Create a school year.\n";
     cout << "   02. Create classes.\n";
     cout << "   03. Create a semester.\n";
-    cout << "   04. Choose a sesmester.\n";
+    cout << "   04. Choose current sesmester.\n";
     cout << "   05. Add new 1st year student to 1st year class.\n";
     cout << "   06. Add a course.\n";
     cout << "   07. View the list of courses in current semester.\n";

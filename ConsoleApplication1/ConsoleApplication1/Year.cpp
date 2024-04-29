@@ -342,8 +342,17 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 		cout << "This year does not exist.\n";
 		return;
 	}
-
-	ClassNode *curClass = findClass(curYear->classes, askClassName());
+	
+	cout << "List of classes in school year " << curYear->data << endl;
+	int cnt = 0;
+	ClassNode* temp = curYear->classes;
+	while (temp != nullptr)
+	{
+		cout << ++cnt << ". " << temp->data.name << " " << endl;
+		temp = temp->pNext;
+	}
+	temp = curYear->classes;
+	ClassNode* curClass = findClass(temp, askClassName());
 	if (curClass == nullptr)
 	{
 		cout << "This class does not exist.\n";

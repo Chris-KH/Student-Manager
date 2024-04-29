@@ -7,7 +7,9 @@ int main()
     YearNode *headYear = nullptr;
     YearNode* curYear = nullptr;
     YearNode *tailYear = nullptr;
+    YearNode *tempYear = nullptr;
     SemesterInfo *curSes = nullptr;
+    SemesterInfo *tempSes = nullptr;
     CourseNode *headCourse = nullptr;
     CourseNode *curCourse = nullptr;
     ClassNode *curClass = nullptr;
@@ -254,7 +256,7 @@ int main()
                                 viewListOfCourse(curSes->course);
                             else cout << "There is no course in this semester.\n";
                         }
-                        else cout << "Please choose semester first.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 8:
                         if (curYear && curSes) {
@@ -266,7 +268,7 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "Please choose semester first.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 9:
                         if (curYear && curSes) {
@@ -294,7 +296,7 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "Please choose semester first.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 11:
                         if (curYear && curSes) {
@@ -305,7 +307,8 @@ int main()
                         int choice;
                         cout << "   1.View all classes.\n";
                         cout << "   2.View classes in a school year.\n";
-                        cout << ">>>Your choice: "; cin >> choice;
+                        cout << ">>>Your choice: "; 
+                        cin >> choice;
                         if (choice == 1) {
                             viewAllClasses(headYear);
                         }
@@ -318,18 +321,19 @@ int main()
                         viewListOfStudentInClass(headYear); 
                         break;
                     case 14:// checked
-                        curSes = chooseASemester(headYear, curYear);
-                        if (curSes && curYear) {
-                            cout << "List of courses in semester " << curSes->order << "of school year " << curYear->data << ":\n";
-                            viewListOfCourse(curSes->course);
+                        tempYear = nullptr;
+                        tempSes = chooseASemester(headYear, tempYear);
+                        if (tempSes && tempYear) 
+                        {
+                            cout << "List of courses in semester " << tempSes->order << " of school year " << tempYear->data << ":\n";
+                            viewListOfCourse(tempSes->course);
                         }
-                        else cout << "Please choose semester first.\n";
                         break;
                     case 15: // checked
-                        curSes = chooseASemester(headYear, curYear);
-                        if (curSes && curYear) {
-                            viewListOfStudentInCourse(curSes->course);
-                        }
+                        tempYear = nullptr;
+                        tempSes = chooseASemester(headYear, tempYear);
+                        if (tempSes && tempYear) 
+                            viewListOfStudentInCourse(tempSes->course);
                         break;
                     case 16: // checked
                         viewProfileInfo(logged_in);
