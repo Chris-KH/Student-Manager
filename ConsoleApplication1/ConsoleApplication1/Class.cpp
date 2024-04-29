@@ -38,6 +38,7 @@ string askClassName()
 {
 	string name;
 	cout << "Input class name: ";
+	cin.ignore();
 	getline(cin, name);
 	return name;
 }

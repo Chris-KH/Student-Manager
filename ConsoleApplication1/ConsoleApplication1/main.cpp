@@ -431,9 +431,7 @@ int main()
                         else cout << "Wrong.\n";
                         break;
                     case 22:
-                        fout.open("DataFile/Class.txt");
-                        if (fout.is_open()) viewScoreboardofClass(headClass);
-                        else cout << "Wrong\n";
+                        viewScoreboardofClass(headClass);
                         break;
                     case 23:
                         cout << "Logout successful. You have been logged out.\n";
