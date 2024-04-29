@@ -163,6 +163,7 @@ void updateCourseIn4(CourseNode*& curCourse) {
     cin >> curCourse->data.credit;
 
     cout << "The maximum number of students in the course: ";
+    cin >> curCourse->data.max_student;
 
     cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): ";
     cin >> curCourse->data.day_of_week;
