@@ -43,3 +43,5 @@ void updateAStudentResult(StudentNode* &head);
 void importScoreboard(StudentNode*& head, ifstream& fin);
 
 void exportScoreboard(StudentNode* head, ostream& fout);
+
+void printStudentIn4(StudentNode* cur);

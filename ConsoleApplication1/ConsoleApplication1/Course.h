@@ -48,16 +48,13 @@ void viewListOfStudentInCourse(CourseNode* head);
 
 StudentNode* findStudentInACourse(string s, CourseNode* curCourse);
 
+void printCourseIn4(CourseNode* curCourse);
+
 void updateCourseIn4(CourseNode* &curCourse);
-
-void addStudentToCourse(CourseNode*& curCourse);
-
-void exportListofStudentinCourse(ofstream& fout, CourseNode* head, string course_id, string sy_name);
-
-void importScoreboard(ifstream& fin, CourseNode*& head, int semester, int year);
 
 void  viewStudentCourse(string student_id, CourseNode* head);
 
 void  viewStudentScoreboard(string student_id, CourseNode* head);
 
 CourseNode* findCourse(CourseNode* head);
+

@@ -11,6 +11,7 @@
 #include <utility>
 #include <valarray>
 #include <iomanip>
+#include <filesystem>
 
 //VarLib
 #include <numeric>
@@ -29,3 +30,4 @@
 #include <cstring>
 
 using namespace std;
+namespace fs = std::filesystem;

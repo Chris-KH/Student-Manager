@@ -35,6 +35,8 @@ void addNewClass(YearNode*& head, ofstream& fout);
 
 YearNode* findSchoolYear(YearNode *head);
 
+StudentNode* findAStudentInSystem(string s, YearNode* headYear);
+
 void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin);
 
 void viewListOfStudentInClass(YearNode* head);
@@ -50,3 +52,5 @@ SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp);
 void addCourse(YearNode* curYear, SemesterInfo*& curSes);
 
 void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout);
+
+void addStudentToCourse(YearNode*& headYear, CourseNode*& curCourse);

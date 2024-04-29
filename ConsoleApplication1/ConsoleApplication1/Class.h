@@ -33,3 +33,5 @@ string askClassName();
 ClassNode* findClass(ClassNode* head, string name);
 
 void viewScoreboardofClass(ClassNode*& head);
+
+StudentNode* findAStudentInClass(string s, ClassNode* curClass);

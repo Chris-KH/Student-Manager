@@ -2,6 +2,11 @@
 
 void viewListOfCourse(CourseNode* head)
 {
+    if (head == nullptr)
+    {
+        cout << "There is no course" << endl;
+        return;
+    }
     CourseNode* cur = head;
     int cnt = 0;
     while (cur != nullptr)
@@ -12,12 +17,29 @@ void viewListOfCourse(CourseNode* head)
 }
 
 CourseNode* findCourse(CourseNode *head) {
-    CourseNode* curCourse = head;
-    viewListOfCourse(head);
-    int order;
-    cout << "Please choose a number corresponding to the course: ";
-    cin >> order;
+    if (head == nullptr)
+    {
+        cout << "Haven't created any course in this semester" << endl;
+        return nullptr;
+    }
+    CourseNode* cur = head;
     int cnt = 0;
+    while (cur != nullptr)
+    {
+        cout << ++cnt << ". " << cur->data.course_name << " - " << cur->data.ID << " - " << cur->data.class_name << "\n";
+        cur = cur->pNext;
+    }
+    
+    int order;
+    cout << "Please choose a number (1->" << cnt << ") corresponding to the course : ";
+    cin >> order;
+    if (order > cnt)
+    {
+        cout << "Wrong input.\n";
+        return nullptr;
+    }
+    CourseNode* curCourse = head;
+    cnt = 0;
     while (curCourse)
     {
         ++cnt;
@@ -25,47 +47,34 @@ CourseNode* findCourse(CourseNode *head) {
             return curCourse;
         curCourse = curCourse->pNext;
     }
-    cout << "Wrong input.\n";
     return nullptr;
 }
 
 void viewListOfStudentInCourse(CourseNode* head) {
-    string course_id;
-    CourseNode* curCourse = head;
-    viewListOfCourse(head);
-    int order;
-    cout << "Please choose a number corresponding to the course: ";
-    cin >> order;
-
-    int cnt = 0;
-    while (curCourse) {
-        ++cnt;
-        if (cnt == order) {
-            StudentNode* curStudent = curCourse->student;
-            if (!curStudent) {
-                cout << "This course has no student.\n";
-                return;
-            }
-            cout << "Students in course " << curCourse->data.course_name << " - " << curCourse->data.ID << " - " << curCourse->data.class_name << ":\n";
-            int temp = 0;
-            while (curStudent) {
-                cout << "NO " << ++temp << "\n";
-                cout << "Student ID: " << curStudent->data.ID << "\n";
-                cout << "Student name: " << curStudent->data.last_name << " " << curStudent->data.first_name << "\n";
-                cout << "----------------------------------------\n";
-                curStudent = curStudent->pNext;
-            }
+    CourseNode* curCourse = findCourse(head);
+    if (curCourse)
+    {
+        StudentNode* curStudent = curCourse->student;
+        if (!curStudent) {
+            cout << "This course has no student.\n";
             return;
         }
-        curCourse = curCourse->pNext;
+        cout << "Students in course " << curCourse->data.course_name << " - " << curCourse->data.ID << " - " << curCourse->data.class_name << ":\n";
+        int temp = 0;
+        while (curStudent) {
+            cout << "NO " << ++temp << "\n";
+            cout << "Student ID: " << curStudent->data.ID << "\n";
+            cout << "Student name: " << curStudent->data.last_name << " " << curStudent->data.first_name << "\n";
+            cout << "----------------------------------------\n";
+            curStudent = curStudent->pNext;
+        }
+        return;
     }
-    if (order > cnt)
-        cout << "This semester does not have this course.\n";
 }
 
 void removeStudentFromCourse(CourseNode*& head) {
     string s;
-    cout << "Input student ID: " << endl;
+    cout << "Input student ID: ";
     cin >> s;
     StudentNode* curStudent = findStudentInACourse(s, head);
     if (curStudent == nullptr) {
@@ -145,9 +154,63 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
     }
 }
 
+void printCourseIn4(CourseNode* curCourse)
+{
+    cout << "Course ID : ";
+    cout << curCourse->data.ID;
+    cout << endl;
+
+    cout << "Course name: ";
+    cout << curCourse->data.course_name;
+    cout << endl;
+
+    cout << "Class name: ";
+    cout << curCourse->data.class_name;
+    cout << endl;
+
+    cout << "Teacher name: ";
+    cout << curCourse->data.teacher_name;
+    cout << endl;
+
+    cout << "Number of credits: ";
+    cout << curCourse->data.credit;
+    cout << endl;
+
+    cout << "The maximum number of students in the course: ";
+    cout << curCourse->data.max_student;
+    cout << endl;
+
+    cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): ";
+    cout << curCourse->data.day_of_week;
+    cout << endl;
+
+    cout << "Session: ";
+    switch (curCourse->data.session)
+    {
+    case 1:
+        cout << "S1(07:30)\n";
+        break;
+    case 2:
+        cout << "S2(09:30)\n";
+        break;
+    case 3:
+        cout << "S3(13:30)\n";
+        break;
+    case 4:
+        cout << "S4(15:30)\n";
+        break;
+    }
+}
 void updateCourseIn4(CourseNode*& curCourse) {
-    cout << "Course ID: ";
-    cin >> curCourse->data.ID;
+
+    cout << ">>Current information" << endl;
+    printCourseIn4(curCourse);
+
+    cout << ">>Updating information of the course '" << curCourse->data.course_name << " - " << curCourse->data.ID << " " << curCourse->data.class_name << "'" << endl;
+
+    cout << "Course ID : ";
+    cin.ignore();
+    getline(cin, curCourse->data.ID);
 
     cout << "Course name: ";
     cin.ignore();
@@ -175,48 +238,7 @@ void updateCourseIn4(CourseNode*& curCourse) {
     cout << "4. S4(15:30)\n";
     cout << "Press a number (1-4) to choose: ";
     cin >> curCourse->data.session;
-}
-
-void addStudentToCourse(CourseNode*& curCourse)
-{
-    StudentNode* newStu = new StudentNode();
-
-    cout << "Please input student information.\n";
-    cout << "Student ID: ";
-    cin.ignore();
-    getline(cin, newStu->data.ID);
-
-    cout << "Last name: ";
-    getline(cin, newStu->data.last_name);
-
-    cout << "First name: ";
-    getline(cin, newStu->data.first_name);
-
-    cout << "Gender: ";
-    getline(cin, newStu->data.gender);
-
-    cout << "Date of birth (ex: 01/01/2000): ";
-    string dob;
-    getline(cin, dob);
-    stringstream ss(dob);
-    getline(ss, newStu->data.dob.day, '/');
-    getline(ss, newStu->data.dob.month, '/');
-    getline(ss, newStu->data.dob.year);
-
-    cout << "Social ID: ";
-    getline(cin, newStu->data.social_id);
-
-    StudentNode* curStu = curCourse->student;
-    if (curStu == nullptr)
-    {
-        curStu = newStu;
-        newStu->data.No = 1;
-    }
-    else {
-        while (curStu->pNext) curStu = curStu->pNext;
-        newStu->data.No = curStu->data.No + 1;
-        curStu->pNext = newStu;
-    }
+    cout << "Course infomation is updated successfully";
 }
 
 void viewTheScoreboardOfCourse(CourseNode* course)

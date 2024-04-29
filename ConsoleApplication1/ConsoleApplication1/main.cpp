@@ -236,15 +236,15 @@ int main()
                             addCourse(curYear, curSes);
                         } else cout << "Please choose semester first (option 4).\n";
                         break;
-                    case 7:
+                    case 7: //checked
                         if (curYear && curSes) {
                             if (curSes->course)
                                 viewListOfCourse(curSes->course);
-                            else cout << "There is no course in this semester.\n";
+                            else cout << "There is no course in the current semester.\n";
                         }
                         else cout << "Please choose semester first (option 4).\n";
                         break;
-                    case 8:
+                    case 8: //checked
                         if (curYear && curSes) {
                             curCourse = findCourse(curSes->course);
                             if (curCourse)
@@ -256,12 +256,12 @@ int main()
                         }
                         else cout << "Please choose semester first (option 4).\n";
                         break;
-                    case 9:
+                    case 9: //checked
                         if (curYear && curSes) {
                             curCourse = findCourse(curSes->course);
                             if (curCourse)
                             {
-                                addStudentToCourse(curCourse);
+                                addStudentToCourse(headYear,curCourse);
                                 fout.open("DataFile/Courses/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
                                 if (fout.is_open())
                                 {
@@ -274,17 +274,23 @@ int main()
                         }
                         else cout << "Please choose semester first (option 4).\n";
                         break;
-                    case 10:
+                    case 10: //checked
                         if (curYear && curSes) {
                             curCourse = findCourse(curSes->course);
                             if (curCourse) {
                                 removeStudentFromCourse(curCourse);
+                                fout.open("DataFile/Courses/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
+                                if (fout.is_open())
+                                {
+                                    exportStudent(curCourse->student, fout);
+                                    fout.close();
+                                }
                             }
                             else cout << "This course does not exist.\n";
                         }
                         else cout << "Please choose semester first (option 4).\n";
                         break;
-                    case 11:
+                    case 11: //checked
                         if (curYear && curSes) {
                             deleteACourse(curYear, curSes, fout);
                         } else cout << "Please choose semester first (option 4).\n";
@@ -311,8 +317,13 @@ int main()
                         tempSes = chooseASemester(headYear, tempYear);
                         if (tempSes && tempYear) 
                         {
-                            cout << "List of courses in semester " << tempSes->order << " of school year " << tempYear->data << ":\n";
-                            viewListOfCourse(tempSes->course);
+                            if (tempSes->course==nullptr)
+                                cout<<"There is no course in semester " << tempSes->order << " of school year " << tempYear->data << ":\n";
+                            else
+                            {
+                                cout << "List of courses in semester " << tempSes->order << " of school year " << tempYear->data << ":\n";
+                                viewListOfCourse(tempSes->course);
+                            }
                         }
                         break;
                     case 15: // checked

@@ -34,6 +34,18 @@ ClassNode* findClass(ClassNode* head, string name) {
 	return nullptr;
 }
 
+StudentNode* findAStudentInClass(string s, ClassNode* curClass)
+{
+	StudentNode* curStu = curClass->student;
+	while (curStu)
+	{
+		if (curStu->data.ID == s)
+			return curStu;
+		curStu = curStu->pNext;
+	}
+	return nullptr;
+}
+
 string askClassName()
 {
 	string name;
