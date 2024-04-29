@@ -298,9 +298,8 @@ int main()
                         break;
                     case 11:
                         if (curYear && curSes) {
-                            deleteACourse(curSes);
-                        }
-                        else cout << "Please choose semester first.\n";
+                            deleteACourse(curYear, curSes, fout);
+                        } else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 12: //checked
                         int choice;

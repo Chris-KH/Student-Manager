@@ -47,4 +47,6 @@ SemesterInfo* createSemester(YearNode* head);
 
 SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp);
 
-void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout);	
+void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout);
+
+void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout);

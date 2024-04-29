@@ -2,17 +2,17 @@
 
 #include "Course.h"
 
-struct SemesterInfo {
+struct SemesterInfo
+{
 	int order;
 	bool created;
 	Date start;
 	Date end;
-	CourseNode* course;
-	SemesterInfo() {
+	CourseNode *course;
+	SemesterInfo()
+	{
 		order = 0;
 		created = false;
 		course = nullptr;
 	}
-};  
-
-void deleteACourse(SemesterInfo*& head);
+};

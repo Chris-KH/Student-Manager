@@ -1,15 +1,20 @@
-﻿#include"Year.h"
+﻿#include "Year.h"
 
-void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2) {
-	for (int i = 0; i < 3; i++) {
-		if (head->semester[i].created == false) continue;
+void importCourseToSemester(YearNode *head, ifstream &fin, bool &ok2)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		if (head->semester[i].created == false)
+			continue;
 		fin.open("DataFile/" + head->data + "-Semester" + char('1' + i) + ".csv");
-		if (fin.is_open()) {
-			SemesterInfo* cur = (head->semester + i);
+		if (fin.is_open())
+		{
+			SemesterInfo *cur = (head->semester + i);
 			string line;
-			CourseNode* tail = nullptr;
-			while (getline(fin, line)) {
-				CourseNode* temp = new CourseNode();
+			CourseNode *tail = nullptr;
+			while (getline(fin, line))
+			{
+				CourseNode *temp = new CourseNode();
 				stringstream ss(line);
 				getline(ss, temp->data.course_name, ',');
 				getline(ss, temp->data.class_name, ',');
@@ -23,47 +28,53 @@ void importCourseToSemester(YearNode* head, ifstream& fin, bool& ok2) {
 					importStudentToClass(temp->student, fin);
 				else cout << "Unable to import student to the course in file" << "DataFile / " + temp->data.class_name+".csv" << endl;
 				fin.close();*/
-	
+
 				string s;
 				getline(ss, s, ',');
 				temp->data.session = s[0] - '0';
 
 				getline(ss, s, ',');
 				temp->data.credit = 0;
-				for (int j = 0; j < (int)s.length(); j++) {
+				for (int j = 0; j < (int)s.length(); j++)
+				{
 					temp->data.credit *= 10;
 					temp->data.credit += s[j] - '0';
 				}
 
 				getline(ss, s, ',');
 				temp->data.max_student = 0;
-				for (int j = 0; j < (int)s.length(); j++) {
+				for (int j = 0; j < (int)s.length(); j++)
+				{
 					temp->data.max_student *= 10;
 					temp->data.max_student += s[j] - '0';
 				}
-				if (tail == nullptr) {
+				if (tail == nullptr)
+				{
 					cur->course = temp;
 				}
-				else {
+				else
+				{
 					tail->pNext = temp;
 				}
 				tail = temp;
 			}
 			fin.close();
 		}
-		else {
+		else
+		{
 			ok2 = true;
 		}
 	}
 }
 
-void exportCourseToSemester(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
+void exportCourseToSemester(YearNode *head, SemesterInfo *&curSes, ofstream &fout)
 {
 	fout.open("DataFile/" + head->data + "-Semester" + char('0' + curSes->order) + ".csv");
-	CourseNode* curCourse = curSes->course;
+	CourseNode *curCourse = curSes->course;
 	while (curCourse != nullptr)
 	{
-		if (curCourse != curSes->course) fout << "\n";
+		if (curCourse != curSes->course)
+			fout << "\n";
 		fout << curCourse->data.course_name << ",";
 		fout << curCourse->data.class_name << ",";
 		fout << curCourse->data.ID << ",";
@@ -76,18 +87,22 @@ void exportCourseToSemester(YearNode* head, SemesterInfo*& curSes, ofstream& fou
 	}
 }
 
-void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin) {
+void importSchoolYearData(YearNode *&head, YearNode *&tail, ifstream &fin)
+{
 	string s;
-	while (getline(fin, s)) {
-		YearNode* temp = new YearNode(s);
-		for (int i = 0; i < 3; i++) {
+	while (getline(fin, s))
+	{
+		YearNode *temp = new YearNode(s);
+		for (int i = 0; i < 3; i++)
+		{
 			string a;
 			getline(fin, a);
 			stringstream ss(a);
 			string created, start, end;
 			getline(ss, created, ' ');
 			temp->semester[i].created = (created == "1");
-			if (created == "0") continue;
+			if (created == "0")
+				continue;
 			getline(ss, start, ' ');
 			getline(ss, end);
 			temp->semester[i].start.day = start.substr(0, 2);
@@ -98,69 +113,88 @@ void importSchoolYearData(YearNode*& head, YearNode*& tail, ifstream& fin) {
 			temp->semester[i].end.year = end.substr(6, 4);
 			temp->semester[i].order = i + 1;
 		}
-		if (tail == nullptr) {
+		if (tail == nullptr)
+		{
 			head = temp;
 		}
-		else {
+		else
+		{
 			tail->pNext = temp;
 		}
 		tail = temp;
 	}
 }
 
-void addNewClass(YearNode*& head, ofstream& fout) {
-	YearNode* curYear = findSchoolYear(head);
-	if (curYear == nullptr) {
+void addNewClass(YearNode *&head, ofstream &fout)
+{
+	YearNode *curYear = findSchoolYear(head);
+	if (curYear == nullptr)
+	{
 		cout << "This year does not exist.\n";
 		return;
 	}
 	string name;
-	cout << "Input name of class: "; cin >> name;
-	ClassNode* tailClass = curYear->classes;
-	while (tailClass) {
-		if (tailClass->data.name == name) {
+	cout << "Input name of class: ";
+	cin >> name;
+	ClassNode *tailClass = curYear->classes;
+	while (tailClass)
+	{
+		if (tailClass->data.name == name)
+		{
 			cout << "This class is created before.\n";
 			return;
 		}
-		if (tailClass->pNext == nullptr) break;
+		if (tailClass->pNext == nullptr)
+			break;
 		tailClass = tailClass->pNext;
 	}
 	fout.open("DataFile/" + curYear->data + "Classes.txt");
-	if (fout.is_open()) {
-		ClassNode* temp = new ClassNode(name);
+	if (fout.is_open())
+	{
+		ClassNode *temp = new ClassNode(name);
 
-		if (tailClass == nullptr) curYear->classes = temp;
-		else tailClass->pNext = temp;
+		if (tailClass == nullptr)
+			curYear->classes = temp;
+		else
+			tailClass->pNext = temp;
 
 		exportClassData(curYear->classes, fout);
 		cout << "Class is added.\n";
 
 		fout.close();
 	}
-	else cout << "Add class failed.\n";
+	else
+		cout << "Add class failed.\n";
 }
 
-void createASchoolYear(YearNode*& head, YearNode*& tail) {
+void createASchoolYear(YearNode *&head, YearNode *&tail)
+{
 	string s;
-	cout << "Input your school year (format yyyy-yyyy, for example): "; cin >> s;
-	YearNode* cur = head;
-	while (cur) {
-		if (cur->data == s) {
+	cout << "Input your school year (format yyyy-yyyy, for example): ";
+	cin >> s;
+	YearNode *cur = head;
+	while (cur)
+	{
+		if (cur->data == s)
+		{
 			cout << "This year is created before.\n";
 			return;
 		}
 		cur = cur->pNext;
 	}
 
-	YearNode* temp = new YearNode(s);
+	YearNode *temp = new YearNode(s);
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++)
+	{
 		temp->semester[i].created = 0;
 	}
-	if (tail == nullptr) {
+	if (tail == nullptr)
+	{
 		head = temp;
 	}
-	else tail->pNext = temp;
+	else
+		tail->pNext = temp;
 	tail = temp;
 	ofstream fout;
 	fout.open("DataFile/" + temp->data + "Classes.txt", ios::trunc);
@@ -168,58 +202,69 @@ void createASchoolYear(YearNode*& head, YearNode*& tail) {
 	cout << "Create school year successfully.\n";
 }
 
-void exportSchoolYearData(YearNode* head, ofstream& fout) {
+void exportSchoolYearData(YearNode *head, ofstream &fout)
+{
 	fout.open("DataFile/SchoolYear.txt", ios::trunc);
-	YearNode* cur = head;
-	while (cur) {
-		if (cur != head) fout << "\n";
+	YearNode *cur = head;
+	while (cur)
+	{
+		if (cur != head)
+			fout << "\n";
 		fout << cur->data << "\n";
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 3; i++)
+		{
 			fout << cur->semester[i].created;
-			if (cur->semester[i].created) {
+			if (cur->semester[i].created)
+			{
 				fout << " " << cur->semester[i].start.day << "/" << cur->semester[i].start.month << "/" << cur->semester[i].start.year << " ";
 				fout << cur->semester[i].end.day << "/" << cur->semester[i].end.month << "/" << cur->semester[i].end.year;
 			}
-			if (i != 2) fout << "\n";
+			if (i != 2)
+				fout << "\n";
 		}
-		
+
 		cur = cur->pNext;
 	}
 }
 
-void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
+void addCourse(YearNode *curYear, SemesterInfo *&curSes, ofstream &fout)
 {
 	fout.open("DataFile/" + curYear->data + "-Semester" + char('0' + curSes->order) + ".csv", ios::app);
-	CourseNode* curCourse = curSes->course;
-	CourseNode* newcourse = new CourseNode;
+	CourseNode *curCourse = curSes->course;
+	CourseNode *newcourse = new CourseNode;
 	if (curCourse == nullptr)
 		curCourse = newcourse;
-	else {
-		while (curCourse->pNext) curCourse = curCourse->pNext;
+	else
+	{
+		while (curCourse->pNext)
+			curCourse = curCourse->pNext;
 		curCourse->pNext = newcourse;
 		curCourse = curCourse->pNext;
 	}
 	cout << "Course name: \n";
 	cin.ignore();
 	getline(cin, curCourse->data.course_name);
-	
+
 	cout << "Class name: \n";
 	getline(cin, curCourse->data.class_name);
-	
-	ClassNode* curClass = findClass(curYear->classes,curCourse->data.class_name);
-	while (curClass == nullptr) {
+
+	ClassNode *curClass = findClass(curYear->classes, curCourse->data.class_name);
+	while (curClass == nullptr)
+	{
 		cout << "This class does not exist.\n";
 		curClass = findClass(curYear->classes, askClassName());
 	}
-	
+
 	ifstream fin;
 	fin.open("DataFile/" + curCourse->data.class_name);
-	if (fin.is_open()) {
+	if (fin.is_open())
+	{
 		importStudentToClass(curCourse->student, fin);
 		fin.close();
 	}
-	else cout << "Unable to import student to the course" << endl;
-	
+	else
+		cout << "Unable to import student to the course" << endl;
+
 	cout << "Course ID: \n";
 	cin >> curCourse->data.ID;
 	cin.ignore();
@@ -257,89 +302,104 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes, ofstream& fout)
 	fout2.open("DataFile/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
 	exportStudent(curCourse->student, fout2);
 	fout2.close();
-	
+
 	fout.close();
 }
 
-YearNode* findSchoolYear(YearNode* head) {
+YearNode *findSchoolYear(YearNode *head)
+{
 	string year;
-	YearNode* cur = head;
+	YearNode *cur = head;
 	int cnt = 1;
-	while (cur) {
+	while (cur)
+	{
 		cout << cnt++ << ". " << cur->data << "\n";
 		cur = cur->pNext;
 	}
 	int n;
-	cout << "Press a number to choose a year: "; cin >> n;
+	cout << "Press a number to choose a year: ";
+	cin >> n;
 	cnt = 1;
-	while (head) {
-		if (n == cnt) {
+	while (head)
+	{
+		if (n == cnt)
+		{
 			return head;
 		}
 		cnt++;
 		head = head->pNext;
 	}
-	if (cnt > n) cout << "Wrong option.\n";
+	if (cnt > n)
+		cout << "Wrong option.\n";
 	return nullptr;
 }
 
-void addNewStudentToClass(UserNode *&tailUser, YearNode* head, ifstream& fin) {
-	YearNode* curYear = findSchoolYear(head);
-	if (curYear == nullptr) {
+void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
+{
+	YearNode *curYear = findSchoolYear(head);
+	if (curYear == nullptr)
+	{
 		cout << "This year does not exist.\n";
 		return;
 	}
 
-	ClassNode* curClass = findClass(curYear->classes,askClassName());
-	if (curClass == nullptr) {
+	ClassNode *curClass = findClass(curYear->classes, askClassName());
+	if (curClass == nullptr)
+	{
 		cout << "This class does not exist.\n";
 		return;
 	}
-	StudentNode* curStudent = curClass->student;
-	if (curStudent != nullptr) {
+	StudentNode *curStudent = curClass->student;
+	if (curStudent != nullptr)
+	{
 		cout << "Students is already added to this class.\n";
 		return;
 	}
 	fin.open("DataFile/" + curClass->data.name + ".csv");
-	if (fin.is_open()) {
+	if (fin.is_open())
+	{
 		importStudentToClass(curClass->student, fin);
 		createNewUsers(tailUser, curClass->student);
 		cout << "Student is added successfully.\n";
 		fin.close();
 	}
-	else cout << "Add student failed.\n";
+	else
+		cout << "Add student failed.\n";
 }
 
-
-
-void viewListOfStudentInClass(YearNode* head) {
-	YearNode* curYear = findSchoolYear(head);
-	while (curYear == nullptr) {
+void viewListOfStudentInClass(YearNode *head)
+{
+	YearNode *curYear = findSchoolYear(head);
+	while (curYear == nullptr)
+	{
 		cout << "This year does not exist. Try again.\n";
 		curYear = findSchoolYear(head);
 	}
 
 	cout << "List of classes in school year " << curYear->data << endl;
 	int cnt = 0;
-	ClassNode* temp = curYear->classes;
+	ClassNode *temp = curYear->classes;
 	while (temp != nullptr)
 	{
 		cout << ++cnt << ". " << temp->data.name << " " << endl;
 		temp = temp->pNext;
 	}
 	temp = curYear->classes;
-	ClassNode* curClass = findClass(temp,askClassName());
-	while (curClass == nullptr) {
+	ClassNode *curClass = findClass(temp, askClassName());
+	while (curClass == nullptr)
+	{
 		cout << "This class does not exist.\n";
-		curClass = findClass(temp,askClassName());
+		curClass = findClass(temp, askClassName());
 	}
-	StudentNode* cur = curClass->student;
-	if (cur == nullptr) {
+	StudentNode *cur = curClass->student;
+	if (cur == nullptr)
+	{
 		cout << "There is no student in class " << curClass->data.name << ".\n";
 		return;
 	}
 	cout << "List of student in class " << curClass->data.name << ":\n";
-	while (cur) {
+	while (cur)
+	{
 		cout << "NO " << cur->data.No << "\n";
 		cout << "Student ID: " << cur->data.ID << "\n";
 		cout << "Last name: " << cur->data.last_name << "\n";
@@ -352,62 +412,76 @@ void viewListOfStudentInClass(YearNode* head) {
 	}
 }
 
-void viewAListOfClasses(YearNode* head) {
-	YearNode* temp = findSchoolYear(head);
-	if (temp == nullptr) {
+void viewAListOfClasses(YearNode *head)
+{
+	YearNode *temp = findSchoolYear(head);
+	if (temp == nullptr)
+	{
 		cout << "This year does not exist.\n";
 		return;
 	}
 	cout << "List of classes in " << temp->data << ":\n";
-	ClassNode* cur = temp->classes;
-	while (cur) {
+	ClassNode *cur = temp->classes;
+	while (cur)
+	{
 		cout << cur->data.name << "\n";
 		cur = cur->pNext;
 	}
 }
 
-void viewAllClasses(YearNode* head) {
-	YearNode* curYear = head;
-	while (curYear) {
+void viewAllClasses(YearNode *head)
+{
+	YearNode *curYear = head;
+	while (curYear)
+	{
 		cout << "List of classes in " << curYear->data << ":\n";
-		ClassNode* curClass = curYear->classes;
-		while (curClass) {
+		ClassNode *curClass = curYear->classes;
+		while (curClass)
+		{
 			cout << curClass->data.name << "\n";
 			curClass = curClass->pNext;
-		} 
+		}
 		curYear = curYear->pNext;
 	}
 }
 
-SemesterInfo* createSemester(YearNode* head) {
-	if (head == nullptr) {
+SemesterInfo *createSemester(YearNode *head)
+{
+	if (head == nullptr)
+	{
 		cout << "Year data is empty.\n";
 		return nullptr;
 	}
-	YearNode* temp = findSchoolYear(head);
-	if (temp == nullptr) {
+	YearNode *temp = findSchoolYear(head);
+	if (temp == nullptr)
+	{
 		cout << "This year does not exist. Create school year before creating semester.\n";
-		return nullptr; 
+		return nullptr;
 	}
 	string s;
 	int ses;
 	string d1, m1, y1, d2, m2, y2;
 	cout << "Input information about the semester as follows.\n";
-	cout << "What semester do you want to create (1, 2 or 3)? "; cin >> ses;
-	if (ses != 1 && ses != 2 && ses != 3) {
+	cout << "What semester do you want to create (1, 2 or 3)? ";
+	cin >> ses;
+	if (ses != 1 && ses != 2 && ses != 3)
+	{
 		cout << "This semester does not exit.\n";
 		return nullptr;
 	}
-	else if (temp->semester[ses - 1].created == true) {
+	else if (temp->semester[ses - 1].created == true)
+	{
 		cout << "This semester is created before.\n";
 		return nullptr;
 	}
-	cout << "Start date: "; cin >> s;
+	cout << "Start date: ";
+	cin >> s;
 	stringstream ss(s);
 	getline(ss, d1, '/');
 	getline(ss, m1, '/');
 	getline(ss, y1);
-	cout << "End date: "; cin >> s;
+	cout << "End date: ";
+	cin >> s;
 	stringstream aa(s);
 	getline(aa, d2, '/');
 	getline(aa, m2, '/');
@@ -428,22 +502,61 @@ SemesterInfo* createSemester(YearNode* head) {
 	return &temp->semester[ses - 1];
 }
 
-SemesterInfo* chooseASemester(YearNode* head, YearNode*& temp) {
-	YearNode* curYear = findSchoolYear(head);
-	if (curYear == nullptr) {
+SemesterInfo *chooseASemester(YearNode *head, YearNode *&temp)
+{
+	YearNode *curYear = findSchoolYear(head);
+	if (curYear == nullptr)
+	{
 		cout << "This school year does not exist.\n";
 		cout << "Please choose an existed year to enter the semester.\n";
 		return nullptr;
 	}
 	temp = curYear;
 	int ses;
-	cout << "Choose semester: "; cin >> ses;
-	while (ses != 1 && ses != 2 && ses != 3) {
+	cout << "Choose semester: ";
+	cin >> ses;
+	while (ses != 1 && ses != 2 && ses != 3)
+	{
 		cout << "Invalid semester.\n";
-		cout << "Choose semester: "; cin >> ses;
+		cout << "Choose semester: ";
+		cin >> ses;
 	}
-	if (curYear->semester[ses - 1].created == false) {
+	if (curYear->semester[ses - 1].created == false)
+	{
 		cout << "This semester has not been created yet.\n";
 	}
 	return &curYear->semester[ses - 1];
+}
+
+void deleteACourse(YearNode *head, SemesterInfo *&curSes, ofstream &fout)
+{
+	CourseNode *curCourse = findCourse(head->semester->course);
+	if (curCourse == nullptr)
+	{
+		cout << "This course does not exist in this semester.\n";
+		return;
+	}
+	if (curCourse == head->semester->course)
+	{
+		CourseNode *temp = head->semester->course;
+		head->semester->course = head->semester->course->pNext;
+		delete temp;
+		cout << "Delete course successfully.\n";
+	}
+	CourseNode *prev = nullptr;
+	CourseNode *cur = head->semester->course;
+	while (cur)
+	{
+		if (cur == curCourse)
+		{
+			CourseNode *temp = cur;
+			prev->pNext = cur->pNext;
+			delete temp;
+			cout << "Delete course successfully.\n";
+			return;
+		}
+		prev = cur;
+		cur = cur->pNext;
+	}
+	exportCourseToSemester(head, curSes, fout);
 }
