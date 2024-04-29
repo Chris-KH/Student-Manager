@@ -70,20 +70,24 @@ void importCourseToSemester(YearNode *head, ifstream &fin, bool &ok2)
 void exportCourseToSemester(YearNode *head, SemesterInfo *&curSes, ofstream &fout)
 {
 	fout.open("DataFile/" + head->data + "-Semester" + char('0' + curSes->order) + ".csv");
-	CourseNode *curCourse = curSes->course;
-	while (curCourse != nullptr)
+	if (fout.is_open())
 	{
-		if (curCourse != curSes->course)
-			fout << "\n";
-		fout << curCourse->data.course_name << ",";
-		fout << curCourse->data.class_name << ",";
-		fout << curCourse->data.ID << ",";
-		fout << curCourse->data.teacher_name << ",";
-		fout << curCourse->data.day_of_week << ",";
-		fout << curCourse->data.session << ",";
-		fout << curCourse->data.credit << ",";
-		fout << curCourse->data.max_student << ",";
-		curCourse = curCourse->pNext;
+		CourseNode* curCourse = curSes->course;
+		while (curCourse != nullptr)
+		{
+			if (curCourse != curSes->course)
+				fout << "\n";
+			fout << curCourse->data.course_name << ",";
+			fout << curCourse->data.class_name << ",";
+			fout << curCourse->data.ID << ",";
+			fout << curCourse->data.teacher_name << ",";
+			fout << curCourse->data.day_of_week << ",";
+			fout << curCourse->data.session << ",";
+			fout << curCourse->data.credit << ",";
+			fout << curCourse->data.max_student << ",";
+			curCourse = curCourse->pNext;
+		}
+		fout.close();
 	}
 }
 
@@ -228,13 +232,15 @@ void exportSchoolYearData(YearNode *head, ofstream &fout)
 	fout.close();
 }
 
-void addCourse(YearNode *curYear, SemesterInfo *&curSes, ofstream &fout)
+void addCourse(YearNode *curYear, SemesterInfo *&curSes)
 {
-	fout.open("DataFile/" + curYear->data + "-Semester" + char('0' + curSes->order) + ".csv", ios::app);
 	CourseNode *curCourse = curSes->course;
 	CourseNode *newcourse = new CourseNode;
 	if (curCourse == nullptr)
+	{
+		curSes->course = newcourse;
 		curCourse = newcourse;
+	}
 	else
 	{
 		while (curCourse->pNext)
@@ -242,11 +248,11 @@ void addCourse(YearNode *curYear, SemesterInfo *&curSes, ofstream &fout)
 		curCourse->pNext = newcourse;
 		curCourse = curCourse->pNext;
 	}
-	cout << "Course name: \n";
+	cout << "Course name: ";
 	cin.ignore();
 	getline(cin, curCourse->data.course_name);
 
-	cout << "Class name: \n";
+	cout << "Class name: ";
 	getline(cin, curCourse->data.class_name);
 
 	ClassNode *curClass = findClass(curYear->classes, curCourse->data.class_name);
@@ -263,17 +269,15 @@ void addCourse(YearNode *curYear, SemesterInfo *&curSes, ofstream &fout)
 		importStudentToClass(curCourse->student, fin);
 		fin.close();
 	}
-	else
-		cout << "Unable to import student to the course" << endl;
-
-	cout << "Course ID: \n";
+	
+	cout << "Course ID: ";
 	cin >> curCourse->data.ID;
 	cin.ignore();
 
-	cout << "Teacher name: \n";
+	cout << "Teacher name: ";
 	getline(cin, curCourse->data.teacher_name);
 
-	cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): \n";
+	cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): ";
 	cin >> curCourse->data.day_of_week;
 
 	cout << "Session: \n";
@@ -281,15 +285,19 @@ void addCourse(YearNode *curYear, SemesterInfo *&curSes, ofstream &fout)
 	cout << "2. S2(09:30)\n";
 	cout << "3. S3(13:30)\n";
 	cout << "4. S4(15:30)\n";
-	cout << "Press a number (1-4) to choose: \n";
+	cout << "Press a number (1-4) to choose: ";
 	cin >> curCourse->data.session;
 
-	cout << "Number of credits: \n";
+	cout << "Number of credits: ";
 	cin >> curCourse->data.credit;
 
-	cout << "The maximum number of students in the course: \n";
+	cout << "The maximum number of students in the course: ";
 	cin >> curCourse->data.max_student;
-	fout << endl;
+
+	ofstream fout;
+	exportCourseToSemester(curYear, curSes, fout);
+	
+	/*fout << endl;
 	fout << curCourse->data.course_name << ",";
 	fout << curCourse->data.class_name << ",";
 	fout << curCourse->data.ID << ",";
@@ -302,9 +310,10 @@ void addCourse(YearNode *curYear, SemesterInfo *&curSes, ofstream &fout)
 	ofstream fout2;
 	fout2.open("DataFile/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
 	exportStudent(curCourse->student, fout2);
-	fout2.close();
+	fout2.close();*/
 
 	fout.close();
+	cout << "The course is added successfully" << endl;
 }
 
 YearNode *findSchoolYear(YearNode *head)
@@ -539,6 +548,8 @@ SemesterInfo *chooseASemester(YearNode *head, YearNode *&temp)
 	if (curYear->semester[ses - 1].created == false)
 	{
 		cout << "This semester has not been created yet.\n";
+		cout << "Please choose other semester.\n";
+		return nullptr;
 	}
 	return &curYear->semester[ses - 1];
 }

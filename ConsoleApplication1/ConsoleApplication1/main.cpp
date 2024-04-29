@@ -128,25 +128,17 @@ int main()
             {
                 fin.open("DataFile/Courses/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
                 if (fin.is_open())
-                    importStudentToClass(curCourse->student, fin); // in Student.h, Student.cpp
-                else
                 {
-                    ok3 = true;
-                    cout << "Failed.\n" << endl;
+                    importStudentToClass(curCourse->student, fin); // in Student.h, Student.cpp
+                    fin.close();
                 }
-                fin.close();
-                
                 fin.open("DataFile/Courses/SB/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
                 if (fin.is_open())
                 {
                     importScoreboard(curCourse->student, fin);
                     fin.close();
                 }
-                else
-                {
-                    ok3 = false;
-                    cout << "Failed.\n" << endl;
-                }
+                
                 //creating scoreboard files of courses
                 /*fout.open("DataFile/Courses/SB/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
                 if (fout.is_open())
@@ -213,9 +205,9 @@ int main()
                         // Tương tự case 3
                         fout.open("DataFile/SchoolYear.txt", ios::trunc);
                         if (fout.is_open()) {
-                            fout.close();
                             createASchoolYear(headYear, tailYear); // in Year.h, Year.cpp
                             exportSchoolYearData(headYear, fout); // in Year.h, Year.cpp
+                            fout.close();
                         }
                         else cout << "Create school year failed.\n";
                         break;
@@ -236,12 +228,12 @@ int main()
                     case 4: //checked
                         curSes = chooseASemester(headYear, curYear);
                         break;
-                    case 5:
+                    case 5: //checked
                         addNewStudentToClass(tailUser, headYear, fin);
                         break;
-                    case 6:
+                    case 6: //checked
                         if (curYear && curSes) {
-                            addCourse(curYear, curSes, fout);
+                            addCourse(curYear, curSes);
                         } else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 7:
@@ -372,7 +364,7 @@ int main()
                             curCourse = findCourse(curSes->course);
                             if (curCourse)
                             {
-                                fin.open("DataFile/Courses/SB/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
+                                fin.open("InputFile/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
 
                                 if (fin.is_open())
                                 {
