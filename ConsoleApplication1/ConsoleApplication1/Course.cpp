@@ -135,13 +135,17 @@ void  viewStudentCourse(string student_id, CourseNode* head) {
 
 void  viewStudentScoreboard(string student_id, CourseNode* head)
 {
-    cout << "The scoreboard of student ID " << student_id <<": "<< endl;
     CourseNode* curCourse = head;
+    bool ok = true;
     while (curCourse != nullptr)
     {
         StudentNode* curStu = findStudentInACourse(student_id, curCourse);
         if (curStu != nullptr)
         {
+            if (ok) {
+                cout << "The scoreboard of student ID " << student_id <<": "<< endl;
+                ok = false;
+            }
             StudentNode* curStu = curCourse->student;
             cout << "Course " << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
             cout << "Total: " << curStu->data.score.total << endl;
@@ -151,6 +155,7 @@ void  viewStudentScoreboard(string student_id, CourseNode* head)
         }
         curCourse = curCourse->pNext;
     }
+    if (ok) cout << ANSI_RED << "No scoreboard in this semester.\n";
 }
 
 void printCourseIn4(CourseNode* curCourse)

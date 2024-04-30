@@ -471,7 +471,6 @@ int main()
                         {
                             viewStudentCourse(logged_in->data.username, curSes->course);
                         }
-                        else cout << ANSI_RED << "Wrong.\n";
                         break;
                     case 2:
                         curSes = chooseASemester(headYear, curYear);
@@ -479,7 +478,6 @@ int main()
                         {
                             viewStudentScoreboard(logged_in->data.username, curSes->course);
                         }
-                        else cout << ANSI_RED << "Wrong.\n";
                         break;
                     case 3: // checked
                         viewProfileInfo(logged_in);
