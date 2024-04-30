@@ -19,7 +19,7 @@ int main()
 
     // Load data
 
-    cout << ANSI_CYAN << "                                                          >>>>WELCOME TO THE COURSE MANAGEMENT SYSTEM.\n";
+    cout << ANSI_CYAN << ">>>>WELCOME TO THE COURSE MANAGEMENT SYSTEM.\n\n";
 
     //Load users data
     cout << ANSI_CYAN << "<>Load users data...";

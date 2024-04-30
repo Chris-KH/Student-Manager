@@ -131,7 +131,7 @@ void createNewUsers(UserNode*& tailUser, StudentNode* head)
 		}
 		else
 		{
-			cout << "Create new users failed." << endl;
+			cout << ANSI_RED << "Create new users failed." << endl;
 			return;
 		}
 		temp = temp->pNext;
@@ -149,7 +149,7 @@ void createNewUsers(UserNode*& tailUser, StudentNode* head)
 	}
 	else
 	{
-		cout << "Create accounts for new students failed.\n";
+		cout << ANSI_RED << "Create accounts for new students failed.\n";
 		return;
 	}
 }

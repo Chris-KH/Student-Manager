@@ -14,7 +14,7 @@ void viewListOfCourse(CourseNode* head)
 CourseNode* findCourse(CourseNode *head) {
     if (head == nullptr)
     {
-        cout << "Haven't created any course in this semester" << endl;
+        cout << ANSI_RED << "Haven't created any course in this semester" << endl;
         return nullptr;
     }
     CourseNode* cur = head;
@@ -31,7 +31,7 @@ CourseNode* findCourse(CourseNode *head) {
     cin >> order;
     while (!(1<=order && order<=cnt))
     {
-        cout << "Wrong input. Try again.\n";
+        cout << ANSI_RED << "Wrong input. Try again.\n" << ANSI_WHITE;
         cout << "Your choice (1->" << cnt << "): ";
         cin >> order;
     }
@@ -53,7 +53,7 @@ void viewListOfStudentInCourse(CourseNode* head) {
     {
         StudentNode* curStudent = curCourse->student;
         if (!curStudent) {
-            cout << "This course has no student.\n";
+            cout << ANSI_RED << "This course has no student.\n";
             return;
         }
         cout << "Students in course " << curCourse->data.course_name << " - " << curCourse->data.ID << " - " << curCourse->data.class_name << ":\n";
@@ -77,7 +77,7 @@ void removeStudentFromCourse(CourseNode*& head) {
     cin >> s;
     StudentNode* curStudent = findStudentInACourse(s, head);
     if (curStudent == nullptr) {
-        cout << "This student is not in the course.\n";
+        cout << ANSI_RED << "This student is not in the course.\n";
         return;
     }
     StudentNode* headStudent = head->student;
@@ -85,7 +85,7 @@ void removeStudentFromCourse(CourseNode*& head) {
         StudentNode* temp = curStudent;
         head->student = head->student->pNext;
         delete temp;
-        cout << "Delete student successfully.\n";
+        cout << ANSI_GREEN << "Delete student successfully.\n";
         return;
     }
     StudentNode* prev = headStudent;
@@ -95,7 +95,7 @@ void removeStudentFromCourse(CourseNode*& head) {
             StudentNode* temp = cur;
             prev->pNext = cur->pNext;
             delete temp;
-            cout << "Delete student successfully.\n";
+            cout << ANSI_GREEN << "Delete student successfully.\n";
             return;
         }
         cur = cur->pNext;
@@ -130,7 +130,7 @@ void  viewStudentCourse(string student_id, CourseNode* head) {
         }
         curCourse = curCourse->pNext;
     }
-    if (ok) cout << "No course in this semester.\n";
+    if (ok) cout << ANSI_RED << "No course in this semester.\n";
 }
 
 void  viewStudentScoreboard(string student_id, CourseNode* head)

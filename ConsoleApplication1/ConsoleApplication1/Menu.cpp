@@ -24,7 +24,7 @@ bool continueProgram(int status)
 void menuForStaff()
 {
     system("cls");
-    cout << ANSI_YELLOW << "All the functions for staff: Press a number to choose.\n" << ANSI_MAGENTA;
+    cout << ANSI_YELLOW << "All the functions for staff: Press a number to choose.\n" << ANSI_CYAN;
     cout << "    1. Create a school year.\n";
     cout << "    2. Create classes.\n";
     cout << "    3. Create a semester.\n";
@@ -54,7 +54,7 @@ void menuForStaff()
 void menuForStudent()
 {
     system("cls");
-    cout << ANSI_YELLOW << "All the functions for student: Press a number to choose.\n" << ANSI_MAGENTA;
+    cout << ANSI_YELLOW << "All the functions for student: Press a number to choose.\n" << ANSI_CYAN;
     cout << "   1. View a list of my course.\n";
     cout << "   2. View my scoreboard.\n";
     cout << "   3. View student's info.\n";
