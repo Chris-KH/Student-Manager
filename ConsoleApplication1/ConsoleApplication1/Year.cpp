@@ -140,7 +140,7 @@ void addNewClass(YearNode *&head, ofstream &fout)
 		cout << ++cnt << ". " << cur->data << "\n";
 		cur = cur->pNext;
 	}
-	cout << ">>Your choice (1->" << cnt << "): ";
+	cout << ">>";
 	YearNode *curYear = findSchoolYear(head,cnt);
 	if (curYear == nullptr)
 	{
