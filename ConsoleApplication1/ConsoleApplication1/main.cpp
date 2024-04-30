@@ -347,29 +347,30 @@ int main()
                             cout << "Change password failed.\n";
                         }
                         break;
-                    case 18:
-                        curSes = chooseASemester(headYear, curYear);
+                    case 18: //checked
+                        //curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear)
                         {
                             curCourse = findCourse(curSes->course);
                             if (curCourse)
                             {
-                                fout.open("DataFile/Export Files/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
-                                if (fin.is_open())
+                                string path = "ExportFile/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv";
+                                fout.open(path);
+                                if (fout.is_open())
                                 {
                                     exportStudent(curCourse->student, fout);
-                                    //NOTE: ghi note như nào để dẫn người dùng đến file đó??
+                                    fout.close();
+                                    cout << "Export a list of student in a course successfully." << endl;
+                                    cout << "Directory of the exported file: " << path << endl;
                                 }
                                 else
-                                    cout << "Export student in a course failed.\n" << endl;
+                                    cout << "Export a list of student in a course failed.\n";
                             }
-                            else cout << "This course does not exist.\n";
                         }
-                        else cout << "Wrong.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 19:
-                        curSes = chooseASemester(headYear, curYear);
-                        
+                        //curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear)
                         {
                             curCourse = findCourse(curSes->course);
@@ -391,26 +392,23 @@ int main()
                                 }
                                 else cout << "Can't open scoreboard file.\n";
                             }
-                            else cout << "This course does not exist.\n";
                             cout << "Import scoreboard successfully.\n";
                         }   
-                        else cout << "Please check semester and year again\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         fin.close();
-                        break;
-                        
-                    case 20:
-                        curSes = chooseASemester(headYear, curYear);
+                        break;     
+                    case 20: //checked
+                        //curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear)
                         {
                             curCourse = findCourse(curSes->course);
                             if (curCourse)
                                 viewTheScoreboardOfCourse(curCourse);
-                            else cout << "This course does not exist.\n";
                         }
-                        else cout << "Wrong.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 21:
-                        curSes = chooseASemester(headYear, curYear);
+                        //curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear) 
                         {
                             curCourse = findCourse(curSes->course);
@@ -428,11 +426,22 @@ int main()
                             }
                             else cout << "This course does not exist.\n";
                         }
-                        else cout << "Wrong.\n";
+                        else cout << "Please choose semester first (option 4).\n";
                         break;
                     case 22:
-                        viewScoreboardofClass(headClass);
-                        break;
+                        /*if (curYear)
+                        {
+                            cout << "List of classes in school year " << curYear->data << endl;
+                            int cnt = 0;
+                            ClassNode* temp = curYear->classes;
+                            while (temp != nullptr)
+                            {
+                                cout << ++cnt << ". " << temp->data.name << " " << endl;
+                                temp = temp->pNext;
+                            }
+                            viewScoreboardofClass(curYear, cnt);
+                        }
+                        break;*/
                     case 23:
                         cout << "Logout successful. You have been logged out.\n";
                         logout = true;

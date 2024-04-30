@@ -19,6 +19,7 @@ CourseNode* findCourse(CourseNode *head) {
     }
     CourseNode* cur = head;
     int cnt = 0;
+    cout << "Choose course: " << endl;
     while (cur != nullptr)
     {
         cout << ++cnt << ". " << cur->data.course_name << " - " << cur->data.ID << " - " << cur->data.class_name << "\n";
@@ -26,12 +27,13 @@ CourseNode* findCourse(CourseNode *head) {
     }
     
     int order;
-    cout << "Please choose a number (1->" << cnt << ") corresponding to the course : ";
+    cout << "Your choice (1->" << cnt << "): ";
     cin >> order;
-    if (order > cnt)
+    while (!(1<=order && order<=cnt))
     {
-        cout << "Wrong input.\n";
-        return nullptr;
+        cout << "Wrong input. Try again.\n";
+        cout << "Your choice (1->" << cnt << "): ";
+        cin >> order;
     }
     CourseNode* curCourse = head;
     cnt = 0;
@@ -60,6 +62,8 @@ void viewListOfStudentInCourse(CourseNode* head) {
             cout << "NO " << ++temp << "\n";
             cout << "Student ID: " << curStudent->data.ID << "\n";
             cout << "Student name: " << curStudent->data.last_name << " " << curStudent->data.first_name << "\n";
+            cout << "Gender: " << curStudent->data.gender << "\n";
+            cout << "DOB: " << curStudent->data.dob.day << "/" << curStudent->data.dob.month << "/" << curStudent->data.dob.year << "\n";
             cout << "----------------------------------------\n";
             curStudent = curStudent->pNext;
         }
@@ -238,26 +242,26 @@ void updateCourseIn4(CourseNode*& curCourse) {
 
 void viewTheScoreboardOfCourse(CourseNode* course)
 {
-    
-    cout << "Scoreboard of course " << course->data.course_name << " " << course->data.ID << endl;
     StudentNode* curStu = course->student;
-    while (curStu != nullptr)
+    if (curStu != nullptr)
     {
-        cout << curStu->data.No << endl;
-        cout << "Student name: " << curStu->data.first_name << " " << curStu->data.last_name << endl;
-        cout << "Student ID: " << curStu->data.ID << endl;
         if (curStu->data.score.total == -1)
         {
-            cout << "Still not imported" << endl;
+            cout << "The scoreboard of the course has not been imported" << endl;
+            return;
         }
-        else
-        {
-            cout << "Score" << endl;
-            cout << "    Total: " << fixed << setprecision(1) << curStu->data.score.total << endl;
-            cout << "    Final: " << fixed << setprecision(1) << curStu->data.score.final << endl;
-            cout << "    Midterm: " << fixed << setprecision(1) << curStu->data.score.midterm << endl;
-            cout << "    Bonus: " << fixed << setprecision(1) << curStu->data.score.bonus << endl;
-        }
+    }
+    cout << "Scoreboard of course " << course->data.course_name << " " << course->data.ID << endl;
+    while (curStu != nullptr)
+    {
+        cout << curStu->data.No << ".";
+        cout << "  Student name: " << curStu->data.first_name << " " << curStu->data.last_name << endl;
+        cout << "    Student ID: " << curStu->data.ID << endl;
+        cout << "    Score" << endl;
+        cout << "      Total: " << fixed << setprecision(1) << curStu->data.score.total << endl;
+        cout << "      Final: " << fixed << setprecision(1) << curStu->data.score.final << endl;
+        cout << "      Midterm: " << fixed << setprecision(1) << curStu->data.score.midterm << endl;
+        cout << "      Bonus: " << fixed << setprecision(1) << curStu->data.score.bonus << endl;
         curStu = curStu->pNext;
     }
 }

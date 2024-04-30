@@ -33,7 +33,7 @@ void createASchoolYear(YearNode*& head, YearNode*& tail);
 
 void addNewClass(YearNode*& head, ofstream& fout);
 
-YearNode* findSchoolYear(YearNode *head);
+YearNode* findSchoolYear(YearNode* head, int cnt);
 
 StudentNode* findAStudentInSystem(string s, YearNode* headYear);
 
@@ -54,3 +54,5 @@ void addCourse(YearNode* curYear, SemesterInfo*& curSes);
 void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout);
 
 void addStudentToCourse(YearNode*& headYear, CourseNode*& curCourse);
+
+void viewScoreboardofClass(YearNode*& curYear, int ses, int cnt);

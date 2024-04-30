@@ -71,15 +71,3 @@ string askClassName()
 	getline(cin, name);
 	return name;
 }
-
-
-void viewScoreboardofClass(ClassNode*& headClass) {
-	ofstream fout;
-	ClassNode *cur = headClass;
-	findClass(cur,askClassName());
-	if(cur != nullptr) exportStudent(cur->student, fout);
-	else {
-		cout << "No appropriate class. Please find the right class \n";
-		viewScoreboardofClass(headClass);
-	}
-}
