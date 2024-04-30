@@ -328,7 +328,7 @@ YearNode *findSchoolYear(YearNode *head)
 		cur = cur->pNext;
 	}
 	int n;
-	cout << "Press a number (1->" << cnt << ") corresponding to the year: ";
+	cout << ">>Your choice (1->" << cnt << "): ";
 	cin >> n;
 	cnt = 1;
 	while (head)
@@ -348,10 +348,10 @@ YearNode *findSchoolYear(YearNode *head)
 void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 {
 	YearNode *curYear = findSchoolYear(head);
-	if (curYear == nullptr)
+	while (curYear == nullptr)
 	{
-		cout << "This year does not exist.\n";
-		return;
+		cout << "Wrong option. Try again.\n";
+		curYear = findSchoolYear(head);
 	}
 	
 	cout << "List of classes in school year " << curYear->data << endl;
@@ -362,12 +362,11 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 		cout << ++cnt << ". " << temp->data.name << " " << endl;
 		temp = temp->pNext;
 	}
-	temp = curYear->classes;
-	ClassNode* curClass = findClass(temp, askClassName());
-	if (curClass == nullptr)
+	ClassNode* curClass = chooseClass(curYear->classes,cnt);
+	while (curClass == nullptr)
 	{
-		cout << "This class does not exist.\n";
-		return;
+		cout << "Wrong option. Try again.\n";
+		curClass = chooseClass(curYear->classes,cnt);
 	}
 	StudentNode *curStudent = curClass->student;
 	if (curStudent != nullptr)
@@ -396,24 +395,28 @@ void viewListOfStudentInClass(YearNode *head)
 	YearNode *curYear = findSchoolYear(head);
 	while (curYear == nullptr)
 	{
-		cout << "This year does not exist. Try again.\n";
+		cout << "Wrong option. Try again.\n";
 		curYear = findSchoolYear(head);
 	}
 
 	cout << "List of classes in school year " << curYear->data << endl;
 	int cnt = 0;
 	ClassNode *temp = curYear->classes;
+	if (temp == nullptr)
+	{
+		cout << "Haven't created any class in this school year" << endl;
+		return;
+	}
 	while (temp != nullptr)
 	{
 		cout << ++cnt << ". " << temp->data.name << " " << endl;
 		temp = temp->pNext;
 	}
-	temp = curYear->classes;
-	ClassNode *curClass = findClass(temp, askClassName());
+	ClassNode* curClass = chooseClass(curYear->classes, cnt);
 	while (curClass == nullptr)
 	{
-		cout << "This class does not exist.\n";
-		curClass = findClass(temp, askClassName());
+		cout << "Wrong option. Try again.\n";
+		curClass = chooseClass(curYear->classes, cnt);
 	}
 	StudentNode *cur = curClass->student;
 	if (cur == nullptr)
@@ -425,6 +428,7 @@ void viewListOfStudentInClass(YearNode *head)
 	while (cur)
 	{
 		printStudentIn4(cur);
+		cout << "------------------------" << endl;
 		cur = cur->pNext;
 	}
 }
@@ -432,35 +436,53 @@ void viewListOfStudentInClass(YearNode *head)
 void viewAListOfClasses(YearNode *head)
 {
 	YearNode *temp = findSchoolYear(head);
-	if (temp == nullptr)
+	while (temp == nullptr)
 	{
-		cout << "This year does not exist.\n";
-		return;
+		cout << "Wrong option. Try again.\n";
+		temp = findSchoolYear(head);
 	}
+
 	cout << "List of classes in " << temp->data << ":\n";
 	ClassNode *cur = temp->classes;
-	while (cur)
+	if (cur == nullptr)
 	{
-		cout << cur->data.name << "\n";
-		cur = cur->pNext;
+		cout << "Haven't created any class in this year." << endl;
+	}
+	else
+	{
+		int cnt = 0;
+		while (cur)
+		{
+			cout << ++cnt << ". " << cur->data.name << "\n";
+			cur = cur->pNext;
+		}
 	}
 }
 
-void viewAllClasses(YearNode *head)
+void viewAllClasses(YearNode* head)
 {
-	YearNode *curYear = head;
+	YearNode* curYear = head;
 	while (curYear)
 	{
 		cout << "List of classes in " << curYear->data << ":\n";
-		ClassNode *curClass = curYear->classes;
-		while (curClass)
+		ClassNode* curClass = curYear->classes;
+		if (curClass == nullptr)
 		{
-			cout << curClass->data.name << "\n";
-			curClass = curClass->pNext;
+			cout << "Haven't created any class in this year." << endl;
+		}
+		else
+		{
+			int cnt = 0;
+			while (curClass)
+			{
+				cout << ++cnt << ". " << curClass->data.name << "\n";
+				curClass = curClass->pNext;
+			}
 		}
 		curYear = curYear->pNext;
 	}
 }
+
 
 SemesterInfo *createSemester(YearNode *head)
 {
@@ -608,8 +630,8 @@ SemesterInfo *chooseASemester(YearNode *head, YearNode *&temp)
 	cin >> ses;
 	while (ses != 1 && ses != 2 && ses != 3)
 	{
-		cout << "Invalid semester.\n";
-		cout << "Choose semester: ";
+		cout << "Invalid semester. Try again.\n";
+		cout << "Choose semester (1->3): ";
 		cin >> ses;
 	}
 	if (curYear->semester[ses - 1].created == false)

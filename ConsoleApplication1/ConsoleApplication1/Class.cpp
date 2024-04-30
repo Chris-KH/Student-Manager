@@ -46,6 +46,23 @@ StudentNode* findAStudentInClass(string s, ClassNode* curClass)
 	return nullptr;
 }
 
+ClassNode* chooseClass(ClassNode* head, int cnt)
+{
+	int opt;
+	cout << ">>Your choice (1->" << cnt << "): ";
+	cin >> opt;
+	ClassNode* curClass = head;
+	int count = 0;
+	while (curClass != nullptr)
+	{
+		++count; 
+		if (count == opt)
+			return curClass;
+		curClass = curClass->pNext;
+	}
+	return nullptr;
+}
+
 string askClassName()
 {
 	string name;
@@ -54,6 +71,7 @@ string askClassName()
 	getline(cin, name);
 	return name;
 }
+
 
 void viewScoreboardofClass(ClassNode*& headClass) {
 	ofstream fout;

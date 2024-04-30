@@ -30,6 +30,8 @@ void exportClassData(ClassNode* classes, ofstream& fout);
 
 string askClassName();
 
+ClassNode* chooseClass(ClassNode* head, int cnt);
+
 ClassNode* findClass(ClassNode* head, string name);
 
 void viewScoreboardofClass(ClassNode*& head);

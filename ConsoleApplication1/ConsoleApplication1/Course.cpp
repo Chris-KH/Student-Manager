@@ -2,11 +2,6 @@
 
 void viewListOfCourse(CourseNode* head)
 {
-    if (head == nullptr)
-    {
-        cout << "There is no course" << endl;
-        return;
-    }
     CourseNode* cur = head;
     int cnt = 0;
     while (cur != nullptr)

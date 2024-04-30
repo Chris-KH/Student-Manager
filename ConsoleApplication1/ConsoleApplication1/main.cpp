@@ -318,7 +318,7 @@ int main()
                         if (tempSes && tempYear) 
                         {
                             if (tempSes->course==nullptr)
-                                cout<<"There is no course in semester " << tempSes->order << " of school year " << tempYear->data << ":\n";
+                                cout<<"There is no course in semester " << tempSes->order << " of school year " << tempYear->data << "\n";
                             else
                             {
                                 cout << "List of courses in semester " << tempSes->order << " of school year " << tempYear->data << ":\n";
