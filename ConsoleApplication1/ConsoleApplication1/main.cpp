@@ -369,7 +369,7 @@ int main()
                         }
                         else cout << ANSI_RED << "Please choose semester first (option 4).\n";
                         break;
-                    case 19:
+                    case 19: //checked
                         if (curSes && curYear)
                         {
                             curCourse = findCourse(curSes->course);
@@ -409,15 +409,18 @@ int main()
                         if (curSes && curYear) 
                         {
                             curCourse = findCourse(curSes->course);
-                            if (curCourse) 
+                            if (curCourse)
                             {
-                                string s;
-                                cout << ANSI_YELLOW << "Input student ID: " << endl;
-                                cin >> s;
-                                curStu = findStudentInACourse(s, curCourse);
+                                curStu = chooseStudentInACourse(curCourse);
                                 if (curStu)
                                 {
                                     updateAStudentResult(curStu);
+                                    fout.open("DataFile/Courses/SB/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
+                                    if (fout.is_open())
+                                    {
+                                        exportScoreboard(curCourse->student, fout);
+                                        fout.close();
+                                    }
                                 }
                                 else cout << ANSI_RED << "This student does not exist.\n";
                             }
@@ -425,8 +428,8 @@ int main()
                         }
                         else cout << ANSI_RED << "Please choose semester first (option 4).\n";
                         break;
-                    case 22:
-                        /*if (curYear)
+                    case 22: //checked
+                        if (curSes && curYear)
                         {
                             cout << "List of classes in school year " << curYear->data << endl;
                             int cnt = 0;
@@ -436,9 +439,9 @@ int main()
                                 cout << ++cnt << ". " << temp->data.name << " " << endl;
                                 temp = temp->pNext;
                             }
-                            viewScoreboardofClass(curYear, cnt);
+                            viewScoreboardofClass(headYear, curYear, curSes->order-1, cnt);
                         }
-                        break;*/
+                        break;
                     case 23:
                         cout << ANSI_GREEN << "Logout successful. You have been logged out.\n";
                         logout = true;

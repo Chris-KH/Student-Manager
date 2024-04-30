@@ -58,3 +58,5 @@ void  viewStudentScoreboard(string student_id, CourseNode* head);
 
 CourseNode* findCourse(CourseNode* head);
 
+StudentNode* chooseStudentInACourse(CourseNode* curCourse);
+

@@ -115,7 +115,41 @@ StudentNode* findStudentInACourse(string s, CourseNode* curCourse)
     return nullptr;
 }
 
+StudentNode* chooseStudentInACourse(CourseNode* curCourse)
+{
+    StudentNode* curStu = curCourse->student;
+    int cnt = 0;
+    cout << "List of student in the course " << endl;
+    while (curStu != nullptr)
+    {
+        ++cnt;
+        cout << cnt << ". " << curStu->data.ID << " - " << curStu->data.last_name <<" "<< curStu->data.first_name << endl;
+        curStu = curStu->pNext;
+    }
+
+    cout << "Please choose a student to update his/her result" << endl;
+    cout << "Your choice (1->" << cnt << "): ";
+    int opt;
+    cin >> opt;
+    if (!(1<=opt && opt<=cnt))
+    {
+        cout << "Wrong option. Try again." << endl;
+        cout << "Your choice (1->" << cnt << "): ";
+        cin >> opt;
+    }
+    cnt = 0;
+    curStu = curCourse->student;
+    while (curStu != nullptr)
+    {
+        ++cnt;
+        if (cnt == opt)
+            return curStu;
+        curStu = curStu->pNext;
+    }
+    return nullptr;
+}
 void  viewStudentCourse(string student_id, CourseNode* head) {
+    int cnt = 0;
     CourseNode* curCourse = head;
     bool ok = true;
     while (curCourse != nullptr)
@@ -123,10 +157,11 @@ void  viewStudentCourse(string student_id, CourseNode* head) {
         StudentNode* curStu = findStudentInACourse(student_id, curCourse);
         if (curStu != nullptr) {
             if (ok) {
-                cout << "List of courses in this semester: \n";
+                cout << ">>List of courses in this semester: \n";
                 ok = false;
             }
-            cout << curCourse->data.course_name << " - " << curCourse->data.ID << "\n";
+            ++cnt;
+            cout <<"    "<<cnt << ". " << curCourse->data.course_name << " - " << curCourse->data.ID << "\n";
         }
         curCourse = curCourse->pNext;
     }
@@ -135,22 +170,31 @@ void  viewStudentCourse(string student_id, CourseNode* head) {
 
 void  viewStudentScoreboard(string student_id, CourseNode* head)
 {
-    cout << "The scoreboard of student ID " << student_id <<": "<< endl;
+    int cnt = 0;
+    bool ok = true;
     CourseNode* curCourse = head;
     while (curCourse != nullptr)
     {
         StudentNode* curStu = findStudentInACourse(student_id, curCourse);
         if (curStu != nullptr)
         {
+            if (ok)
+            {
+                cout << "The scoreboard of student ID " << student_id << ": " << endl;
+                ok = false;
+            }
+            ++cnt;
             StudentNode* curStu = curCourse->student;
-            cout << "Course " << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
-            cout << "Total: " << curStu->data.score.total << endl;
-            cout << "Final: " << curStu->data.score.final << endl;
-            cout << "Midterm: " << curStu->data.score.midterm << endl;
-            cout << "Bonus: " << curStu->data.score.bonus << endl;
+            cout << cnt<<". " << curCourse->data.course_name << " - " << curCourse->data.ID << endl;
+            cout << "      *Total: " << curStu->data.score.total << endl;
+            cout << "      *Final: " << curStu->data.score.final << endl;
+            cout << "      *Midterm: " << curStu->data.score.midterm << endl;
+            cout << "      *Bonus: " << curStu->data.score.bonus << endl;
         }
         curCourse = curCourse->pNext;
     }
+    if (ok)
+        cout << "You don't have any course in this semester" << endl;
 }
 
 void printCourseIn4(CourseNode* curCourse)
@@ -255,13 +299,13 @@ void viewTheScoreboardOfCourse(CourseNode* course)
     while (curStu != nullptr)
     {
         cout << curStu->data.No << ".";
-        cout << "  Student name: " << curStu->data.first_name << " " << curStu->data.last_name << endl;
-        cout << "    Student ID: " << curStu->data.ID << endl;
-        cout << "    Score" << endl;
-        cout << "      Total: " << fixed << setprecision(1) << curStu->data.score.total << endl;
-        cout << "      Final: " << fixed << setprecision(1) << curStu->data.score.final << endl;
-        cout << "      Midterm: " << fixed << setprecision(1) << curStu->data.score.midterm << endl;
-        cout << "      Bonus: " << fixed << setprecision(1) << curStu->data.score.bonus << endl;
+        cout << "  >>Student name: " << curStu->data.last_name << " " << curStu->data.first_name << endl;
+        cout << "    >>Student ID: " << curStu->data.ID << endl;
+        cout << "    >>Score" << endl;
+        cout << "       *Total: " << fixed << setprecision(1) << curStu->data.score.total << endl;
+        cout << "       *Final: " << fixed << setprecision(1) << curStu->data.score.final << endl;
+        cout << "       *Midterm: " << fixed << setprecision(1) << curStu->data.score.midterm << endl;
+        cout << "       *Bonus: " << fixed << setprecision(1) << curStu->data.score.bonus << endl;
         curStu = curStu->pNext;
     }
 }

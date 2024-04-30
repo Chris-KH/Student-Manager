@@ -670,6 +670,7 @@ SemesterInfo *chooseASemester(YearNode *head, YearNode *&temp)
 	}
 	YearNode* cur = head;
 	int cnt = 0;
+	cout << "Choose school year" << endl;
 	while (cur)
 	{
 		cout << ++cnt << ". " << cur->data << "\n";
@@ -751,7 +752,32 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 
 }
 
-void viewScoreboardofClass(YearNode*& curYear, int ses, int cnt)
+double calculateGPA(YearNode* head, StudentNode* stu)
+{
+	int cnt = 0;
+	double GPA = 0;
+	YearNode* curYear = head;
+	while (curYear)
+	{
+		for (int ses = 0; ses < 3; ++ses)
+		{
+			CourseNode* curCourse = curYear->semester[ses].course;
+			while (curCourse)
+			{
+				StudentNode* curStu = findStudentInACourse(stu->data.ID, curCourse);
+				if (curStu)
+				{
+					GPA += 1.0 * curStu->data.score.final;
+					++cnt;
+				}
+				curCourse = curCourse->pNext;
+			}
+		}
+		curYear = curYear->pNext;
+	}
+	return GPA / (1.0 * cnt);
+}
+void viewScoreboardofClass(YearNode* head, YearNode* curYear, int ses, int cnt)
 {
 	ofstream fout;
 	ClassNode*& headClass = curYear->classes;
@@ -764,25 +790,29 @@ void viewScoreboardofClass(YearNode*& curYear, int ses, int cnt)
 	StudentNode* stu = curClass->student;
 	while (stu)
 	{
+		int cnt = 0;
+		double GPAses = 0;
 		cout << stu->data.No << ".";
 		cout << "  Student name: " << stu->data.first_name << " " << stu->data.last_name << endl;
 		cout << "    Student ID: " << stu->data.ID << endl;
 		cout << "    Score" << endl;
+		cout << "    >>Final mark of courses (Semester " << ses + 1 << " " << curYear->data << ")" << endl;
+		CourseNode* curCourse = curYear->semester[ses].course;
+		while (curCourse)
+		{
+			StudentNode* curStu = findStudentInACourse(stu->data.ID, curCourse);
 
-		
-			CourseNode* curCourse = curYear->semester[ses].course;
-			StudentNode * curStu=findStudentInACourse(stu->data.ID, curCourse);
 			if (curStu)
 			{
-				
-				/*if (curStu->data.score.total == -1)
-				{
-					cout << "The scoreboard of the course has not been imported" << endl;
-					return;
-				}*/
-				cout << curCourse->data.course_name << ": " << curStu->data.score.final << endl;
+				++cnt;
+				cout << "      " << cnt << ". " << curCourse->data.ID << " - " << curCourse->data.course_name << ": " << curStu->data.score.final << endl;
+				GPAses += 1.0 * curStu->data.score.final;
 			}
-		
+			curCourse = curCourse->pNext;
+		}
+		GPAses = GPAses / (1.0 * cnt);
+		cout << "      >>GPA in this semester: " << fixed << setprecision(3) << GPAses << endl;
+		cout << "    >>Overall GPA: " << fixed << setprecision(3) << calculateGPA(head, stu) << endl;
 		stu = stu->pNext;
 	}
 }
