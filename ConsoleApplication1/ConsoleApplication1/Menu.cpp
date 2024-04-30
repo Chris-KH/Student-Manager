@@ -25,15 +25,15 @@ void menuForStaff()
 {
     system("cls");
     cout << "All the functions for staff: Press a number to choose.\n";
-    cout << "   01. Create a school year.\n";
-    cout << "   02. Create classes.\n";
-    cout << "   03. Create a semester.\n";
-    cout << "   04. Choose current sesmester.\n";
-    cout << "   05. Add new 1st year student to 1st year class.\n";
-    cout << "   06. Add a course.\n";
-    cout << "   07. View the list of courses in current semester.\n";
-    cout << "   08. Update course information.\n";
-    cout << "   09. Add a student to the course.\n";
+    cout << "    1. Create a school year.\n";
+    cout << "    2. Create classes.\n";
+    cout << "    3. Create a semester.\n";
+    cout << "    4. Choose current sesmester.\n";
+    cout << "    5. Add new 1st year student to 1st year class.\n";
+    cout << "    6. Add a course.\n";
+    cout << "    7. View the list of courses in current semester.\n";
+    cout << "    8. Update course information.\n";
+    cout << "    9. Add a student to the course.\n";
     cout << "   10. Remove a student from the course.\n";
     cout << "   11. Delete a course.\n";
     cout << "   12. View a list of classes.\n";
