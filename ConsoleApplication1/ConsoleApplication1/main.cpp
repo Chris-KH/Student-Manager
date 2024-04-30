@@ -19,7 +19,7 @@ int main()
 
     // Load data
 
-    cout << ANSI_CYAN << "                                                          >>>>WELCOME TO THE COURSE MANAGEMENT SYSTEM.\n";
+    cout << ANSI_CYAN << ">>>>WELCOME TO THE COURSE MANAGEMENT SYSTEM.\n\n";
 
     //Load users data
     cout << ANSI_CYAN << "<>Load users data...";
@@ -405,7 +405,7 @@ int main()
                         }
                         else cout << ANSI_RED << "Please choose semester first (option 4).\n";
                         break;
-                    case 21:
+                    case 21: //checked
                         if (curSes && curYear) 
                         {
                             curCourse = findCourse(curSes->course);
@@ -474,7 +474,6 @@ int main()
                         {
                             viewStudentCourse(logged_in->data.username, curSes->course);
                         }
-                        else cout << ANSI_RED << "Wrong.\n";
                         break;
                     case 2:
                         curSes = chooseASemester(headYear, curYear);
@@ -482,7 +481,6 @@ int main()
                         {
                             viewStudentScoreboard(logged_in->data.username, curSes->course);
                         }
-                        else cout << ANSI_RED << "Wrong.\n";
                         break;
                     case 3: // checked
                         viewProfileInfo(logged_in);

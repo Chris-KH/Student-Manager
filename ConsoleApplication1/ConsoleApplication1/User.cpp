@@ -69,20 +69,20 @@ void changePassword(UserNode*& cur) {
 		cout << "Enter new password: "; cin >> new_pass;
 		cout << "Re-enter new password: "; cin >> new_pass2;
 		if (password != cur->data.password) {
-			cout << "Your current password is wrong.\n";
+			cout << ANSI_RED << "Your current password is wrong.\n" << ANSI_WHITE;
 			cout << "Do you want to try again? " << endl;
-			cout << "Enter '1' to try again/'0' to not: ";
+			cout << ANSI_YELLOW << "Enter '1' to try again/'0' to not: " << ANSI_WHITE;
 			cin >> ok;
 		}
 		else if (new_pass != new_pass2) {
-			cout << "Something wrong, make sure your passwords match.\n";
+			cout << ANSI_RED << "Something wrong, make sure your passwords match.\n" << ANSI_WHITE;
 			cout << "Do you want to try again? " << endl;
-			cout << "Enter '1' to try again/'0' to not: ";
+			cout << ANSI_YELLOW << "Enter '1' to try again/'0' to not: " << ANSI_WHITE;
 			cin >> ok;
 		}
 		else {
 			cur->data.password = new_pass;
-			cout << "Your password has been changed successfully.\n";
+			cout << ANSI_GREEN << "Your password has been changed successfully.\n";
 			break;
 		}
 	}

@@ -140,11 +140,11 @@ void addNewClass(YearNode *&head, ofstream &fout)
 		cout << ++cnt << ". " << cur->data << "\n";
 		cur = cur->pNext;
 	}
-	cout << ">>Your choice (1->" << cnt << "): ";
+	cout << ">>";
 	YearNode *curYear = findSchoolYear(head,cnt);
 	if (curYear == nullptr)
 	{
-		cout << "Wrong option. Try again" << endl;
+		cout << ANSI_RED << "Wrong option. Try again" << ANSI_WHITE << "\n";
 		curYear = findSchoolYear(head, cnt);
 	}
 	string name;
@@ -155,7 +155,7 @@ void addNewClass(YearNode *&head, ofstream &fout)
 	{
 		if (tailClass->data.name == name)
 		{
-			cout << "This class is created before.\n";
+			cout << ANSI_RED << "This class is created before.\n";
 			return;
 		}
 		if (tailClass->pNext == nullptr)
@@ -173,12 +173,12 @@ void addNewClass(YearNode *&head, ofstream &fout)
 			tailClass->pNext = temp;
 
 		exportClassData(curYear->classes, fout);
-		cout << "Class is added successfully.\n";
+		cout << ANSI_GREEN << "Class is added successfully.\n";
 
 		fout.close();
 	}
 	else
-		cout << "Add class failed.\n";
+		cout << ANSI_RED << "Add class failed.\n";
 }
 
 void createASchoolYear(YearNode *&head, YearNode *&tail)
@@ -191,7 +191,7 @@ void createASchoolYear(YearNode *&head, YearNode *&tail)
 	{
 		if (cur->data == s)
 		{
-			cout << "This year is created before.\n";
+			cout << ANSI_RED << "This year is created before.\n";
 			return;
 		}
 		cur = cur->pNext;
@@ -213,7 +213,7 @@ void createASchoolYear(YearNode *&head, YearNode *&tail)
 	ofstream fout;
 	fout.open("DataFile/" + temp->data + "Classes.txt", ios::trunc);
 	fout.close();
-	cout << "Create school year successfully.\n";
+	cout << ANSI_GREEN << "Create school year successfully.\n";
 }
 
 void exportSchoolYearData(YearNode *head, ofstream &fout)
@@ -268,7 +268,7 @@ void addCourse(YearNode *curYear, SemesterInfo *&curSes)
 	ClassNode *curClass = findClass(curYear->classes, curCourse->data.class_name);
 	while (curClass == nullptr)
 	{
-		cout << "This class does not exist.\n";
+		cout << ANSI_RED << "This class does not exist.\n" << ANSI_WHITE;
 		curClass = findClass(curYear->classes, askClassName());
 	}
 
@@ -323,7 +323,7 @@ void addCourse(YearNode *curYear, SemesterInfo *&curSes)
 
 	fout.close();
 	fout2.close();
-	cout << "The course is added successfully" << endl;
+	cout << ANSI_GREEN << "The course is added successfully" << endl;
 }
 
 YearNode *findSchoolYear(YearNode *head, int total)
@@ -348,7 +348,7 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 {
 	if (head == nullptr)
 	{
-		cout << "Haven't created any school year" << endl;
+		cout << ANSI_RED << "Haven't created any school year" << endl;
 		return;
 	}
 	cout << "Choose year: " << endl;
@@ -364,7 +364,7 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 	YearNode *curYear = findSchoolYear(head, cnt);
 	while (curYear == nullptr)
 	{
-		cout << "Wrong option. Try again.\n";
+		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
 		curYear = findSchoolYear(head, cnt);
 	}
 	
@@ -379,13 +379,13 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 	ClassNode* curClass = chooseClass(curYear->classes,cnt);
 	while (curClass == nullptr)
 	{
-		cout << "Wrong option. Try again.\n";
+		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
 		curClass = chooseClass(curYear->classes,cnt);
 	}
 	StudentNode *curStudent = curClass->student;
 	if (curStudent != nullptr)
 	{
-		cout << "Students is already added to this class.\n";
+		cout << ANSI_RED << "Students is already added to this class.\n";
 		return;
 	}
 	fin.open("InputFile/" + curClass->data.name + ".csv");
@@ -396,19 +396,19 @@ void addNewStudentToClass(UserNode *&tailUser, YearNode *head, ifstream &fin)
 		fout.open("DataFile/" + curClass->data.name + ".csv");
 		exportStudent(curClass->student, fout);
 		createNewUsers(tailUser, curClass->student);
-		cout << "Student is added successfully.\n";
+		cout << ANSI_GREEN << "Student is added successfully.\n";
 		fin.close();
 		fout.close();
 	}
 	else
-		cout << "Add student failed.\n";
+		cout << ANSI_RED << "Add student failed.\n";
 }
 
 void viewListOfStudentInClass(YearNode *head)
 {
 	if (head == nullptr)
 	{
-		cout << "Haven't created any school year" << endl;
+		cout << ANSI_RED << "Haven't created any school year" << endl;
 		return;
 	}
 	cout << "Choose year: " << endl;
@@ -420,7 +420,7 @@ void viewListOfStudentInClass(YearNode *head)
 		cout << ++cnt << ". " << curYear->data << "\n";
 		curYear = curYear->pNext;
 	}
-	cout << ">>Your choice (1->" << cnt << "): ";
+	cout << ">>";
 	curYear = findSchoolYear(head,cnt);
 	while (curYear == nullptr)
 	{
@@ -433,7 +433,7 @@ void viewListOfStudentInClass(YearNode *head)
 	ClassNode *temp = curYear->classes;
 	if (temp == nullptr)
 	{
-		cout << "Haven't created any class in this school year" << endl;
+		cout << ANSI_RED << "Haven't created any class in this school year" << endl;
 		return;
 	}
 	while (temp != nullptr)
@@ -444,13 +444,13 @@ void viewListOfStudentInClass(YearNode *head)
 	ClassNode* curClass = chooseClass(curYear->classes, cnt);
 	while (curClass == nullptr)
 	{
-		cout << "Wrong option. Try again.\n";
+		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
 		curClass = chooseClass(curYear->classes, cnt);
 	}
 	StudentNode *cur = curClass->student;
 	if (cur == nullptr)
 	{
-		cout << "There is no student in class " << curClass->data.name << ".\n";
+		cout << ANSI_RED << "There is no student in class " << curClass->data.name << ".\n";
 		return;
 	}
 	cout << "List of student in class " << curClass->data.name << ":\n";
@@ -466,7 +466,7 @@ void viewAListOfClasses(YearNode *head)
 {
 	if (head == nullptr)
 	{
-		cout << "Haven't created any school year" << endl;
+		cout << ANSI_RED << "Haven't created any school year" << endl;
 		return;
 	}
 	cout << "Choose year: " << endl;
@@ -482,7 +482,7 @@ void viewAListOfClasses(YearNode *head)
 	YearNode* temp = findSchoolYear(head, cnt);
 	while (temp == nullptr)
 	{
-		cout << "Wrong option. Try again.\n";
+		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
 		temp = findSchoolYear(head, cnt);
 	}
 
@@ -490,7 +490,7 @@ void viewAListOfClasses(YearNode *head)
 	ClassNode *cur = temp->classes;
 	if (cur == nullptr)
 	{
-		cout << "Haven't created any class in this year." << endl;
+		cout << ANSI_RED << "Haven't created any class in this year." << endl;
 	}
 	else
 	{
@@ -512,7 +512,7 @@ void viewAllClasses(YearNode* head)
 		ClassNode* curClass = curYear->classes;
 		if (curClass == nullptr)
 		{
-			cout << "Haven't created any class in this year." << endl;
+			cout << ANSI_RED << "Haven't created any class in this year." << endl << ANSI_WHITE;
 		}
 		else
 		{
@@ -532,7 +532,7 @@ SemesterInfo *createSemester(YearNode *head)
 {
 	if (head == nullptr)
 	{
-		cout << "Haven't created any school year.\n";
+		cout << ANSI_RED << "Haven't created any school year.\n";
 		return nullptr;
 	}
 	YearNode* cur = head;
@@ -545,7 +545,7 @@ SemesterInfo *createSemester(YearNode *head)
 	YearNode *temp = findSchoolYear(head, cnt);
 	if (temp == nullptr)
 	{
-		cout << "Wrong option. Try again" << endl;
+		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
 		temp=findSchoolYear(head,cnt);
 	}
 	string s;
@@ -556,12 +556,12 @@ SemesterInfo *createSemester(YearNode *head)
 	cin >> ses;
 	if (ses != 1 && ses != 2 && ses != 3)
 	{
-		cout << "This semester does not exit.\n";
+		cout << ANSI_RED << "This semester does not exit.\n";
 		return nullptr;
 	}
 	else if (temp->semester[ses - 1].created == true)
 	{
-		cout << "This semester is created before.\n";
+		cout << ANSI_RED << "This semester is created before.\n";
 		return nullptr;
 	}
 	cout << "Date (format dd/mm/yy, for example: 01/01/2021)" << endl;
@@ -589,7 +589,7 @@ SemesterInfo *createSemester(YearNode *head)
 	ofstream fout;
 	fout.open("DataFile/" + temp->data + "-Semester" + to_string(ses) + ".csv");
 	fout.close();
-	cout << "Create semester successfully.\n";
+	cout << ANSI_GREEN << "Create semester successfully.\n";
 	return &temp->semester[ses - 1];
 }
 
@@ -619,7 +619,7 @@ void addStudentToCourse(YearNode*& headYear, CourseNode*& curCourse)
 
 	if (findStudentInACourse(s, curCourse) != nullptr)
 	{
-		cout << "This student has been added to the course." << endl;
+		cout << ANSI_RED << "This student has been added to the course." << endl;
 		return;
 	}
 	else
@@ -627,7 +627,7 @@ void addStudentToCourse(YearNode*& headYear, CourseNode*& curCourse)
 		StudentNode* temp = findAStudentInSystem(s, headYear);
 		if (temp == nullptr)
 		{
-			cout << "This student ID doesn't exist in the system." << endl;
+			cout << ANSI_RED << "This student ID doesn't exist in the system." << endl;
 			return;
 		}
 		cout << ">>Student information: " << endl;
@@ -654,9 +654,9 @@ void addStudentToCourse(YearNode*& headYear, CourseNode*& curCourse)
 				newStu->data.No = curStu->data.No + 1;
 				curStu->pNext = newStu;
 			}
-			cout << "The new student is added successfully to the course.\n";
+			cout << ANSI_GREEN << "The new student is added successfully to the course.\n";
 		}
-		else cout << "You didn't add new student to the course" << endl;
+		else cout << ANSI_RED << "You didn't add new student to the course" << endl;
 
 	}
 }
@@ -665,7 +665,7 @@ SemesterInfo *chooseASemester(YearNode *head, YearNode *&temp)
 {
 	if (head == nullptr)
 	{
-		cout << "Haven't created any school year yet" << endl;
+		cout << ANSI_RED << "Haven't created any school year yet" << endl;
 		return nullptr;
 	}
 	YearNode* cur = head;
@@ -679,7 +679,7 @@ SemesterInfo *chooseASemester(YearNode *head, YearNode *&temp)
 	YearNode* curYear = findSchoolYear(head, cnt);
 	if (curYear == nullptr)
 	{
-		cout << "Wrong option. Try again." << endl;
+		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
 		curYear = findSchoolYear(head, cnt);
 	}
 	temp = curYear;
@@ -694,7 +694,7 @@ SemesterInfo *chooseASemester(YearNode *head, YearNode *&temp)
 	}
 	if (curYear->semester[ses - 1].created == false)
 	{
-		cout << "This semester has not been created yet.\n";
+		cout << ANSI_RED << "This semester has not been created yet.\n" << ANSI_WHITE;
 		cout << "Please choose other semester.\n";
 		return nullptr;
 	}
@@ -706,7 +706,7 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 	CourseNode* curCourse = findCourse(curSes->course);
 	if (curCourse == nullptr)
 	{
-		cout << "This course does not exist in this semester.\n";
+		cout << ANSI_RED << "This course does not exist in this semester.\n";
 		return;
 	}
 	
@@ -724,7 +724,7 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 		CourseNode* temp = curSes->course;
 		curSes->course = curSes->course->pNext;
 		delete temp;
-		cout << "Delete course successfully.\n";
+		cout << ANSI_GREEN << "Delete course successfully.\n" << ANSI_WHITE;
 	}
 	else
 	{
@@ -737,7 +737,7 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 				CourseNode* temp = cur;
 				prev->pNext = cur->pNext;
 				delete temp;
-				cout << "Delete course successfully.\n";
+				cout << ANSI_GREEN << "Delete course successfully.\n" << ANSI_WHITE;
 				break;
 			}
 			prev = cur;
@@ -745,8 +745,8 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 		}
 	}
 	if (result == 0)
-		cout << "Delete related files successfully" << endl;
-	else cout << "Fail to delete related files" << endl;
+		cout << ANSI_GREEN << "Delete related files successfully" << endl;
+	else cout << ANSI_RED << "Fail to delete related files" << endl;
 	
 	exportCourseToSemester(head, curSes, fout);
 
@@ -784,10 +784,11 @@ void viewScoreboardofClass(YearNode* head, YearNode* curYear, int ses, int cnt)
 	ClassNode* curClass = chooseClass(headClass, cnt);
 	while (curClass == nullptr)
 	{
-		cout << "Wrong option. Try again.\n";
+		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
 		curClass = chooseClass(headClass, cnt);
 	}
 	StudentNode* stu = curClass->student;
+	cout << "Scoreboard of class " << curClass->data.name << " - Semester " << ses + 1 << " - " << curYear->data << endl;
 	while (stu)
 	{
 		int cnt = 0;
@@ -796,7 +797,7 @@ void viewScoreboardofClass(YearNode* head, YearNode* curYear, int ses, int cnt)
 		cout << "  Student name: " << stu->data.first_name << " " << stu->data.last_name << endl;
 		cout << "    Student ID: " << stu->data.ID << endl;
 		cout << "    Score" << endl;
-		cout << "    >>Final mark of courses (Semester " << ses + 1 << " " << curYear->data << ")" << endl;
+		cout << "    >>Final mark of courses "<< endl;
 		CourseNode* curCourse = curYear->semester[ses].course;
 		while (curCourse)
 		{
