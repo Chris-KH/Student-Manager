@@ -46,7 +46,7 @@ void menuForStaff()
     cout << "   19. Import the scoreboard of any course in current semester.\n";
     cout << "   20. View the scoreboard of any course in current semester.\n";
     cout << "   21. Update any student's result in any course in current semester.\n";
-    cout << "   22. View the scoreboard of any class.\n";
+    cout << "   22. View the scoreboard of any class in current semester.\n";
     cout << "   23. Logout.\n";
     cout << "   24. End program.\n";
     cout << ANSI_YELLOW << ">>>>Staff choice: ";

@@ -468,14 +468,14 @@ int main()
                     cout << ANSI_WHITE;
                     switch (studentChoice)
                     {
-                    case 1:
+                    case 1: // checked
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear) 
                         {
                             viewStudentCourse(logged_in->data.username, curSes->course);
                         }
                         break;
-                    case 2:
+                    case 2: // checked
                         curSes = chooseASemester(headYear, curYear);
                         if (curSes && curYear)
                         {
