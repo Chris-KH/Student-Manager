@@ -441,6 +441,7 @@ int main()
                             }
                             viewScoreboardofClass(headYear, curYear, curSes->order-1, cnt);
                         }
+                        else cout << ANSI_RED << "Please choose semester first (option 4).\n";
                         break;
                     case 23:
                         cout << ANSI_GREEN << "Logout successful. You have been logged out.\n";
