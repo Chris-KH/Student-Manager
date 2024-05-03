@@ -153,7 +153,7 @@ int main()
     while (exit == false && continueProgram(1))
     {
         system("cls");
-        if (login(headUser, logged_in)) 
+        if (login(headUser, logged_in))
         {
             cout << ANSI_GREEN << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
@@ -365,7 +365,7 @@ int main()
                             }
                             cout << ANSI_GREEN << "Import scoreboard successfully.\n";
                         }   
-                        else cout << ANSI_RED << "Please choose semester first (option 4).\n";
+                        else cout << ANSI_RED << "Please choose semester first (option 4th).\n";
                         fin.close();
                         break;     
                     case 20: //checked

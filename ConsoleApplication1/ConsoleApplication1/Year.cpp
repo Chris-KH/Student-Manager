@@ -546,7 +546,7 @@ SemesterInfo *createSemester(YearNode *head)
 	if (temp == nullptr)
 	{
 		cout << ANSI_RED << "Wrong option. Try again.\n" << ANSI_WHITE;
-		temp=findSchoolYear(head,cnt);
+		temp = findSchoolYear(head,cnt);
 	}
 	string s;
 	int ses;
@@ -747,9 +747,7 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout)
 	if (result == 0)
 		cout << ANSI_GREEN << "Delete related files successfully" << endl;
 	else cout << ANSI_RED << "Fail to delete related files" << endl;
-	
 	exportCourseToSemester(head, curSes, fout);
-
 }
 
 double calculateGPA(YearNode* head, StudentNode* stu)
