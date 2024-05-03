@@ -52,8 +52,6 @@ StudentNode* findStudentInACourse(string s, CourseNode* curCourse);
 
 void printCourseIn4(CourseNode* curCourse);
 
-void updateCourseIn4(CourseNode* &curCourse);
-
 void viewStudentCourse(string student_id, CourseNode* head);
 
 void viewStudentScoreboard(string student_id, CourseNode* head);

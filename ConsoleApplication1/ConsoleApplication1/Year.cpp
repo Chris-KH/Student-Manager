@@ -77,7 +77,7 @@ void exportCourseToSemester(YearNode *head, SemesterInfo *&curSes, ofstream &fou
 			fout << curCourse->data.day_of_week << ",";
 			fout << curCourse->data.session << ",";
 			fout << curCourse->data.credit << ",";
-			fout << curCourse->data.max_student << ",";
+			fout << curCourse->data.max_student;
 			curCourse = curCourse->pNext;
 		}
 		fout.close();
@@ -796,4 +796,71 @@ void viewScoreboardofClass(YearNode* head, YearNode* curYear, int ses, int cnt)
 		cout << "    >>Overall GPA: " << fixed << setprecision(3) << calculateGPA(head, stu) << endl;
 		stu = stu->pNext;
 	}
+}
+
+void updateCourseIn4(YearNode* curYear, CourseNode*& curCourse) {
+
+	cout << ">>Current information" << endl;
+	printCourseIn4(curCourse);
+
+	cout << ">>Updating information of the course '" << curCourse->data.course_name << " - " << curCourse->data.ID << " " << curCourse->data.class_name << "'" << endl;
+
+	string ID;
+	string class_name;
+
+	cout << "Course ID : ";
+	cin.ignore();
+	getline(cin, ID);
+
+	cout << "Class name: ";
+	getline(cin, class_name);
+
+	ClassNode* curClass = findClass(curYear->classes, class_name);
+	if (curClass == nullptr) {
+		cout << ANSI_RED << "This class does not exist. Change info of course failed.\n" << ANSI_WHITE;
+		return;
+	}
+
+	cout << "Course name: ";
+	getline(cin, curCourse->data.course_name);
+
+	cout << "Teacher name: ";
+	getline(cin, curCourse->data.teacher_name);
+
+	cout << "Number of credits: ";
+	cin >> curCourse->data.credit;
+
+	cout << "The maximum number of students in the course: ";
+	cin >> curCourse->data.max_student;
+
+	cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): ";
+	cin >> curCourse->data.day_of_week;
+
+	cout << "Session: \n";
+	cout << "1. S1(07:30)\n";
+	cout << "2. S2(09:30)\n";
+	cout << "3. S3(13:30)\n";
+	cout << "4. S4(15:30)\n";
+	cout << "Press a number (1-4) to choose: ";
+	cin >> curCourse->data.session;
+	cout << "Course infomation is updated successfully";
+
+	if (ID != curCourse->data.ID || class_name != curCourse->data.class_name) {
+		string path = "DataFile/Courses/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv";
+		ofstream fout("DataFile/Courses/" + curYear->data + "-" + ID + "-" + class_name + ".csv", ios::trunc);
+		ifstream fin(path);
+		char ch;
+		while (fin.get(ch)) {
+			fout.put(ch);
+		}
+		fin.close();
+		fout.close();
+		char* filename = new char[path.size() + 1];
+		copy(path.begin(), path.end(), filename);
+		filename[path.size()] = '\0';
+		int result = remove(filename);
+		delete[] filename;
+	}
+	curCourse->data.ID = ID;
+	curCourse->data.class_name = class_name;
 }

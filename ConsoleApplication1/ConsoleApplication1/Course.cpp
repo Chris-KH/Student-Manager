@@ -98,6 +98,7 @@ void removeStudentFromCourse(CourseNode*& head) {
             cout << ANSI_GREEN << "Delete student successfully.\n";
             return;
         }
+        prev = prev->pNext;
         cur = cur->pNext;
     }
 }
@@ -242,45 +243,6 @@ void printCourseIn4(CourseNode* curCourse)
         cout << "S4(15:30)\n";
         break;
     }
-}
-void updateCourseIn4(CourseNode*& curCourse) {
-
-    cout << ">>Current information" << endl;
-    printCourseIn4(curCourse);
-
-    cout << ">>Updating information of the course '" << curCourse->data.course_name << " - " << curCourse->data.ID << " " << curCourse->data.class_name << "'" << endl;
-
-    cout << "Course ID : ";
-    cin.ignore();
-    getline(cin, curCourse->data.ID);
-
-    cout << "Course name: ";
-    cin.ignore();
-    getline(cin, curCourse->data.course_name);
-
-    cout << "Class name: ";
-    getline(cin, curCourse->data.class_name);
-
-    cout << "Teacher name: ";
-    getline(cin, curCourse->data.teacher_name);
-
-    cout << "Number of credits: ";
-    cin >> curCourse->data.credit;
-
-    cout << "The maximum number of students in the course: ";
-    cin >> curCourse->data.max_student;
-
-    cout << "Day of the week (MON / TUE / WED / THU / FRI / SAT): ";
-    cin >> curCourse->data.day_of_week;
-
-    cout << "Session: \n";
-    cout << "1. S1(07:30)\n";
-    cout << "2. S2(09:30)\n";
-    cout << "3. S3(13:30)\n";
-    cout << "4. S4(15:30)\n";
-    cout << "Press a number (1-4) to choose: ";
-    cin >> curCourse->data.session;
-    cout << "Course infomation is updated successfully";
 }
 
 void viewTheScoreboardOfCourse(CourseNode* course)
