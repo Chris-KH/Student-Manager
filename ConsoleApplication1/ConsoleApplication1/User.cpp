@@ -23,7 +23,6 @@ void importUserData(UserNode*& headUser, UserNode*& tailUser, ifstream& fin) {
 		fin.ignore();
 		fin.clear();
 
-
 		string line;
 		getline(fin, line);
 		stringstream ss(line);

@@ -138,35 +138,7 @@ int main()
                     importScoreboard(curCourse->student, fin);
                     fin.close();
                 }
-                
-                //creating scoreboard files of courses
-                /*fout.open("DataFile/Courses/SB/" + yy->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + "-sb.csv");
-                if (fout.is_open())
-                {
-                    StudentNode* head = curCourse->student;
-                    while (head != nullptr)
-                    {
-                        fout << head->data.No << ",";
-                        fout << head->data.ID << ",";
-                        fout << head->data.last_name << ",";
-                        fout << head->data.first_name << ",";
-                        fout << head->data.gender << ",";
-                        fout << head->data.dob.day << "/" << head->data.dob.month << "/" << head->data.dob.year << ",";
-                        fout << head->data.social_id << ",";
-
-                        float x1 = 5 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (10 - 5)));
-                        float x2 = 5 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (10 - 5)));
-                        float x3 = 5 + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (10 - 5)));
-                        float x4 = 0.3 * x1 + 0.5 * x2 + 0.2 * x3;
-                        fout << fixed << setprecision(1) << x1 << "," << x2 << "," << x3 <<","<<x4<< "\n";
-                        head = head->pNext;
-                    }
-                }
-                else cout << "Scoreboard ok";
-                fout.close();*/
-
                 curCourse = curCourse->pNext;
-
             }
         }
         yy = yy->pNext;
@@ -181,7 +153,7 @@ int main()
     while (exit == false && continueProgram(1))
     {
         system("cls");
-        if (login(headUser, logged_in)) 
+        if (login(headUser, logged_in))
         {
             cout << ANSI_GREEN << ">>>Logged in successfully<<<\n";
             bool logout = false; // haven't logged out
@@ -393,7 +365,7 @@ int main()
                             }
                             cout << ANSI_GREEN << "Import scoreboard successfully.\n";
                         }   
-                        else cout << ANSI_RED << "Please choose semester first (option 4).\n";
+                        else cout << ANSI_RED << "Please choose semester first (option 4th).\n";
                         fin.close();
                         break;     
                     case 20: //checked
