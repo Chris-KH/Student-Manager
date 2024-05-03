@@ -26,7 +26,7 @@ void importUserData(UserNode* &headlUser, UserNode *&tailUser, ifstream& fin);
 
 void exportUserData(UserNode* users, ofstream& fout);
 
-bool login(UserNode* users, UserNode*& cur);
+bool login(UserNode* users, UserNode*& temp);
 
 void changePassword(UserNode* &cur);
 

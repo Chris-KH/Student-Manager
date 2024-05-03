@@ -21,14 +21,7 @@ void importCourseToSemester(YearNode *head, ifstream &fin, bool &ok2)
 				getline(ss, temp->data.ID, ',');
 				getline(ss, temp->data.teacher_name, ',');
 				getline(ss, temp->data.day_of_week, ',');
-
-				/*ifstream fin;
-				fin.open("DataFile/" + temp->data.class_name+".csv");
-				if (fin.is_open())
-					importStudentToClass(temp->student, fin);
-				else cout << "Unable to import student to the course in file" << "DataFile / " + temp->data.class_name+".csv" << endl;
-				fin.close();*/
-
+				
 				string s;
 				getline(ss, s, ',');
 				temp->data.session = s[0] - '0';
@@ -306,17 +299,6 @@ void addCourse(YearNode *curYear, SemesterInfo *&curSes)
 
 	ofstream fout;
 	exportCourseToSemester(curYear, curSes, fout);
-	
-	/*fout << endl;
-	fout << curCourse->data.course_name << ",";
-	fout << curCourse->data.class_name << ",";
-	fout << curCourse->data.ID << ",";
-	fout << curCourse->data.teacher_name << ",";
-	fout << curCourse->data.day_of_week << ",";
-	fout << curCourse->data.session << ",";
-	fout << curCourse->data.credit << ",";
-	fout << curCourse->data.max_student;
-	*/
 	ofstream fout2;
 	fout2.open("DataFile/Courses/" + curYear->data + "-" + curCourse->data.ID + "-" + curCourse->data.class_name + ".csv");
 	exportStudent(curCourse->student, fout2);
