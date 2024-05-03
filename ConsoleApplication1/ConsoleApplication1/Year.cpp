@@ -245,7 +245,7 @@ void exportSchoolYearData(YearNode *head, ofstream &fout)
 void addCourse(YearNode *curYear, SemesterInfo *&curSes)
 {
 	CourseNode *curCourse = curSes->course;
-	CourseNode *newcourse = new CourseNode;
+	CourseNode *newcourse = new CourseNode();
 	if (curCourse == nullptr)
 	{
 		curSes->course = newcourse;
@@ -578,14 +578,14 @@ SemesterInfo *createSemester(YearNode *head)
 	getline(aa, m2, '/');
 	getline(aa, y2);
 	SemesterInfo a;
-	a.created = 1;
-	a.start.day = d1;
-	a.start.month = m1;
-	a.start.year = y1;
-	a.end.day = d2;
-	a.end.month = m2;
-	a.end.year = y2;
-	temp->semester[ses - 1] = a;
+	temp->semester[ses - 1].created = 1;
+	temp->semester[ses - 1].order = ses;
+	temp->semester[ses - 1].start.day = d1;
+	temp->semester[ses - 1].start.month = m1;
+	temp->semester[ses - 1].start.year = y1;
+	temp->semester[ses - 1].end.day = d2;
+	temp->semester[ses - 1].end.month = m2;
+	temp->semester[ses - 1].end.year = y2;
 	ofstream fout;
 	fout.open("DataFile/" + temp->data + "-Semester" + to_string(ses) + ".csv");
 	fout.close();

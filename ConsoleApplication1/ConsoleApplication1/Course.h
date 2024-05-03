@@ -29,8 +29,8 @@ struct CourseInfo
 struct CourseNode
 {
     CourseInfo data;
-    StudentNode *student;
-    CourseNode *pNext;
+    StudentNode* student;
+    CourseNode* pNext;
 
     CourseNode() {
         student = nullptr;
@@ -38,7 +38,7 @@ struct CourseNode
     }
 };
 
-void viewTheScoreboardOfCourse(CourseNode *courses);
+
 
 void removeStudentFromCourse(CourseNode*& head);
 
@@ -46,15 +46,17 @@ void viewListOfCourse(CourseNode* head);
 
 void viewListOfStudentInCourse(CourseNode* head);
 
+void viewTheScoreboardOfCourse(CourseNode* course);
+
 StudentNode* findStudentInACourse(string s, CourseNode* curCourse);
 
 void printCourseIn4(CourseNode* curCourse);
 
 void updateCourseIn4(CourseNode* &curCourse);
 
-void  viewStudentCourse(string student_id, CourseNode* head);
+void viewStudentCourse(string student_id, CourseNode* head);
 
-void  viewStudentScoreboard(string student_id, CourseNode* head);
+void viewStudentScoreboard(string student_id, CourseNode* head);
 
 CourseNode* findCourse(CourseNode* head);
 
