@@ -221,7 +221,7 @@ int main()
                             curCourse = findCourse(curSes->course);
                             if (curCourse)
                             {
-                                updateCourseIn4(curCourse);
+                                updateCourseIn4(curYear ,curCourse);
                                 exportCourseToSemester(curYear, curSes, fout);
                             }
                             else cout << ANSI_RED << "This course does not exist.\n";

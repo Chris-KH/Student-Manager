@@ -57,9 +57,8 @@ void exportStudent(StudentNode *head, ofstream &fout)
 void importScoreboard(StudentNode* &head, ifstream &fin)
 {
 	string s;
-	StudentNode* tail = nullptr;
-	while (getline(fin, s))
-	{
+	while (getline(fin, s)) {
+		StudentNode* cur = head;
 		StudentNode* temp = new StudentNode();
 		stringstream ss(s);
 		string No;
@@ -84,12 +83,14 @@ void importScoreboard(StudentNode* &head, ifstream &fin)
 		getline(ss, tmp);
 		temp->data.score.total = stod(tmp);
 		
-
-		if (tail == nullptr)
-			head = temp;
-		else
-			tail->pNext = temp;
-		tail = temp;
+		while (cur) {
+			if (cur->data.ID == temp->data.ID) {
+				cur->data.score = temp->data.score;
+				break;
+			}
+			cur = cur->pNext;
+		}
+		delete temp;
 	}
 }
 

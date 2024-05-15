@@ -56,3 +56,5 @@ void deleteACourse(YearNode* head, SemesterInfo*& curSes, ofstream& fout);
 void addStudentToCourse(YearNode*& headYear, CourseNode*& curCourse);
 
 void viewScoreboardofClass(YearNode* head, YearNode* curYear, int ses, int cnt);
+
+void updateCourseIn4(YearNode* curYear, CourseNode*& curCourse);
