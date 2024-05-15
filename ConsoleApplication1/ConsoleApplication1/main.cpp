@@ -118,7 +118,7 @@ int main()
     cout << ANSI_CYAN << "<>Load student to course...";
     yy = headYear;
     bool ok3 = false;
-    while (yy) 
+    while (yy)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -195,8 +195,7 @@ int main()
                             createSemester(headYear);
                             exportSchoolYearData(headYear, fout);
                         }
-                        else
-                            cout << ANSI_RED << "Create semester failed.\n";
+                        else cout << ANSI_RED << "Create semester failed.\n";
                         break;
                     case 4: //checked
                         curSes = chooseASemester(headYear, curYear);
@@ -372,8 +371,7 @@ int main()
                         if (curSes && curYear)
                         {
                             curCourse = findCourse(curSes->course);
-                            if (curCourse)
-                                viewTheScoreboardOfCourse(curCourse);
+                            if (curCourse) viewTheScoreboardOfCourse(curCourse);
                         }
                         else cout << ANSI_RED << "Please choose semester first (option 4).\n";
                         break;
